@@ -1,1 +1,44 @@
-<p>navbar works!</p>
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button class="btn-toolbar" (click)="showMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="btn-toolbar">
+        <mat-icon>perm_identity</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="../tipo-documento">Tipo Documentos</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6"  mode="side"  opened [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}">
+         <div class="header-nav" >
+            <img src="../../assets/img/Untitled_logo_1_free-file (1).png" [style.height] [style.width]>
+            <span class="header-title" *ngIf="collapsed">{{title}}</span>
+        </div>
+        <mat-nav-list>
+            <mat-divider></mat-divider>
+            <ng-container *ngFor="let menuItem of menuItems">
+
+                <!-- Elementos del menú -->
+                <mat-list-item [routerLink]="menuItem.route" routerLinkActive="active-link" #rla="routerLinkActive"
+                [activated]="rla.isActive">
+                    <mat-icon class="icon" matListItemIcon>{{ menuItem.icon}}</mat-icon>
+                    <span class="item-label" matListItemTitle>{{ menuItem.label }}</span>
+                </mat-list-item>
+
+
+            </ng-container>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="!collapsed ? '65px' : '250px'">
+        <!-- Contenido de la página -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

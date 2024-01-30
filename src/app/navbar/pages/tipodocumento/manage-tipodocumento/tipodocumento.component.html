@@ -1,0 +1,40 @@
+<div class="flex flex-column">
+    <mat-card-title>Tipo de Documento</mat-card-title>
+    <mat-card-subtitle class="mt-1">Módulo Tipos de Documnento</mat-card-subtitle>
+</div>
+<mat-divider class="mt-2"></mat-divider>
+
+<div class=" flex justify-content-around grid  my-4 h-15rem container-grid">
+
+    <div class="col-12 mr-6 md:col-4 col-offset-1">
+        <mat-card class="fixed-card">
+            <mat-card-title class="flex align-content-center justify-content-center pt-2">Tipos de Documento</mat-card-title>
+            <mat-divider class="mx-3"></mat-divider>
+            <mat-card-content>
+                <mat-selection-list>
+                    
+                    <mat-list-option *ngFor="let tipoDocumento of typeDocs"> {{tipoDocumento.docTypeName}}</mat-list-option>
+                   
+                </mat-selection-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-12 md:col-4 ">
+        <mat-card class="fixed-card">
+            <mat-card-title class="flex align-items-center justify-content-center pt-2">Nuevo Tipo de Documento</mat-card-title>
+            <mat-divider class="mx-5"></mat-divider>
+            <mat-card-content>
+                <form class="create-typeDoc" [formGroup]="typeDocForm">
+                    <mat-form-field>
+                        <mat-label>Nombre del Documento</mat-label>
+                        <input matInput name="nuevoDocumento" formControlName="docTypeName" type="text">
+                        <mat-error *ngIf="typeDocForm.get('docTypeName')?.hasError('required')">Campo necesario</mat-error>
+
+                    </mat-form-field>
+                    <button mat-raised-button type="submit" class="btn-submit">Agregar</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

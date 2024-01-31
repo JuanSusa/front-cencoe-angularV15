@@ -5,7 +5,7 @@ import { AngularMaterialModule } from '../angular-material.module';
 import { CampaignsComponent } from './pages/campaigns/campaigns.component';
 import { ProvidersComponent } from './pages/providers/providers.component';
 import { CustomersComponent } from './pages/customers/customers.component';
-import { UsersComponent } from './pages/users/users.component';
+import { UsersComponent } from './pages/users/list-user/users.component';
 import { TipodocumentoComponent } from './pages/tipodocumento/manage-tipodocumento/tipodocumento.component';
 import { MenuRoutingRoutes } from './menu-routing.routing';
 

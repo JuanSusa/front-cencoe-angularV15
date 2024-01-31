@@ -17,7 +17,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6"  mode="side"  opened [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}">
+    <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6"  mode="side"  opened [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}" >
          <div class="header-nav" >
             <img src="../../assets/img/Untitled_logo_1_free-file (1).png" [style.height] [style.width]>
             <span class="header-title" *ngIf="collapsed">{{title}}</span>

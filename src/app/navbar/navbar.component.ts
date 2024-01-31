@@ -9,17 +9,20 @@ import { BehaviorSubject, Observable, distinctUntilChanged, map, startWith } fro
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit{
+
   ngOnInit(): void {
   }
+
   title: string = 'Cencoe';
   sizeScreen: number = 790;
+  collapsed = false;
 
   menuItems: MenuItem[] = menuItems;
 
 
   
-  // @ViewChild('sidenav') sidenav!: MatSidenav;
-  collapsed = false;
+  
+
   showMenu() {
     // this.sidenav.toggle();
     this.collapsed = !this.collapsed;

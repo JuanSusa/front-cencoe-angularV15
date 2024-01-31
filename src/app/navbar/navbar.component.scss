@@ -1,12 +1,15 @@
-:host * {
-    transition: all 500ms ease-in-out;
-}
+// // :host * {
+//     transition: all 500ms ease-in-out;
+// // }
 .menuOpen{
     width: 250px;;
+    // transition: all 1S ease-in-out;
 }
 
 .menuClosed{
     width:  64px;
+    // transition: all 1S ease-in-out;
+
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -14,8 +17,6 @@
 
 mat-toolbar {
     background: linear-gradient(-22deg, #29323c 20%, #738092 80%);
-    // linear-gradient(-20deg, #616161 0%, #9bc5c3 100%); 
-    // linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
     color: #000;
     display: flex;
     align-items: center;
@@ -25,7 +26,6 @@ mat-toolbar {
 }
 
 .btn-toolbar {
-    // color: #fafafa;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -65,7 +65,7 @@ span {
 mat-icon {
     font-size: 25px;
     color: #fafafa;
-    // overflow: visible;
+    overflow: visible;
 }
 
 // .active-link {

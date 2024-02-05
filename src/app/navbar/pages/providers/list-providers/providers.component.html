@@ -1,0 +1,58 @@
+<mat-card class="mat-elevation-z6">
+    <mat-card-actions>
+    <button mat-raised-button (click)="manageProvider('crear')" class="button-add">
+        <mat-icon>add_circle_outline</mat-icon>
+        Agregar Proveedor</button>
+    </mat-card-actions>
+</mat-card>
+<mat-card >
+    <table mat-table [dataSource]="provider" class="mat-elevation-z8" >
+
+        <!--Columana Id-->
+        <ng-container matColumnDef="providerId"   >  
+            <th mat-header-cell *matHeaderCellDef  class="nameColumn "># </th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerId}} </td>
+        </ng-container >
+        <!--Columna nombre de proveedor-->
+        <ng-container matColumnDef="providerName"  >
+            <th mat-header-cell *matHeaderCellDef  class="nameColumn ">Proveedor</th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerName}} </td>
+        </ng-container>
+        <!--Columna Direccion-->
+        <ng-container matColumnDef="providerAdrees"  >
+            <th mat-header-cell *matHeaderCellDef  class="nameColumn ">Direccion</th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerAdrees}} </td>
+        </ng-container>
+
+        <!--Columna Email-->
+        <ng-container matColumnDef="providerEmail"  >
+            <th mat-header-cell *matHeaderCellDef class="nameColumn ">Email</th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerEmail}} </td>
+        </ng-container>
+        <!--Columna Contacto-->
+        <ng-container matColumnDef="providerContact"  >
+            <th mat-header-cell *matHeaderCellDef class="nameColumn ">Contacto</th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerContact}} </td>
+        </ng-container>
+
+        <!--Columna estado-->
+        <ng-container matColumnDef="providerState"  >
+            <th mat-header-cell *matHeaderCellDef class="nameColumn ">Status</th>
+            <td mat-cell *matCellDef="let providers"> {{providers.providerState}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+
+        </table>
+
+</mat-card>
+
+
+
+
+
+
+
+

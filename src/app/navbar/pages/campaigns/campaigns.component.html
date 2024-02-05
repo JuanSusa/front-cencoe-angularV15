@@ -1,1 +1,60 @@
-<p>campaigns works!</p>
+<div class="container">
+    <mat-toolbar>
+        <span>Campañas</span>
+        <div class="example-spacer"></div>
+        <button (click)="crearCampaign()" mat-raised-button color="primary">Agregar</button>
+    </mat-toolbar>
+    <div *ngIf="listCampaign.length > 0">
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Descripción " #input autocapitalize="off">
+        </mat-form-field>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="campaign_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header=""> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header=""> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_capacity">
+                    <th mat-header-cell *matHeaderCellDef> Capacidad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_capacity}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_start_date">
+                    <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_start_date | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_end_date">
+                    <th mat-header-cell *matHeaderCellDef>Fecha final</th>element.campaign_end_date
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_end_date | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_observations">
+                    <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_observations}} </td>
+                </ng-container>
+                <ng-container matColumnDef="campaign_state">
+                    <th mat-header-cell *matHeaderCellDef>Estado</th>
+                    <td mat-cell *matCellDef="let element"> {{element.campaign_state}} </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="text-align:right">
+                        <a class="pointer" (click)="editarCampaign(i)" style="color: aquamarine" matTooltip="Editar Campaña">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="eliminarCampaign(i)" style="color: rgb(190, 29, 56)" matTooltip=" Eliminar Campaña">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+    <h2 *ngIf="listCampaign.length == 0">No hay Campañas para mostrar!</h2>
+</div>

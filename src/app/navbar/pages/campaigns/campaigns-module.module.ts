@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CampaignsModuleRoutingModule } from './campaigns-module-routing.module';
-import { CampaignsComponent } from './campaigns.component';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CrearCampaignComponent } from './crear-campaign/crear-campaign.component';
+import { EditarCampaignComponent } from './editar-campaign/editar-campaign.component';
 
 
 @NgModule({
-  declarations: [CampaignsComponent],
+  declarations: [
+    CrearCampaignComponent,
+    EditarCampaignComponent
+  ],
   imports: [
     CommonModule,
-    CampaignsModuleRoutingModule
+    CampaignsModuleRoutingModule,
+    AngularMaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CampaignsModuleModule { }

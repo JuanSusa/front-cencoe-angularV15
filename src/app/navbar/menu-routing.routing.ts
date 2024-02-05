@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
+import { GroupsComponent } from './pages/groups/list-group/groups.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,12 @@ const routes: Routes = [
     path: 'tipo-documento',
     component: NavbarComponent,
     loadChildren: () => import('./pages/tipodocumento/tipodocumento-module.module').then((m) => m.TipodocumentoModuleModule)
+  },
+  {
+    path: 'grupos', 
+    component: NavbarComponent,
+    loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
+
   },
   {path:'', redirectTo:'campañas', pathMatch:'full'}
 ];

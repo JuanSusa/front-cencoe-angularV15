@@ -30,6 +30,12 @@ export const menuItems : MenuItem[] = [
         label: 'Usuarios',
         route: '../usuarios'
     },
+ 
+    {
+        icon:'group_add',
+        label: 'grupos',
+        route: '../grupos'
+    },
     {
         icon:'settings',
         label: 'Configuracion',

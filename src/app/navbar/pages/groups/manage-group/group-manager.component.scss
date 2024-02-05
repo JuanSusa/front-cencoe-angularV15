@@ -1,0 +1,66 @@
+.mat-mdc-card-title {
+    height: 40px;
+}
+
+.mat-mdc-card-subtitle {
+    margin-left: 1.5rem;
+}
+
+mat-card-content {
+    max-width: 800px; // Puedes ajustar este valor según tus necesidades
+    margin: 0 auto; // Centra el contenido en el centro
+
+    .create-user {
+        &__campos {
+            display: grid;
+            grid-template-columns: repeat(2, 1.5fr);
+            grid-auto-rows: 70px;
+            column-gap: 10px;
+            row-gap: 5px;
+            max-width: 100%; // Asegura que el ancho máximo sea el 100% del contenedor padre
+            margin: 0 auto; // Centra el contenido en el centro
+        }
+    }
+}
+
+.create-user {
+    mat-form-field {
+        height: 80px;
+    }
+
+}
+
+mat-icon {
+    cursor: pointer;
+    color: #ff0844;
+    margin-left: 5px;
+}
+
+mat-icon:hover {
+    color: #ffb199;
+    /* Cambia el color cuando se pasa el ratón sobre el icono */
+}
+
+mat-card-actions {
+    justify-content: flex-end;
+
+
+    .btn-saved-dialog:not([disabled]) {
+        margin-right: 0.5rem;
+        background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+        color: aliceblue;
+    }
+
+    .btn-saved-dialog[disabled] {
+        margin-right: 0.5rem;
+        background-color: #ccc;
+        color: #666;
+
+    }
+
+    .btn-cancel-dialog {
+        background: linear-gradient(-22deg, #29323c 0%, #485563 100%);
+        color: aliceblue;
+        margin-right: 0.5rem;
+    }
+}

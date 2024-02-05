@@ -35,5 +35,6 @@ export const menuItems : MenuItem[] = [
         label: 'Configuracion',
         route: './configuracion'
     },
+ 
 
 ]

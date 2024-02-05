@@ -26,6 +26,7 @@ export class UsersComponent implements OnInit{
     this.getAllUsers()
   }
 
+
   getAllUsers() {
     this._userHttpService.getAllUsers().subscribe(
       (response) => {
@@ -36,6 +37,7 @@ export class UsersComponent implements OnInit{
       }
     );
   }
+
 
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {
@@ -50,8 +52,6 @@ export class UsersComponent implements OnInit{
 
   }
 }
-
-
 
 /**
  * ^1 => Inyeccion de datos usuarios

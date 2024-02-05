@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModuleModule } from './navbar/navbar-module.module';
 import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -16,8 +18,10 @@ import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NavbarModuleModule
+    NavbarModuleModule,
+    
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

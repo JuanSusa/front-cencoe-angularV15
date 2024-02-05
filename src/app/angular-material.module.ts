@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,16 +17,18 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatPaginator } from '@angular/material/paginator';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    MatSidenavModule,
-    MatToolbarModule,
     MatIconModule,
+    MatSidenavModule,
     MatListModule,
     MatCardModule,
     MatButtonModule,
@@ -41,14 +42,16 @@ import { MatFormFieldControl } from '@angular/material/form-field';
     MatTooltipModule,
     MatMenuModule,
     MatExpansionModule,
- 
+    MatDatepickerModule,
+    // MatPaginator
+
   ],
   exports:[
+    CommonModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    MatSidenavModule,
-    MatToolbarModule,
     MatIconModule,
+    MatSidenavModule,
     MatListModule,
     MatCardModule,
     MatButtonModule,
@@ -62,7 +65,9 @@ import { MatFormFieldControl } from '@angular/material/form-field';
     MatTooltipModule,
     MatMenuModule,
     MatExpansionModule,
- 
+    MatDatepickerModule,
+    // MatPaginator
+
   ],
   declarations: []
 })

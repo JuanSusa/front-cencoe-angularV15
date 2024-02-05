@@ -7,8 +7,7 @@ export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
-
-
+// Modulo usuario 
 export interface User {
     userId:       number;
     userNumDoc:   string;
@@ -34,7 +33,16 @@ export interface Team {
     teamState:    boolean;
 }
 
+// Modulo cliente
+export interface Customer {
+    customerId:      number;
+    customerName:    string;
+    customerPhone:   number;
+    customerAddress: string;
+    customerState:   boolean;
+}
 
+// Moculo proveedores
 export interface Provider{
     providerId: number,
     providerName: String,

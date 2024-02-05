@@ -27,4 +27,11 @@ export interface TypeDocs {
     docTypeName: string;
 }
 
+export interface Team {
+    teamId:       number;
+    teamName:     string;
+    teamCapacity: number;
+    teamState:    boolean;
+}
+
 

@@ -12,7 +12,7 @@ import { CampaignService } from 'src/app/services/campaign.service';
 @Component({
   selector: 'app-crear-campaign',
   templateUrl: './crear-campaign.component.html',
-  styleUrls: ['./crear-campaign.component.css']
+  styleUrls: ['./crear-campaign.component.scss']
 })
 export class CrearCampaignComponent {
   estado: string [] = ['Asignado','En curso','Terminado'];

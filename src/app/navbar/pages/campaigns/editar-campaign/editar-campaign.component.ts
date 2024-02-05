@@ -8,7 +8,7 @@ import { Campaign } from 'src/app/interfaces/campaign';
 @Component({
   selector: 'app-editar-campaign',
   templateUrl: './editar-campaign.component.html',
-  styleUrls: ['./editar-campaign.component.css']
+  styleUrls: ['./editar-campaign.component.scss']
 })
 
 export class EditarCampaignComponent implements OnInit{

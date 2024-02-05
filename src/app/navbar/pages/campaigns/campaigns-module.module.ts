@@ -5,18 +5,21 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CrearCampaignComponent } from './crear-campaign/crear-campaign.component';
 import { EditarCampaignComponent } from './editar-campaign/editar-campaign.component';
+import { CampaignComponent } from './campaigns.component';
+
 
 
 @NgModule({
   declarations: [
     CrearCampaignComponent,
-    EditarCampaignComponent
+    EditarCampaignComponent,
+    CampaignComponent
   ],
   imports: [
     CommonModule,
     CampaignsModuleRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class CampaignsModuleModule { }

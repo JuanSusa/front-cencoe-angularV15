@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CampaignsModuleModule } from './campaigns-module.module';
+import { CampaignComponent } from './campaigns.component';
 
 
 
@@ -11,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: 'campaigns',
-        component: CampaignsModuleModule
+        component: CampaignComponent
       },
       { path: '**', redirectTo: 'list-campaign' }
     ]

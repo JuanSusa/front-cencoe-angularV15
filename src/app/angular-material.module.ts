@@ -18,6 +18,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatPaginator } from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTooltipModule,
     MatMenuModule,
     MatExpansionModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    // MatPaginator
 
   ],
   exports:[
@@ -62,7 +65,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTooltipModule,
     MatMenuModule,
     MatExpansionModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    // MatPaginator
 
   ],
   declarations: []

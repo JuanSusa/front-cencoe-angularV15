@@ -5,12 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModuleModule } from './navbar/navbar-module.module';
-import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component';
-
-
-
-
-
+import { CampaignComponent } from './navbar/pages/campaigns/campaigns.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +16,6 @@ import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component
     BrowserAnimationsModule,
     AppRoutingModule,
     NavbarModuleModule,
-    
   ],
 
   providers: [],

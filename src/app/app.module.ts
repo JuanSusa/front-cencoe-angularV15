@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModuleModule } from './navbar/navbar-module.module';
+import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component';
 
 @NgModule({
   declarations: [

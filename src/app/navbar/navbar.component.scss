@@ -1,6 +1,6 @@
-// // :host * {
-//     transition: all 500ms ease-in-out;
-// // }
+:host * {
+    transition: all 1000ms ease-in-out;
+}
 .menuOpen{
     width: 250px;;
     // transition: all 1S ease-in-out;
@@ -8,7 +8,7 @@
 
 .menuClosed{
     width:  64px;
-    // transition: all 1S ease-in-out;
+    transition: all 1S ease-in-out;
 
 }
 .example-spacer {
@@ -68,22 +68,27 @@ mat-icon {
     overflow: visible;
 }
 
-// .active-link {
+.icon .outline {
+    font-family: 'Material Icons Outlined';
+}
 
-//     border-left: 5px solid;
-//     border-color: var(--primary-color);
-//     background: rgba(0, 0, 0, 0.05);
+.active-link {
 
-//     span {
-//         color: var(--primary-color) !important;
-//         transition: color 0.3s ease;
-//     }
+    border-left: 5px solid;
+    border-color: #ff0844;
+    background: rgba(0, 0, 0, 0.05);
+    transition: all 1s ease-in;
+
+    span {
+        color: #ff0844 !important;
+        transition: color 0.3s ease;
+    }
     
-//     .icon {
-//         color: var(--primary-color) !important;
-//         transition: color 0.3s ease;
-//     }
-// }
+    .icon {
+        color: #ff0844 !important;
+        transition: color 0.3s ease;
+    }
+}
 
 
 mat-sidenav-container {
@@ -99,10 +104,10 @@ mat-sidenav {
     
 }
 
-// mat-sidenav,
-// mat-sidenav-content {
-//     transition: all 500ms ease-in-out;
-// }
+mat-sidenav,
+mat-sidenav-content {
+    transition: all 500ms ease-in-out;
+}
 
 
 mat-divider {
@@ -111,8 +116,6 @@ mat-divider {
     width: 90%;
     margin-bottom: 1rem;
 }
-
-
 
 .header-nav {
     display: flex;
@@ -134,35 +137,7 @@ mat-divider {
     }
 }
 
-// .mat-expansion-panel {
-//     box-sizing: border-box;
-//     display: inline;
-//     transition-duration: 0.6s;
-//     transition-timing-function: ease-in-out;
 
-//     .mat-expansion-panel-header {
-//         transition-duration: 0.6s;
-//         transition-timing-function: ease-in-out;
-//         margin-left: 0.3rem;
-//         padding: 0;
-//     }
 
-//     .mat-expansion-panel-body.mat-expanded {
-//         transition-duration: 0.3s;
-//     }
 
-//     .mat-expansion-panel-body.mat-collapsed {
-//         transition-duration: 0.9s;
-//     }
-// }
-
-// :host ::ng-deep.mat-expansion-indicator {
-//     margin-right: 1.2rem;
-// }
-
-// :host ::ng-deep .mat-expansion-indicator::after {
-//     border-color: #000;
-//     transition: all 0.1s ease-in-out;
-//    border-width: 0px 2px 2px 0;
-// }
 

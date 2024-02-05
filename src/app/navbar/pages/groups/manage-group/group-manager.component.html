@@ -1,0 +1,107 @@
+<div class="container-box">
+    <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+    <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+   
+    <mat-dialog-content>
+        <mat-card-content class="mat-elevation-z6">
+            <!-- Formulario registro usuario -->
+            <form class="create-group" [formGroup]="groupForm">
+                <section class="create-group__campos">
+                    <!-- Campo Nombres -->
+                    <mat-form-field>
+                        <mat-label>Nombres</mat-label>
+                        <input matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
+                        <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">Nombres necesarios</mat-error>
+                    </mat-form-field>
+  
+                    <!-- Campo Apellidos -->
+                    <mat-form-field>
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput formControlName="groupLastName" placeholder="Apellidos" type="text" />
+                        <mat-error *ngIf="groupForm.get('groupLastName')?.hasError('required')">Apellidos
+                            necesarios</mat-error>
+                    </mat-form-field>
+  
+                    <!-- Campo Telefono -->
+                    <mat-form-field>
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput formControlName="groupPhone" placeholder="Teléfono"
+                            (input)="onNumericInput($event)"/>
+                        <mat-error *ngIf="groupForm.get('groupPhone')?.hasError('required')">El número de teléfono es
+                            obligatorio</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupPhone')?.hasError('minlength')">El número de teléfono debe
+                            tener al menos 10 dígitos</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupPhone')?.hasError('maxlength')">Máximo 10 dígitos</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupPhone')?.hasError('pattern')">El número de teléfono debe
+                            contener solo dígitos</mat-error>
+  
+                    </mat-form-field>
+  
+                    <!-- Campo Contraseña -->
+                    <mat-form-field>
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput formControlName="groupPassword" placeholder="Contraseña" type="password" />
+                        <mat-icon matSuffix
+                            *ngIf="groupForm.get('groupPassword')?.touched && groupForm.get('groupPassword')?.invalid"
+                            matTooltip="La contraseña debe contener máximo 10 caracteres entre letras, números y al menos una mayúscula.">info</mat-icon>
+                        <mat-error *ngIf="groupForm.get('groupPassword')?.hasError('passwordCriteria')"></mat-error>
+                        <mat-error *ngIf="groupForm.get('groupPassword')?.hasError('required')">Contraseña
+                            necesaria</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupPassword')?.hasError('minlength')"></mat-error>
+                    </mat-form-field>
+  
+                    <!-- Campo número de documento -->
+                    <mat-form-field>
+                        <mat-label>No. Documento</mat-label>
+                        <input matInput formControlName="groupDocument" placeholder="No. Documento"
+                            (input)="onNumericInput($event)" />
+                        <mat-error *ngIf="groupForm.get('groupDocument')?.hasError('required')">Documento
+                            necesario</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupDocument')?.hasError('minlength')"></mat-error>
+                        <mat-error *ngIf="groupForm.get('groupDocument')?.hasError('pattern')">Unicamente
+                            números</mat-error>
+                        <mat-error *ngIf="groupForm.get('groupDocument')?.hasError('maxLength')"></mat-error>
+                    </mat-form-field>
+  
+                    <!-- Campo tipo de documento -->
+                    <mat-form-field>
+                        <mat-label>Tipo de Documento</mat-label>
+                        <mat-select formControlName="groupTipoDocumento">
+                            <mat-option value="one">First option</mat-option>
+                            <mat-option value="two">Second option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+  
+                    <!-- Campo Direccion -->
+                    <mat-form-field>
+                        <mat-label>Dirección</mat-label>
+                        <input matInput formControlName="groupAddress" placeholder="Dirección" type="text" />
+                        <mat-error *ngIf="groupForm!.invalid">Este Campo no puede ir vacio</mat-error>
+                    </mat-form-field>
+  
+                    <!-- Campo Estado -->
+                    <section>
+                        <label>Estado de grupos:</label>
+                        <mat-radio-group formControlName="groupState">
+                            <mat-radio-button class="radio-btn" value="after">Activo</mat-radio-button>
+                            <mat-radio-button class="radio-btn" value="before">Desactivo</mat-radio-button>
+                        </mat-radio-group>
+                    </section>
+                </section>
+            </form>
+            <mat-card-actions class="actions-btns">
+                <!-- Botones de acciones -->
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid">
+                    {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
+                </button>
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                    Cancelar
+                </button>
+            </mat-card-actions>
+  
+        </mat-card-content>
+    </mat-dialog-content>
+  </div>
+
+
+  

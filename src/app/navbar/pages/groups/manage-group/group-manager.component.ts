@@ -4,44 +4,43 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
 
 @Component({
-  selector: 'app-manage-users',
-  templateUrl: './manage-users.component.html',
-  styleUrls: ['./manage-users.component.scss']
+  selector: 'app-group-manager',
+  templateUrl: './group-manager.component.html',
+  styleUrls: ['./group-manager.component.scss']
 })
-export class ManageUsersComponent implements OnInit {
-
+export class GroupManagerComponent implements OnInit{
   constructor(
-    private readonly _matDialogRef: MatDialogRef<ManageUsersComponent>,
+    private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder 
   ) { }
-
+  
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Editar Usuario';
+      this.data.tipo === 'crear' ? 'Crear nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Editar Grupo';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Ingrese los nuevos datos del usuario';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Ingrese los nuevos datos del grupo';
     debugger
     
     
   }
 
   //^4
-  userForm = this.formBuilder.group({
-    userDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
-    userName: ['', Validators.required],
-    userLastName: ['', Validators.required],
-    userAddress: ['', [Validators.required, Validators.minLength(3)]],
-    userPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-    userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-    userState: [''],
-    userTipoDocumento: ['']
+  groupForm = this.formBuilder.group({
+    groupDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
+    groupName: ['', Validators.required],
+    groupLastName: ['', Validators.required],
+    groupAddress: ['', [Validators.required, Validators.minLength(3)]],
+    groupPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
+    groupPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    groupState: [''],
+    groupTipoDocumento: ['']
   })
-  
+
   public executionMesssage() {
     this._matDialogRef.close();
   }
@@ -67,3 +66,9 @@ export class ManageUsersComponent implements OnInit {
     };
   }
 }
+
+ 
+
+
+
+  

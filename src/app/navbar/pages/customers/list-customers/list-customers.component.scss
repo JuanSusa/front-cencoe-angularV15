@@ -1,0 +1,22 @@
+.caja_superior {
+    display: flex;
+    justify-content: space-between;
+    border: double gray 1px;
+    margin-bottom: 1rem;
+    height: 100px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+hr {
+    border: solid lightgray 1px;
+    margin-bottom: 1rem;
+}
+
+.content-table {
+    background-color: rgba(221, 221, 221, 0.445);
+}
+
+.table-group table {
+    border-radius: 10px;
+}

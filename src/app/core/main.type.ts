@@ -7,6 +7,7 @@ export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
+// Modulo usuario
 export interface User {
     userId:       number;
     userNumDoc:   string;
@@ -33,13 +34,28 @@ export interface TypeDocs {
     docTypeName: string;
 }
 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface Team {
+    teamId:       number;
+    teamName:     string;
+    teamCapacity: number;
+    teamState:    boolean;
 }
 
+// Modulo cliente
+export interface Customer {
+    customerId:      number;
+    customerName:    string;
+    customerPhone:   number;
+    customerAddress: string;
+    customerState:   boolean;
+}
 
-
+// Moculo proveedores
+export interface Provider{
+    providerId: number,
+    providerName: String,
+    providerAdrees: String,
+    providerState: Boolean,
+    providerEmail: String,  //no esta en la bd
+    providerContact: String   //no esta en la bd
+  }

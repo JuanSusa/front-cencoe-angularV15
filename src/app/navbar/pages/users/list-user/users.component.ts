@@ -20,7 +20,6 @@ export class UsersComponent {
 
   }
 
-
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {
       data: { tipo, campo: userId }
@@ -34,8 +33,6 @@ export class UsersComponent {
 
   }
 }
-
-
 
 /**
  * ^1 => Inyeccion de datos usuarios

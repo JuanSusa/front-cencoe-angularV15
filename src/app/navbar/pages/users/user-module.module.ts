@@ -7,7 +7,6 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [UsersComponent, ManageUsersComponent],
   imports: [

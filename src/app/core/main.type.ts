@@ -7,8 +7,6 @@ export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
-
-
 export interface User {
     userId:       number;
     userNumDoc:   string;
@@ -27,4 +25,10 @@ export interface TypeDocs {
     docTypeName: string;
 }
 
-
+export interface Customer {
+    customerId:      number;
+    customerName:    string;
+    customerPhone:   number;
+    customerAddress: string;
+    customerState:   boolean;
+}

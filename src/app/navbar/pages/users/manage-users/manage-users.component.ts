@@ -41,7 +41,7 @@ export class ManageUsersComponent implements OnInit {
     userState: [''],
     userTipoDocumento: ['']
   })
-
+  
   public executionMesssage() {
     this._matDialogRef.close();
   }

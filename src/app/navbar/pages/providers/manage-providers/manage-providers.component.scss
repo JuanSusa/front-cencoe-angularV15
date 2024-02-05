@@ -1,0 +1,34 @@
+mat-card-title{
+    height: 30%;
+}
+
+mat-card-subtitle{
+    margin-left: 1rem;
+    
+}
+.container{
+    
+}
+.container-form{
+    width: 800px; //definimos el ancho del contenedor padre
+    margin: 0 auto;
+  
+  
+}
+
+
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label{
+    color: #ff0844;
+}
+
+.add-provider{
+    display: grid;
+    grid-template-columns: repeat(2, 1.5fr); //establece dos columnas
+    grid-gap: 15px;
+    row-gap: 15px;
+    
+   
+    
+}
+
+//::ng-deep .mdc-text-field--outline:not(.mdc-text-field)

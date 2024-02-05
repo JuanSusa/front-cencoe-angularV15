@@ -1,0 +1,51 @@
+<div class="container mat-elevation-z8">
+    <h1 mat-dialog-title>{{titulo}}</h1>
+    <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
+
+<mat-dialog-content>
+<mat-card-content class="container-form mat-elevation-z8" >
+
+    <form class="add-provider" [formGroup]="createProvider" >
+    <mat-form-field appearance="outline" >
+        <mat-label class="form-label">Nombre proveedor</mat-label >
+        <input matInput  formControlName="name" placeholder="Nombre">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label class="form-label">Direccion</mat-label>
+        <input matInput  formControlName="adress" placeholder="Direccion">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label class="form-label">Telefono</mat-label>
+        <input matInput formControlName="contact" placeholder="Telefono">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label class="form-label">Correo Electronico</mat-label>
+        <input matInput  formControlName="email" placeholder="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label class="form-label">Productos / Servicios</mat-label>
+        <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
+    </mat-form-field>
+    <section >
+        <mat-slide-toggle>Estado del usuario</mat-slide-toggle>
+    </section>
+
+</form>
+    <mat-dialog-actions>
+        <button mat-raised-button >Aceptar</button>
+        <button mat-raised-button>Cancelar</button>
+    </mat-dialog-actions>
+
+</mat-card-content>
+</mat-dialog-content>
+
+</div>
+
+
+
+
+
+<!--FormControl: Realiza un seguimiento del valor y el estado de validacion de un control de formulario individual
+    FormGroup: Realiza un seguimiento de los mismos valores y estado de una coleccion de controles de un formulario 
+-->

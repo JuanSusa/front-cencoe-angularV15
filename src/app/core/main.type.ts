@@ -35,3 +35,11 @@ export interface Team {
 }
 
 
+export interface Provider{
+    providerId: number,
+    providerName: String,
+    providerAdrees: String,
+    providerState: Boolean, 
+    providerEmail: String,  //no esta en la bd
+    providerContact: String   //no esta en la bd
+  }

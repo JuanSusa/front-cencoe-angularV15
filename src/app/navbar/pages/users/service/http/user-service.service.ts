@@ -1,18 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/core/main.type';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { ReqResponse, User } from 'src/app/core/main.type';
 import { environment } from 'src/app/environments/environment';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class userHttpService {
-    constructor(private readonly _htt: HttpClient) { }
 
-    getAllUsers(): Observable<User[]>{
-        return this._htt.get<User[]>(`${environment.api}/usuarios`)
-    }
-    
+  constructor(private readonly _http: HttpClient) { }
+
+  getAllUsers(): Observable<User[]> {
+    return this._http.get<ReqResponse>(`${environment.api}/usuarios`)
+      .pipe(
+        tap(data => console.log('Usuários carregados com sucesso!', data)),
+        map(res => res.data)
+      )
+  }
+
+
+  
+
 }

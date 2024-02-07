@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { userHttpService } from '../service/http/user-service.service';
+import { EMPTY, catchError, of, switchMap, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -28,14 +29,11 @@ export class UsersComponent implements OnInit{
 
 
   getAllUsers() {
-    this._userHttpService.getAllUsers().subscribe(
-      (response) => {
-      
-      },
-      (error) => {
-        console.error('Error al obtener usuarios:', error);
-      }
-    );
+    this._userHttpService.getAllUsers()
+    .subscribe(data => {
+      this.user = data;
+      console.log(data)
+    })      
   }
 
 

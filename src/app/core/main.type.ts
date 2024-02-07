@@ -7,6 +7,15 @@ export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
+
+export interface ReqResponse {
+    code:    number;
+    message: string;
+    data:    [];
+    success: boolean;
+}
+
+
 // Modulo usuario 
 export interface User {
     userId:       number;

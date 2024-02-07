@@ -66,7 +66,7 @@
                   <mat-form-field>
                       <mat-label>Tipo de Documento</mat-label>
                       <mat-select formControlName="userTipoDocumento">
-                          <mat-option value="one">First option</mat-option>
+                          <mat-option *ngFor="let tipoDoc of typeDocs" value="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
                           <mat-option value="two">Second option</mat-option>
                       </mat-select>
                   </mat-form-field>

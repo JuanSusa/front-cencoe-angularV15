@@ -5,6 +5,8 @@ import { TipodocumentoModuleRoutingModule } from './tipodocumento-module-routing
 import { TipodocumentoComponent } from './manage-tipodocumento/tipodocumento.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TipodocumentoHttpService } from './services/tipo-documento.service';
 
 
 @NgModule({
@@ -13,7 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     TipodocumentoModuleRoutingModule,
     AngularMaterialModule,
+    HttpClientModule,
     ReactiveFormsModule
+  ],
+  providers:[
+    TipodocumentoHttpService
   ]
 })
 export class TipodocumentoModuleModule { }

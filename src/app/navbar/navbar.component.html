@@ -18,13 +18,13 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6"  mode="side"  opened [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}" >
          <div class="header-nav" >
-            <img src="../../assets/img/logo_prueba.png" [style.width]="!collapsed ? '65px' : '250px'" [style.height]="!collapsed ? '65px' : '250px'">
+            <img src="../../assets/img/logo_prueba.png" [style.width]="!collapsed ? '60px' : '100px'" [style.height]="!collapsed ? '60px' : '100px'">
             <span class="header-title" *ngIf="collapsed">{{title}}</span>
         </div>
         <mat-nav-list>
             <mat-divider></mat-divider>
-            <ng-container *ngFor="let menuItem of menuItems">
 
+            <ng-container *ngFor="let menuItem of menuItems">
                 <!-- Elementos del menú -->
                 <mat-list-item [routerLink]="menuItem.route" routerLinkActive="active-link" #rla="routerLinkActive"
                 [activated]="rla.isActive">
@@ -32,9 +32,10 @@
                     <span class="item-label" matListItemTitle>{{ menuItem.label }}</span>
                 </mat-list-item>
             </ng-container>
+
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="content" [style.margin-left]="!collapsed ? '65px' : '250px'">
+    <mat-sidenav-content class="content" [style.margin-left]="!collapsed ? '70px' : '250px'">
         <!-- Contenido de la página -->
         <router-outlet></router-outlet>
     </mat-sidenav-content>

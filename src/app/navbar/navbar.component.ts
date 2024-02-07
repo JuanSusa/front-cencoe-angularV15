@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
 import { MenuItem, menuItems } from './menu-data';
+import { AngularMaterialModule } from '../angular-material.module';
 import { BehaviorSubject, Observable, distinctUntilChanged, map, startWith } from 'rxjs';
 
 @Component({
@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit{
   menuItems: MenuItem[] = menuItems;
 
 
-  
-  
+
+
 
   showMenu() {
     // this.sidenav.toggle();
@@ -29,5 +29,5 @@ export class NavbarComponent implements OnInit{
   }
 
 
-  
+
 }

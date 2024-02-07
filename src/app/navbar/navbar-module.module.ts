@@ -5,9 +5,13 @@ import { AngularMaterialModule } from '../angular-material.module';
 import { MenuRoutingRoutes } from './menu-routing.routing';
 
 
+
+
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+
+
   ],
   imports: [
     CommonModule,

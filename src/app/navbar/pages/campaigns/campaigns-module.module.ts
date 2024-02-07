@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+
+import { ManageCampaignsComponent } from './manage-campaigns/manage-campaigns.component';
 import { CampaignsModuleRoutingModule } from './campaigns-module-routing.module';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CrearCampaignComponent } from './crear-campaign/crear-campaign.component';
-import { EditarCampaignComponent } from './editar-campaign/editar-campaign.component';
-import { CampaignComponent } from './campaigns.component';
-
+import { userHttpService } from '../users/service/http/user-service.service';
+import { ListCampaignsComponent } from './list-campaigns/list-campaigns.component';
 
 
 @NgModule({
-  declarations: [
-    CrearCampaignComponent,
-    EditarCampaignComponent,
-    CampaignComponent
-  ],
+  declarations: [ListCampaignsComponent, ManageCampaignsComponent],
   imports: [
     CommonModule,
     CampaignsModuleRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers:[
+    userHttpService
   ]
 })
 export class CampaignsModuleModule { }

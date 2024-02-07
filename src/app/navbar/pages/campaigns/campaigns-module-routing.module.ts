@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CampaignsModuleModule } from './campaigns-module.module';
-import { CampaignComponent } from './campaigns.component';
+import { ListCampaignsComponent } from './list-campaigns/list-campaigns.component';
 
-
-
-
-const routes: Routes = [
-  {
-    path: '',
-    children: [
-      {
-        path: 'campaigns',
-        component: CampaignComponent
-      },
-      { path: '**', redirectTo: 'list-campaign' }
-    ]
-  }
+const routes: Routes = [ {
+  path: '',
+  children: [
+    {
+      path: 'list-campaigns',
+      component: ListCampaignsComponent
+    },
+    { path: '**', redirectTo: 'list-campaigns' }
+  ]
+}
 ];
 
 @NgModule({

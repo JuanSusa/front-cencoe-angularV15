@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
-import { GroupsComponent } from './pages/groups/list-group/groups.component';
+
 
 
 const routes: Routes = [
@@ -31,7 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tipodocumento/tipodocumento-module.module').then((m) => m.TipodocumentoModuleModule)
   },
   {
-    path: 'grupos', 
+    path: 'grupos',
     component: NavbarComponent,
     loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
 

@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarModuleModule } from './navbar/navbar-module.module';
-import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component';
+
+
+
 
 
 
@@ -19,9 +20,8 @@ import { CampaignsComponent } from './navbar/pages/campaigns/campaigns.component
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    NavbarModuleModule,
-    
+    AppRoutingModule
+
   ],
 
   providers: [],

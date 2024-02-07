@@ -14,7 +14,6 @@ import { MenuRoutingRoutes } from './menu-routing.routing';
 @NgModule({
   declarations: [
     NavbarComponent
-  
   ],
   imports: [
     CommonModule,

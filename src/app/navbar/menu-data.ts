@@ -15,11 +15,7 @@ export const menuItems : MenuItem[] = [
         label: 'Campañas',
         route: '../campañas'
     },
-    {
-        icon:'business',
-        label: 'Clientes',
-        route: '../clientes'
-    },
+    
     {
         icon:'assignment_ind',
         label: 'Proveedores',

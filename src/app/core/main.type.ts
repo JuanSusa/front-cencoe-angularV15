@@ -51,11 +51,13 @@ export interface Customer {
 }
 
 // Moculo proveedores
-export interface Provider{
-    providerId: number,
-    providerName: String,
-    providerAdrees: String,
-    providerState: Boolean,
-    providerEmail: String,  //no esta en la bd
-    providerContact: String   //no esta en la bd
-  }
+export interface Provider {
+    providerId:      number;
+    providerName:    String;
+    providerAddres:  String;
+    providerEmail:   String; //ya esta en la bd
+    providerContact: String;//ya esta en la bd
+    providerDoctype: TypeDocs;  //ya esta en la bd
+    providerDetails: String;
+    providerState:   boolean;
+}

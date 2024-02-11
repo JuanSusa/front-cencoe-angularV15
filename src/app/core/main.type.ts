@@ -20,7 +20,7 @@ export interface User {
     userState:    boolean;
     userDocType:  TypeDocs;
 }
-export interface Campaign{
+export interface Campaigns{
   campaign_id: number;
   campaign_name: string;
   campaign_capacity: number;

@@ -22,9 +22,9 @@ export class ManageCampaignsComponent implements OnInit {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Editar Usuario';
+      this.data.tipo === 'crear' ? 'Crear nuevo Campaigns' : this.data.tipo === 'ver' ? 'Detalles del Campaigns' : 'Editar Campaigns';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Ingrese los nuevos datos del usuario';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo Campaigns' : this.data.tipo === 'ver' ? 'Detalles del Campaigns' : 'Ingrese los nuevos datos del Campaigns';
     debugger
 
 
@@ -32,13 +32,13 @@ export class ManageCampaignsComponent implements OnInit {
 
   //^4
   campaignsForm = this.formBuilder.group({
-    id : [ '',[Validators.required, Validators.pattern("^[0-9]*$")]],
-    nombre : ['' , [Validators.required , Validators.maxLength(20)]],
-    capacidad : ['' , [Validators.required, Validators.maxLength(20)]],
-    fechaInicio : ['null' , [Validators.required , Validators.maxLength(20)]],
-    fechaFinal : ['null' ,[ Validators.required, Validators.maxLength(20)]],
-    observaciones: ['' ,[Validators.required, Validators.maxLength(100)]],
-    estado : ['null' , [Validators.required, Validators.maxLength(20)]]
+    campaign_id : [ '',[Validators.required, Validators.pattern("^[0-9]*$")]],
+    campaign_name : ['' , [Validators.required , Validators.maxLength(20)]],
+    campaign_capacity : ['' , [Validators.required, Validators.maxLength(20)]],
+    campaign_start_date : ['null' , [Validators.required , Validators.maxLength(20)]],
+    campaign_end_date : ['null' ,[ Validators.required, Validators.maxLength(20)]],
+    campaign_observations: ['' ,[Validators.required, Validators.maxLength(100)]],
+    campaign_state : ['null' , [Validators.required, Validators.maxLength(20)]]
   })
 
   public executionMesssage() {
@@ -66,4 +66,3 @@ export class ManageCampaignsComponent implements OnInit {
     };
   }
 }
-

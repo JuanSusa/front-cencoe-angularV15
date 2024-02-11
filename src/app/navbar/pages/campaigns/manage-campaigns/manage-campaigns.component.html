@@ -1,0 +1,58 @@
+<div class="container-box h-auto">
+    <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+    <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+
+    <mat-dialog-content>
+        <mat-card-content class="mat-elevation-z6">
+            <!-- Formulario registro campaña -->
+            <form class="create-campaigns" [formGroup]="campaignsForm">
+                <section class="create-campaigns__campos">
+                    <!-- Campo campaign_name -->
+                    <mat-form-field>
+                        <mat-label>campaign_name</mat-label>
+                        <input matInput formControlName="campaign_name" placeholder="campaign_name" type="text" />
+                        <mat-error *ngIf="campaignsForm.get('campaign_name')?.hasError('required')">campaign_name</mat-error>
+                    </mat-form-field>
+
+                    <!-- Campo campaign_capacity -->
+                    <mat-form-field>
+                        <mat-label>campaign_capacity</mat-label>
+                        <input matInput formControlName="campaign_capacity" placeholder="campaign_capacity" type="text" />
+                        <mat-error *ngIf="campaignsForm.get('campaign_capacity')?.hasError('required')">campaign_capacity
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- Campo campaign_start_date -->
+                    <mat-form-field>
+                        <mat-label>campaign_start_date</mat-label>
+                        <input matInput formControlName="campaign_start_date" placeholder="campaign_start_date" type="text" />
+                        <mat-error *ngIf="campaignsForm.get('campaign_start_date')?.hasError('required')">campaign_start_date
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+
+
+                    <!-- Campo campaign_state -->
+                    <section>
+                        <label>campaign_state:</label>
+                        <mat-radio-group formControlName="campaign_state">
+                            <mat-radio-button class="radio-btn" value="after">Activo</mat-radio-button>
+                            <mat-radio-button class="radio-btn" value="before">Desactivo</mat-radio-button>
+                        </mat-radio-group>
+                    </section>
+                </section>
+            </form>
+            <mat-card-actions class="actions-btns">
+                <!-- Botones de acciones -->
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignsForm.invalid">
+                  {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
+              </button>
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                  Cancelar
+              </button>
+            </mat-card-actions>
+
+        </mat-card-content>
+    </mat-dialog-content>
+</div>

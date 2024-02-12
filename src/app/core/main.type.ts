@@ -69,3 +69,12 @@ export interface Provider {
     providerDetails: String;
     providerState:   boolean;
 }
+
+export interface providerR{
+    code: number;
+    message:String;
+    data:[
+
+    ]     
+
+}

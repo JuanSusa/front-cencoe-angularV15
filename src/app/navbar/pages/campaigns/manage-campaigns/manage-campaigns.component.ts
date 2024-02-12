@@ -1,20 +1,20 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
 import { adminPopUp } from 'src/app/core/main.type';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
-export class ManageCampaignsComponent implements OnInit {
-
+export class ManageCampaignsComponent {
+  maxDate: Date;
   constructor(
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder
-  ) { }
+  ) { this.maxDate = new Date();}
 
   titulo: string = '';
   subtitulo: string = '';
@@ -22,23 +22,24 @@ export class ManageCampaignsComponent implements OnInit {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo Campaigns' : this.data.tipo === 'ver' ? 'Detalles del Campaigns' : 'Editar Campaigns';
+      this.data.tipo === 'crear' ? 'Crear nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles de la Campaña' : 'Editar Campaña';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo Campaigns' : this.data.tipo === 'ver' ? 'Detalles del Campaigns' : 'Ingrese los nuevos datos del Campaigns';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nueva nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles del Campaña' : 'Ingrese los nuevos datos de la Campaña';
     debugger
 
 
   }
 
   //^4
-  campaignsForm = this.formBuilder.group({
-    campaign_id : [ '',[Validators.required, Validators.pattern("^[0-9]*$")]],
-    campaign_name : ['' , [Validators.required , Validators.maxLength(20)]],
-    campaign_capacity : ['' , [Validators.required, Validators.maxLength(20)]],
-    campaign_start_date : ['null' , [Validators.required , Validators.maxLength(20)]],
-    campaign_end_date : ['null' ,[ Validators.required, Validators.maxLength(20)]],
-    campaign_observations: ['' ,[Validators.required, Validators.maxLength(100)]],
-    campaign_state : ['null' , [Validators.required, Validators.maxLength(20)]]
+
+  campaignForm = this.formBuilder.group({
+    id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+    nombre : ['', [Validators.required, Validators.maxLength(20)]],
+    capacidad : ['', [Validators.required, Validators.maxLength(20)]],
+    fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
+    fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
+    observaciones: ['', [Validators.required, Validators.maxLength(100)]],
+    estado : ['', [Validators.required, Validators.maxLength(20)]],
   })
 
   public executionMesssage() {
@@ -52,17 +53,6 @@ export class ManageCampaignsComponent implements OnInit {
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
 
-   //^7
-   passwordValidator(): ValidatorFn {//^7.1
-    return (control: AbstractControl): ValidationErrors | null => {//^7.2
-      const value: string = control.value;//^7.3
-      const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);//^7.4
 
-      if (!passwordCriteria) { //^7.5
-
-        return { passwordCriteria: true };
-      }
-      return null;
-    };
-  }
 }
+

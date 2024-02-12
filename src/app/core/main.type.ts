@@ -20,7 +20,7 @@ export interface User {
     userState:    boolean;
     userDocType:  TypeDocs;
 }
-export interface Campaigns{
+export interface Campaign{
   campaign_id: number;
   campaign_name: string;
   campaign_capacity: number;
@@ -29,6 +29,13 @@ export interface Campaigns{
   campaign_observations: string;
   campaign_state: string;
 }
+
+export interface campaignR {
+  code: number;
+  menssage: String;
+  data: [];
+}
+
 export interface TypeDocs {
     docTypeId:   number;
     docTypeName: string;

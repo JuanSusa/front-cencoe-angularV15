@@ -2,23 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ManageCampaignsComponent } from './manage-campaigns/manage-campaigns.component';
 import { CampaignsModuleRoutingModule } from './campaigns-module-routing.module';
-import { ListCampaignsComponent } from './list-campaigns/list-campaigns.component';
-
-
-
+import { ListCampaignComponent } from './list-campaign/list-campaign.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CampaignsServiceService } from './service/http/campaigns-service.service';
 
 @NgModule({
-  declarations: [ListCampaignsComponent, ManageCampaignsComponent],
+  declarations: [ManageCampaignsComponent, ListCampaignComponent],
   imports: [
     CommonModule,
     CampaignsModuleRoutingModule,
     AngularMaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-
+//Ver la lista de la campaña
+providers: [CampaignsServiceService]
 })
 export class CampaignsModuleModule { }

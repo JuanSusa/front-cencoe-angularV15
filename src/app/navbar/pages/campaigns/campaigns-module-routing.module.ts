@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListCampaignsComponent } from './list-campaigns/list-campaigns.component';
+import { ListCampaignComponent } from './list-campaign/list-campaign.component';
+
 
 
 
@@ -9,10 +10,10 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'list-campaigns',
-        component: ListCampaignsComponent
+        path: 'list-campaign',
+        component: ListCampaignComponent
       },
-      { path: '**', redirectTo: 'list-campaigns' }
+      { path: '**', redirectTo: 'list-campaign' }
     ]
   }
 ];

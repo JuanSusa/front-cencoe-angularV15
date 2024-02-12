@@ -1,17 +1,17 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validator, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
+import { ListCustomersComponent } from '../list-customers/list-customers.component';
 
 @Component({
   selector: 'app-manage-customers',
   templateUrl: './manage-customers.component.html',
-  styleUrls: ['./manage-customers.component.scss']
+  styleUrls: ['./manage-customers.component.scss'],
 })
 export class ManageCustomersComponent {
   constructor(
-    private readonly _matDialogRef:
-      MatDialogRef<ManageCustomersComponent>,
+    private readonly _matDialogRef: MatDialogRef<ManageCustomersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>, //^3
     private formBuiler: FormBuilder
   ) { }
@@ -29,10 +29,11 @@ export class ManageCustomersComponent {
   customerForm = this.formBuiler.group({
     customerDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
     customerName: ['', Validators.required],
+    customerLastName: ['', Validators.required],
     customerAdress: ['', Validators.required, Validators.minLength(3)],
     customerPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
     customerState: [''],
-    customerTipoDocumento: ['']
+    customerTipoDocumento: [''],
   })
   public executionMessage() {
     this._matDialogRef.close();

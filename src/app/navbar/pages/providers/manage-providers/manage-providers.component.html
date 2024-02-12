@@ -1,44 +1,70 @@
 <div class="container mat-elevation-z8">
-    <h1 mat-dialog-title>{{titulo}}</h1>
+    <mat-card-title>{{titulo}}</mat-card-title>
     <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
 
-<mat-dialog-content>
-<mat-card-content class="container-form mat-elevation-z8" >
+    <mat-dialog-content>
+        <mat-card-content class="container-form mat-elevation-z8">
 
-    <form class="add-provider" [formGroup]="createProvider" >
-    <mat-form-field appearance="outline" >
-        <mat-label class="form-label">Nombre proveedor</mat-label >
-        <input matInput  formControlName="name" placeholder="Nombre">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label class="form-label">Direccion</mat-label>
-        <input matInput  formControlName="adress" placeholder="Direccion">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label class="form-label">Telefono</mat-label>
-        <input matInput formControlName="contact" placeholder="Telefono">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label class="form-label">Correo Electronico</mat-label>
-        <input matInput  formControlName="email" placeholder="email">
-    </mat-form-field>
+            <form class="add-provider" [formGroup]="ProviderForm">
+                <mat-form-field>
+                    <mat-label class="form-label">Nombre proveedor</mat-label>
+                    <input matInput formControlName="name" placeholder="Nombre">
+                    <mat-error *ngIf="ProviderForm.get('name')?.hasError('required')">El campo es
+                        obligatorio</mat-error>
+                    <mat-error *ngIf="ProviderForm.get('name')?.hasError('maxLength')">Maximo 35 caracteres</mat-error>
 
-    <mat-form-field appearance="outline">
-        <mat-label class="form-label">Productos / Servicios</mat-label>
-        <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
-    </mat-form-field>
-    <section >
-        <mat-slide-toggle>Estado del usuario</mat-slide-toggle>
-    </section>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label class="form-label">Direccion</mat-label>
+                    <input matInput formControlName="adress" placeholder="Direccion">
+                    <mat-error *ngIf="ProviderForm.get('adress')?.hasError('required')">El campo es
+                        obligatorio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label class="form-label">Telefono</mat-label>
+                    <input matInput formControlName="contact" placeholder="Telefono" inputmode="numeric">
+                    <mat-error *ngIf="ProviderForm.get('contact')?.hasError('required')">El campo es
+                        obligatorio</mat-error>
+                    <mat-error *ngIf="ProviderForm.get('contact')?.hasError('maxlength')">Maximo 10 digitos</mat-error>
+                    <mat-error *ngIf="ProviderForm.get('contact')?.hasError('pattern')">Numero invalido</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label class="form-label">Correo Electronico</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="email">
+                    <mat-error *ngIf="ProviderForm.get('email')?.hasError('required')">El campo es
+                        obligatorio</mat-error>
+                    <mat-error *ngIf="ProviderForm.get('email')?.hasError('pattern')">Correo invalido</mat-error>
+                </mat-form-field>
 
-</form>
-    <mat-dialog-actions>
-        <button mat-raised-button >Aceptar</button>
-        <button mat-raised-button>Cancelar</button>
-    </mat-dialog-actions>
+                <mat-form-field>
+                    <mat-label class="form-label">Productos / Servicios</mat-label>
+                    <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
+                    <mat-error *ngIf="ProviderForm.get('details')?.hasError('required')">El campo es
+                        obligatorio</mat-error>
+                </mat-form-field>
 
-</mat-card-content>
-</mat-dialog-content>
+                <mat-form-field>
+                    <mat-label class="form-label">Tipo de Documento</mat-label>
+                    <mat-select formControlName="providerTipoDocumento">
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+                <section>
+                    <mat-label class="form-label">Estado del proveedor</mat-label>
+                    <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                </section>
+
+            </form>
+            <mat-dialog-actions>
+                <button type="submit" mat-raised-button class="btn-saved"
+                    [disabled]="!ProviderForm.valid">Aceptar</button> <!--si no es valido no deja mandar los datos-->
+                <button mat-raised-button class="btn-cancel">Cancelar</button>
+            </mat-dialog-actions>
+
+        </mat-card-content>
+    </mat-dialog-content>
 
 </div>
 

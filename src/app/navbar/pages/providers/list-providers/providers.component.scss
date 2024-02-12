@@ -1,6 +1,16 @@
-.button-add{
-    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
-
-   
+.mat-toolbar{
+     border: .01rem solid   #738092;
+     border-radius: 10px;  
+     
 }
 
+
+.mdc-button {
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    
+
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

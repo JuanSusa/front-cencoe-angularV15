@@ -10,7 +10,7 @@ import {GroupManagerComponent} from '../manage-group/group-manager.component';
 })
 export class GroupsComponent {
   public group: Team[] = [];//^1
-  public displayedColumns = ['groupId', 'groupName', 'groupDireccion', 'groupEmail', 'edit'];//^2
+  public displayedColumns = ['groupId', 'groupName', 'groupCapacity'];//^2
   isLoading = true;
 
   constructor(

@@ -1,0 +1,65 @@
+.container-box mat-card-title, mat-card-subtitle {
+    text-align: center;
+}
+
+.mat-mdc-card-title {
+    height: 40px;
+}
+
+.mat-mdc-card-subtitle {
+    margin-left: 1.5rem;
+}
+
+mat-card-content {
+    max-width: 800px;
+    margin: 0 auto;
+    .create-customer {
+        &__campos {
+            display: grid;
+            grid-template-columns: repeat(2, 1.5fr);
+            grid-auto-rows: 75px;
+            column-gap: 10px;
+            row-gap: 5px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.create-customer {
+    mat-form-field {
+        height: 80px;
+    }
+    section {
+        text-align: center;
+        margin-top: 5px;
+    }
+}
+
+mat-icon:hover {
+    color: #ffb199;
+}
+
+mat-card-actions {
+    justify-content: flex-end;
+    .btn-saved-dialog:not([disabled]) {
+        margin-right: 0.5rem;
+        background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+        color: aliceblue;
+    }
+    .btn-saved-dialog[disabled] {
+        margin-right: 0.5rem;
+        background-color: #ccc;
+        color: #666;
+    }
+    .btn-cancel-dialog {
+        background: linear-gradient(-22deg, #29323c 0%, #485563 100%);
+        color: aliceblue;
+        margin-right: 0.5rem;
+    }
+}
+.actions-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}

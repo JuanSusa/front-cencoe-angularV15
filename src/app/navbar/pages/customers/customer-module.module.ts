@@ -6,6 +6,8 @@ import { ListCustomersComponent } from './list-customers/list-customers.componen
 import { ManageCustomersComponent } from './manage-customers/manage-customers.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerServiceService } from './service/http/customer-service.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CustomerModuleRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [CustomerServiceService]
 })
 export class CustomerModuleModule { }

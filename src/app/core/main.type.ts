@@ -1,5 +1,5 @@
 export type adminTypePopUp = 'crear' | 'editar' | 'ver';//^1
-export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
+export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
 
 /**
  * ^1 => tipo de dato con dos opciones, como guia para administrar las ventanas emergentes (pop up)
@@ -9,25 +9,25 @@ export type adminPopUp<T> = {tipo: adminTypePopUp, campo?: T}//^2
 
 // Modulo usuario
 export interface User {
-    userId:       number;
-    userNumDoc:   string;
-    userName:     string;
+    userId: number;
+    userNumDoc: string;
+    userName: string;
     userLastName: string;
-    userAddress:  string;
-    userPhone:    string;
-    userEmail:    string;
+    userAddress: string;
+    userPhone: string;
+    userEmail: string;
     userPassword: string;
-    userState:    boolean;
-    userDocType:  TypeDocs;
+    userState: boolean;
+    userDocType: TypeDocs;
 }
-export interface Campaign{
-  campaign_id: number;
-  campaign_name: string;
-  campaign_capacity: number;
-  campaign_start_date: Date;
-  campaign_end_date: Date;
-  campaign_observations: string;
-  campaign_state: string;
+export interface Campaign {
+    campaign_id: number;
+    campaign_name: string;
+    campaign_capacity: number;
+    campaign_start_date: Date;
+    campaign_end_date: Date;
+    campaign_observations: string;
+    campaign_state: string;
 }
 
 export interface campaignR {
@@ -37,32 +37,51 @@ export interface campaignR {
 }
 
 export interface TypeDocs {
-    docTypeId:   number;
+    docTypeId: number;
     docTypeName: string;
 }
 
 export interface Team {
-    teamId:       number;
-    teamName:     string;
+    teamId: number;
+    teamName: string;
     teamCapacity: number;
-    teamState:    boolean;
+    teamState: boolean;
 }
 
 // Modulo cliente
 export interface Customer {
-    customerId:      number;
-    customerName:    string;
-    customerPhone:   number;
+    customerId: number;
+    customerName: string;
+    customerPhone: number;
     customerAddress: string;
-    customerState:   boolean;
+    customerState: boolean;
 }
 
-// Moculo proveedores
-export interface Provider{
-    providerId: number,
-    providerName: String,
-    providerAdrees: String,
-    providerState: Boolean,
-    providerEmail: String,  //no esta en la bd
-    providerContact: String   //no esta en la bd
-  }
+export interface customerData {
+    code: number;
+    menssage: String;
+    data: [
+        
+    ];
+}
+
+// Modulo proveedores
+export interface Provider {
+    providerId:      number;
+    providerName:    String;
+    providerAddress:  String;
+    providerEmail:   String; //ya esta en la bd
+    providerContact: String;//ya esta en la bd
+    providerDoctype: TypeDocs;  //ya esta en la bd
+    providerDetails: String;
+    providerState:   boolean;
+}
+
+export interface providerR{
+    code: number;
+    message:String;
+    data:[
+
+    ]     
+
+}

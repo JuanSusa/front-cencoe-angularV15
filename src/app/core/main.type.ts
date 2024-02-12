@@ -35,10 +35,10 @@ export interface TypeDocs {
 }
 
 export interface Team {
-    teamId:       number;
-    teamName:     string;
-    teamCapacity: number;
-    teamState:    boolean;
+    team_id:       number;
+    team_name:     string;
+    team_capacity: number;
+    team_state:    boolean;
 }
 
 // Modulo cliente

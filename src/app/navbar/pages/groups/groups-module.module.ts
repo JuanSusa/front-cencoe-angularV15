@@ -6,15 +6,31 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GroupsComponent } from './list-group/groups.component';
 import { GroupManagerComponent } from './manage-group/group-manager.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SelectUserComponent } from './select-user/select-user.component';
+
+
 
 
 @NgModule({
-  declarations: [GroupsComponent, GroupManagerComponent],
+  declarations: [GroupsComponent, GroupManagerComponent, SelectUserComponent],
   imports: [
     CommonModule,
     GroupsModuleRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule
   ]
 })
 export class GroupsModuleModule { }

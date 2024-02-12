@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/front-cencoe-angular-v15",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -102,14 +103,10 @@
         }
       }
     }
-<<<<<<< HEAD
+
   },
   "cli": {
     "analytics": false
-  },
-  "cli": {
-    "analytics": "1316f0df-032c-46f3-83c2-a58efa05c151"
-=======
->>>>>>> a7a92c13583930d055b4c76b53507c0e67bc029d
   }
+  
 }

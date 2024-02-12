@@ -32,7 +32,7 @@ export interface User {
 
 export interface TypeDocs {
     docTypeId:   number;
-    docTypeName: string;
+    docTypeName: string | null;
 }
 
 export interface Team {

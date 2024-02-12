@@ -8,6 +8,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { userHttpService } from './service/http/user-service.service';
+import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 
 @NgModule({
   declarations: [UsersComponent, ManageUsersComponent],
@@ -19,7 +20,8 @@ import { userHttpService } from './service/http/user-service.service';
     ReactiveFormsModule
   ],
   providers:[
-    userHttpService
+    userHttpService,
+    TipodocumentoHttpService
   ]
 })
 export class UserModuleModule { }

@@ -3,15 +3,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { User, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { userHttpService } from '../service/http/user-service.service';
-import { EMPTY, catchError, of, switchMap, tap, throwError } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit{
+export class UsersComponent implements OnInit {
 
+  private clearSubscritions$ = new Subject<void>();
   public user: User[] = [];//^1
   public displayedColumns = ['userId', 'name', 'direccion', 'email', 'edit'];//^2
   isLoading = true;
@@ -30,10 +31,13 @@ export class UsersComponent implements OnInit{
 
   getAllUsers() {
     this._userHttpService.getAllUsers()
-    .subscribe(data => {
-      this.user = data;
-      console.log(data)
-    })      
+      .pipe(
+        takeUntil(this.clearSubscritions$)
+      )
+      .subscribe(data => {
+        this.user = data;
+        console.log(data)
+      })
   }
 
 

@@ -58,13 +58,14 @@ export interface customerData {
     ];
 }
 
-// Moculo proveedores
+// Modulo proveedores
 export interface Provider {
-    providerId: number,
-    providerName: String,
-    providerAdrees: String,
-    providerState: Boolean,
-    providerEmail: String,  //no esta en la bd
-    providerContact: String   //no esta en la bd
+    providerId:      number;
+    providerName:    String;
+    providerAddress:  String;
+    providerEmail:   String; //ya esta en la bd
+    providerContact: String;//ya esta en la bd
+    providerDoctype: TypeDocs;  //ya esta en la bd
+    providerDetails: String;
+    providerState:   boolean;
 }
-

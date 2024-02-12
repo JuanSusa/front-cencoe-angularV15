@@ -39,12 +39,6 @@ export interface Campaign {
     campaign_state: string;
 }
 
-export interface campaignR {
-  code: number;
-  menssage: String;
-  data: [];
-}
-
 export interface TypeDocs {
     docTypeId:   number;
     docTypeName: string | null;
@@ -66,14 +60,6 @@ export interface Customer {
     customerState: boolean;
 }
 
-export interface customerData {
-    code: number;
-    menssage: String;
-    data: [
-        
-    ];
-}
-
 // Modulo proveedores
 export interface Provider {
     providerId:      number;
@@ -84,13 +70,4 @@ export interface Provider {
     providerDoctype: TypeDocs;  //ya esta en la bd
     providerDetails: String;
     providerState:   boolean;
-}
-
-export interface providerR{
-    code: number;
-    message:String;
-    data:[
-
-    ]     
-
 }

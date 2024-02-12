@@ -51,12 +51,13 @@
                 </div>
             </form>
             <mat-card-actions class="actions-btns">
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                Cancelar
+            </button>
                 <!-- Botones de acciones -->
                 <button type="submit" mat-button cdkFocusInitial>{{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}</button>
 
-                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
-                  Cancelar
-              </button>
+
             </mat-card-actions>
         </mat-card-content>
     </mat-dialog-content>

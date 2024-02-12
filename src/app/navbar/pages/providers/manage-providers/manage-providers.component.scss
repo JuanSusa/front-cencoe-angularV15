@@ -1,14 +1,13 @@
 mat-card-title{
-    height: 30%;
+   
+    margin-left: 1rem;
 }
 
 mat-card-subtitle{
     margin-left: 1rem;
     
 }
-.container{
-    
-}
+
 .container-form{
     width: 800px; //definimos el ancho del contenedor padre
     margin: 0 auto;
@@ -26,9 +25,25 @@ mat-card-subtitle{
     grid-template-columns: repeat(2, 1.5fr); //establece dos columnas
     grid-gap: 15px;
     row-gap: 15px;
-    
-   
-    
+     
 }
+
+mat-dialog-actions{
+    display:flex;
+    justify-content: flex-end;
+
+    .btn-saved:not([disabled]) {
+        background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+        color: aliceblue;
+    }
+
+    .btn-cancel {
+        background: linear-gradient(-22deg, #29323c 0%, #485563 100%);
+        color: aliceblue;
+       
+    }
+
+}
+
 
 //::ng-deep .mdc-text-field--outline:not(.mdc-text-field)

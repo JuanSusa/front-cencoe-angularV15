@@ -7,6 +7,8 @@ import { ProviderModuleRoutingModule } from './provider-module-routing.module';
 import { ProvidersComponent } from './list-providers/providers.component';
 import { ManageProvidersComponent } from './manage-providers/manage-providers.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProviderServiceService } from './services/provider-service.service';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProviderModuleRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [ProviderServiceService] 
 })
 export class ProviderModuleModule { }

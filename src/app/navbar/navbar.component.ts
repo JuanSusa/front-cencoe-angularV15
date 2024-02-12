@@ -1,7 +1,6 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit} from '@angular/core';
 import { MenuItem, menuItems } from './menu-data';
-import { BehaviorSubject, Observable, distinctUntilChanged, map, startWith } from 'rxjs';
+
 
 @Component({
   selector: 'app-navbar',
@@ -19,15 +18,11 @@ export class NavbarComponent implements OnInit{
 
   menuItems: MenuItem[] = menuItems;
 
-
-  
-  
-
   showMenu() {
     // this.sidenav.toggle();
     this.collapsed = !this.collapsed;
   }
 
 
-  
+
 }

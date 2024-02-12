@@ -1,0 +1,64 @@
+<div class="container-box h-auto">
+    <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+    <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+    <mat-dialog-content>
+        <mat-card-content class="mat-elevation-z6">
+            <!-- Formulario registro campaña -->
+            <form class="create-campaign" [formGroup]="campaignForm">
+                <div class="column">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input formArrayName="nombre" matInput placeholder="" autocapitalize="off" formControlName="nombre">
+                    </mat-form-field>
+                    <div class="error">
+                    </div>
+                </div>
+                <div class="column">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Capacidad</mat-label>
+                        <input formArrayName="capacidad" matInput placeholder="" autocapitalize="off" formControlName="capacidad">
+                    </mat-form-field>
+                    <div class="error">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fecha inicio</mat-label>
+                            <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi #picker></mat-datepicker>
+                        </mat-form-field>
+                        <div class="error">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fecha final</mat-label>
+                            <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="colum">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Observaciones</mat-label>
+                        <input formArrayName="observaciones" matInput placeholder="" autocapitalize="off" formControlName="observaciones">
+                    </mat-form-field>
+                    <div class="error">
+                    </div>
+                </div>
+            </form>
+            <mat-card-actions class="actions-btns">
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                Cancelar
+            </button>
+                <!-- Botones de acciones -->
+                <button type="submit" mat-button cdkFocusInitial>{{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}</button>
+
+
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-dialog-content>
+</div>

@@ -2,19 +2,36 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
+import { MatDialog } from '@angular/material/dialog';
+import { SelectUserComponent } from '../select-user/select-user.component';
 
 @Component({
   selector: 'app-group-manager',
   templateUrl: './group-manager.component.html',
   styleUrls: ['./group-manager.component.scss']
 })
-export class GroupManagerComponent implements OnInit{
+
+export class GroupManagerComponent implements OnInit {
   constructor(
+    public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
-    private formBuilder: FormBuilder 
+    private formBuilder: FormBuilder
+
   ) { }
-  
+
+
+  selectUser(): void {
+    const dialogRef = this.dialog.open(SelectUserComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('La ventana emergente ha sido cerrada');
+    });
+  }
+
+
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
@@ -25,8 +42,8 @@ export class GroupManagerComponent implements OnInit{
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Ingrese los nuevos datos del grupo';
     debugger
-    
-    
+
+
   }
 
   //^4
@@ -45,15 +62,15 @@ export class GroupManagerComponent implements OnInit{
     this._matDialogRef.close();
   }
 
-   //^6
-   onNumericInput(event: any): void {//^6.1
+  //^6
+  onNumericInput(event: any): void {//^6.1
     // Filtrar caracteres no numéricos
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
 
-   //^7
-   passwordValidator(): ValidatorFn {//^7.1
+  //^7
+  passwordValidator(): ValidatorFn {//^7.1
     return (control: AbstractControl): ValidationErrors | null => {//^7.2
       const value: string = control.value;//^7.3
       const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);//^7.4
@@ -67,8 +84,8 @@ export class GroupManagerComponent implements OnInit{
   }
 }
 
- 
 
 
 
-  
+
+

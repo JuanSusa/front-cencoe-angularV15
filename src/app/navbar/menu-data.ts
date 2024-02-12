@@ -18,7 +18,7 @@ export const menuItems : MenuItem[] = [
     {
         icon:'business',
         label: 'Clientes',
-        route: '../clientes'
+        route: '../clientes'   
     },
     {
         icon:'assignment_ind',

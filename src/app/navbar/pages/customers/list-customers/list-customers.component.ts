@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Customer, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCustomersComponent } from '../manage-customers/manage-customers.component';
+import { CustomerServiceService } from '../service/http/customer-service.service';
 
 @Component({
   selector: 'app-list-customers',
@@ -11,11 +12,12 @@ import { ManageCustomersComponent } from '../manage-customers/manage-customers.c
 export class ListCustomersComponent {
 
   public customer: Customer[] = []; //^1
-  public displayedColumns = ['customerId','customerName','customerAddres','customerPhone','edit']; //^2
+  public displayedColumns = ['customerId','customerName','customerAddress','customerPhone']; //^2
   isLoading = true;
 
   constructor(
-    private readonly _dialog: MatDialog
+    private readonly _dialog: MatDialog, 
+    private _customerService: CustomerServiceService
   ){
 
   }
@@ -30,4 +32,13 @@ export class ListCustomersComponent {
     });
   }
 
+  ngOnInit() {
+    this.getAllCustomers()
+  }
+  getAllCustomers(){
+    this._customerService.getAllCustomers().subscribe(data => {
+      this.customer = data;
+      console.log(data)
+    })
+}
 }

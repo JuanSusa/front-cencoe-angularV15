@@ -19,8 +19,4 @@ export class userHttpService {
         map(res => res.data)
       )
   }
-
-
-  
-
 }

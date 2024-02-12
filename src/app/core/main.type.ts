@@ -50,14 +50,23 @@ export interface Customer {
     customerState:   boolean;
 }
 
-// Moculo proveedores
+// Modulo proveedores
 export interface Provider {
     providerId:      number;
     providerName:    String;
-    providerAddres:  String;
+    providerAddress:  String;
     providerEmail:   String; //ya esta en la bd
     providerContact: String;//ya esta en la bd
     providerDoctype: TypeDocs;  //ya esta en la bd
     providerDetails: String;
     providerState:   boolean;
+}
+
+export interface providerR{
+    code: number;
+    message:String;
+    data:[
+
+    ]     
+
 }

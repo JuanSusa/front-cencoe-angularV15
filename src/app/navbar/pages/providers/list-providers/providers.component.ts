@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
-import { Provider, adminTypePopUp } from 'src/app/core/main.type';
+import { Provider, adminTypePopUp, providerR } from 'src/app/core/main.type';
 import { ProviderServiceService } from '../services/provider-service.service';
-import { Observable } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subject, takeUntil } from 'rxjs';
+
 
 
 
@@ -12,47 +14,64 @@ import { Observable } from 'rxjs';
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.scss']
 })
-export class ProvidersComponent implements OnInit{
- listprovider: Provider[] = []
- displayedColumns= ['id', 'name', 'addres', 'email', 'contact', 'state']
-z
+export class ProvidersComponent implements OnInit {
+  titulo= "Proveedores"
+  subtitulo = "Proveedores registrados en la aplicación"
+
+  listprovider: Provider[]=[]
+  displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "providerState"]
+  //  dataSource! : MatTableDataSource<Provider>
+
+
 
   constructor(
     private readonly _dialog: MatDialog,
-    private _providerService: ProviderServiceService
-      
-  ){
-    
+    private readonly providerService: ProviderServiceService ) {
+
   }
+
+
   ngOnInit() {
     this.getAllProviders()
     //this.getProvider(2)
   }
-
   getAllProviders() {
-    this._providerService.getAllProviders().subscribe(
-      (response) => {
-        this.listprovider = response
-      }
-    )
+    this.providerService.getAllProviders().subscribe(data =>{
+      this.listprovider = data;
+      console.log(data)
+    })
   }
 
-  getProvider(id: number) {
-    this._providerService.getProvider(id).subscribe(response =>{
+  // }
 
-      console.log(response)
+  // getAllProviders() {
+  //   this.providerService.getAllProviders().subscribe(
+  //     (response) => {
+
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener usuarios:', error);
+  //     }
+  //   );
+  // }
+
+
+
+  // getProvider(id: number) {
+  //   this.providerService.getProvider(id).subscribe(response => {
+
+  //     console.log(response)
+  //   })
+
+  // }
+
+
+  /* Logica para abrir el mat dialog*/
+  manageProvider(tipo: adminTypePopUp, providerId?: number) {
+    const activeModal = this._dialog.open(ManageProvidersComponent, {
+      data: { tipo, campo: providerId }
     })
-
-  }
-
-  
-
- 
-  manageProvider(tipo: adminTypePopUp, providerId?: number){
-    const activeModal =  this._dialog.open(ManageProvidersComponent, {
-      data: {tipo, campo: providerId}
-    })
-        activeModal
+    activeModal
       .afterClosed()
       .subscribe(result => {
         console.log('Close dialog')
@@ -60,7 +79,5 @@ z
 
   }
 
-
 }
 
-  

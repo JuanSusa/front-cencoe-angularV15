@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, share, tap } from 'rxjs';
-import { Provider, providerR } from 'src/app/core/main.type';
+import { Observable, map, share, tap } from 'rxjs';
+import { Provider, ReqResponse } from 'src/app/core/main.type';
 import { environment } from 'src/app/environments/environment';
 
 
@@ -15,7 +15,7 @@ export class ProviderServiceService {
   
 
   getAllProviders(): Observable<Provider[]>{     //devuelve un array de proveedores 
-    return this.httpClient.get<providerR>(`${environment.api}/proveedores`)
+    return this.httpClient.get<ReqResponse>(`${environment.api}/proveedores`)
     .pipe(
       tap(data => console.log('proveedores cargados con exito', data)),
       map(res => res.data),

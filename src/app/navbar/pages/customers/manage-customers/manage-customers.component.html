@@ -62,7 +62,7 @@
             <mat-card-actions class="actions-btns">
                 <!-- Botonos de acciones -->
                 <button mat-button type="submit" class="btn-saved-dialog" [disabled]="customerForm.invalid" (click)="mostrarVentana()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'" [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto'">
-                    {{this.data.tipo == "crear" ? "Guardar" : "actualizar"}}
+                    {{this.data.tipo == "crear" ? "Guardar" : "ver"}}
                 </button>
                 <button mat-button cdkFocuusInitial (click)="executionMessage()" class="btn-cance-dialog">Cancelar</button>
             </mat-card-actions>

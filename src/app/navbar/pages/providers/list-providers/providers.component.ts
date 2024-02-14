@@ -18,7 +18,7 @@ export class ProvidersComponent implements OnInit {
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
 
-  listprovider: Provider[]=[]
+  listprovider: Provider[]=[];
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "providerState"]
   //  dataSource! : MatTableDataSource<Provider>
 

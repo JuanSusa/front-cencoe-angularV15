@@ -12,19 +12,16 @@ import { CustomerServiceService } from '../service/http/customer-service.service
 export class ListCustomersComponent {
 
   public customer: Customer[] = []; //^1
-  public displayedColumns = ['customerId','customerName','customerAddress','customerPhone']; //^2
+  public displayedColumns = ['customerId','customerName','customerAddress','customerPhone','edit']; //^2
   isLoading = true;
 
   constructor(
     private readonly _dialog: MatDialog, 
     private _customerService: CustomerServiceService
-  ){
-
-  }
+  ){ }
 
   manageCustomer(tipo: adminTypePopUp, customerId?: number) {
-    const modal = this._dialog.open
-    (ManageCustomersComponent, {
+    const modal = this._dialog.open(ManageCustomersComponent, {
       data: {tipo,campo:customerId}
     });
     modal.afterClosed().subscribe(result =>{

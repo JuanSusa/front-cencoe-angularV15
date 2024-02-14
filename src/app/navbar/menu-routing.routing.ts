@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
-
-
+import { LoginComponent } from '../auth/login/login.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule)
+  },
   {
     path: 'campañas',
     component: NavbarComponent,
@@ -36,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
 
   },
-  {path:'', redirectTo:'campañas', pathMatch:'full'}
+  {path:'', redirectTo:'login', pathMatch:'full'}
 ];
 
 @NgModule({

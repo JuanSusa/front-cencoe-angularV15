@@ -1,7 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { adminPopUp } from 'src/app/core/main.type';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SelectGroupComponent } from '../select-group/select-group.component';
+import { SelectProvideComponent } from '../select-provide/select-provide.component';
+
 
 @Component({
   selector: 'app-manage-campaigns',
@@ -11,11 +14,31 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ManageCampaignsComponent {
   maxDate: Date;
   constructor(
+    public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder
   ) { this.maxDate = new Date();}
 
+  selectGroup(): void {
+    const dialogRef = this.dialog.open(SelectGroupComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('La ventana emergente ha sido cerrada');
+    });
+  }
+
+  selectProvide(): void {
+    const dialogRef = this.dialog.open(SelectProvideComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('La ventana emergente ha sido cerrada');
+    });
+  }
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
@@ -35,7 +58,8 @@ export class ManageCampaignsComponent {
   campaignForm = this.formBuilder.group({
     id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
     nombre : ['', [Validators.required, Validators.maxLength(20)]],
-    capacidad : ['', [Validators.required, Validators.maxLength(20)]],
+    grupos : ['', [Validators.required, Validators.maxLength(20)]],
+    proveedores : ['', [Validators.required, Validators.maxLength(20)]],
     fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
     fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
     observaciones: ['', [Validators.required, Validators.maxLength(100)]],

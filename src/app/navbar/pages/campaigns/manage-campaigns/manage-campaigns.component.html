@@ -13,14 +13,27 @@
                     <div class="error">
                     </div>
                 </div>
-                <div class="column">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Capacidad</mat-label>
-                        <input formArrayName="capacidad" matInput placeholder="" autocapitalize="off" formControlName="capacidad">
-                    </mat-form-field>
-                    <div class="error">
+                <div class="row">
+                    <div class="column">
+                        <mat-form-field appearance="fill">
+                            <mat-dialog-actions class="btn-selectCampaign">
+                                <button mat-button (click)="selectGroup()"> Grupos</button>
+                                <div class="error">
+                                </div>
+                            </mat-dialog-actions>
+                        </mat-form-field>
+                    </div>
+                    <div class="column">
+                        <mat-form-field appearance="fill">
+                            <mat-dialog-actions class="btn-selectCampaign">
+                                <button mat-button (click)="selectProvide()">Proveedores</button>
+                                <div class="error">
+                                </div>
+                            </mat-dialog-actions>
+                        </mat-form-field>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="column">
                         <mat-form-field class="example-full-width">

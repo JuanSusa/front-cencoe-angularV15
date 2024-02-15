@@ -8,8 +8,11 @@ import { ListCampaignComponent } from './list-campaign/list-campaign.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CampaignsServiceService } from './service/http/campaigns-service.service';
 
+import { SelectGroupComponent } from './select-group/select-group.component';
+import { SelectProvideComponent } from './select-provide/select-provide.component';
+
 @NgModule({
-  declarations: [ManageCampaignsComponent, ListCampaignComponent],
+  declarations: [ManageCampaignsComponent, ListCampaignComponent, SelectGroupComponent, SelectProvideComponent],
   imports: [
     CommonModule,
     CampaignsModuleRoutingModule,

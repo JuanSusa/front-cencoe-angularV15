@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Campaign, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CampaignsServiceService } from '../service/http/campaigns-service.service';
+import { CampaignsServiceService } from '../services/http/campaigns-service.service';
 
 @Component({
   selector: 'app-list-campaign',

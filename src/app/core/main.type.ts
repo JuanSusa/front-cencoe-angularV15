@@ -30,14 +30,14 @@ export interface User {
     userDocType: TypeDocs;
 }
 export interface Campaign {
-    campaign_id: number;
-    campaign_name: string;
-    campaign_team: number;
-    campaign_provider: number;
-    campaign_start_date: Date;
-    campaign_end_date: Date;
-    campaign_observations: string;
-    campaign_state: string;
+    campaignId: number;
+    campaignName: string;
+    campaignTeam: number;
+    campaignProvider: number;
+    campaignStartDate: Date;
+    campaignEndDate: Date;
+    campaignObservations: string;
+    campaignState: string;
 }
 
 export interface TypeDocs {

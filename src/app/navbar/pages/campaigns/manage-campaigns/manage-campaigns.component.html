@@ -2,75 +2,59 @@
     <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
     <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
     <mat-dialog-content>
-        <mat-card-content class="mat-elevation-z6">
+        <mat-card-content class="mat-elevation-z8">
             <!-- Formulario registro campaña -->
             <form class="create-campaign" [formGroup]="campaignForm">
-                <div class="column">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Nombre</mat-label>
-                        <input formArrayName="nombre" matInput placeholder="" autocapitalize="off" formControlName="nombre">
+                <mat-form-field>
+                    <mat-label>Nombres</mat-label>
+                    <input matInput formControlName="nombre" placeholder="Nombre Completo" type="text" />
+                    <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">Nombres necesarios</mat-error>
+                    <mat-error *ngIf="campaignForm.get('nombre')?.hasError('maxlength')">Máximo 10 caracteres</mat-error>
+                </mat-form-field>
+                <div class="flex ">
+                    <!-- <div class="column"> -->
+                    <mat-form-field class="example-full-width mr-3">
+                        <mat-label>Fecha inicio</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
                     </mat-form-field>
-                    <div class="error">
-                    </div>
+                    <!-- </div> -->
+                    <!-- <div class="column"> -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha final</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <!-- </div> -->
                 </div>
-                <div class="row">
-                    <div class="column">
-                        <mat-form-field appearance="fill">
-                            <mat-dialog-actions class="btn-selectCampaign">
-                                <button mat-button (click)="selectGroup()"> Grupos</button>
-                                <div class="error">
-                                </div>
-                            </mat-dialog-actions>
-                        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Observaciones</mat-label>
+                    <textarea class="box-obs h-1rem" matInput></textarea>
+                    <!-- Validar el scroll -->
+                    <input matInput formControlName="observaciones" />
+                    <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('required')">Observaciones necesarias</mat-error>
+                </mat-form-field>
+                <div class="flex justify-content-around">
+                    <div class="btn-groups flex flex-column mb-2">
+                        <mat-label>Selecionar Proveedor</mat-label>
+                        <button mat-raised-button (click)="selectProvide()" class="w-5">Agregar</button>
                     </div>
-                    <div class="column">
-                        <mat-form-field appearance="fill">
-                            <mat-dialog-actions class="btn-selectCampaign">
-                                <button mat-button (click)="selectProvide()">Proveedores</button>
-                                <div class="error">
-                                </div>
-                            </mat-dialog-actions>
-                        </mat-form-field>
+                    <div class="btn-groups flex flex-column mb-2">
+                        <mat-label>Seleccionar Grupo</mat-label>
+                        <button mat-raised-button (click)="selectGroup()" class="w-5">Agregar</button>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="column">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Fecha inicio</mat-label>
-                            <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker></mat-datepicker>
-                        </mat-form-field>
-                        <div class="error">
-                        </div>
-                    </div>
-                    <div class="column">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Fecha final</mat-label>
-                            <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker1></mat-datepicker>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="colum">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Observaciones</mat-label>
-                        <input formArrayName="observaciones" matInput placeholder="" autocapitalize="off" formControlName="observaciones">
-                    </mat-form-field>
-                    <div class="error">
-                    </div>
-                </div>
             </form>
             <mat-card-actions class="actions-btns">
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
-                Cancelar
-            </button>
+          Cancelar
+        </button>
                 <!-- Botones de acciones -->
-                <button type="submit" mat-button cdkFocusInitial>{{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}</button>
-
-
+                <button class="btn-action" type="submit" mat-button cdkFocusInitial>{{ this.data.tipo == "crear" ? "Guardar" : "Actualizar"
+          }}</button>
             </mat-card-actions>
         </mat-card-content>
     </mat-dialog-content>

@@ -20,35 +20,35 @@
             <!-- Columna Id-->
             <ng-container matColumnDef="campaign_id">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_id"> No. </th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_id}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignId}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_name">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_name"> Nombre </th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_name}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignName}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_team">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_team"> Grupos </th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_team}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignTeam}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_provider">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_provider"> Proveedores </th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_provider}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignProvider}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_start_date">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_start_date">Fecha de inicio</th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_start_date | date: 'dd/MM/yyyy'}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignStartDate | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_end_date">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_end_date">Fecha final</th>element.campaign_end_date
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_end_date | date: 'dd/MM/yyyy'}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignEndDate | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_observations">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_observations">Observaciones</th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_observations}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignObservations}} </td>
             </ng-container>
             <ng-container matColumnDef="campaign_state">
                 <th mat-header-cell *matHeaderCellDef class="table-header campaign_state">Estado</th>
-                <td mat-cell *matCellDef="let campaign"> {{campaign.campaign_state}} </td>
+                <td mat-cell *matCellDef="let campaign"> {{campaign.campaignState}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>

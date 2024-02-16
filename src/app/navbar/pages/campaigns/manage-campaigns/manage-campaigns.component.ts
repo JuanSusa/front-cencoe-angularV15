@@ -18,9 +18,18 @@ export class ManageCampaignsComponent {
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder
-  ) { this.maxDate = new Date();}
+    ) { this.maxDate = new Date();}
 
-  selectGroup(): void {
+    campaignForm = this.formBuilder.group({
+      id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      nombre : ['', [Validators.required, Validators.maxLength(10)]],
+      fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
+      fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
+      observaciones: ['', [Validators.required, Validators.maxLength(100)]],
+      estado : ['', [Validators.required,]],
+    })
+
+    selectGroup(): void {
     const dialogRef = this.dialog.open(SelectGroupComponent, {
       width: '250px'
     });
@@ -55,16 +64,6 @@ export class ManageCampaignsComponent {
 
   //^4
 
-  campaignForm = this.formBuilder.group({
-    id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-    nombre : ['', [Validators.required, Validators.maxLength(20)]],
-    grupos : ['', [Validators.required, Validators.maxLength(20)]],
-    proveedores : ['', [Validators.required, Validators.maxLength(20)]],
-    fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
-    fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
-    observaciones: ['', [Validators.required, Validators.maxLength(100)]],
-    estado : ['', [Validators.required, Validators.maxLength(20)]],
-  })
 
   public executionMesssage() {
     this._matDialogRef.close();

@@ -4,13 +4,20 @@
      
 }
 
-
 .mdc-button {
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     
-
 }
-
+.table-header{
+    text-align: center;
+}
+.table-cell{
+    text-align: center;
+}
 .example-spacer {
     flex: 1 1 auto;
   }
+
+.btn-action{
+    color:#ff0844;
+}

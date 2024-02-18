@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
-import { Provider, adminTypePopUp, providerR } from 'src/app/core/main.type';
-import { ProviderServiceService } from '../services/provider-service.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { Provider, adminTypePopUp} from 'src/app/core/main.type';
 import { Subject, takeUntil } from 'rxjs';
-
+import { ProviderServiceService } from '../services/provider-service.service';
 
 
 

@@ -10,8 +10,9 @@ import {GroupManagerComponent} from '../manage-group/group-manager.component';
 })
 export class GroupsComponent {
   public group: Team[] = [];//^1
-  public displayedColumns = ['groupId', 'groupName', 'groupCapacity'];//^2
+  public displayedColumns = ['groupId', 'groupName', 'groupStartdate', 'groupEnddate'];//^2
   isLoading = true;
+  success: boolean = false;
 
   constructor(
     private readonly _dialog: MatDialog

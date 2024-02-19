@@ -19,36 +19,50 @@
 
         <!--Columana Id-->
         <ng-container matColumnDef="providerId">
-            <th mat-header-cell *matHeaderCellDef class="table-header"># </th>
-            <td mat-cell *matCellDef="let p"> {{p.providerId}} </td>
+            <th mat-header-cell *matHeaderCellDef class="table-header">No.</th>
+            <td class="table-cell"  mat-cell *matCellDef="let p"> {{p.providerId}} </td>
         </ng-container>
         <!--Columna nombre de proveedor-->
         <ng-container matColumnDef="providerName">
             <th mat-header-cell *matHeaderCellDef class="table-header" >Proveedor</th>
-            <td mat-cell *matCellDef="let p"> {{p.providerName}} </td>
+            <td class="table-cell"  mat-cell *matCellDef="let p"> {{p.providerName}} </td>
         </ng-container>
         <!--Columna Direccion-->
         <ng-container matColumnDef="providerAddress">
             <th mat-header-cell *matHeaderCellDef class="table-header" >Direccion</th>
-            <td mat-cell *matCellDef="let p"> {{p.providerAddress}} </td>
+            <td class="table-cell"  mat-cell *matCellDef="let p"> {{p.providerAddress}} </td>
         </ng-container>
 
         <!--Columna Email-->
         <ng-container matColumnDef="providerEmail">
             <th mat-header-cell *matHeaderCellDef  class="table-header">Email</th>
-            <td mat-cell *matCellDef="let p"> {{p.providerEmail}} </td>
+            <td class="table-cell"  mat-cell *matCellDef="let p"> {{p.providerEmail}} </td>
         </ng-container>
         <!--Columna Contacto-->
         <ng-container matColumnDef="providerContact">
             <th mat-header-cell *matHeaderCellDef class="table-header">Contacto</th>
-            <td mat-cell *matCellDef="let p"> {{p.providerContact}} </td>
+            <td class="table-cell" mat-cell *matCellDef="let p"> {{p.providerContact}} </td>
         </ng-container>
 
         <!--Columna estado-->
-        <ng-container matColumnDef="providerState">
+        <!-- <ng-container matColumnDef="providerState">
             <th mat-header-cell *matHeaderCellDef class="table-header">Status</th>
             <td mat-cell *matCellDef="let p"> {{p.providerState}} </td>
+        </ng-container> -->
+        <!--columna actions-->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="table-header">Actions</th>
+            <td class="table-cell"  md-cell *matCellDef="let p" >
+                <button mat-icon-button>
+                <mat-icon class="btn-action">edit_outline</mat-icon>
+            </button>
+                <button mat-icon-button (click)="eliminarProvider()">
+                <mat-icon class="btn-action">delete_outline</mat-icon>
+            </button>
+            </td>
         </ng-container>
+
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

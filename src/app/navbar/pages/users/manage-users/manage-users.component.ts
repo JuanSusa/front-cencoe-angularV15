@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TypeDocs, adminPopUp } from 'src/app/core/main.type';
 import { TipodocumentoComponent } from '../../tipodocumento/manage-tipodocumento/tipodocumento.component';
+import { ProviderServiceService } from '../../providers/services/provider-service.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -20,6 +21,7 @@ export class ManageUsersComponent implements OnInit {
     private readonly _matDialogRef: MatDialogRef<ManageUsersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
+   
     ) { }
     
     //^4
@@ -57,6 +59,8 @@ export class ManageUsersComponent implements OnInit {
         })
     }
   }
+
+  
 
 
   public executionMesssage() {

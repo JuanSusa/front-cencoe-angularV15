@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
-    NgModule,
     CommonModule,
     AuthRoutingModule,
     AngularMaterialModule,

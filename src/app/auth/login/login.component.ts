@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
@@ -6,13 +6,20 @@ import { adminPopUp } from 'src/app/core/main.type';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  styles: [`
+    body {
+      background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    }
+  `],
 })
-export class LoginComponent {
+
+export class LoginComponent{
 
   login_form: FormGroup;
   recuperar_form: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private renderer: Renderer2, private el: ElementRef) {
+
     this.login_form = this.fb.group({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -29,6 +36,7 @@ export class LoginComponent {
     const contenedorLoginRecuperar = document.querySelector('.contenedorLoginRecuperar');
     const formularioLogin = document.querySelector('.formularioLogin');
     const formularioRecuperar = document.querySelector('.formularioRecuperar');
+    const btnIniciarSesion = document.querySelector('.btnIniciarSesion');
     if (this.prueba) {
       this.prueba = false;
       formularioRecuperar?.setAttribute('style', 'display:none');
@@ -36,6 +44,7 @@ export class LoginComponent {
       formularioLogin?.setAttribute('style', 'display:block');
       cajaTraseraRecuperar?.setAttribute('style', 'opacity:1');
       cajaTraseraLogin?.setAttribute('style', 'opacity:0');
+      btnIniciarSesion?.setAttribute('style', 'display:none');
     } else {
       this.prueba = true;
       formularioRecuperar?.setAttribute('style', 'display:none');
@@ -67,5 +76,8 @@ export class LoginComponent {
       cajaTraseraLogin?.removeAttribute('style');
       cajaTraseraLogin?.removeAttribute('style');
     }
+  }
+  ngOnInit(): void {
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background', 'linear-gradient(to right, #d7d2cc 0%, #304352 100%)')
   }
 }

@@ -35,7 +35,7 @@
                 Documento</mat-card-title>
             <mat-divider class="mx-5"></mat-divider>
             <mat-card-content>
-                <form class="create-typeDoc" [formGroup]="typeDocForm">
+                <form class="create-typeDoc" [formGroup]="typeDocForm"  (ngSubmit)="saveTypeDoc()">
                     <mat-form-field>
                         <mat-label>Nombre del Documento</mat-label>
                         <input matInput name="nuevoDocumento" formControlName="docTypeName" type="text"

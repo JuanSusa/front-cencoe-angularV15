@@ -1,6 +1,6 @@
 import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TypeDocs } from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../services/tipo-documento.service';
 import { Router } from '@angular/router';
@@ -41,7 +41,7 @@ export class TipodocumentoComponent implements OnInit {
       })
   }
 
-  saveTypeDoc() {
+  saveTypeDoc(): void {
     if (this.typeDocForm.valid) {
       const newTypeDoc: TypeDocs = {
         docTypeName: this.typeDocForm.value.docTypeName || '',
@@ -59,7 +59,8 @@ export class TipodocumentoComponent implements OnInit {
           this.typeDocForm.reset();
         }, error => {
           console.error('Error al crear tipo de documento', error);
-          Swal.fire('Error',
+          Swal.fire(
+            'Error',
             'Ocurrió un error al crear el tipo de documento',
             'error');
         });

@@ -20,7 +20,7 @@ export class userHttpService {
         tap(data => console.log('Usuários carregados com sucesso!', data)),
         map(res => res.data)
       )
-  }
+      }
 
   getUserById(userId: number): Observable<User> {
     // const params = new HttpParams().append('userId', userId)

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Campaign, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CampaignsServiceService } from '../service/http/campaigns-service.service';
+import { CampaignsServiceService } from '../services/http/campaigns-service.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-campaign',
@@ -11,9 +12,11 @@ import { CampaignsServiceService } from '../service/http/campaigns-service.servi
 })
 export class ListCampaignComponent {
   public campaign: Campaign[] = [];//^1
-  public displayedColumns = ['campaign_id','campaign_name','campaign_capacity','campaign_start_date','campaign_end_date','campaign_observations','campaign_state'];//^2
+  public displayedColumns = ['campaign_id','campaign_name','campaign_team', 'campaign_provider','campaign_start_date','campaign_end_date','campaign_observations','campaign_state', 'edit'];//^2
   isLoading = true;
   success: boolean = false;
+  //filtro
+  dataSource!: MatTableDataSource<any>;
 
   constructor(
     private readonly _dialog: MatDialog,
@@ -45,6 +48,11 @@ export class ListCampaignComponent {
         console.log('se cerro el dialogo ')
       });
 
+  }
+//filtro
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 

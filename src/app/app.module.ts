@@ -7,10 +7,6 @@ import { NavbarModuleModule } from './navbar/navbar-module.module';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

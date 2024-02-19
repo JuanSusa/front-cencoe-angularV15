@@ -57,7 +57,6 @@ export class ManageCampaignsComponent {
       this.data.tipo === 'crear' ? 'Crear nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles de la Campaña' : 'Editar Campaña';
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nueva nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles del Campaña' : 'Ingrese los nuevos datos de la Campaña';
-    debugger
 
 
   }

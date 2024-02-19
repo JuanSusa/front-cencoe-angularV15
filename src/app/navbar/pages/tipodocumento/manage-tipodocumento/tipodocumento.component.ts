@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TypeDocs } from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../services/tipo-documento.service';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class TipodocumentoComponent implements OnInit {
     private _TipodocumentoHttpService: TipodocumentoHttpService
   ) { }
 
-  typeDocForm = this.formBuilder.group({
+  typeDocForm: FormGroup = this.formBuilder.group({
     docTypeName: ['', Validators.required]
   })
 
@@ -36,14 +36,45 @@ export class TipodocumentoComponent implements OnInit {
       })
   }
 
+  saveTypeDoc(): void {
+    if (this.typeDocForm.invalid) {
+      console.log('formulario invalido');
+      return;
+    }
+
+    const docTypeName = this.typeDocForm.value.docTypeName;
+
+    this._TipodocumentoHttpService.saveTypeDocument(this.typeDocForm.value).subscribe(
+      dataResponse => {
+        if (dataResponse && dataResponse.data && dataResponse.data.docTypeName) {
+          Swal.fire({
+            title: 'Nuevo Registro',
+            text: `¡Tipo de documento ${docTypeName} creado con éxito!`,
+            icon: 'success'
+          }).then(() =>{
+            this.getAllTypeDocs(); // Obtener la lista actualizada después de agregar un nuevo tipo de documento
+            this.typeDocForm.reset(); // Limpiar el formulario después de agregar un nuevo tipo de documento
+          }) 
+        } else {
+          console.error('Respuesta del servidor no válida:', dataResponse);
+          // Puedes manejar este caso como un error también
+        }
+      },
+      error => {
+        console.error('Error al guardar el tipo de documento:', error);
+
+      }
+    );
+  }
+
   // saveTypeDoc(): void {
   //   const { invalid, value } = this.typeDocForm;
-  
+
   //   if (invalid) {
   //     console.log('formulario invalido');
   //     return; // Detener la ejecución si el formulario es inválido
   //   }
-  
+
   //   this._TipodocumentoHttpService.saveTypeDocument(value as TypeDocs).subscribe(
   //     (dataResponse) => {
   //      if (dataResponse && dataResponse.data && dataResponse.data.docTypeName) {

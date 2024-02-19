@@ -4,7 +4,6 @@
 
     <mat-dialog-content>
         <mat-card-content class="container-form mat-elevation-z8">
-
             <form class="add-provider" [formGroup]="providerForm" (submit)="onSubmit()">
                 <mat-form-field appearance="outline">
                     <mat-label class="form-label">Nombre proveedor</mat-label>
@@ -52,27 +51,19 @@
                     </mat-select>
 
                 </mat-form-field>
-                <!-- <section>
+                <section>
                     <mat-label class="form-label">Estado del proveedor</mat-label>
                     <mat-slide-toggle formControlName="status"></mat-slide-toggle>
-                </section> -->
-
-            
-            <mat-dialog-actions>
+                </section>
+            </form> 
+            <!-- <mat-dialog-actions>
                 <button type="submit" mat-raised-button class="btn-saved"
-                    [disabled]="!providerForm.valid">Aceptar</button> <!--si no es valido no deja mandar los datos-->
+                    [disabled]="!providerForm.valid">Aceptar</button>si no es valido no deja mandar los datos
                 <button mat-raised-button class="btn-cancel">Cancelar</button>
-            </mat-dialog-actions>
-        </form>
+            </mat-dialog-actions>  -->
         </mat-card-content>
     </mat-dialog-content>
-
 </div>
-
-
-
-
-
 <!--FormControl: Realiza un seguimiento del valor y el estado de validacion de un control de formulario individual
     FormGroup: Realiza un seguimiento de los mismos valores y estado de una coleccion de controles de un formulario 
 -->

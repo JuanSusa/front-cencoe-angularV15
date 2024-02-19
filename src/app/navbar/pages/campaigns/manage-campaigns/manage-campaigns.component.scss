@@ -6,36 +6,6 @@ mat-form-field {
     display: flex;
 }
 
-.mat-mdc-card-title {
-    height: 40px;
-}
-
-.mat-mdc-card-subtitle {
-    margin-left: 1.5rem;
-}
-
-mat-card-content {
-    max-width: 800px; // Puedes ajustar este valor según tus necesidades
-    margin: 0 auto; // Centra el contenido en el centro
-    .create-user {
-        &__campos {
-            display: grid;
-            grid-template-columns: repeat(2, 1.5fr);
-            grid-auto-rows: 70px;
-            column-gap: 10px;
-            row-gap: 5px;
-            max-width: 100%; // Asegura que el ancho máximo sea el 100% del contenedor padre
-            margin: 0 auto; // Centra el contenido en el centro
-        }
-    }
-}
-
-.create-campaign {
-    mat-form-field {
-        height: 80px;
-    }
-}
-
 mat-icon {
     cursor: pointer;
     color: #ff0844;
@@ -64,4 +34,24 @@ mat-card-actions {
         color: aliceblue;
         margin-right: 0.5rem;
     }
+}
+
+.btn-selectCampaign {
+    margin-right: 0.5rem;
+    color: aliceblue;
+    margin: 0 1rem 1rem 0;
+}
+
+.btn-action {
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    color: #fafafa !important;
+}
+
+.error {
+    color: #db1414;
+    margin-top: -10px;
+}
+
+.box-obs {
+    overflow: auto;
 }

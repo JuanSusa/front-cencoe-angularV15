@@ -8,6 +8,7 @@ import { ManageProvidersComponent } from './manage-providers/manage-providers.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProviderServiceService } from './services/provider-service.service';
+import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 import { ProvidersComponent } from './list-providers/providers.component';
 
 
@@ -20,6 +21,6 @@ import { ProvidersComponent } from './list-providers/providers.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProviderServiceService] 
+  providers: [ProviderServiceService, TipodocumentoHttpService] 
 })
 export class ProviderModuleModule { }

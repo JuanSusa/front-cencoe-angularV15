@@ -18,8 +18,7 @@ export class userHttpService {
         tap(data => console.log('Usuários carregados com sucesso!', data)),
         map(res => res.data)
       )
-  }
-
+      }
 
   
 

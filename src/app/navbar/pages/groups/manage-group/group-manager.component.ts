@@ -24,7 +24,6 @@ export class GroupManagerComponent implements OnInit {
 
   selectUser(): void {
     const dialogRef = this.dialog.open(SelectUserComponent, {
-      width: '250px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

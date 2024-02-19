@@ -20,7 +20,7 @@ export class GroupsComponent {
 
   }
   
-
+ 
   manageGroup(tipo: adminTypePopUp, groupId?: number) {
     const modal = this._dialog.open(GroupManagerComponent, {
       data: { tipo, campo: groupId }

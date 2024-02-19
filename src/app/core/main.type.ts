@@ -8,10 +8,10 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  */
 
 
-export interface ReqResponse {
+export interface ReqResponse<T> {
     code: number;
     message: string;
-    data: [];
+    data: T[];
     success: boolean;
 }
 

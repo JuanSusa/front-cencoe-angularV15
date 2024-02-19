@@ -15,7 +15,7 @@ export class ProviderServiceService {
   
 
   getAllProviders(): Observable<Provider[]>{     //devuelve un array de proveedores 
-    return this.httpClient.get<ReqResponse>(`${environment.api}/proveedores`)
+    return this.httpClient.get<ReqResponse<Provider>>(`${environment.api}/proveedores`)
     .pipe(
       tap(data => console.log('proveedores cargados con exito', data)),
       map(res => res.data),

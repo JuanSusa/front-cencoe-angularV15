@@ -48,7 +48,7 @@
                     <button mat-icon-button (click)="manageUser('ver')">
                         <mat-icon aria-label="Ver detalles">visibility</mat-icon>
                     </button>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="manageUser('editar')">
                         <mat-icon aria-label="Editar registro">edit</mat-icon>
                     </button>
                 </td>
@@ -59,13 +59,6 @@
         </table>
 
         <!-- Mostrar mensaje de carga o error -->
-        <div *ngIf="isLoading; else error">
-        </div>
-        <ng-template #error>
-            Hubo un error al cargar los usuarios.
-        </ng-template>
-
-
-
+        
     </mat-card-content>
 </mat-card>

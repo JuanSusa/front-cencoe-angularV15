@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, share, tap, throwError } from 'rxjs';
 import { ReqResponse, TypeDocs } from 'src/app/core/main.type';
@@ -9,12 +9,14 @@ import { environment } from 'src/app/environments/environment';
 })
 export class TipodocumentoHttpService {
 
+    private httpHeaders = new HttpHeaders({'Content-type':'application/json'});
+
     constructor(private _http: HttpClient) { }
 
     getAllTypeDocuments(): Observable<TypeDocs[]> {
-        return this._http.get<ReqResponse>(`${environment.api}/tipos-documento`)
+        return this._http.get<ReqResponse<TypeDocs>>(`${environment.api}/tipos-documento`)
             .pipe(
-                tap(data => console.log('TIPO DOCUMENTOS', data)),
+                // tap(data => console.log('TIPO DOCUMENTOS', data)),
                 map(res => res.data),
                 share()
             )
@@ -29,7 +31,7 @@ export class TipodocumentoHttpService {
     }
 
     saveTypeDocument(typeDocs: TypeDocs): Observable<TypeDocs> {
-        return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs)
+        return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs, {headers : this.httpHeaders})
             .pipe(
                 tap(response => console.log('Respuesta del servidor en el metodo Save', response)),
                 map(response => {

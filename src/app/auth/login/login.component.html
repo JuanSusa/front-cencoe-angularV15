@@ -1,0 +1,43 @@
+<div class="contenedorTodo">
+    <div class="cajaTrasera">
+        <div class="cajaTraseraLogin">
+            <h3>¿Ya tienes una cuenta?</h3>
+            <p>Inicia sesión para entrar a la página</p>
+            <button mat-button id="btnIniciarSesion" (click)="iniciarSesion()">Iniciar Sesión</button>
+        </div>
+        <div class="cajaTraseraRecuperar">
+            <h3>¿Olvidaste tu contraseña?</h3>
+            <p>Recuperar contraseña aquí</p>
+            <button mat-button id="btnRecuperar" (click)="recuperar()">Recuperar</button>
+        </div>
+    </div>
+    <!-- Formulario de login y registro -->
+    <div class="contenedorLoginRecuperar">
+        <!-- Login -->
+        <form [formGroup]="login_form">
+            <h2>Iniciar Sesión</h2>
+            <mat-form-field class="iniciar_sesion">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="iniciar_sesion">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password">
+            </mat-form-field>
+            <button mat-raised-button>Ingresar</button>
+        </form>
+        <!-- Recuperar -->
+        <form [formGroup]="recuperar_form" class="formularioRecuperar" id="frm_registrar">
+            <h2>Recuperar Contraseña</h2>
+            <mat-form-field class="recordar_contrasea">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="username_recuperar">
+            </mat-form-field>
+            <mat-form-field class="recordar_contrasea">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <button mat-raised-button>Recuperar</button>
+        </form>
+    </div>
+</div>

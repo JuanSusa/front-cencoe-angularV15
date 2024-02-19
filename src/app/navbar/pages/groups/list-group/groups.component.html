@@ -1,51 +1,46 @@
-<mat-card>
-    <mat-card-header>
+<mat-toolbar class="flex justify-content-between h-auto">
+    <mat-card-header class="p-0">
         <mat-card-title>Grupos </mat-card-title>
         <mat-card-subtitle>Grupos registrados en la aplicación</mat-card-subtitle>
     </mat-card-header>
-    <mat-card>
-        <mat-card-actions align="end">
-            <button mat-raised-button color="primary" (click)="manageGroup('crear')">Agregar Grupos</button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="content-table">
-        <mat-card-content class="table">
-    
-            <table mat-table class="mat-elevation-z6" [dataSource]="group">
    
-                
-                <ng-container matColumnDef="groupId">
-                    <th mat-header-cell *matHeaderCellDef class="table-header group-id"> No. </th>
-                    <td mat-cell *matCellDef="let group"> {{group.groupId}} </td>
-                </ng-container>
-    
-                
-                <ng-container matColumnDef="groupName">
-                    <th mat-header-cell *matHeaderCellDef class="table-header group-name"> Nombre </th>
-                    <td mat-cell *matCellDef="let group"> {{group.groupName}} {{group.groupLastName}} </td>
-                </ng-container>
-    
-               
-               <ng-container matColumnDef="groupCapacity">
-                    <th mat-header-cell *matHeaderCellDef class="table-header group-addres"> Capacidad </th>
-                    <td mat-cell *matCellDef="let group"> {{group.groupCapacity}} </td>
-                </ng-container>
-    
-    
-                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-    
-          
-            <div *ngIf="isLoading; else error">
-            </div>
-            <ng-template #error>
-                Hubo un error al cargar los grupos.
-            </ng-template>
-    
-    
-    
-        </mat-card-content>
-    </mat-card>
-    
-    
+        <mat-card-actions  class="mt-3 p-0">
+            <button mat-raised-button color="primary" (click)="manageGroup('crear')">Agregar Grupos
+                <mat-icon class="add-user" style="color: white;">add_circle</mat-icon>
+            </button>
+        </mat-card-actions>
+</mat-toolbar>
+<mat-divider class="content-table"></mat-divider>
+<mat-card class="content-table">
+    <mat-card-content class="table">
+        <table mat-table class="mat-elevation-z6" [dataSource]="group">
+            <ng-container matColumnDef="groupId">
+                <th mat-header-cell *matHeaderCellDef class="table-header group-id"> No. </th>
+                <td mat-cell *matCellDef="let group"> {{group.groupId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="groupName">
+                <th mat-header-cell *matHeaderCellDef class="table-header group-name"> Nombre </th>
+                <td mat-cell *matCellDef="let group"> {{group.groupName}} {{group.groupLastName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="groupStartdate">
+                <th mat-header-cell *matHeaderCellDef class="table-header groupStartdate">Fecha de inicio</th>
+                <td mat-cell *matCellDef="let group"> {{group.groupStartdate| date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="groupEnddate">
+                <th mat-header-cell *matHeaderCellDef class="table-header groupEnddate">Fecha final</th>element.campaign_end_date
+                <td mat-cell *matCellDef="let group"> {{group.groupEnddate | date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+            <!--<ng-container matColumnDef="groupCapacity">
+                <th mat-header-cell *matHeaderCellDef class="table-header group-addres"> Capacidad </th>
+                <td mat-cell *matCellDef="let group"> {{group.groupCapacity}} </td>
+            </ng-container>-->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div *ngIf="isLoading; else error">
+        </div>
+        <ng-template #error>
+            Hubo un error al cargar los grupos.
+        </ng-template>
+
+    </mat-card-content>

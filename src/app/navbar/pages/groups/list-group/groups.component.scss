@@ -7,22 +7,23 @@
 mat-icon{
     color:#ff0844;
 }
-
+.add-customer {
+    color: #fafafa !important;
+}
 .content-table {
     margin-top: 1rem;
 }
-
 .table-header {
     text-align: center;
     width: 200px;
-
-
 }
-
 .user-id {
     width: 50px;
 }
-
 .mat-mdc-cell {
     text-align: center;
+}
+mat-toolbar {
+    border: .01rem solid #738092;
+    border-radius: 10px;
 }

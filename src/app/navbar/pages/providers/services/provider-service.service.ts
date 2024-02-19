@@ -43,19 +43,19 @@ export class ProviderServiceService {
         })
       );
   }
-  eliminarProvider(id: number): Observable<any>{
+  eliminarProvider(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${environment.api}/proveedor/${id}`)
   }
+  // getAllProviders(): Observable<Provider[]> {     //devuelve un array de proveedores 
+  //   return this.httpClient.get<ReqResponse>(`${environment.api}/proveedores`)
+  //     .pipe(
+  //       tap(data => console.log('proveedores cargados con exito', data)),
+  //       map(res => res.data),
+  //       share()
+  //     )
 
+  // }
+
+  // getProvider(id: number): Observable<Provider>{ //devuelve un solo proveedor por id
+  //   return this.httpClient.get<Provider>(environment.api+'/proveedor/' +id)
 }
-
-
-
-
-// getProvider(id: number): Observable<Provider>{ //devuelve un solo proveedor por id
-//   return this.httpClient.get<Provider>(environment.api+'/proveedor/' +id)
-
-// }
-
-
-

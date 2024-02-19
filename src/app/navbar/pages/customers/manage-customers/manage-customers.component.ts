@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validator, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
-import { ListCustomersComponent } from '../list-customers/list-customers.component';
 
 @Component({
   selector: 'app-manage-customers',
@@ -15,15 +14,21 @@ export class ManageCustomersComponent {
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>, //^3
     private formBuiler: FormBuilder
   ) { }
+  // Variable que guarda o cambia según el click en el botón
+  mostrar: boolean = false;
+  // Variables de titulo y subtitulo en la página
   titulo: string = '';
   subtitulo: string = '';
+  // Método para mostrar la pestaña ver o editar
+  mostrarVentana() {
+    this.mostrar  = true;
+  }
   ngOnInit(): void {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? ' Crear nuevo cliente' : this.data.tipo === 'ver' ? 'Detalles del cliente' : 'Editar cliente';
     this.subtitulo = this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo cliente' : this.data.tipo === 'ver' ? 'Detalles del cliente' : 'Ingrese los nuevos datos del cliente';
-    debugger
   }
   //^4
   customerForm = this.formBuiler.group({

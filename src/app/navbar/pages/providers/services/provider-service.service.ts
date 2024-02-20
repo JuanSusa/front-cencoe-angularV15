@@ -14,9 +14,7 @@ export class ProviderServiceService {
   constructor(
     private httpClient: HttpClient,
 
-
   ) { }  //injectamos una variable llamada httpClient de tipo httpClient
-
 
   //este metodo nos sirve para obtener los proveedores
   getAllProviders(): Observable<Provider[]> {

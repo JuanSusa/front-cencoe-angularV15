@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap, map, share } from 'rxjs';
+import { Observable, tap, map, share } from 'rxjs'; 
 import { Customer, ReqResponse } from 'src/app/core/main.type';
 import { environment } from 'src/app/environments/environment';
 
@@ -11,7 +11,7 @@ export class CustomerServiceService {
   constructor(private readonly _htt: HttpClient) { }
 
   getAllCustomers(): Observable<Customer[]>{
-    return this._htt.get<ReqResponse>(`${environment.api}/clientes`)
+    return this._htt.get<ReqResponse<Customer>>(`${environment.api}/clientes`)
     .pipe(
       tap(data => console.log('Clientes cargados con exito', data)),
       map(res => res.data)

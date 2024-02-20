@@ -2,7 +2,8 @@
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: auto; /* Habilita la barra de desplazamiento vertical si el contenido es más grande que la tarjeta */
+    overflow: auto;
+    /* Habilita la barra de desplazamiento vertical si el contenido es más grande que la tarjeta */
 }
 
 mat-divider {
@@ -18,7 +19,8 @@ mat-divider {
     height: 100%;
     margin-top: 1.5rem;
 }
-mat-card-content{
+
+mat-card-content {
     max-width: 90vw !important;
 }
 
@@ -27,7 +29,27 @@ mat-label {
 
 }
 
-.btn-submit{
-    background-color: #ff0844;
+.btn-submit {
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     color: #fafafa;
+}
+
+.list-docs {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.form-docs {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.btn-submit:disabled {
+    background: #757575;
+    color: #fafafa;
+}
+
+mat-toolbar{
+    border: .01rem solid   #738092;
+    border-radius: 10px;
 }

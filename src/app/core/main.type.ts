@@ -8,10 +8,10 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  */
 
 
-export interface ReqResponse {
-    code:    number;
+export interface ReqResponse<T> {
+    code: number;
     message: string;
-    data: [];
+    data: T[];
     success: boolean;
 }
 
@@ -40,10 +40,10 @@ export interface Campaign {
     campaignState: string;
 }
 
-export interface TypeDocs {
-    data: TypeDocs;
-    docTypeId:   number;
-    docTypeName: string;
+export class TypeDocs {
+    docTypeId!: number | null;
+    docTypeName: string = '';
+    
 }
 
 export interface Team {
@@ -64,12 +64,12 @@ export interface Customer {
 
 // Modulo proveedores
 export interface Provider {
-    providerId?:      number;
-    providerName:    string;
-    providerAddress:  string;
-    providerContact: string;//ya esta en la bd
-    providerEmail:   string; //ya esta en la bd
-    providerDoctype?: TypeDocs;  //ya esta en la bd
-    providerDetails?: string;
-    // providerState:   boolean;
+    providerId: number;
+    providerName: String;
+    providerAddress: String;
+    providerEmail: String; //ya esta en la bd
+    providerContact: String;//ya esta en la bd
+    providerDoctype: TypeDocs;  //ya esta en la bd
+    providerDetails: String;
+    providerState: boolean;
 }

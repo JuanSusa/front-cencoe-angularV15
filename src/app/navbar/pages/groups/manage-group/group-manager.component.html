@@ -1,53 +1,72 @@
-<div class="container-box">
+<div class="container-box h-auto">
     <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
     <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
-
     <mat-dialog-content>
+
         <mat-card-content class="mat-elevation-z6">
             <!-- Formulario registro usuario -->
             <form class="create-group" [formGroup]="groupForm">
-                <section class="create-group__campos">
+                <section class="create-group__campos-width">
                     <!-- Campo Nombres -->
-                    <mat-form-field>
+                    <mat-form-field class="example-full-width">
                         <mat-label>Nombre de grupo</mat-label>
                         <input matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">Nombres
                             necesarios</mat-error>
                     </mat-form-field>
-           
-                <!--capacity 
-                <mat-form-field>
-                    <mat-label>Capacidad</mat-label>
-                    <input matInput formControlName="grupoCapacity" placeholder="groupCapacity" type="text" />
-                    <mat-error *ngIf="groupForm.get('groupCapacity')?.hasError('required')">Capacidad
-                    </mat-error>
-                </mat-form-field>-->
-            
+                    <div class="row">
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha inicio</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker"
+                                    autocapitalize="off" formControlName="fechaInicio">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                            <div class="error">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha final</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1"
+                                    autocapitalize="off" formControlName="fechaFinal">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <!--capacity 
+                    <mat-form-field>
+                        <mat-label>Capacidad</mat-label>
+                        <input matInput formControlName="grupoCapacity" placeholder="groupCapacity" type="text" />
+                        <mat-error *ngIf="groupForm.get('groupCapacity')?.hasError('required')">Capacidad
+                        </mat-error>
+                    </mat-form-field>-->
 
                     <!-- Nuevo boton -->
-            <mat-dialog-actions class="btn-selectUser">
-                <button mat-button (click)="selectUser()">Selecionar usuarios</button>
-                
-            </mat-dialog-actions>
-                    <!-- Campo Estado -->
+                    <mat-dialog-actions class="btn-selectUser">
+                        <button mat-button (click)="selectUser()">Selecionar usuarios</button>
+                    </mat-dialog-actions>
+                    <!-- Campo Estado 
+          </mat-card-content>
+            </mat-dialog-content>
+        </div>
                     <section>
                         <label>Estado de grupos:</label>
                         <br>
                         <mat-slide-toggle #stateCustomer>{{stateCustomer.checked}}</mat-slide-toggle>
                     </section>
                 </section>
-            </form>
-
+            </form>-->
+                    <!-- Botones de acciones
             <mat-card-actions class="actions-btns">
-                <!-- Botones de acciones 
+                
                 <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid">
                     {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                 </button>
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
                     Cancelar
-                </button>-->
-            </mat-card-actions>
-
-        </mat-card-content>
-    </mat-dialog-content>
-</div>
+                </button>
+            </mat-card-actions>-->

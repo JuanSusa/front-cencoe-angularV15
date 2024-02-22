@@ -10,7 +10,7 @@ mat-card-content {
     max-width: 800px; // Puedes ajustar este valor según tus necesidades
     margin: 0 auto; // Centra el contenido en el centro
 
-    .create-user {
+    .create-group {
         &__campos {
             display: grid;
             grid-template-columns: repeat(2, 1.5fr);
@@ -23,7 +23,7 @@ mat-card-content {
     }
 }
 
-.create-user {
+.create-group {
     mat-form-field {
         height: 80px;
     }

@@ -5,6 +5,8 @@ import { Provider, adminTypePopUp, ReqResponse } from 'src/app/core/main.type';
 import { ProviderServiceService } from '../services/provider-service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, takeUntil } from 'rxjs';
+import Swal from 'sweetalert2';
+
 
 
 
@@ -22,14 +24,11 @@ export class ProvidersComponent implements OnInit {
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "providerState"]
   //  dataSource! : MatTableDataSource<Provider>
 
-
-
   constructor(
     private readonly _dialog: MatDialog,
     private readonly providerService: ProviderServiceService ) {
 
   }
-
 
   ngOnInit() {
     this.getAllProviders()
@@ -42,30 +41,28 @@ export class ProvidersComponent implements OnInit {
     })
   }
 
-  // }
+  eliminarProvider(){
+      Swal.fire({
+        title: "¿Esta seguro de eliminar este registro?",
+        text: "Esta operacion es irreversible!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ff0844",
+        cancelButtonColor: "rgb(2,0,36)",
+        confirmButtonText: "Si, confirmar!",
+        cancelButtonText: "No, cancelar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Eliminado",
+            text: "El proveedor ha sido eliminado",
+            confirmButtonColor: "#ff0844",
+            icon: "success"
+          });
+        }
+      })
 
-  // getAllProviders() {
-  //   this.providerService.getAllProviders().subscribe(
-  //     (response) => {
-
-  //     },
-  //     (error) => {
-  //       console.error('Error al obtener usuarios:', error);
-  //     }
-  //   );
-  // }
-
-
-
-  // getProvider(id: number) {
-  //   this.providerService.getProvider(id).subscribe(response => {
-
-  //     console.log(response)
-  //   })
-
-  // }
-
-
+  }
   /* Logica para abrir el mat dialog*/
   manageProvider(tipo: adminTypePopUp, providerId?: number) {
     const activeModal = this._dialog.open(ManageProvidersComponent, {
@@ -78,6 +75,14 @@ export class ProvidersComponent implements OnInit {
       });
 
   }
+  
+  // getProvider(id: number) {
+  //   this.providerService.getProvider(id).subscribe(response => {
+
+  //     console.log(response)
+  //   })
+
+  // }
 
 }
 

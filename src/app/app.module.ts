@@ -14,6 +14,7 @@ import { NavbarModuleModule } from './navbar/navbar-module.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     NavbarModuleModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

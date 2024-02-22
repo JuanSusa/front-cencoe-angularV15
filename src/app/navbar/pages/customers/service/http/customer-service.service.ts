@@ -11,7 +11,7 @@ export class CustomerServiceService {
   constructor(private readonly _htt: HttpClient) { }
 
   getAllCustomers(): Observable<Customer[]>{
-    return this._htt.get<ReqResponse>(`${environment.api}/clientes`)
+    return this._htt.get<ReqResponse<Customer>>(`${environment.api}/clientes`)
     .pipe(
       tap(data => console.log('Clientes cargados con exito', data)),
       map(res => res.data)

@@ -16,10 +16,6 @@ mat-card-subtitle{
 }
 
 
-::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label{
-    color: #ff0844;
-}
-
 .add-provider{
     display: grid;
     grid-template-columns: repeat(2, 1.5fr); //establece dos columnas

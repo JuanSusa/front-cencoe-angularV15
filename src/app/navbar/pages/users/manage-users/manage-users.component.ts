@@ -2,8 +2,9 @@ import { TipodocumentoHttpService } from './../../tipodocumento/services/tipo-do
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TypeDocs, adminPopUp } from 'src/app/core/main.type';
+import { TypeDocs, User, adminPopUp } from 'src/app/core/main.type';
 import { TipodocumentoComponent } from '../../tipodocumento/manage-tipodocumento/tipodocumento.component';
+import { userHttpService } from '../service/http/user-service.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -13,37 +14,44 @@ import { TipodocumentoComponent } from '../../tipodocumento/manage-tipodocumento
 export class ManageUsersComponent implements OnInit {
 
   public typeDocs: TypeDocs[] = [];
-  
-  
+  public user: User | undefined;
+  public showBtn: boolean = false;
+
+
   constructor(
     private _TipodocumentoHttpService: TipodocumentoHttpService,
+    private _userServiceHttp: userHttpService,
     private readonly _matDialogRef: MatDialogRef<ManageUsersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
-    ) { }
-    
-    //^4
-    userForm = this.formBuilder.group({
-      userDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
-      userName: ['', Validators.required],
-      userLastName: ['', Validators.required],
-      userAddress: ['', [Validators.required, Validators.minLength(3)]],
-      userPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-      userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-      userState: [''],
-      userTipoDocumento: ['']
-    })
-    
-    titulo: string = '';
-    subtitulo: string = '';
-    ngOnInit(): void {
-      //^5
-      const { tipo, campo } = this.data;
-      this.titulo =
+  ) { }
+
+  //^4
+  userForm = this.formBuilder.group({
+    userDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
+    userName: ['', Validators.required],
+    userLastName: ['', Validators.required],
+    userAddress: ['', [Validators.required, Validators.minLength(3)]],
+    userPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
+    userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    userState: [''],
+    userTipoDocumento: ['']
+  })
+
+  titulo: string = '';
+  subtitulo: string = '';
+  ngOnInit(): void {
+    //^5
+    const { tipo, campo } = this.data;
+    this.titulo =
       this.data.tipo === 'crear' ? 'Crear nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Editar Usuario';
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Ingrese los nuevos datos del usuario';
 
+
+    if (tipo === 'ver') {
+      this.getUserById(campo!)
+    }
     this.getAllTypeDocs()
 
   }
@@ -56,6 +64,29 @@ export class ManageUsersComponent implements OnInit {
           console.log(data)
         })
     }
+  }
+
+  createUser(){
+    if(this.userForm.valid){
+      // const newUser: User = this.userForm.value;
+    }
+  }
+
+  getUserById(userId: number): void {
+    this._userServiceHttp.getUserById(userId).subscribe(
+      (userData) => {
+        this.user = userData;
+        // this.userForm.patchValue(userData);
+        console.log('datos en el componente', userData);
+      },
+      (error) => {
+        console.error('Error al obtener datos del usuario', error);
+      }
+    )
+  }
+
+  public showButton(){
+    this.showBtn=!this.showBtn
   }
 
 

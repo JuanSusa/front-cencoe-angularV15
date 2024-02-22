@@ -12,18 +12,18 @@ import { SelectUserComponent } from '../select-user/select-user.component';
 })
 
 export class GroupManagerComponent implements OnInit {
+  maxDate: Date;
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder
 
-  ) { }
+  ) { this.maxDate = new Date();}
 
 
   selectUser(): void {
     const dialogRef = this.dialog.open(SelectUserComponent, {
-      width: '250px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,11 +51,10 @@ export class GroupManagerComponent implements OnInit {
     groupDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
     groupName: ['', Validators.required],
     groupLastName: ['', Validators.required],
-    groupAddress: ['', [Validators.required, Validators.minLength(3)]],
-    groupPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-    groupPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
+    fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
     groupState: [''],
-    groupTipoDocumento: ['']
+   
   })
 
   public executionMesssage() {

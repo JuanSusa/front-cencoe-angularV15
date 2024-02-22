@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SelectUserComponent } from './select-user/select-user.component';
+import { GroupServiceService } from './services/http/group-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,7 +32,9 @@ import { SelectUserComponent } from './select-user/select-user.component';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+    HttpClientModule
+  ],
+  providers: [GroupServiceService]
 })
 export class GroupsModuleModule { }

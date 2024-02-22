@@ -43,7 +43,7 @@ export interface Campaign {
 export class TypeDocs {
     docTypeId!: number | null;
     docTypeName: string = '';
-    
+
 }
 
 export interface Team {
@@ -73,3 +73,4 @@ export interface Provider {
     providerDetails: String;
     providerState: boolean;
 }
+

@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { adminPopUp } from 'src/app/core/main.type';
+import { Team, adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SelectGroupComponent } from '../select-group/select-group.component';
 import { SelectProvideComponent } from '../select-provide/select-provide.component';
+import { GroupServiceService } from '../../groups/services/http/group-service.service';
 
 
 @Component({
@@ -12,12 +13,15 @@ import { SelectProvideComponent } from '../select-provide/select-provide.compone
   styleUrls: ['./manage-campaigns.component.scss']
 })
 export class ManageCampaignsComponent {
+  public team:Team[]=[]
+  public showBtn: boolean = false;
   maxDate: Date;
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _GroupService : GroupServiceService
     ) { this.maxDate = new Date();}
 
     campaignForm = this.formBuilder.group({
@@ -27,6 +31,7 @@ export class ManageCampaignsComponent {
       fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
       observaciones: ['', [Validators.required, Validators.maxLength(100)]],
       estado : ['', [Validators.required,]],
+      grupos : ['']
     })
 
     selectGroup(): void {
@@ -52,6 +57,7 @@ export class ManageCampaignsComponent {
   subtitulo: string = '';
   ngOnInit(): void {
     //^5
+    this.getAllGroups()
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles de la Campaña' : 'Editar Campaña';
@@ -60,7 +66,9 @@ export class ManageCampaignsComponent {
 
 
   }
-
+  public showButton(){
+    this.showBtn=!this.showBtn
+  }
   //^4
 
 
@@ -73,6 +81,15 @@ export class ManageCampaignsComponent {
     // Filtrar caracteres no numéricos
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
+  }
+  getAllGroups(){
+    if(this._GroupService){
+      this._GroupService.getAllGroups()
+      .subscribe((data : Team[]) =>{
+        this.team = data
+        console.log(data)
+      })
+    }
   }
 
 

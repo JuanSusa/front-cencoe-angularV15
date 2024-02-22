@@ -10,6 +10,7 @@ import { CampaignsServiceService } from './services/http/campaigns-service.servi
 
 import { SelectGroupComponent } from './select-group/select-group.component';
 import { SelectProvideComponent } from './select-provide/select-provide.component';
+import { GroupServiceService } from '../groups/services/http/group-service.service';
 
 @NgModule({
   declarations: [ManageCampaignsComponent, ListCampaignComponent, SelectGroupComponent, SelectProvideComponent],
@@ -21,6 +22,6 @@ import { SelectProvideComponent } from './select-provide/select-provide.componen
     HttpClientModule
   ],
 //Ver la lista de la campaña
-providers: [CampaignsServiceService]
+providers: [CampaignsServiceService, GroupServiceService]
 })
 export class CampaignsModuleModule { }

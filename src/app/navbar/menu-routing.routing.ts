@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tipodocumento/tipodocumento-module.module').then((m) => m.TipodocumentoModuleModule)
   },
   {
+    path: 'role',
+    component: NavbarComponent,
+    loadChildren: () => import('./pages/role/role.module').then((m) => m.RoleModule)
+  },
+  {
     path: 'grupos',
     component: NavbarComponent,
     loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)

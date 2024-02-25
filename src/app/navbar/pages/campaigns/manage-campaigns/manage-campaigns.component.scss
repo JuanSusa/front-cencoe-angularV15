@@ -1,26 +1,28 @@
     mat-form-field {
         width: 100%;
+        height: 4rem;
+        /* Cambia el tamaño de los campos */
     }
-    
+
     .row {
         display: flex;
     }
-    
+
     mat-icon {
         cursor: pointer;
         color: #ff0844;
         margin-left: 5px;
     }
-    
+
     .sub {
-        margin: auto 25px;
+        margin: auto 20px;
     }
-    
+
     mat-icon:hover {
         color: #ffb199;
         /* Cambia el color cuando se pasa el ratón sobre el icono */
     }
-    
+
     mat-card-actions {
         justify-content: flex-end;
         .btn-saved-dialog:not([disabled]) {
@@ -39,23 +41,23 @@
             margin-right: 0.5rem;
         }
     }
-    
+
     .btn-selectCampaign {
         margin-right: 0.5rem;
         color: aliceblue;
         margin: 0 1rem 1rem 0;
     }
-    
+
     .btn-action {
         background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
         color: #fafafa !important;
     }
-    
+
     .error {
         color: #db1414;
         margin-top: -10px;
     }
-    
+
     .box-obs {
         overflow: auto;
     }

@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Campaign, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignsServiceService } from '../services/http/campaigns-service.service';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-list-campaign',
@@ -16,7 +21,8 @@ export class ListCampaignComponent {
   success: boolean = false;
   constructor(
     private readonly _dialog: MatDialog,
-    private readonly _campaignHttpService: CampaignsServiceService
+    private readonly _campaignHttpService: CampaignsServiceService,
+    private http: HttpClient
   ) {
   }
   ngOnInit(): void {

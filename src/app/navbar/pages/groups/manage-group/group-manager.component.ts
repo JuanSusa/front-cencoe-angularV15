@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { adminPopUp } from 'src/app/core/main.type';
+import { Team, adminPopUp } from 'src/app/core/main.type';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectUserComponent } from '../select-user/select-user.component';
 
@@ -12,13 +12,14 @@ import { SelectUserComponent } from '../select-user/select-user.component';
 })
 
 export class GroupManagerComponent implements OnInit {
+  public team:Team[]=[]
+  public showBtn: boolean = false;
   maxDate: Date;
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
-    private formBuilder: FormBuilder
-
+    private formBuilder: FormBuilder,
   ) { this.maxDate = new Date();}
 
 
@@ -54,9 +55,12 @@ export class GroupManagerComponent implements OnInit {
     fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
     fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
     groupState: [''],
-   
-  })
 
+  })
+  public showButton(){
+    this.showBtn=!this.showBtn
+  }
+  //^4
   public executionMesssage() {
     this._matDialogRef.close();
   }

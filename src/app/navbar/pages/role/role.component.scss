@@ -1,0 +1,29 @@
+.container-box{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 1rem;
+}
+
+mat-card-header{
+    border: .01rem solid #738092;
+    border-radius: 7px;
+}
+mat-card-content {
+    max-width: 900px; // Puedes ajustar este valor según tus necesidades
+    margin: 1rem; // Centra el contenido en el centro
+    .create-list {
+        
+            display: grid;
+            grid-template-columns: column;
+            grid-auto-rows: 50px;
+            column-gap: 2px;
+            max-width: 100%; // Asegura que el ancho máximo sea el 100% del contenedor padre
+            margin: 0 auto; // Centra el contenido en el centro
+        }
+}
+.btn-select button {
+    margin-right: 0.5rem;
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    color: aliceblue;
+}

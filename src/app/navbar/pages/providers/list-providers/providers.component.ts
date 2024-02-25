@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
 import { Provider, adminTypePopUp, ReqResponse } from 'src/app/core/main.type';
@@ -6,6 +6,7 @@ import { ProviderServiceService } from '../services/provider-service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 
 
@@ -20,9 +21,10 @@ export class ProvidersComponent implements OnInit {
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
 
-  listprovider: Provider[]=[];
-  displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "providerState"]
-  //  dataSource! : MatTableDataSource<Provider>
+  listprovider:Provider[]= [];
+  pageSizeOptions: number[] = [3, 10, 25, 100];
+  totalItems: number = 0;
+  displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]
 
   constructor(
     private readonly _dialog: MatDialog,
@@ -34,11 +36,20 @@ export class ProvidersComponent implements OnInit {
     this.getAllProviders()
     //this.getProvider(2)
   }
-  getAllProviders() {
-    this.providerService.getAllProviders().subscribe(data =>{
-      this.listprovider = data;
+
+  getAllProviders(page:number =0, size: number=3) {
+    this.providerService.getAllProviders(page, size)
+    .subscribe((data :any) =>{
+      this.listprovider = data.content;
+      this.totalItems = data.totalElements; 
       console.log(data)
     })
+  }
+
+  onPageChange(event: PageEvent) {
+    const page = event.pageIndex; // Índice de la página seleccionada
+    const size = event.pageSize; // Tamaño de la página seleccionada
+    this.getAllProviders(page, size); // Obtener los proveedores para la página seleccionada
   }
 
   eliminarProvider(){
@@ -75,14 +86,6 @@ export class ProvidersComponent implements OnInit {
       });
 
   }
-  
-  // getProvider(id: number) {
-  //   this.providerService.getProvider(id).subscribe(response => {
-
-  //     console.log(response)
-  //   })
-
-  // }
 
 }
 

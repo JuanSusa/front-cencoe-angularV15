@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProvidersComponent } from './list-providers/providers.component';
-
+import { RoleComponent } from './role.component';
 
 const routes: Routes = [
   {
     path:'',
     children: [
       {
-        path:'proveedor',
-        component: ProvidersComponent
+        path:'role',
+        component: RoleComponent
       },
-      { path: '**', redirectTo: 'proveedor' }
+      { path: '**', redirectTo: 'role' }
     ]
-
   }
 ];
 
@@ -21,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProviderModuleRoutingModule { }
+export class RoleModuleRoutingModule { }

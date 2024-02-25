@@ -13,7 +13,7 @@ export class CampaignsServiceService {
   getAllCampaigns(): Observable<Campaign[]>{
   return this.http.get<ReqResponse<Campaign>>(`${environment.api}/campañas`)
   .pipe(
-    tap(data => console.log('Clientes cargados con exito', data)),
+    tap(data => console.log('Campañas cargados con exito', data)),
     map(res => res.data)
   )
 }

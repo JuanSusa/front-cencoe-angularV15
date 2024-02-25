@@ -3,13 +3,12 @@
 }
 
 .mat-mdc-card-subtitle {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
 }
 
 mat-card-content {
     max-width: 800px; // Puedes ajustar este valor según tus necesidades
     margin: 0 auto; // Centra el contenido en el centro
-
     .create-user {
         &__campos {
             display: grid;
@@ -27,7 +26,6 @@ mat-card-content {
     mat-form-field {
         height: 80px;
     }
-
 }
 
 mat-icon {
@@ -43,25 +41,19 @@ mat-icon:hover {
 
 mat-card-actions {
     justify-content: flex-end;
-
-
     .btn-saved-dialog:not([disabled]) {
         margin-right: 0.5rem;
         background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
         color: aliceblue;
     }
-
     .btn-saved-dialog[disabled] {
         margin-right: 0.5rem;
         background-color: #ccc;
         color: #666;
-
     }
-
     .btn-cancel-dialog {
         background: linear-gradient(-22deg, #29323c 0%, #485563 100%);
         color: aliceblue;
         margin-right: 0.5rem;
     }
 }
-

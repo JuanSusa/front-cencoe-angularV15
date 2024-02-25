@@ -18,48 +18,42 @@
                     <mat-form-field>
                         <mat-label>Apellidos</mat-label>
                         <input matInput formControlName="userLastName" placeholder="Apellidos" type="text" />
-                        <mat-error *ngIf="userForm.get('userLastName')?.hasError('required')">Apellidos
-                            necesarios</mat-error>
+                        <mat-error *ngIf="userForm.get('userLastName')?.hasError('required')">Apellidos necesarios
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- Campo Telefono -->
                     <mat-form-field>
                         <mat-label>Teléfono</mat-label>
-                        <input matInput formControlName="userPhone" placeholder="Teléfono"
-                            (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('required')">El número de teléfono es
-                            obligatorio</mat-error>
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('minlength')">El número de teléfono debe
-                            tener al menos 10 dígitos</mat-error>
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('maxlength')">Máximo 10
-                            dígitos</mat-error>
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('pattern')">El número de teléfono debe
-                            contener solo dígitos</mat-error>
+                        <input matInput formControlName="userPhone" placeholder="Teléfono" (input)="onNumericInput($event)" />
+                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('required')">El número de teléfono es obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('minlength')">El número de teléfono debe tener al menos 10 dígitos</mat-error>
+                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('maxlength')">Máximo 10 dígitos
+                        </mat-error>
+                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('pattern')">El número de teléfono debe contener solo dígitos</mat-error>
                     </mat-form-field>
 
                     <!-- Campo Contraseña -->
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
                         <input matInput formControlName="userPassword" placeholder="Contraseña" type="password" />
-                        <mat-icon matSuffix
-                            *ngIf="userForm.get('userPassword')?.touched && userForm.get('userPassword')?.invalid"
-                            matTooltip="La contraseña debe contener máximo 10 caracteres entre letras, números y al menos una mayúscula.">info</mat-icon>
+                        <mat-icon matSuffix *ngIf="userForm.get('userPassword')?.touched && userForm.get('userPassword')?.invalid" matTooltip="La contraseña debe contener máximo 10 caracteres entre letras, números y al menos una mayúscula.">info</mat-icon>
                         <mat-error *ngIf="userForm.get('userPassword')?.hasError('passwordCriteria')"></mat-error>
-                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('required')">Contraseña
-                            necesaria</mat-error>
+                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('required')">Contraseña necesaria
+                        </mat-error>
                         <mat-error *ngIf="userForm.get('userPassword')?.hasError('minlength')"></mat-error>
                     </mat-form-field>
 
                     <!-- Campo número de documento -->
                     <mat-form-field>
                         <mat-label>No. Documento</mat-label>
-                        <input matInput formControlName="userDocument" placeholder="No. Documento"
-                            (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Documento
-                            necesario</mat-error>
+                        <input matInput formControlName="userDocument" placeholder="No. Documento" (input)="onNumericInput($event)" />
+                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Documento necesario
+                        </mat-error>
                         <mat-error *ngIf="userForm.get('userDocument')?.hasError('minlength')"></mat-error>
-                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('pattern')">Unicamente
-                            números</mat-error>
+                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('pattern')">Unicamente números
+                        </mat-error>
                         <mat-error *ngIf="userForm.get('userDocument')?.hasError('maxLength')"></mat-error>
                     </mat-form-field>
 
@@ -67,8 +61,7 @@
                     <mat-form-field>
                         <mat-label>Tipo de Documento</mat-label>
                         <mat-select formControlName="userTipoDocumento">
-                            <mat-option *ngFor="let tipoDoc of typeDocs"
-                                [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
+                            <mat-option *ngFor="let tipoDoc of typeDocs" [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -91,16 +84,13 @@
             </form>
             <mat-card-actions class="actions-btns">
                 <!-- Botones de acciones -->
-                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="userForm.invalid"
-                    (click)="showButton()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'"
-                    [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="userForm.invalid" (click)="showButton()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'" [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
                     {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                 </button>
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
                     Cancelar
                 </button>
             </mat-card-actions>
-
         </mat-card-content>
     </mat-dialog-content>
 </div>

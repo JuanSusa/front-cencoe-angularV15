@@ -14,7 +14,7 @@
 
 <mat-card class="content-table">
     <mat-card-content class="table">
-         
+
         <table mat-table class="mat-elevation-z6" [dataSource]="user">
 
             <!-- Columna Id-->
@@ -41,7 +41,7 @@
                 <td mat-cell *matCellDef="let users"> {{users.userEmail}} </td>
             </ng-container>
 
-            <!-- Columna Acciones -->   
+            <!-- Columna Acciones -->
             <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef class="table-header actions"> </th>
                 <td mat-cell *matCellDef="let users">
@@ -49,7 +49,7 @@
                         <mat-icon aria-label="Ver detalles">visibility</mat-icon>
                     </button>
                     <button mat-icon-button (click)="manageUser('editar')">
-                        <mat-icon aria-label="Editar registro">edit</mat-icon>
+                        <mat-icon  aria-label="Editar registro">edit</mat-icon>
                     </button>
                 </td>
             </ng-container>
@@ -59,6 +59,6 @@
         </table>
 
         <!-- Mostrar mensaje de carga o error -->
-        
+
     </mat-card-content>
 </mat-card>

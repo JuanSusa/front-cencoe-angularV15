@@ -8,10 +8,10 @@ const routes: Routes = [
     path:'',
     children: [
       {
-        path:'list-provider',
+        path:'proveedor',
         component: ProvidersComponent
       },
-      { path: '**', redirectTo: 'list-provider' }
+      { path: '**', redirectTo: 'proveedor' }
     ]
 
   }

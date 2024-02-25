@@ -5,10 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModuleModule } from './navbar/navbar-module.module';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +14,7 @@ import { NavbarModuleModule } from './navbar/navbar-module.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     NavbarModuleModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

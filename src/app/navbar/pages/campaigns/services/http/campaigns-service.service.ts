@@ -11,7 +11,7 @@ export class CampaignsServiceService {
   constructor(private readonly http: HttpClient) { }
 
   getAllCampaigns(): Observable<Campaign[]>{
-  return this.http.get<ReqResponse>(`${environment.api}/campañas`)
+  return this.http.get<ReqResponse<Campaign>>(`${environment.api}/campañas`)
   .pipe(
     tap(data => console.log('Clientes cargados con exito', data)),
     map(res => res.data)

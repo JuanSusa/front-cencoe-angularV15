@@ -7,14 +7,12 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
-
 export interface ReqResponse<T> {
     code: number;
     message: string;
     data: T[];
     success: boolean;
 }
-
 
 // Modulo usuario
 export interface User {
@@ -43,7 +41,6 @@ export interface Campaign {
 export class TypeDocs {
     docTypeId!: number | null;
     docTypeName: string = '';
-    
 }
 
 export interface Team {

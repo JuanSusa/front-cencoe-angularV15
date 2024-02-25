@@ -37,12 +37,14 @@
                     <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('required')">Observaciones necesarias</mat-error>
                 </mat-form-field>
                 <mat-form-field>
+                    <mat-label>Grupos</mat-label>
                     <mat-select formControlName="grupos">
                         <mat-option *ngFor="let t of team" [value]="t.teamId">
-                            {{t.teamName}}
+                            {{t.teamName}} - {{t.teamId}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+
             </form>
             <mat-card-actions class="actions-btns">
                 <!-- Botones de acciones -->

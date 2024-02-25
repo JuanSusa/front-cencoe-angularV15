@@ -15,6 +15,16 @@ export interface ReqResponse<T> {
     success: boolean;
 }
 
+// Modulo proveedores
+export interface Provider {
+    providerId?: number | null;
+    providerName: String;
+    providerAddress: String;
+    providerEmail: String; 
+    providerContact: String;
+    providerDetails: String;
+    providerDoctype: TypeDocs;  
+}
 
 // Modulo usuario
 export interface User {
@@ -62,14 +72,3 @@ export interface Customer {
     customerState: boolean;
 }
 
-// Modulo proveedores
-export interface Provider {
-    providerId: number;
-    providerName: String;
-    providerAddress: String;
-    providerEmail: String; //ya esta en la bd
-    providerContact: String;//ya esta en la bd
-    providerDoctype: TypeDocs;  //ya esta en la bd
-    providerDetails: String;
-    providerState: boolean;
-}

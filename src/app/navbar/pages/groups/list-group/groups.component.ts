@@ -4,7 +4,6 @@ import { Team, adminTypePopUp } from 'src/app/core/main.type';
 import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
@@ -15,7 +14,6 @@ export class GroupsComponent {
   public displayedColumns = ['teamId', 'teamName', 'edit'];//^2
   isLoading = true;
   success: boolean = false;
-
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _groupHttpService: GroupServiceService,
@@ -43,7 +41,3 @@ export class GroupsComponent {
       });
   }
 }
-/**
- * ^1 => Inyeccion de datos usuarios
- * ^2 => arreglo que define las columnas de la tabla en la vista
- */

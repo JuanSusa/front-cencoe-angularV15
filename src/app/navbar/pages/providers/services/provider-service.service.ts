@@ -1,15 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable, catchError, map, share, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, share, tap, throwError } from 'rxjs';
 import { Provider, ReqResponse } from 'src/app/core/main.type';
 import { environment } from 'src/app/environments/environment';
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderServiceService {
+export class ProviderService {
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
   constructor(private httpClient: HttpClient) { }
 
@@ -19,11 +16,10 @@ export class ProviderServiceService {
       .append('page', page.toString())
       .append('size', size.toString())
     return this.httpClient.get<ReqResponse<Provider[]>>(`${environment.api}/proveedores?page=${page}&size=${size}`)
-    // .pipe(
-    //   tap(data => console.log('proveedores cargados con exito', data)),
-    //   map(res => res.data),
-    //   share()
-    // )
+    .pipe(
+      tap(console.log)
+    )
+
   }
 
   //este metodo sirve para registrar un empleado
@@ -48,9 +44,4 @@ export class ProviderServiceService {
   eliminarProvider(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${environment.api}/proveedor/${id}`)
   }
-
-
-
-  // getProvider(id: number): Observable<Provider>{ //devuelve un solo proveedor por id
-  //   return this.httpClient.get<Provider>(environment.api+'/proveedor/' +id)
 }

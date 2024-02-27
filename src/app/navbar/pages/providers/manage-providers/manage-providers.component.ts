@@ -1,13 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Provider, ReqResponse, TypeDocs, adminPopUp, adminTypePopUp } from 'src/app/core/main.type';
-import { ProviderServiceService } from '../services/provider-service.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Provider, TypeDocs, adminPopUp} from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
-
-
-
+import { ProviderService } from '../services/provider-service.service';
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
@@ -19,13 +15,11 @@ export class ManageProvidersComponent implements OnInit {
   subtitulo: String = ''
   providerForm: FormGroup
   typeDocs: TypeDocs[] = []
-
   constructor(private readonly _matDialogRef: MatDialogRef<ManageProvidersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,
     private formBuilder: FormBuilder,
-    private ServiceProvider: ProviderServiceService,
+    @Inject(ProviderService) private readonly providerService: ProviderService,
     private _ServiceTD : TipodocumentoHttpService
-
   ) {
     this.providerForm = formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(35)]],
@@ -35,7 +29,6 @@ export class ManageProvidersComponent implements OnInit {
       details: ['', Validators.required],
       TipoDocumento: [''],
     })
-
   }
   ngOnInit(): void {
     this._ServiceTD.getAllTypeDocuments().subscribe((data) =>{
@@ -62,35 +55,14 @@ export class ManageProvidersComponent implements OnInit {
         providerDoctype: this.providerForm.value.providerDoctype
 
         }
-        this.ServiceProvider.saveProvider(provider).subscribe(
+        this.providerService.saveProvider(provider).subscribe(
           (response) =>{
             console.log(response)
           }
         )
       }
-      
-      // const formData = this.providerForm.value;
-      // const provider : Provider = {
-      //   providerId: null,
-      //   providerName : formData.providerName,
-      //   providerAddress: formData.providerAddress,
-      //   providerEmail: formData.providerEmail,
-      //   providerContact: formData.providerContact,
-      //   providerDetails: formData.providerDetails,
-      //   providerDoctype: formData.providerDoctype
-      // }
-      // this.ServiceProvider.saveProvider(provider)
-      // .subscribe((response : ReqResponse<Provider>) =>{
-      //   console.log('Proveedor creado correctamente:', response.data);
-      // }, error => {
-      //   // Handle error
-      //   console.error('Error al crear proveedor:', error);
-      // });
-    
   }
-  
   public cerrarDialog(){
     this._matDialogRef.close()
   }
-
 }

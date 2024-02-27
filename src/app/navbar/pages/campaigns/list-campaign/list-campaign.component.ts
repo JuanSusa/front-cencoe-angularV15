@@ -4,6 +4,7 @@ import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.c
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignsServiceService } from '../services/http/campaigns-service.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListCampaignComponent {
   public campaign: Campaign[] = [];//^1
-  public displayedColumns = ['campaign_id','campaign_name','campaign_team', 'campaign_provider','campaign_start_date','campaign_end_date','campaign_observations','campaign_state', 'edit'];//^2
+  public displayedColumns = ['campaign_id','campaign_name','campaign_team', 'campaign_provider','campaign_start_date','campaign_end_date','campaign_observations','campaign_state', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
   constructor(
@@ -44,7 +45,30 @@ export class ListCampaignComponent {
         console.log('se cerro el dialogo ')
       });
   }
+  eliminarCampaign(){
+    Swal.fire({
+      title: "¿Esta seguro de eliminar este registro?",
+      text: "Esta operacion es irreversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff0844",
+      cancelButtonColor: "rgb(2,0,36)",
+      confirmButtonText: "Si, confirmar!",
+      cancelButtonText: "No, cancelar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado",
+          text: "El proveedor ha sido eliminado",
+          confirmButtonColor: "#ff0844",
+          icon: "success"
+        });
+      }
+    })
+
+  }
 }
+
 /**
  * ^1 => Inyeccion de datos usuarios
  * ^2 => arreglo que define las columnas de la tabla en la vista

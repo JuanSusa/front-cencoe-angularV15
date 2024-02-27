@@ -33,9 +33,9 @@
                             </mat-form-field>
                         </div>
                         <mat-form-field>
-                            <mat-select formControlName="grupos">
-                                <mat-option *ngFor="let t of team" [value]="t.teamId">
-                                    {{t.teamName}}
+                            <mat-select formControlName="user">
+                                <mat-option *ngFor="let t of user" [value]="t.userId">
+                                    {{t.userName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

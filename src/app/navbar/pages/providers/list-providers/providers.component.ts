@@ -1,17 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Component, Inject, OnInit} from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
-import { Provider, adminTypePopUp, ReqResponse } from 'src/app/core/main.type';
-import { ProviderServiceService } from '../services/provider-service.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { Subject, takeUntil } from 'rxjs';
+import { Provider, adminTypePopUp} from 'src/app/core/main.type';
 import Swal from 'sweetalert2';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
-
-
-
-
+import { PageEvent } from '@angular/material/paginator';
+import { ProviderService } from '../services/provider-service.service';
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
@@ -28,7 +21,7 @@ export class ProvidersComponent implements OnInit {
 
   constructor(
     private readonly _dialog: MatDialog,
-    private readonly providerService: ProviderServiceService ) {
+    @Inject(ProviderService) private readonly providerService: ProviderService) {
 
   }
 
@@ -41,7 +34,7 @@ export class ProvidersComponent implements OnInit {
     this.providerService.getAllProviders(page, size)
     .subscribe((data :any) =>{
       this.listprovider = data.content;
-      this.totalItems = data.totalElements; 
+      this.totalItems = data.totalElements;
       console.log(data)
     })
   }

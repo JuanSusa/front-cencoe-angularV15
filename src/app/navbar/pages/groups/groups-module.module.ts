@@ -9,18 +9,12 @@ import { GroupManagerComponent } from './manage-group/group-manager.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SelectUserComponent } from './select-user/select-user.component';
 import { GroupServiceService } from './services/http/group-service.service';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
 @NgModule({
-  declarations: [GroupsComponent, GroupManagerComponent, SelectUserComponent],
+  declarations: [GroupsComponent, GroupManagerComponent],
   imports: [
     CommonModule,
     GroupsModuleRoutingModule,

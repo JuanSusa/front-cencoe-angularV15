@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Team, adminPopUp } from 'src/app/core/main.type';
+import { Team, User, adminPopUp } from 'src/app/core/main.type';
 import { MatDialog } from '@angular/material/dialog';
-import { SelectUserComponent } from '../select-user/select-user.component';
+import { userHttpService } from '../../users/service/http/user-service.service';
 
 @Component({
   selector: 'app-group-manager',
@@ -13,6 +13,7 @@ import { SelectUserComponent } from '../select-user/select-user.component';
 
 export class GroupManagerComponent implements OnInit {
   public team:Team[]=[]
+  public user:User[]=[]
   public showBtn: boolean = false;
   maxDate: Date;
   constructor(
@@ -20,19 +21,8 @@ export class GroupManagerComponent implements OnInit {
     private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
+    private _UsersService : userHttpService,
   ) { this.maxDate = new Date();}
-
-
-  selectUser(): void {
-    const dialogRef = this.dialog.open(SelectUserComponent, {
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('La ventana emergente ha sido cerrada');
-    });
-  }
-
-
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
@@ -43,10 +33,7 @@ export class GroupManagerComponent implements OnInit {
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Ingrese los nuevos datos del grupo';
     debugger
-
-
   }
-
   //^4
   groupForm = this.formBuilder.group({
     groupDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
@@ -55,7 +42,6 @@ export class GroupManagerComponent implements OnInit {
     fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
     fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
     groupState: [''],
-
   })
   public showButton(){
     this.showBtn=!this.showBtn
@@ -64,19 +50,19 @@ export class GroupManagerComponent implements OnInit {
   public executionMesssage() {
     this._matDialogRef.close();
   }
-
   //^6
   onNumericInput(event: any): void {//^6.1
     // Filtrar caracteres no numéricos
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
-
- 
+  getAllUsers(){
+    if(this._UsersService){
+      this._UsersService.getAllUsers()
+      .subscribe((data : User[]) =>{
+        this.user = data
+        console.log(data)
+      })
+    }
 }
-
-
-
-
-
-
+}

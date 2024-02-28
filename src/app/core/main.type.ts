@@ -70,4 +70,3 @@ export interface Customer {
     customerAddress: string;
     customerState: boolean;
 }
-

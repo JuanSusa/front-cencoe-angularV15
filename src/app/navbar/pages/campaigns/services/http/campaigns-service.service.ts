@@ -10,11 +10,11 @@ import { Campaign, ReqResponse } from 'src/app/core/main.type';
 export class CampaignsServiceService {
   constructor(private readonly http: HttpClient) { }
 
-  getAllCampaigns(): Observable<Campaign[]>{
-  return this.http.get<ReqResponse<Campaign>>(`${environment.api}/campañas`)
-  .pipe(
-    tap(data => console.log('Campañas cargados con exito', data)),
-    map(res => res.data)
-  )
-}
+  getAllCampaigns(): Observable<Campaign[]> {
+    return this.http.get<ReqResponse<Campaign>>(`${environment.api}/campañas`)
+      .pipe(
+        tap(data => console.log('Campañas cargados con exito', data)),
+        map(res => res.data)
+      )
+  }
 }

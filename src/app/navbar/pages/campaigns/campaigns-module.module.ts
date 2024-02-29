@@ -7,13 +7,10 @@ import { CampaignsModuleRoutingModule } from './campaigns-module-routing.module'
 import { ListCampaignComponent } from './list-campaign/list-campaign.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CampaignsServiceService } from './services/http/campaigns-service.service';
-
-import { SelectGroupComponent } from './select-group/select-group.component';
-import { SelectProvideComponent } from './select-provide/select-provide.component';
 import { GroupServiceService } from '../groups/services/http/group-service.service';
 
 @NgModule({
-  declarations: [ManageCampaignsComponent, ListCampaignComponent, SelectGroupComponent, SelectProvideComponent],
+  declarations: [ManageCampaignsComponent, ListCampaignComponent],
   imports: [
     CommonModule,
     CampaignsModuleRoutingModule,

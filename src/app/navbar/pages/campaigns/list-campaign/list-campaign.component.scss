@@ -2,7 +2,10 @@
         background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
         margin: 0 1rem 1rem 0;
     }
-    
+    .mdc-button:hover{
+        background: rgba(255, 0, 0, 0.747);
+        color: #ffffff;
+    }
     .actions-btns {
         color: #080808;
     }
@@ -43,3 +46,4 @@
         width: 90%;
         margin-bottom: 1rem;
     }
+    

@@ -1,4 +1,5 @@
 export interface MenuItem {
+    nombre: String;
     icon: string;
     label: string;
     route: string | null;
@@ -11,32 +12,38 @@ export const menuItems : MenuItem[] = [
     //     route: '/inicio'
     // },
     {
+        nombre: 'Campañas',
         icon:'campaign',
         label: 'Campañas',
         route: '../campañas'
     },
     {
+        nombre: 'Clientes',
         icon:'business',
         label: 'Clientes',
         route: '../clientes'   
     },
     {
+        nombre: 'Proveedores',
         icon:'assignment_ind',
         label: 'Proveedores',
         route: '../proveedores'
     },
     {
+        nombre: 'Usuarios',
         icon:'group',
         label: 'Usuarios',
         route: '../usuarios'
     },
  
     {
+        nombre: 'Grupos',
         icon:'group_add',
         label: 'grupos',
         route: '../grupos'
     },
     {
+        nombre: 'Confirguración',
         icon:'settings',
         label: 'Configuracion',
         route: './configuracion'

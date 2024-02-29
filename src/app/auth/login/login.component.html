@@ -25,8 +25,7 @@
             <mat-form-field class="w-full">
                 <input matInput formControlName="username" placeholder="Usuario"
                     class="mt-2 p-1 border-none text-base outline-none">
-                <mat-error
-                    *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty) || loginForm.get('username')?.touched">El
+                <mat-error *ngIf="loginForm.get('username')?.hasError && loginForm.get('username')?.touched">El
                     usuario es requerido.</mat-error>
             </mat-form-field>
             <mat-form-field class="w-full">

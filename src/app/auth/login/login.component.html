@@ -1,43 +1,65 @@
-<div class="contenedorTodo">
-    <div class="cajaTrasera">
+<!-- Caja madre, aqui se encuentra  todo el codigo para el inicio de sesión -->
+<div class="contenedorTodo select-none">
+    <!-- Caja trasera donde se encuentran el titulo, subtitulo y el boton del inicio de sesión o recuperar credenciales -->
+    <div class="cajaTrasera py-3 border-round-3xl">
         <div class="cajaTraseraLogin">
-            <h3>¿Ya tienes una cuenta?</h3>
-            <p>Inicia sesión para entrar a la página</p>
-            <button mat-button id="btnIniciarSesion" (click)="iniciarSesion()">Iniciar Sesión</button>
+            <h2>¿Ya tienes una cuenta?</h2>
+            <p class="text-base">Inicia sesión para entrar a la página</p>
+            <button mat-button (click)="logIn()">Iniciar Sesión</button>
         </div>
         <div class="cajaTraseraRecuperar">
-            <h3>¿Olvidaste tu contraseña?</h3>
-            <p>Recuperar contraseña aquí</p>
-            <button mat-button id="btnRecuperar" (click)="recuperar()">Recuperar</button>
+            <h2>¿Olvidaste tu contraseña?</h2>
+            <p class="text-base">Recuperar contraseña aquí</p>
+            <button mat-button (click)="recovery()">Recuperar</button>
         </div>
     </div>
-    <!-- Formulario de login y registro -->
-    <div class="contenedorLoginRecuperar">
-        <!-- Login -->
-        <form [formGroup]="login_form">
-            <h2>Iniciar Sesión</h2>
-            <mat-form-field class="iniciar_sesion">
-                <mat-label>Usuario</mat-label>
-                <input matInput formControlName="username">
+    <!-- Caja en donde se encuentran los formularios de login y recovery -->
+    <div class="contenedorLoginRecuperar w-6 text-center">
+        <!-- Formulario de login -->
+        <form [formGroup]="loginForm" (ngSubmit)="logIn()" class="formularioLogin bg-white border-round-3xl text-base">
+            <img src="../../assets/img/logo_prueba.png" [style.width]="!collapsed ? '100px' : '100px'"
+                [style.height]="!collapsed ? '100px' : '100px'">
+            <mat-toolbar class="bg-white justify-content-center mb-2">
+                <mat-card-title class="font-bold mr-3">Iniciar Sesión</mat-card-title>
+            </mat-toolbar>
+            <mat-form-field class="w-full">
+                <input matInput formControlName="username" placeholder="Usuario"
+                    class="mt-2 p-1 border-none text-base outline-none">
+                <mat-error
+                    *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty) || loginForm.get('username')?.touched">El
+                    usuario es requerido.</mat-error>
             </mat-form-field>
-            <mat-form-field class="iniciar_sesion">
-                <mat-label>Contraseña</mat-label>
-                <input matInput type="password" formControlName="password">
+            <mat-form-field class="w-full">
+                <input matInput type="password" formControlName="password" placeholder="Contraseña"
+                    class="mt-2 p-1 border-none text-base outline-none">
+                <mat-error
+                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty) || loginForm.get('password')?.touched">La
+                    contraseña es requerida.</mat-error>
             </mat-form-field>
-            <button mat-raised-button>Ingresar</button>
+            <button mat-raised-button type="submit" [disabled]="loginForm.invalid"
+                class="btn_Ingresar w-6 mt-2 border-none text-base outline-none">Ingresar</button>
         </form>
-        <!-- Recuperar -->
-        <form [formGroup]="recuperar_form" class="formularioRecuperar" id="frm_registrar">
-            <h2>Recuperar Contraseña</h2>
-            <mat-form-field class="recordar_contrasea">
-                <mat-label>Usuario</mat-label>
-                <input matInput formControlName="username_recuperar">
+        <!-- Formulario de recovery -->
+        <form [formGroup]="recoveryForm" (ngSubmit)="recovery()" class="formularioRecuperar bg-white border-round-3xl text-base">
+            <img src="../../assets/img/logo_prueba.png" [style.width]="!collapsed ? '100px' : '100px'"
+                [style.height]="!collapsed ? '100px' : '100px'">
+            <mat-toolbar class="bg-white justify-content-center mb-2">
+                <mat-card-title class="font-bold mr-3">Recuperar Credenciales</mat-card-title>
+            </mat-toolbar>
+            <mat-form-field class="w-full">
+                <input matInput formControlName="username" placeholder="Usuario"
+                    class="mt-2 p-1 border-none text-base outline-none">
+                    <mat-error *ngIf="recoveryForm.get('username')?.invalid && (recoveryForm.get('username')?.dirty) || recoveryForm.get('username')?.touched">El usuario es requerido.</mat-error>
             </mat-form-field>
-            <mat-form-field class="recordar_contrasea">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email">
+            <mat-form-field class="w-full">
+                <input matInput formControlName="email" placeholder="Email"
+                    class="mt-2 p-1 border-none text-base outline-none">
+                <mat-error
+                    *ngIf="recoveryForm.get('email')?.invalid && (recoveryForm.get('email')?.dirty) || recoveryForm.get('email')?.touched">El
+                    email es requerido y debe de ser valido.</mat-error>
             </mat-form-field>
-            <button mat-raised-button>Recuperar</button>
+            <button mat-raised-button type="submit" [disabled]="recoveryForm.invalid"
+                class="w-6 mt-2 border-none text-base outline-none">Recuperar</button>
         </form>
     </div>
 </div>

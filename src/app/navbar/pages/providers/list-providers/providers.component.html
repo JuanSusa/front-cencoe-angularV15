@@ -32,7 +32,6 @@
             <th mat-header-cell *matHeaderCellDef class="table-header" >Direccion</th>
             <td class="table-cell"  mat-cell *matCellDef="let p"> {{p.providerAddress}} </td>
         </ng-container>
-
         <!--Columna Email-->
         <ng-container matColumnDef="providerEmail">
             <th mat-header-cell *matHeaderCellDef  class="table-header">Email</th>
@@ -43,7 +42,6 @@
             <th mat-header-cell *matHeaderCellDef class="table-header">Contacto</th>
             <td class="table-cell" mat-cell *matCellDef="let p"> {{p.providerContact}} </td>
         </ng-container>
-
         <!--Columna estado-->
         <!-- <ng-container matColumnDef="providerState">
             <th mat-header-cell *matHeaderCellDef class="table-header">Status</th>
@@ -53,21 +51,21 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef class="table-header">Actions</th>
             <td class="table-cell"  md-cell *matCellDef="let p" >
-                <button mat-icon-button>
-                <mat-icon class="btn-action">edit_outline</mat-icon>
+                <button mat-icon-button (click)="manageProvider('editar')">
+                <mat-icon class="btn-action1">edit_outline</mat-icon>
             </button>
                 <button mat-icon-button (click)="eliminarProvider()">
                 <mat-icon class="btn-action">delete_outline</mat-icon>
             </button>
             </td>
         </ng-container>
-
-
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
     </table>
+    <mat-paginator [length]="totalItems"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageSize]="3" 
+    (page)="onPageChange($event)">
+</mat-paginator>
     </mat-card-content>
 </mat-card>

@@ -7,7 +7,6 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  *       tipo: de tipo adminTypePopUp y campo que recibe un valor especifico
  */
 
-
 export interface ReqResponse<T> {
     code: number;
     message: string;
@@ -15,6 +14,16 @@ export interface ReqResponse<T> {
     success: boolean;
 }
 
+// Modulo proveedores
+export interface Provider {
+    providerId?: number | null;
+    providerName: String;
+    providerAddress: String;
+    providerEmail: String;
+    providerContact: String;
+    providerDetails: String;
+    providerDoctype: TypeDocs;
+}
 
 // Modulo usuario
 export interface User {
@@ -43,7 +52,7 @@ export interface Campaign {
 export class TypeDocs {
     docTypeId!: number | null;
     docTypeName: string = '';
-    
+
 }
 
 export interface Team {
@@ -62,14 +71,3 @@ export interface Customer {
     customerState: boolean;
 }
 
-// Modulo proveedores
-export interface Provider {
-    providerId: number;
-    providerName: String;
-    providerAddress: String;
-    providerEmail: String; //ya esta en la bd
-    providerContact: String;//ya esta en la bd
-    providerDoctype: TypeDocs;  //ya esta en la bd
-    providerDetails: String;
-    providerState: boolean;
-}

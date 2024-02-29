@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, catchError, map, share, tap, throwError } from 'rxjs';
@@ -10,51 +10,46 @@ import { environment } from 'src/app/environments/environment';
   providedIn: 'root'
 })
 export class ProviderServiceService {
-
-  constructor(
-    private httpClient: HttpClient,
-
-
-  ) { }  //injectamos una variable llamada httpClient de tipo httpClient
-
+  private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
+  constructor(private httpClient: HttpClient) { }
 
   //este metodo nos sirve para obtener los proveedores
-  getAllProviders(): Observable<Provider[]> {
-    return this.httpClient.get<ReqResponse<Provider>>(`${environment.api}/proveedores`)
-      .pipe(
-        tap(data => console.log('proveedores cargados con exito', data)),
-        map(res => res.data),
-        share()
-      )
+  getAllProviders(page: number, size: number): Observable<ReqResponse<Provider[]>> {
+    const params = new HttpParams()
+      .append('page', page.toString())
+      .append('size', size.toString())
+    return this.httpClient.get<ReqResponse<Provider[]>>(`${environment.api}/proveedores?page=${page}&size=${size}`)
+    // .pipe(
+    //   tap(data => console.log('proveedores cargados con exito', data)),
+    //   map(res => res.data),
+    //   share()
+    // )
   }
 
   //este metodo sirve para registrar un empleado
   saveProvider(provider: Provider): Observable<Provider> {
     return this.httpClient.post<Provider>(`${environment.api}/provider`, provider)
       .pipe(
-        tap(data => console.log('Proveedor guardado:', data)),
-        catchError((error) => {
-          if (error.error && error.error.message) {
-            console.error('Error al guardar proveedor:', error.error.message);
+        tap(response => console.log('Proveedor guardado:', response)),
+        map(response => {
+          if (response && response.success) {
+            return response.data as Provider
           } else {
-            console.error('Error al guardar proveedor:', error);
+            const errorMessage = response && response.message ? response.message : 'Error al guardar el proveedor';
+            throw new Error(errorMessage)
           }
-          return throwError(error);
+        }),
+        catchError(err => {
+          console.log('Error en la solicitud', err)
+          return throwError(err);
         })
       );
   }
   eliminarProvider(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${environment.api}/proveedor/${id}`)
   }
-  // getAllProviders(): Observable<Provider[]> {     //devuelve un array de proveedores 
-  //   return this.httpClient.get<ReqResponse>(`${environment.api}/proveedores`)
-  //     .pipe(
-  //       tap(data => console.log('proveedores cargados con exito', data)),
-  //       map(res => res.data),
-  //       share()
-  //     )
 
-  // }
+
 
   // getProvider(id: number): Observable<Provider>{ //devuelve un solo proveedor por id
   //   return this.httpClient.get<Provider>(environment.api+'/proveedor/' +id)

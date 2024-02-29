@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { MenuItem, menuItems } from './menu-data';
-
+import { RoleComponent } from './pages/role/role.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,10 @@ import { MenuItem, menuItems } from './menu-data';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit{
+  maxDate: Date;
+  constructor(
+    public dialog: MatDialog,
+  ) { this.maxDate = new Date();}
 
   ngOnInit(): void {
   }
@@ -24,5 +29,13 @@ export class NavbarComponent implements OnInit{
   }
 
 
+  roles(): void {
+    const dialogRef = this.dialog.open(RoleComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('');
+    });
+  }
 
 }

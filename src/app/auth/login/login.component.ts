@@ -7,75 +7,67 @@ import { adminPopUp } from 'src/app/core/main.type';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  styles: [`
-    body {
-      background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
-    }
-  `],
 })
 
 export class LoginComponent {
-  login_form: FormGroup;
-  recuperar_form: FormGroup;
+
+  loginForm: FormGroup;
+  recoveryForm: FormGroup;
+
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
-    this.login_form = this.fb.group({
+    this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
-    this.recuperar_form = new FormGroup({
-      username_recuperar: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+
+    this.recoveryForm = this.fb.group({
+      username: ['', Validators.required],
+      email: ['', Validators.required]
     });
   };
-  prueba = false;
-  iniciarSesion() {
-    const cajaTraseraLogin = document.querySelector('.cajaTraseraLogin');
-    const cajaTraseraRecuperar = document.querySelector('.cajaTraseraRecuperar');
-    const contenedorLoginRecuperar = document.querySelector('.contenedorLoginRecuperar');
-    const formularioLogin = document.querySelector('.formularioLogin');
-    const formularioRecuperar = document.querySelector('.formularioRecuperar');
-    const btnIniciarSesion = document.querySelector('.btnIniciarSesion');
-    if (this.prueba) {
-      this.prueba = false;
-      formularioRecuperar?.setAttribute('style', 'display:none');
-      contenedorLoginRecuperar?.setAttribute('style', 'left:10px');
-      formularioLogin?.setAttribute('style', 'display:block');
-      cajaTraseraRecuperar?.setAttribute('style', 'opacity:1');
-      cajaTraseraLogin?.setAttribute('style', 'opacity:0');
-      btnIniciarSesion?.setAttribute('style', 'display:none');
-    } else {
-      this.prueba = true;
-      formularioRecuperar?.setAttribute('style', 'display:none');
-      contenedorLoginRecuperar?.removeAttribute('style');
-      formularioLogin?.setAttribute('style', 'display:none');
-      cajaTraseraRecuperar?.removeAttribute('style');
-      cajaTraseraLogin?.removeAttribute('style');
-    }
+
+  cambioL_R: boolean = false;
+
+  logIn() {
+    const _cambio_L_R = document.querySelector('.contenedorLoginRecuperar') as HTMLElement;
+    const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
+    const _formulario_R = document.querySelector('.formularioRecuperar') as HTMLElement;
+    const _caja_T_L = document.querySelector('.cajaTraseraLogin') as HTMLElement;
+    const _caja_T_R = document.querySelector('.cajaTraseraRecuperar') as HTMLElement;
+
+    const _messageError = document.querySelector('.mat-mdc-form-field-error') as HTMLElement;
+
+    this.cambioL_R = !this.cambioL_R;
+    _formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
+    _formulario_R.style.display = this.cambioL_R ? 'block' : 'none';
+
+    _cambio_L_R.classList.toggle('cambio', this.cambioL_R);
+    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '10px';
+    _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
+    _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
+
+    _messageError.style.display = this.cambioL_R ? 'none' : 'block';
   }
-  recuperar() {
-    const cajaTraseraLogin = document.querySelector('.cajaTraseraLogin');
-    const cajaTraseraRecuperar = document.querySelector('.cajaTraseraRecuperar');
-    const contenedorLoginRecuperar = document.querySelector('.contenedorLoginRecuperar');
-    const formularioLogin = document.querySelector('.formularioLogin');
-    const formularioRecuperar = document.querySelector('.formularioRecuperar');
-    if (this.prueba) {
-      this.prueba = false;
-      formularioRecuperar?.setAttribute('style', 'display:block');
-      contenedorLoginRecuperar?.setAttribute('style', 'left:410px');
-      formularioLogin?.setAttribute('style', 'display:block');
-      cajaTraseraRecuperar?.setAttribute('style', 'opacity:0');
-      cajaTraseraLogin?.setAttribute('style', 'opacity:1');
-    } else {
-      this.prueba = true;
-      formularioRecuperar?.removeAttribute('style');
-      contenedorLoginRecuperar?.removeAttribute('style');
-      formularioLogin?.removeAttribute('style');
-      cajaTraseraRecuperar?.removeAttribute('style');
-      cajaTraseraLogin?.removeAttribute('style');
-      cajaTraseraLogin?.removeAttribute('style');
-    }
+
+  recovery() {
+    const _cambio_L_R = document.querySelector('.contenedorLoginRecuperar') as HTMLElement;
+    const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
+    const _formulario_R = document.querySelector('.formularioRecuperar') as HTMLElement;
+    const _caja_T_L = document.querySelector('.cajaTraseraLogin') as HTMLElement;
+    const _caja_T_R = document.querySelector('.cajaTraseraRecuperar') as HTMLElement;
+
+    this.cambioL_R = !this.cambioL_R;
+    _formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
+    _formulario_R.style.display = this.cambioL_R ? 'block' : 'none';
+
+    _cambio_L_R.classList.toggle('cambio', this.cambioL_R)
+    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '10px';
+    _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
+    _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
   }
+
   ngOnInit(): void {
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background', 'linear-gradient(to right, #d7d2cc 0%, #304352 100%)')
   }
+  collapsed = false;
 }

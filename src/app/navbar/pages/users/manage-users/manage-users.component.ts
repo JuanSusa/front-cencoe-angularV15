@@ -34,6 +34,7 @@ export class ManageUsersComponent implements OnInit {
     userAddress: ['', [Validators.required, Validators.minLength(3)]],
     userPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
     userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    userEmail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     userState: [''],
     userTipoDocumento: ['']
   })
@@ -44,14 +45,10 @@ export class ManageUsersComponent implements OnInit {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Editar Usuario';
+      this.data.tipo === 'crear' ? 'Crear nuevo usuario' : 'Actualizar Usuario';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : this.data.tipo === 'ver' ? 'Detalles del Usuario' : 'Ingrese los nuevos datos del usuario';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo usuario' : 'Ingrese los nuevos datos del usuario';
 
-
-    if (tipo === 'ver') {
-      this.getUserById(campo!)
-    }
     this.getAllTypeDocs()
 
   }
@@ -114,4 +111,5 @@ export class ManageUsersComponent implements OnInit {
       return null;
     };
   }
+
 }

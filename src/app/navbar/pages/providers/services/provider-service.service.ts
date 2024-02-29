@@ -31,14 +31,14 @@ export class ProviderServiceService {
     return this.httpClient.post<Provider>(`${environment.api}/provider`, provider)
       .pipe(
         tap(response => console.log('Proveedor guardado:', response)),
-        map(response => {
-          if (response && response.success) {
-            return response.data as Provider
-          } else {
-            const errorMessage = response && response.message ? response.message : 'Error al guardar el proveedor';
-            throw new Error(errorMessage)
-          }
-        }),
+        // map(response => {
+        //   if (response && response.success) {
+        //     return response.data as Provider
+        //   } else {
+        //     const errorMessage = response && response.message ? response.message : 'Error al guardar el proveedor';
+        //     throw new Error(errorMessage)
+        //   }
+        // }),
         catchError(err => {
           console.log('Error en la solicitud', err)
           return throwError(err);

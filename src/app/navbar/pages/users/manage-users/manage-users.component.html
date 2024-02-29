@@ -93,7 +93,7 @@
                 <!-- Botones de acciones -->
                 <button mat-button type="submit" class="btn-saved-dialog" [disabled]="userForm.invalid"
                     (click)="showButton()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'"
-                    [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
+                    >
                     {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                 </button>
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">

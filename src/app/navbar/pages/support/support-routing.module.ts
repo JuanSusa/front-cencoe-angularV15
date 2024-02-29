@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListCustomersComponent } from './list-customers/list-customers.component';
+import { SupportComponent } from './support-view/support-view.component';
 
 const routes: Routes = [
   {
     path: '', children: [
-      { path: 'list-customer', component: ListCustomersComponent },
-      { path: '**', redirectTo: 'list-customer' }
+      { path: 'support-view', component: SupportComponent },
+      { path: '**', redirectTo: 'support-view' }
     ]
   }
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CustomerModuleRoutingModule { }
+export class SupportRoutingModule { }

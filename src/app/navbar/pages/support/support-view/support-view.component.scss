@@ -1,0 +1,22 @@
+.box_form {
+    max-width: 90%;
+    padding: 1rem;
+}
+
+.decription-form textarea {
+    resize: none;
+    min-height: 200px;
+    overflow-y: auto;
+}
+
+.btn-file {
+    margin-right: 0.5rem;
+    background: linear-gradient(to bottom, #085eff 0%, #99dfff 100%);
+    color: white;
+}
+
+.btn-support {
+    margin-right: 0.5rem;
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    color: aliceblue;
+}

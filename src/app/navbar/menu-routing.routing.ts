@@ -45,6 +45,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
 
   },
+  {
+    path: 'soporte',
+    component: NavbarComponent,
+    loadChildren: () => import('./pages/support/support.module').then((m) => m.SupportModule)
+  },
   {path:'', redirectTo:'login', pathMatch:'full'}
 ];
 

@@ -3,7 +3,10 @@
     margin: 0 1rem 1rem 0;
 
 }
-
+.mdc-button:hover{
+    background: rgba(255, 0, 0, 0.747);
+    color: #ffffff;
+}
 mat-icon{
     color:#ff0844;
 }
@@ -26,4 +29,10 @@ mat-icon{
 mat-toolbar {
     border: .01rem solid #738092;
     border-radius: 10px;
+}
+.btn-action{
+    color:#ff0844;
+}
+.btn-action1{
+    color:#29323c;
 }

@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListCustomersComponent } from './list-customers/list-customers.component';
 
 const routes: Routes = [
-  { path: '', children: [
-    { path:'list-customer', component: ListCustomersComponent},
-    { path: '**', redirectTo: 'list-customer'}
-  ]}
+  {
+    path: '', children: [
+      { path: 'list-customer', component: ListCustomersComponent },
+      { path: '**', redirectTo: 'list-customer' }
+    ]
+  }
 ];
 
 @NgModule({

@@ -36,7 +36,8 @@
                 </mat-list-item>
             </ng-container>
 
-            <mat-list-item class="config-icon" [routerLink]="menuItems[menuItems.length -1].route" routerLink="active-link"
+            <mat-list-item class="config-icon" [routerLink]="menuItems[menuItems.length -1].route" routerLinkActive="active-link"
+            #rla="routerLinkActive" [activated]="rla.isActive"
                 matTooltip="{{ menuItems[menuItems.length - 1].nombre }}" matTooltipPosition="right">
                 <mat-icon class="icon" matListItemIcon>{{ menuItems[menuItems.length - 1].icon }}</mat-icon>
                 <span class="item-label" matListItemTitle>{{ menuItems[menuItems.length - 1].label }}</span>

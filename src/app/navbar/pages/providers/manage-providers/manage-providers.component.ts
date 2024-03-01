@@ -3,14 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Provider, TypeDocs, adminPopUp} from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
-<<<<<<< HEAD
 import { ProviderService } from '../services/provider-service.service';
-=======
 import { FloatLabelType } from '@angular/material/form-field';
-
-
-
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
@@ -27,18 +21,9 @@ export class ManageProvidersComponent implements OnInit {
     @Inject(ProviderService) private readonly providerService: ProviderService,
     private _ServiceTD : TipodocumentoHttpService
   ) {
-<<<<<<< HEAD
-    this.providerForm = formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(35)]],
-      adress: ['', Validators.required],
-      contact: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("[0-9]{10}")]],
-      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      details: ['', Validators.required],
-      TipoDocumento: [''],
-    })
-=======
 
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
+    
+
   }
    providerForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.maxLength(35)]],
@@ -73,35 +58,4 @@ export class ManageProvidersComponent implements OnInit {
   //       providerDetails: this.providerForm.value.providerDetails,
   //       providerDoctype: this.providerForm.value.providerDoctype
 
-<<<<<<< HEAD
-        }
-        this.providerService.saveProvider(provider).subscribe(
-          (response) =>{
-            console.log(response)
-          }
-        )
-      }
-=======
-  //       }
-  //       this.ServiceProvider.saveProvider(provider).subscribe(
-  //         (response) =>{
-  //           console.log(response)
-  //         }
-  //       )
-  //     }
-  //   } 
-
-  onNumericInput(event: any): void {
-    // Filtrar caracteres no numéricos
-    const input = event.target.value;
-    event.target.value = input.replace(/[^0-9]/g, '');
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
-  }
-  public cerrarDialog(){
-    this._matDialogRef.close()
-  }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

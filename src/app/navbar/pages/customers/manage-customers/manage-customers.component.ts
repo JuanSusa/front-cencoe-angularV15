@@ -1,18 +1,22 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Provider, User, adminPopUp } from 'src/app/core/main.type';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validator, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { adminPopUp } from 'src/app/core/main.type';
 
 @Component({
   selector: 'app-manage-customers',
   templateUrl: './manage-customers.component.html',
   styleUrls: ['./manage-customers.component.scss'],
 })
+
 export class ManageCustomersComponent {
+  public user:User[]=[]
+
   constructor(
     private readonly _matDialogRef: MatDialogRef<ManageCustomersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>, //^3
-    private formBuiler: FormBuilder
+    private formBuiler: FormBuilder,
+
   ) { }
   // Variable que guarda o cambia según el click en el botón
   mostrar: boolean = false;
@@ -39,6 +43,7 @@ export class ManageCustomersComponent {
     customerPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
     customerState: [''],
     customerTipoDocumento: [''],
+    user: ['']
   })
   public executionMessage() {
     this._matDialogRef.close();
@@ -60,4 +65,5 @@ export class ManageCustomersComponent {
       return null;
     };
   }
+
 }

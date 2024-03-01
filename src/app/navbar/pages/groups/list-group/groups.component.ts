@@ -19,7 +19,6 @@ export class GroupsComponent {
     private readonly _groupHttpService: GroupServiceService,
     private http: HttpClient
   ){
-
   }
   ngOnInit(): void {
     this.getAllGroups()

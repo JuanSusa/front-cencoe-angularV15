@@ -13,23 +13,18 @@ import { ProviderService } from '../services/provider-service.service';
 export class ProvidersComponent implements OnInit {
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
-
   listprovider:Provider[]= [];
   pageSizeOptions: number[] = [3, 10, 25, 100];
   totalItems: number = 0;
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]
-
   constructor(
     private readonly _dialog: MatDialog,
     @Inject(ProviderService) private readonly providerService: ProviderService) {
-
   }
-
   ngOnInit() {
     this.getAllProviders()
     //this.getProvider(2)
   }
-
   getAllProviders(page:number =0, size: number=3) {
     this.providerService.getAllProviders(page, size)
     .subscribe((data :any) =>{
@@ -38,13 +33,11 @@ export class ProvidersComponent implements OnInit {
       console.log(data)
     })
   }
-
   onPageChange(event: PageEvent) {
     const page = event.pageIndex; // Índice de la página seleccionada
     const size = event.pageSize; // Tamaño de la página seleccionada
     this.getAllProviders(page, size); // Obtener los proveedores para la página seleccionada
   }
-
   eliminarProvider(){
       Swal.fire({
         title: "¿Esta seguro de eliminar este registro?",
@@ -77,8 +70,6 @@ export class ProvidersComponent implements OnInit {
       .subscribe(result => {
         console.log('Close dialog')
       });
-
   }
-
 }
 

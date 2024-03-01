@@ -9,7 +9,6 @@ import { environment } from 'src/app/environments/environment';
 export class ProviderService {
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
   constructor(private httpClient: HttpClient) { }
-
   //este metodo nos sirve para obtener los proveedores
   getAllProviders(page: number, size: number): Observable<ReqResponse<Provider[]>> {
     const params = new HttpParams()
@@ -19,9 +18,7 @@ export class ProviderService {
     .pipe(
       tap(console.log)
     )
-
   }
-
   //este metodo sirve para registrar un empleado
   saveProvider(provider: Provider): Observable<Provider> {
     return this.httpClient.post<any>(`${environment.api}/proveedor`, provider, { headers: this.httpHeaders })

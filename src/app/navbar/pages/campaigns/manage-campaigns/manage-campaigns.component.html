@@ -44,14 +44,7 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Provider</mat-label>
-                    <mat-select formControlName="provider">
-                        <mat-option *ngFor="let p of provider" [value]="p.providerName">
-                            {{p.providerName}} - {{p.providerName}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+
             </form>
             <mat-card-actions class="actions-btns">
                 <!-- Botones de acciones -->

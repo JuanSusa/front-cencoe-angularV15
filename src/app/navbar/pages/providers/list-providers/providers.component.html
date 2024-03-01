@@ -10,13 +10,10 @@
                 Agregar Proveedor</button>
     </mat-card-actions>
 </mat-toolbar>
-
 <mat-divider class="mt-4"></mat-divider>
-
 <mat-card class="container-table">
     <mat-card-content class="table-provider">
         <table mat-table class="mat-elevation-z8" [dataSource]="listprovider">
-
             <!--Columana Id-->
             <ng-container matColumnDef="providerId">
                 <th mat-header-cell *matHeaderCellDef class="table-header">No.</th>
@@ -42,6 +39,7 @@
                 <th mat-header-cell *matHeaderCellDef class="table-header">Contacto</th>
                 <td class="table-cell" mat-cell *matCellDef="let p"> {{p.providerContact}} </td>
             </ng-container>
+            <!--Columna Acciones-->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef class="table-header">Actions</th>
                 <td class="table-cell" md-cell *matCellDef="let p">

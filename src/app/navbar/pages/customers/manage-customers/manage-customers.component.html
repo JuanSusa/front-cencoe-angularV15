@@ -21,8 +21,7 @@
                     <!-- Campo Telefono -->
                     <mat-form-field>
                         <mat-label>Número celular</mat-label>
-                        <input matInput formControlName="customerPhone"
-                        placeholder="Número celular" (input)="onNumericInput($event)">
+                        <input matInput formControlName="customerPhone" placeholder="Número celular" (input)="onNumericInput($event)">
                         <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('required')">El número celular es obligatorio</mat-error>
                         <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('minlength')">El número de celular debe de tener minumo 10 dígitos</mat-error>
                         <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('maxlength')">El número de celular debe de tener máximo 10 digitos</mat-error>
@@ -53,11 +52,7 @@
                     </mat-form-field>
                 </section>
                 <!-- Campo Estado -->
-                <section>
-                    <label>Estado cliente:</label>
-                    <br>
-                    <mat-slide-toggle #stateCustomer> {{stateCustomer.checked}}</mat-slide-toggle>
-                </section>
+
             </form>
             <mat-card-actions class="actions-btns">
                 <!-- Botonos de acciones -->

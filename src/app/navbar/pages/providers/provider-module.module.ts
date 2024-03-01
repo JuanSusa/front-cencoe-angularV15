@@ -8,8 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 import { ProvidersComponent } from './list-providers/providers.component';
 import { ProviderService } from './services/provider-service.service';
-
-
 @NgModule({
   declarations: [ManageProvidersComponent, ProvidersComponent],
   imports: [

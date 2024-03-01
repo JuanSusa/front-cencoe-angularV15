@@ -9,18 +9,19 @@ import { ProviderService } from '../../providers/services/provider-service.servi
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
+
 export class ManageCampaignsComponent {
   public team:Team[]=[]
-  public provider:Provider[]=[]
   public showBtn: boolean = false;
   maxDate: Date;
+
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     private _GroupService : GroupServiceService,
-    @Inject(ProviderService) private readonly _providerService: ProviderService
+    private _providerService: ProviderService
     ) { this.maxDate = new Date();}
     campaignForm = this.formBuilder.group({
       id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
@@ -29,14 +30,14 @@ export class ManageCampaignsComponent {
       fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
       observaciones: ['', [Validators.required, Validators.maxLength(100)]],
       grupos : ['', [Validators.required]],
-      provider : ['', [Validators.required]],
+
     })
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
     //^5
     this.getAllGroups()
-    this.getAllProviders()
+
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles de la Campaña' : 'Editar Campaña';
@@ -65,12 +66,4 @@ export class ManageCampaignsComponent {
       })
     }
   }
-  getAllProviders(page:number =0, size: number=3) {
-    this._providerService.getAllProviders(page, size)
-    .subscribe((data :any) =>{
-      this.provider = data;
-      console.log(data)
-    })
-  }
 }
-

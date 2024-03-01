@@ -9,8 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CampaignsServiceService } from './services/http/campaigns-service.service';
 import { GroupServiceService } from '../groups/services/http/group-service.service';
 import { ProviderService } from '../providers/services/provider-service.service';
-
-
 @NgModule({
   declarations: [ManageCampaignsComponent, ListCampaignComponent],
   imports: [

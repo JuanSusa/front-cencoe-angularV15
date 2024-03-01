@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container-box h-auto">
     <mat-card-title class="text-center">{{titulo}}</mat-card-title>
     <mat-card-subtitle class="text-center">{{subtitulo}}</mat-card-subtitle>
@@ -50,7 +51,108 @@
                     <button type="submit" mat-raised-button class="btn-saved" [disabled]="!providerForm.valid">Aceptar</button>
                     <button mat-raised-button (click)="cerrarDialog()" class="btn-cancel">Cancelar</button>
                 </mat-dialog-actions>
+=======
+
+<mat-card class="container-card">
+    <div class="container-header">
+        <mat-card-title mat-dialog-title>{{titulo}}</mat-card-title>
+        <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
+    </div>
+ 
+<mat-dialog-content>
+        <mat-card-content class="mat-elevation-z8">
+            <form class="create_provider" [formGroup]="providerForm">
+                <div class="campos">
+                    <!--Campo nombre del proveedor-->
+                    <mat-form-field>
+                        <mat-label class="form-label">Nombre proveedor</mat-label>
+                        <input matInput formControlName="name" placeholder="Nombre">
+                        <mat-error *ngIf="providerForm.get('name')?.hasError('required')">El nombre es
+                            obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('name')?.hasError('maxLength')">Maximo 35
+                            caracteres</mat-error>
+                        <!--Campo direccion-->
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label class="form-label">Direccion</mat-label>
+                        <input matInput formControlName="adress" placeholder="Direccion">
+                        <mat-error *ngIf="providerForm.get('adress')?.hasError('required')">La direccion es
+                            obligatoria</mat-error>
+                    </mat-form-field>
+                    <!--Campo telefono-->
+                    <mat-form-field>
+                        <mat-label class="form-label">Teléfono</mat-label>
+                        <input matInput formControlName="contact" placeholder="Telefono"
+                            (input)="onNumericInput($event)">
+                        <mat-error *ngIf="providerForm.get('contact')?.hasError('required')">El telefono es
+                            obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('contact')?.hasError('maxlength')">Maximo 10
+                            digitos</mat-error>
+                        <mat-error *ngIf="providerForm.get('contact')?.hasError('pattern')">Numero invalido</mat-error>
+                    </mat-form-field>
+                    <!--Campo correo electronico-->
+                    <mat-form-field>
+                        <mat-label class="form-label">Correo Electronico</mat-label>
+                        <input type="email" matInput formControlName="email" placeholder="email">
+                        <mat-error *ngIf="providerForm.get('email')?.hasError('required')">El correo es
+                            obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('email')?.hasError('pattern')">Correo invalido</mat-error>
+                    </mat-form-field>
+                    <!--Campo No. Documento-->
+                    <mat-form-field>
+                        <mat-label class="form-label">No. Documento</mat-label>
+                        <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento"
+                            (input)="onNumericInput($event)">
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('minlength')">Minimo 8
+                            digitos</mat-error>
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('maxLength')">Maximo 10
+                            digitos</mat-error>
+                    </mat-form-field>
+                    <!--Campo tipo Documento-->
+                    <mat-form-field>
+                        <mat-label class="form-label">Tipo de Documento</mat-label>
+                        <mat-select formControlName="TipoDocumento">
+                            <mat-option *ngFor="let p of typeDocs" [value]="p.docTypeId">
+                                {{p.docTypeName}}
+                            </mat-option>
+                        </mat-select>
+                        <!--Detalles-->
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label class="form-label">Productos / Servicios</mat-label>
+                        <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
+                        <mat-error *ngIf="providerForm.get('details')?.hasError('required')">El campo es
+                            obligatorio</mat-error>
+                    </mat-form-field>
+
+                    <!-- <section>
+                    <mat-label class="form-label">Estado del proveedor</mat-label>
+                    <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                </section>
+            -->
+                </div>
+                <mat-card-actions class="actions-btns">
+                    <button mat-button type="submit" class="btn-saved-dialog" [disabled]="providerForm.invalid">
+                        {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
+                    </button>
+                    <button mat-button cdkFocuusInitial (click)="cerrarDialog()"
+                        class="btn-cancel-dialog">Cancelar</button>
+                </mat-card-actions>
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
             </form>
+           
         </mat-card-content>
     </mat-dialog-content>
+<<<<<<< HEAD
 </div>
+=======
+</mat-card>
+
+
+
+
+<!--FormControl: Realiza un seguimiento del valor y el estado de validacion de un control de formulario individual
+    FormGroup: Realiza un seguimiento de los mismos valores y estado de una coleccion de controles de un formulario 
+-->
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

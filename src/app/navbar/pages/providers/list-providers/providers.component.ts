@@ -63,7 +63,9 @@ export class ProvidersComponent implements OnInit {
   /* Logica para abrir el mat dialog*/
   manageProvider(tipo: adminTypePopUp, providerId?: number) {
     const activeModal = this._dialog.open(ManageProvidersComponent, {
-      data: { tipo, campo: providerId }
+      data: { tipo, campo: providerId },
+   
+    
     })
     activeModal
       .afterClosed()

@@ -12,6 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { GroupServiceService } from './services/http/group-service.service';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 @NgModule({
   declarations: [GroupsComponent, GroupManagerComponent],
   imports: [

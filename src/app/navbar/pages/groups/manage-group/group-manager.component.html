@@ -1,18 +1,21 @@
-<div class="container-box h-auto">
+ <mat-card>
+    <div class="container-header">
     <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
     <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+    </div>
     <mat-dialog-content>
-        <mat-card-content class="mat-elevation-z6">
+        <mat-card-content class="mat-elevation-z8">
             <!-- Formulario registro usuario -->
             <form class="create-group" [formGroup]="groupForm">
-                <section class="create-group__campos-width">
+                <section class="create-group__campos">
                     <!-- Campo Nombres -->
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field class="full-width">
                         <mat-label>Nombre de grupo</mat-label>
                         <input matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
-                        <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">Nombres necesarios
+                        <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
                     </mat-form-field>
+<<<<<<< HEAD
                     <div class="row">
                         <div class="column">
                             <mat-form-field class="example-full-width">
@@ -40,17 +43,50 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
+=======
+                    <!--Campo fecha inicio-->
+                    <!-- <mat-form-field>
+                        <mat-label>Fecha inicio</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker"
+                            autocapitalize="off" formControlName="fechaInicio">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                    </mat-form-field>
+                    Campo fecha final
+                    <mat-form-field>
+                        <mat-label>Fecha final</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1"
+                            autocapitalize="off" formControlName="fechaFinal">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker1></mat-datepicker>
+                    </mat-form-field> -->
+
+                    <mat-form-field class="full-width">
+                        <mat-label>Integrantes</mat-label>
+                        <mat-select multiple formControlName="integrantes" placeholder="Seleccionar los Integrantes">
+                            <mat-option *ngFor="let t of team" [value]="t.teamId">
+                                {{t.teamName}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="groupForm.get('integrantes')?.hasError('required')">Debe seleccionar los integrantes</mat-error>
+                    </mat-form-field>
+
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
                 </section>
             </form>
             <mat-card-actions class="actions-btns">
                 <!-- Botones de acciones -->
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid">
+                    {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
+                </button>
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
-                  Cancelar
-              </button>
-                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid" (click)="showButton()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'" [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
-                  {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
-              </button>
+                    Cancelar
+                </button>
             </mat-card-actions>
         </mat-card-content>
     </mat-dialog-content>
+<<<<<<< HEAD
 </div>
+=======
+    </mat-card>
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

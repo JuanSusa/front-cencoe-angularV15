@@ -4,6 +4,7 @@ import { User, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { userHttpService } from '../service/http/user-service.service';
 import { Subject, takeUntil } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -53,6 +54,27 @@ export class UsersComponent implements OnInit {
       });
 
   }
+  eliminarUser(){
+    Swal.fire({
+      title: "¿Esta seguro de eliminar este registro?",
+      text: "Esta operacion es irreversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ff0844",
+      cancelButtonColor: "rgb(2,0,36)",
+      confirmButtonText: "Si, confirmar!",
+      cancelButtonText: "No, cancelar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado",
+          text: "Usuario eliminado",
+          confirmButtonColor: "#ff0844",
+          icon: "success"
+        });
+      }
+    })
+}
 }
 
 /**

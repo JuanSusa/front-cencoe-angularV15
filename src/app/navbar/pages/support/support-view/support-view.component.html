@@ -1,4 +1,4 @@
-<mat-toolbar class="h-auto">
+<mat-toolbar class="h-auto select-none">
     <mat-card-header class="p-0">
         <mat-card-title>Soporte</mat-card-title>
         <mat-card-subtitle>Soporte relacionado con fallos en la página</mat-card-subtitle>
@@ -7,30 +7,32 @@
 
 <mat-divider class="mt-3"></mat-divider>
 
-<mat-toolbar class="grid mt-3 h-29rem">
-    <mat-card class="col m-2 w-full h-28rem">
+<mat-toolbar class="box_container grid h-29rem select-none w-10">
+    <mat-card class="box_description col">
         <mat-card-header>
             <mat-card-title class="text-base">¿Como usar este formulario?</mat-card-title>
-            <mat-card-subtitle class="text-sm">Aqui te enseñamos</mat-card-subtitle>
         </mat-card-header>
-        <mat-divider class="mt-2"></mat-divider>
-        <mat-card-content class="mt-2">
-            <span>Aqui va la descripción para el uso de este módulo</span>
+        <mat-card-content>
+            <p>
+                Este formulario está diseñado para facilitara los usuarios la comunicación de cualquier problema técnico que puedan experimentar mientras navegan en nuestro sitio web.Si encuentras algún error, fallo o simplemente deseas informarnos de algún problema relacionado con la funcionalidad o el diseño de nuestra página, por favor, utiliza este formulario para reportarlo. Instrucciones: Completa los campos del formulario con la información solicitada. Describe detalladamente el error o fallo que has encontrado en la página. Una vez que hayas completado el formulario, presiona el botón Enviar para que nuestro equipo de soporte técnico pueda revisar tu reporte y tomar las medidas necesarias para solucionar el problema.
+            </p>
         </mat-card-content>
     </mat-card>
-    <mat-card class="box_form col m-2 h-28rem justify-content-center">
+    <mat-card class="box_form col m-2 h-28rem">
         <form>
-            <mat-form-field class="decription-form w-full">
-                <mat-label>Decripción del problema</mat-label>
-                <textarea matInput rows="5" maxlength="10000"></textarea>
-            </mat-form-field>
+            <section>
+                <mat-form-field class="input_name mt-3">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="decription-form">
+                    <mat-label>Decripción del problema</mat-label>
+                    <textarea matInput rows="5" maxlength="10000"></textarea>
+                </mat-form-field>
+            </section>
         </form>
         <mat-card-actions class="justify-content-center">
-            <button mat-button class="btn-file w-4">
-                <mat-icon>attach_file</mat-icon>
-                <span>Adjuntar Archivo</span>
-                <input type="file" (change)="onFileSelected($event)" style="display: none;">
-            </button>
             <button mat-button class="btn-support w-4">
                 <span>Enviar</span>
                 <mat-icon>send</mat-icon>

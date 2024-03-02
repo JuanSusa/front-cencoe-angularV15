@@ -1,18 +1,55 @@
+.box_container {
+    margin-top: 1rem;
+    margin-left: 6rem;
+    white-space: wrap;
+}
+
+.box_description {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    max-width: 50%;
+    height: 28rem;
+    overflow: hidden;
+}
+
+.box_description p {
+    color: rgb(122, 122, 122);
+    text-align: justify;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
 .box_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 90%;
     padding: 1rem;
 }
 
+.input_name {
+    width: 25rem;
+}
+
+.decription-form {
+    width: 25rem;
+}
+
 .decription-form textarea {
     resize: none;
-    min-height: 200px;
+    min-height: 150px;
     overflow-y: auto;
 }
 
-.btn-file {
-    margin-right: 0.5rem;
-    background: linear-gradient(to bottom, #085eff 0%, #99dfff 100%);
-    color: white;
+.decription-form textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+.decription-form textarea::-webkit-scrollbar-thumb {
+    background-color: #888;
 }
 
 .btn-support {

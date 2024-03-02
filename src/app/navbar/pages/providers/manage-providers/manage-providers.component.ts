@@ -22,7 +22,7 @@ export class ManageProvidersComponent implements OnInit {
     private _ServiceTD : TipodocumentoHttpService
   ) {
 
-    
+
 
   }
    providerForm = this.formBuilder.group({
@@ -58,4 +58,12 @@ export class ManageProvidersComponent implements OnInit {
   //       providerDetails: this.providerForm.value.providerDetails,
   //       providerDoctype: this.providerForm.value.providerDoctype
 
+  onNumericInput(event: any): void {
+    // Filtrar caracteres no numéricos
+    const input = event.target.value;
+    event.target.value = input.replace(/[^0-9]/g, '');
+  }
+  public cerrarDialog(){
+    this._matDialogRef.close()
+  }
 }

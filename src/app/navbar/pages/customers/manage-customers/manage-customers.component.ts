@@ -39,21 +39,6 @@ export class ManageCustomersComponent {
       this.data.tipo === 'crear' ? ' Crear nuevo cliente' : 'Actualizar cliente';
     this.subtitulo = this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo cliente' : 'Ingrese los nuevos datos del cliente';
   }
-<<<<<<< HEAD
-  //^4
-  customerForm = this.formBuiler.group({
-    customerDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
-    customerName: ['', Validators.required],
-    customerLastName: ['', Validators.required],
-    customerAdress: ['', Validators.required, Validators.minLength(3)],
-    customerPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-    customerState: [''],
-    customerTipoDocumento: [''],
-    user: ['']
-  })
-=======
-
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
   public executionMessage() {
     this._matDialogRef.close();
   }
@@ -64,8 +49,4 @@ export class ManageCustomersComponent {
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

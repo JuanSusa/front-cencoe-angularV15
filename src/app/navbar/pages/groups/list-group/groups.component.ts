@@ -4,11 +4,8 @@ import { Team, adminTypePopUp } from 'src/app/core/main.type';
 import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
-=======
 import Swal from 'sweetalert2';
 
->>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',

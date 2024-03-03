@@ -14,6 +14,12 @@ export interface ReqResponse<T> {
     success: boolean;
 }
 
+// Modulo reportes
+export interface reports {
+    reportId: number | null;
+    reportName: string;
+}
+
 // Modulo proveedores
 export interface Provider {
     providerId?: number | null;

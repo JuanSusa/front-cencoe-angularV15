@@ -37,10 +37,16 @@ export const menuItems : MenuItem[] = [
         route: '../grupos'
     },
     {
+        icon:'assignment',
+        label: 'reportes',
+        route: '../reports'
+    },
+ 
+    {
         icon:'settings',
         label: 'Configuracion',
         route: './configuracion'
     },
- 
+
 
 ]

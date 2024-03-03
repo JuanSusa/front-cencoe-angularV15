@@ -40,12 +40,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/role/role.module').then((m) => m.RoleModule)
   },
   {
-    path: 'grupos',
+  path: 'reports',
+  component: NavbarComponent,
+  loadChildren: () => import('./pages/reports/reports-module.module').then((m) => m.ReportsModuleModule)
+  },
+  {
+  path: 'grupos',
     component: NavbarComponent,
-    loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
+      loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
 
   },
-  {path:'', redirectTo:'login', pathMatch:'full'}
+{ path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -57,4 +62,4 @@ const routes: Routes = [
   ]
 })
 
-export class MenuRoutingRoutes {}
+export class MenuRoutingRoutes { }

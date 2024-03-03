@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { GroupServiceService } from './services/http/group-service.service';
 import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [GroupsComponent, GroupManagerComponent],
   imports: [

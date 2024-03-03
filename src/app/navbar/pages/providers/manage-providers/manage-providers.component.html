@@ -63,23 +63,25 @@
                         </mat-select>
                         <!--Detalles-->
                     </mat-form-field>
-                    <mat-form-field class="full-width">
+                    <mat-form-field class="full-width textarea">
                         <mat-label class="form-label">Productos / Servicios</mat-label>
                         <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
                         <mat-error *ngIf="providerForm.get('details')?.hasError('required')">El campo es obligatorio
                         </mat-error>
+                        <mat-error *ngIf="providerForm.get('details')?.hasError('maxlength')">Maximo 150 caracteres
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- <section>
-                  <mat-label class="form-label">Estado del proveedor</mat-label>
-                  <mat-slide-toggle formControlName="status"></mat-slide-toggle>
-              </section>
-          -->
+                    <mat-label class="form-label">Estado del proveedor</mat-label>
+                    <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+                </section>
+            -->
                 </div>
                 <mat-card-actions class="actions-btns">
                     <button mat-button type="submit" class="btn-saved-dialog" [disabled]="providerForm.invalid">
-                      {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
-                  </button>
+                        {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
+                    </button>
                     <button mat-button cdkFocuusInitial (click)="cerrarDialog()" class="btn-cancel-dialog">Cancelar</button>
                 </mat-card-actions>
             </form>
@@ -87,6 +89,8 @@
         </mat-card-content>
     </mat-dialog-content>
 </mat-card>
+
+
 
 
 <!--FormControl: Realiza un seguimiento del valor y el estado de validacion de un control de formulario individual

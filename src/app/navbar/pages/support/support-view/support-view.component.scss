@@ -1,0 +1,67 @@
+.box_top {
+    border: .01rem solid #738092;
+    border-radius: 10px;
+    padding: 0.4rem;
+}
+
+.box_container {
+    margin-top: 1rem;
+    margin-left: 6rem;
+    white-space: wrap;
+}
+
+.box_description {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    max-width: 50%;
+    height: 28rem;
+    overflow: hidden;
+}
+
+.box_description p {
+    margin-top: 2rem;
+    color: rgb(122, 122, 122);
+    text-align: justify;
+    word-wrap: break-word;
+    font-size: 16px;
+}
+
+.box_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    padding: 1rem;
+}
+
+.input_name {
+    width: 25rem;
+}
+
+.decription-form {
+    width: 25rem;
+}
+
+.decription-form textarea {
+    resize: none;
+    min-height: 150px;
+    overflow-y: auto;
+}
+
+.decription-form textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+.decription-form textarea::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.btn-support {
+    width: 150px;
+    margin-right: 0.5rem;
+    background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
+    color: aliceblue;
+}

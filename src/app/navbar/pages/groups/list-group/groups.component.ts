@@ -5,7 +5,6 @@ import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
@@ -20,7 +19,7 @@ export class GroupsComponent {
     private readonly _dialog: MatDialog,
     private readonly _groupHttpService: GroupServiceService,
     private http: HttpClient
-  ){
+  ) {
   }
   ngOnInit(): void {
     this.getAllGroups()
@@ -32,7 +31,7 @@ export class GroupsComponent {
     })
   }
 
-  eliminarTeam(){
+  eliminarTeam() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",
       text: "Esta operacion es irreversible!",
@@ -53,11 +52,11 @@ export class GroupsComponent {
       }
     })
 
-}
+  }
   manageGroup(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(GroupManagerComponent, {
       data: { tipo, campo: id },
-      width:'500px'
+      width: '500px'
     });
     modal
       .afterClosed()

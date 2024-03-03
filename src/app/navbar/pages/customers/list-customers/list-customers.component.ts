@@ -36,7 +36,7 @@ export class ListCustomersComponent {
       this.customer = data;
       console.log(data)
     })
-  };
+  }
   eliminarCustomer() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",
@@ -58,6 +58,5 @@ export class ListCustomersComponent {
       }
     });
   };
-};
-
+}
 

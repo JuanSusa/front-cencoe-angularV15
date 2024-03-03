@@ -40,10 +40,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/role/role.module').then((m) => m.RoleModule)
   },
   {
-    path: 'grupos',
+  path: 'reports',
+  component: NavbarComponent,
+  loadChildren: () => import('./pages/reports/reports-module.module').then((m) => m.ReportsModuleModule)
+  },
+  {
+  path: 'grupos',
     component: NavbarComponent,
-    loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
+      loadChildren: () => import('./pages/groups/groups-module.module').then((m) => m.GroupsModuleModule)
 
+  },
+  {
+    path: 'soporte',
+    component: NavbarComponent,
+    loadChildren: () => import('./pages/support/support.module').then((m) => m.SupportModule)
   },
   {path:'', redirectTo:'login', pathMatch:'full'}
 ];
@@ -57,4 +67,4 @@ const routes: Routes = [
   ]
 })
 
-export class MenuRoutingRoutes {}
+export class MenuRoutingRoutes { }

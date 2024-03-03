@@ -31,7 +31,7 @@ export class LoginComponent {
     this.cambioL_R = !this.cambioL_R;
     _formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
     _cambio_L_R.classList.toggle('cambio', this.cambioL_R);
-    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '10px';
+    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '0';
     _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
     _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
     _messageError.style.display = this.cambioL_R ? 'none' : 'block';
@@ -45,7 +45,7 @@ export class LoginComponent {
     this.cambioL_R = !this.cambioL_R;
     _formulario_L.style.display = this.cambioL_R ? 'block' : 'none';
     _cambio_L_R.classList.toggle('cambio', this.cambioL_R)
-    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '10px';
+    _cambio_L_R.style.left = this.cambioL_R ? '360px' : '0';
     _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
     _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
   }

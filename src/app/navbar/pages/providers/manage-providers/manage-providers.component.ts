@@ -1,14 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Provider, ReqResponse, TypeDocs, adminPopUp, adminTypePopUp } from 'src/app/core/main.type';
-import { ProviderServiceService } from '../services/provider-service.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Provider, TypeDocs, adminPopUp} from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
+import { ProviderService } from '../services/provider-service.service';
 import { FloatLabelType } from '@angular/material/form-field';
-
-
-
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
@@ -19,14 +15,14 @@ export class ManageProvidersComponent implements OnInit {
   titulo: String = ''
   subtitulo: String = ''
   typeDocs: TypeDocs[] = []
-
   constructor(private readonly _matDialogRef: MatDialogRef<ManageProvidersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,
     private formBuilder: FormBuilder,
-    private ServiceProvider: ProviderServiceService,
+    @Inject(ProviderService) private readonly providerService: ProviderService,
     private _ServiceTD : TipodocumentoHttpService
-
   ) {
+
+    
 
   }
    providerForm = this.formBuilder.group({
@@ -62,21 +58,4 @@ export class ManageProvidersComponent implements OnInit {
   //       providerDetails: this.providerForm.value.providerDetails,
   //       providerDoctype: this.providerForm.value.providerDoctype
 
-  //       }
-  //       this.ServiceProvider.saveProvider(provider).subscribe(
-  //         (response) =>{
-  //           console.log(response)
-  //         }
-  //       )
-  //     }
-  //   } 
-
-  onNumericInput(event: any): void {
-    // Filtrar caracteres no numéricos
-    const input = event.target.value;
-    event.target.value = input.replace(/[^0-9]/g, '');
-  }
-  public cerrarDialog(){
-    this._matDialogRef.close()
-  }
 }

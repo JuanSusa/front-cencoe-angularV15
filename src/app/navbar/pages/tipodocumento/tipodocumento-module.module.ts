@@ -6,6 +6,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TipodocumentoHttpService } from './services/tipo-documento.service';
+import { userHttpService } from '../users/service/http/user-service.service';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TipodocumentoHttpService } from './services/tipo-documento.service';
     ReactiveFormsModule
   ],
   providers:[
+    userHttpService,
     TipodocumentoHttpService
   ]
 })

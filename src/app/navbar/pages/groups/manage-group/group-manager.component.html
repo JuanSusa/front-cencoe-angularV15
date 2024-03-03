@@ -15,6 +15,35 @@
                         <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
                     </mat-form-field>
+<<<<<<< HEAD
+                    <div class="row">
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha inicio</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                            <div class="error">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha final</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <mat-select formControlName="user">
+                                <mat-option *ngFor="let t of user" [value]="t.userId">
+                                    {{t.userName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+=======
                     <!--Campo fecha inicio-->
                     <!-- <mat-form-field>
                         <mat-label>Fecha inicio</mat-label>
@@ -42,6 +71,7 @@
                         <mat-error *ngIf="groupForm.get('integrantes')?.hasError('required')">Debe seleccionar los integrantes</mat-error>
                     </mat-form-field>
 
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
                 </section>
             </form>
             <mat-card-actions class="actions-btns">
@@ -55,4 +85,8 @@
             </mat-card-actions>
         </mat-card-content>
     </mat-dialog-content>
+<<<<<<< HEAD
+</div>
+=======
     </mat-card>
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

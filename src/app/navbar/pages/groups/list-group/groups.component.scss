@@ -1,38 +1,52 @@
 .mdc-button {
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     margin: 0 1rem 1rem 0;
-
 }
+<<<<<<< HEAD
+
+mat-icon {
+    color: #ff0844;
+=======
 .mdc-button:hover{
     background: rgba(255, 0, 0, 0.747);
     color: #ffffff;
 }
 mat-icon{
     color:#ff0844;
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 }
+
 .add-customer {
     color: #fafafa !important;
 }
+
 .content-table {
     margin-top: 1rem;
 }
+
 .table-header {
     text-align: center;
     width: 200px;
 }
+
 .user-id {
     width: 50px;
 }
+
 .mat-mdc-cell {
     text-align: center;
 }
+
 mat-toolbar {
     border: .01rem solid #738092;
     border-radius: 10px;
+<<<<<<< HEAD
+=======
 }
 .btn-action{
     color:#ff0844;
 }
 .btn-action1{
     color:#29323c;
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 }

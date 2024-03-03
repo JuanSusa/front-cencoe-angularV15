@@ -1,3 +1,9 @@
+.box_top {
+    border: .01rem solid #738092;
+    border-radius: 10px;
+    padding: 0.4rem;
+}
+
 .box_container {
     margin-top: 1rem;
     margin-left: 6rem;
@@ -16,10 +22,11 @@
 }
 
 .box_description p {
+    margin-top: 2rem;
     color: rgb(122, 122, 122);
     text-align: justify;
     word-wrap: break-word;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .box_form {
@@ -53,6 +60,7 @@
 }
 
 .btn-support {
+    width: 150px;
     margin-right: 0.5rem;
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     color: aliceblue;

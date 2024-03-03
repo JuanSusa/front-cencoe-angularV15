@@ -18,20 +18,22 @@
     <!-- Caja de los formularios de login -->
     <div class="contenedorLogin w-6 text-center text-white m-2">
         <!-- Formulario de login -->
-        <form [formGroup]="loginForm" (ngSubmit)="logIn()"
+        <form class="formulario__login" [formGroup]="loginForm" (ngSubmit)="logIn()"
             class="formularioLogin bg-black-alpha-40 border-round-3xl text-base">
-            <mat-card-title class="font-bold mr-3 text-center text-2xl">Iniciar Sesión</mat-card-title>
+            <mat-card-title class="mr-3 text-center text-2xl">Iniciar Sesión</mat-card-title>
             <mat-form-field class="w-11 m-3">
-                <input matInput formControlName="username" placeholder="Usuario"
+                <mat-label>Ususario</mat-label>
+                <input matInput formControlName="username"
                     class="mt-2 p-1 border-none text-base outline-none">
                 <mat-error *ngIf="loginForm.get('username')?.hasError && loginForm.get('username')?.touched">El
                     usuario es requerido.</mat-error>
             </mat-form-field>
             <mat-form-field class="w-11 m-3">
-                <input matInput type="password" formControlName="password" placeholder="Contraseña"
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password"
                     class="mt-2 p-1 border-none text-base outline-none">
                 <mat-error
-                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty) || loginForm.get('password')?.touched">La
+                    *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">La
                     contraseña es requerida.</mat-error>
             </mat-form-field>
             <button mat-raised-button type="" [disabled]="loginForm.invalid"

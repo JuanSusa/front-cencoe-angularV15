@@ -1,3 +1,65 @@
+<<<<<<< HEAD
+<div class="container-box h-auto">
+    <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+    <mat-card-subtitle class="sub">{{ subtitulo }}</mat-card-subtitle>
+    <mat-dialog-content>
+        <mat-card-content class="mat-elevation-z8">
+            <!-- Formulario registro campaña -->
+            <form class="create-campaign" [formGroup]="campaignForm">
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" placeholder="Nombre Completo" type="text" />
+                    <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">Nombre necesario</mat-error>
+                    <mat-error *ngIf="campaignForm.get('nombre')?.hasError('maxlength')">Máximo 10 caracteres</mat-error>
+                </mat-form-field>
+                <div class="flex ">
+                    <!-- <div class="column"> -->
+                    <mat-form-field class="example-full-width mr-3">
+                        <mat-label>Fecha inicio</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                    </mat-form-field>
+                    <!-- </div> -->
+                    <!-- <div class="column"> -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha final</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <!-- </div> -->
+                </div>
+                <mat-form-field>
+                    <mat-label>Observaciones</mat-label>
+                    <textarea class="box-obs h-3rem" matInput></textarea>
+                    <!-- Validar el scroll -->
+                    <input matInput formControlName="observaciones" />
+                    <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('required')">Observaciones necesarias</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Grupos</mat-label>
+                    <mat-select formControlName="grupos">
+                        <mat-option *ngFor="let t of team" [value]="t.teamId">
+                            {{t.teamName}} - {{t.teamId}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </form>
+            <mat-card-actions class="actions-btns">
+                <!-- Botones de acciones -->
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid" (click)="showButton()" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'" [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
+                  {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
+              </button>
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                  Cancelar
+              </button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-dialog-content>
+</div>
+=======
   <mat-card class="container-card">
         <div class="container-header">
         <mat-card-title  mat-dialog-title>{{ titulo }}</mat-card-title>
@@ -71,3 +133,4 @@
             </mat-card-content>
         </mat-dialog-content>
     </mat-card>
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

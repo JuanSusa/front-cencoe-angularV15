@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoleComponent } from './role.component';
 import { RoleModuleRoutingModule } from './role-routing';
+import { userHttpService } from '../users/service/http/user-service.service';
+import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 
 @NgModule({
   declarations: [RoleComponent],
@@ -16,6 +18,8 @@ import { RoleModuleRoutingModule } from './role-routing';
     RoleModuleRoutingModule
   ],
   providers:[
+    userHttpService,
+    TipodocumentoHttpService
   ]
 })
 export class RoleModule { }

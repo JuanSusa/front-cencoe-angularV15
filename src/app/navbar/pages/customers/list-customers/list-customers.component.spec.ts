@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GroupManagerComponent } from './group-manager.component';
-describe('GroupManagerComponent', () => {
-  let component: GroupManagerComponent;
-  let fixture: ComponentFixture<GroupManagerComponent>;
+import { ListCustomersComponent } from './list-customers.component';
+describe('ListCustomersComponent', () => {
+  let component: ListCustomersComponent;
+  let fixture: ComponentFixture<ListCustomersComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroupManagerComponent ]
+      declarations: [ ListCustomersComponent ]
     })
     .compileComponents();
-    fixture = TestBed.createComponent(GroupManagerComponent);
+    fixture = TestBed.createComponent(ListCustomersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

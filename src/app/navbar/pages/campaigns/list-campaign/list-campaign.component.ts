@@ -17,7 +17,11 @@ import Swal from 'sweetalert2';
 })
 export class ListCampaignComponent {
   public campaign: Campaign[] = [];//^1
+<<<<<<< HEAD
+  public displayedColumns = ['campaign_id','campaign_name','campaign_team', 'campaign_provider','campaign_start_date','campaign_end_date','campaign_observations','campaign_state', 'actions'];//^2
+=======
   public displayedColumns = ['campaign_id', 'campaign_name', 'campaign_team', 'campaign_provider', 'campaign_start_date', 'campaign_end_date', 'campaign_observations', 'campaign_state', 'actions'];//^2
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
   isLoading = true;
   success: boolean = false;
   constructor(
@@ -46,7 +50,11 @@ export class ListCampaignComponent {
         console.log('se cerro el dialogo ')
       });
   }
+<<<<<<< HEAD
+  eliminarCampaign(){
+=======
   eliminarCampaign() {
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",
       text: "Esta operacion es irreversible!",
@@ -60,15 +68,26 @@ export class ListCampaignComponent {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Eliminado",
+<<<<<<< HEAD
+          text: "El proveedor ha sido eliminado",
+=======
           text: "Campaña eliminada",
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
           confirmButtonColor: "#ff0844",
           icon: "success"
         });
       }
+<<<<<<< HEAD
+    })
+
+  }
+=======
     });
   };
 
+>>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2
 }
+
 /**
  * ^1 => Inyeccion de datos usuarios
  * ^2 => arreglo que define las columnas de la tabla en la vista

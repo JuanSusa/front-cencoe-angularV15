@@ -40,7 +40,7 @@ export class ManageCampaignsComponent {
         nombre: ['', [Validators.required]],
         fechaInicio: ['', Validators.required],
         fechaFinal: ['', [Validators.required, this.fechaFinalValidador.bind(this)]],
-        observaciones: ['', Validators.maxLength(150)],
+        observaciones: ['', Validators.maxLength(151)],
         estado: ['', [Validators.required]],
         grupos: ['', [Validators.required]]
       });

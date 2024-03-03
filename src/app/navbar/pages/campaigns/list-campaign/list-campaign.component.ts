@@ -38,7 +38,7 @@ export class ListCampaignComponent {
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {
       data: { tipo, campo: id },
-
+  
     });
     modal
       .afterClosed()

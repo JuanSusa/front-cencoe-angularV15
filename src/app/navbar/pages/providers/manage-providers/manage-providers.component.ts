@@ -34,7 +34,7 @@ export class ManageProvidersComponent implements OnInit {
     adress: ['', Validators.required],
     contact: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("[0-9]{10}")]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-    details: ['', Validators.required],
+    details: ['',[ Validators.required, Validators.maxLength(151)]],
     numDocumento: ['',[ Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
     TipoDocumento: [''],
   })

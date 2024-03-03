@@ -1,9 +1,9 @@
-  <mat-card class="container-card">
+  <mat-card>
         <div class="container-header">
         <mat-card-title  mat-dialog-title>{{ titulo }}</mat-card-title>
         <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
         </div>
-        <mat-dialog-content class="mat-typography">
+        <mat-dialog-content class="dialog-content">
             <mat-card-content class="mat-elevation-z10">
                 <!-- Formulario registro campaña -->
                 <!--Campo nombre campaña-->
@@ -37,15 +37,7 @@
                                 obligatoria</mat-error>
                             <mat-error *ngIf="campaignForm.get('fechaFinal')?.hasError('mismaFecha')">No pueden ser misma fecha</mat-error>
                         </mat-form-field>
-                        <!--Campo Observaciones-->
-                        <mat-form-field class="full-width">
-                            <mat-label>Observaciones</mat-label>
-                            <textarea matInput formControlName="observaciones"></textarea>
-                            <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('maxlength')">La descripcion
-                                de la
-                                campaña no puede tener mas de 150 caracteres</mat-error>
-                        </mat-form-field>
-                        <!--Campo select grupos-->
+                         <!--Campo select grupos-->
                         <mat-form-field class="full-width">
                             <mat-label>Grupos</mat-label>
                             <mat-select formControlName="grupos" placeholder="seleccione un grupo">
@@ -57,6 +49,14 @@
                                 grupo</mat-error>
                         </mat-form-field>
                     </div>
+                        <!--Campo Observaciones-->
+                        <mat-form-field class="full-width textarea" rows="5" maxlength="150">
+                            <mat-label>Observaciones</mat-label>
+                            <textarea matInput formControlName="observaciones"></textarea>
+                            <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('maxlength')">La descripcion
+                                de la
+                                campaña no puede tener mas de 150 caracteres</mat-error>
+                        </mat-form-field>
 
                     <mat-card-actions class="actions-btns">
                         <!-- Botones de acciones -->

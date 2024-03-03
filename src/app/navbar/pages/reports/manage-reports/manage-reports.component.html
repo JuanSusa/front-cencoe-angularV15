@@ -55,7 +55,7 @@
                 <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
                   Guardar
               </button>
-                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="reportsForm.invalid" [style.display]="this.data.tipo === 'ver' ? 'none' : 'inline-block'" [style.outline]="this.data.tipo === 'ver' ? 'none' : 'auto' ">
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="reportsForm.invalid" >
                   {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
               </button>
             </mat-card-actions>

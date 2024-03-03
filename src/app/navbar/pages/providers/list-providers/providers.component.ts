@@ -1,17 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Component, Inject, OnInit} from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
-import { Provider, adminTypePopUp, ReqResponse } from 'src/app/core/main.type';
-import { ProviderServiceService } from '../services/provider-service.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { Subject, takeUntil } from 'rxjs';
+import { Provider, adminTypePopUp} from 'src/app/core/main.type';
 import Swal from 'sweetalert2';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
-
-
-
-
+import { PageEvent } from '@angular/material/paginator';
+import { ProviderService } from '../services/provider-service.service';
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
@@ -20,38 +13,31 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class ProvidersComponent implements OnInit {
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
-
   listprovider:Provider[]= [];
   pageSizeOptions: number[] = [3, 10, 25, 100];
   totalItems: number = 0;
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]
-
   constructor(
     private readonly _dialog: MatDialog,
-    private readonly providerService: ProviderServiceService ) {
-
+    @Inject(ProviderService) private readonly providerService: ProviderService) {
   }
-
   ngOnInit() {
     this.getAllProviders()
     //this.getProvider(2)
   }
-
   getAllProviders(page:number =0, size: number=3) {
     this.providerService.getAllProviders(page, size)
     .subscribe((data :any) =>{
       this.listprovider = data.content;
-      this.totalItems = data.totalElements; 
+      this.totalItems = data.totalElements;
       console.log(data)
     })
   }
-
   onPageChange(event: PageEvent) {
     const page = event.pageIndex; // Índice de la página seleccionada
     const size = event.pageSize; // Tamaño de la página seleccionada
     this.getAllProviders(page, size); // Obtener los proveedores para la página seleccionada
   }
-
   eliminarProvider(){
       Swal.fire({
         title: "¿Esta seguro de eliminar este registro?",
@@ -77,15 +63,15 @@ export class ProvidersComponent implements OnInit {
   /* Logica para abrir el mat dialog*/
   manageProvider(tipo: adminTypePopUp, providerId?: number) {
     const activeModal = this._dialog.open(ManageProvidersComponent, {
-      data: { tipo, campo: providerId }
+      data: { tipo, campo: providerId },
+   
+    
     })
     activeModal
       .afterClosed()
       .subscribe(result => {
         console.log('Close dialog')
       });
-
   }
-
 }
 

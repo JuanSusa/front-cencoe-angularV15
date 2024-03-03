@@ -2,9 +2,15 @@
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     margin: 0 1rem 1rem 0;
 }
-
-mat-icon {
-    color: #ff0844;
+.mdc-button:hover{
+    background: rgba(255, 0, 0, 0.747);
+    color: #ffffff;
+}
+.btn-action{
+    color:#ff0844;
+}
+.btn-action1 {
+    color:#29323c;
 }
 
 .add-customer {
@@ -28,7 +34,11 @@ mat-icon {
     text-align: center;
 }
 
-mat-toolbar {
-    border: .01rem solid #738092;
-    border-radius: 10px;
-}
+.mat-divider {
+    border: none; 
+    height: 1px; 
+    background: #ff0844;
+    margin: 20px 0; 
+    box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4); 
+    width: 50%;
+  }

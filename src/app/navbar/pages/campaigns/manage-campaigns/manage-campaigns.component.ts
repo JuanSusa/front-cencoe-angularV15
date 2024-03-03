@@ -1,81 +1,56 @@
 import { Component, Inject } from '@angular/core';
-import { Team, adminPopUp } from 'src/app/core/main.type';
+import { Provider, Team, adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, Validators } from '@angular/forms';
-import { SelectGroupComponent } from '../select-group/select-group.component';
-import { SelectProvideComponent } from '../select-provide/select-provide.component';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-
-
+import { ProviderService } from '../../providers/services/provider-service.service';
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
+
 export class ManageCampaignsComponent {
+  titulo: string = '';
+  subtitulo: string = '';
   public team:Team[]=[]
-  public showBtn: boolean = false;
+  campaignForm : FormGroup;
   maxDate: Date;
+
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     private _GroupService : GroupServiceService
-    ) { this.maxDate = new Date();}
+    ) {
+      this.maxDate = new Date();
+      this.campaignForm = new FormGroup({});
+    }
 
-    campaignForm = this.formBuilder.group({
-      id : ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-      nombre : ['', [Validators.required, Validators.maxLength(10)]],
-      fechaInicio : ['', [Validators.required, Validators.maxLength(20)]],
-      fechaFinal : ['', [Validators.required, Validators.maxLength(20)]],
-      observaciones: ['', [Validators.required, Validators.maxLength(100)]],
-      estado : ['', [Validators.required,]],
-      grupos : ['']
-    })
-
-    selectGroup(): void {
-    const dialogRef = this.dialog.open(SelectGroupComponent, {
-      width: '250px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('La ventana emergente ha sido cerrada');
-    });
-  }
-
-  selectProvide(): void {
-    const dialogRef = this.dialog.open(SelectProvideComponent, {
-      width: '250px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('La ventana emergente ha sido cerrada');
-    });
-  }
-  titulo: string = '';
-  subtitulo: string = '';
   ngOnInit(): void {
     //^5
     this.getAllGroups()
+
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles de la Campaña' : 'Editar Campaña';
+      this.data.tipo === 'crear' ? 'Crear nueva Campaña': 'Actualizar Campaña';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nueva nueva Campaña' : this.data.tipo === 'ver' ? 'Detalles del Campaña' : 'Ingrese los nuevos datos de la Campaña';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nueva Campaña': 'Ingrese los nuevos datos de la Campaña';
 
-
+      this.campaignForm = this.formBuilder.group({
+        nombre: ['', [Validators.required]],
+        fechaInicio: ['', Validators.required],
+        fechaFinal: ['', [Validators.required, this.fechaFinalValidador.bind(this)]],
+        observaciones: ['', Validators.maxLength(151)],
+        estado: ['', [Validators.required]],
+        grupos: ['', [Validators.required]]
+      });
   }
-  public showButton(){
-    this.showBtn=!this.showBtn
-  }
-  //^4
-
 
   public executionMesssage() {
     this._matDialogRef.close();
   }
-
    //^6
    onNumericInput(event: any): void {//^6.1
     // Filtrar caracteres no numéricos
@@ -91,7 +66,23 @@ export class ManageCampaignsComponent {
       })
     }
   }
+  fechaFinalValidador(control: FormControl) {
+    const fechaInicio = this.campaignForm.get('fechaInicio')?.value;
+    const fechaFinal = control.value;
 
+    if (!fechaInicio || !fechaFinal) {
+      return null; // No se realiza la validación si alguna de las fechas es null
+    }
+
+    // Convertir fechas a objetos Date para comparación
+    const fechaInicioDate = new Date(fechaInicio);
+    const fechaFinalDate = new Date(fechaFinal);
+
+    if (fechaFinalDate.getTime() === fechaInicioDate.getTime()) {
+      return { mismaFecha: true }; // Retorna error si las fechas son iguales
+    }
+
+    return null; // Retorna null si no hay errores
+  }
 
 }
-

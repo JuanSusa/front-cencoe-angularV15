@@ -1,4 +1,4 @@
-export type adminTypePopUp = 'crear' | 'editar' | 'ver';//^1
+export type adminTypePopUp = 'crear' | 'editar' //^1
 export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
 
 /**
@@ -12,12 +12,6 @@ export interface ReqResponse<T> {
     message: string;
     data: T[];
     success: boolean;
-}
-
-// Modulo reportes
-export interface reports {
-    reportId: number | null;
-    reportName: string;
 }
 
 // Modulo proveedores
@@ -47,8 +41,8 @@ export interface User {
 export interface Campaign {
     campaignId: number;
     campaignName: string;
-    campaignTeam: number;
-    campaignProvider: number;
+    // campaignTeam: number;
+    // campaignProvider: number;
     campaignStartDate: Date;
     campaignEndDate: Date;
     campaignObservations: string;
@@ -76,4 +70,3 @@ export interface Customer {
     customerAddress: string;
     customerState: boolean;
 }
-

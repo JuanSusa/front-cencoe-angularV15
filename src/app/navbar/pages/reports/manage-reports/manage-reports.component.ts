@@ -26,9 +26,9 @@ export class ManageReportsComponent {
     //^5
     const { tipo, campo } = this.data;
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Editar Grupo';
+      this.data.tipo === 'crear' ? 'Crear nuevo grupo' :'Editar Grupo';
     this.subtitulo =
-      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo' : this.data.tipo === 'ver' ? 'Detalles del Grupo' : 'Ingrese los nuevos datos del grupo';
+      this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo' : 'Ingrese los nuevos datos del grupo';
     debugger
   }
   reportsForm = this.formBuilder.group({

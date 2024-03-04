@@ -16,7 +16,7 @@ export class TipodocumentoHttpService {
     getAllTypeDocuments(): Observable<TypeDocs[]> {
         return this._http.get<ReqResponse<TypeDocs>>(`${environment.api}/tipos-documento`)
             .pipe(
-                // tap(data => console.log('TIPO DOCUMENTOS', data)),
+                tap(data => console.log('TIPO DOCUMENTOS', data)),
                 map(res => res.data),
                 share()
             )

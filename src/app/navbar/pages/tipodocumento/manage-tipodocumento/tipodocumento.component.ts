@@ -33,6 +33,14 @@ export class TipodocumentoComponent implements OnInit {
     this.getAllTypeDocs()
   }
 
+  onSubmit():void{
+    console.log({
+      formIsValid: this.typeDocForm.valid,
+      value: this.typeDocForm.value
+    })
+   
+  }
+
   getAllTypeDocs() {
     this._tipodocumentoHttpService.getAllTypeDocuments()
       .subscribe(data => {
@@ -49,12 +57,12 @@ export class TipodocumentoComponent implements OnInit {
       };
 
       this._tipodocumentoHttpService.saveTypeDocument(newTypeDoc).subscribe(
-        (response) => {
+        response => {
           console.log(response)
 
           this.typeDocs.push(response);
           Swal.fire('Éxito',
-            `Tipo de documento creado exitosamente ${response.docTypeName}`,
+            `Tipo de documento ${response.docTypeName} creado exitosamente `,
             'success');
           this.typeDocForm.reset();
         }, error => {

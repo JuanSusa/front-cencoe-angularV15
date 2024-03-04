@@ -1,11 +1,10 @@
-
 <mat-card class="container-card">
     <div class="container-header">
         <mat-card-title mat-dialog-title>{{titulo}}</mat-card-title>
         <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
     </div>
- 
-<mat-dialog-content>
+
+    <mat-dialog-content>
         <mat-card-content class="mat-elevation-z8">
             <form class="create_provider" [formGroup]="providerForm">
                 <div class="campos">
@@ -49,7 +48,8 @@
                         <mat-label class="form-label">No. Documento</mat-label>
                         <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento"
                             (input)="onNumericInput($event)">
-                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento
+                            obligatorio</mat-error>
                         <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('minlength')">Minimo 8
                             digitos</mat-error>
                         <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('maxLength')">Maximo 10
@@ -86,7 +86,7 @@
                         class="btn-cancel-dialog">Cancelar</button>
                 </mat-card-actions>
             </form>
-           
+
         </mat-card-content>
     </mat-dialog-content>
 </mat-card>

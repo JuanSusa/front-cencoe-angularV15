@@ -28,7 +28,7 @@ export class ProviderServiceService {
 
   //este metodo sirve para registrar un empleado
   saveProvider(provider: Provider): Observable<Provider> {
-    return this.httpClient.post<Provider>(`${environment.api}/provider`, provider)
+    return this._httpClient.post<Provider>(`${environment.api}/provider`, provider)
       .pipe(
         tap(response => console.log('Proveedor guardado:', response)),
         // map(response => {

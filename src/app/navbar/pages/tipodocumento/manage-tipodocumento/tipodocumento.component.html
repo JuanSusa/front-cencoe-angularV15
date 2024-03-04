@@ -33,7 +33,7 @@
             </mat-card-title>
             <mat-divider class="mx-5"></mat-divider>
             <mat-card-content>
-                <form class="create-typeDoc" [formGroup]="typeDocForm" (ngSubmit)="saveTypeDoc()">
+                <form class="create-typeDoc" [formGroup]="typeDocForm" (ngSubmit)="onSubmit()">
                     <mat-form-field>
                         <mat-label>Nombre del Documento</mat-label>
                         <input matInput name="nuevoDocumento" formControlName="docTypeName" type="text" autocomplete="off">
@@ -44,7 +44,7 @@
 
 
                     </mat-form-field>
-                    <button mat-raised-button type="submit" class="btn-submit" (click)="saveTypeDoc()">Agregar</button>
+                    <button mat-raised-button type="submit" class="btn-submit" >Agregar</button>
                 </form>
             </mat-card-content>
         </mat-card>

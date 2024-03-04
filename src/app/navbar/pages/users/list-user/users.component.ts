@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { User, adminTypePopUp } from 'src/app/core/main.type';
+import { adminTypePopUp } from 'src/app/core/main.type';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { userHttpService } from '../service/http/user-service.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class UsersComponent implements OnInit {
 
   private clearSubscritions$ = new Subject<void>();
-  public user: User[] = [];//^1
+  public user= [];//^1 User[] 
   public displayedColumns = ['userId', 'name', 'direccion', 'email', 'edit'];//^2
   isLoading = true;
   success: boolean = false;
@@ -26,20 +26,20 @@ export class UsersComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.getAllUsers()
+    // this.getAllUsers()
   }
 
 
-  getAllUsers() {
-    this._userHttpService.getAllUsers()
-      .pipe(
-        takeUntil(this.clearSubscritions$)
-      )
-      .subscribe(data => {
-        this.user = data;
-        console.log(data)
-      })
-  }
+  // getAllUsers() {
+  //   this._userHttpService.getAllUsers()
+  //     .pipe(
+  //       takeUntil(this.clearSubscritions$)
+  //     )
+  //     .subscribe(data => {
+  //       this.user = data;
+  //       console.log(data)
+  //     })
+  // }
 
 
   manageUser(tipo: adminTypePopUp, userId?: number) {

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Provider, Team, adminPopUp } from 'src/app/core/main.type';
+import {adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
@@ -13,7 +13,7 @@ import { ProviderService } from '../../providers/services/provider-service.servi
 export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
-  public team:Team[]=[]
+  public team = [] //:Team[]
   campaignForm : FormGroup;
   maxDate: Date;
 
@@ -30,7 +30,7 @@ export class ManageCampaignsComponent {
 
   ngOnInit(): void {
     //^5
-    this.getAllGroups()
+    // this.getAllGroups()
 
     const { tipo, campo } = this.data;
     this.titulo =
@@ -57,15 +57,15 @@ export class ManageCampaignsComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
-  getAllGroups(){
-    if(this._GroupService){
-      this._GroupService.getAllGroups()
-      .subscribe((data : Team[]) =>{
-        this.team = data
-        console.log(data)
-      })
-    }
-  }
+  // getAllGroups(){
+  //   if(this._GroupService){
+  //     this._GroupService.getAllGroups()
+  //     .subscribe((data : Team[]) =>{
+  //       this.team = data
+  //       console.log(data)
+  //     })
+  //   }
+  // }
   fechaFinalValidador(control: FormControl) {
     const fechaInicio = this.campaignForm.get('fechaInicio')?.value;
     const fechaFinal = control.value;

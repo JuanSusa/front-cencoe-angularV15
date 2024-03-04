@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { Campaign, adminTypePopUp } from 'src/app/core/main.type';
+import { adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignsServiceService } from '../services/http/campaigns-service.service';
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-campaign.component.scss']
 })
 export class ListCampaignComponent {
-  public campaign: Campaign[] = [];//^1
+  public campaign = [];//^1 : Campaign[]
   public displayedColumns = ['campaign_id', 'campaign_name', 'campaign_team', 'campaign_provider', 'campaign_start_date', 'campaign_end_date', 'campaign_observations', 'campaign_state', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
@@ -27,14 +27,14 @@ export class ListCampaignComponent {
   ) {
   }
   ngOnInit(): void {
-    this.getAllCampaigns()
+    // this.getAllCampaigns()
   }
-  getAllCampaigns() {
-    this._campaignHttpService.getAllCampaigns().subscribe(data => {
-      this.campaign = data;
-      console.log(data)
-    })
-  }
+  // getAllCampaigns() {
+  //   this._campaignHttpService.getAllCampaigns().subscribe(data => {
+  //     this.campaign = data;
+  //     console.log(data)
+  //   })
+  // }
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {
       data: { tipo, campo: id },

@@ -38,8 +38,8 @@
                     <mat-form-field class="full-width">
                         <mat-label>Grupos</mat-label>
                         <mat-select formControlName="grupos" placeholder="seleccione un grupo">
-                            <mat-option *ngFor="let t of team" [value]="t.teamId">
-                                {{t.teamName}} - {{t.teamId}}
+                            <mat-option><!--  *ngFor="let t of team" [value]="t.teamId"> -->
+                                <!-- {{t.teamName}} - {{t.teamId}} -->
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo
@@ -65,4 +65,3 @@
             </form>
         </mat-card-content>
     </mat-dialog-content>
-    >>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

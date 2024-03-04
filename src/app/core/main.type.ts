@@ -8,65 +8,74 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  */
 
 export interface ReqResponse<T> {
-    code: number;
+    code:    number;
     message: string;
-    data: T[];
+    data:    T[];
     success: boolean;
 }
 
-// Modulo proveedores
-export interface Provider {
-    providerId?: number | null;
-    providerName: String;
-    providerAddress: String;
-    providerEmail: String;
-    providerContact: String;
-    providerDetails: String;
-    providerDoctype: TypeDocs;
+export interface Pageable<T> {
+    content:          T[];
+    pageable:         Page;
+    last:             boolean;
+    totalElements:    number;
+    totalPages:       number;
+    size:             number;
+    number:           number;
+    sort:             Sort;
+    first:            boolean;
+    numberOfElements: number;
+    empty:            boolean;
 }
 
-// Modulo usuario
-export interface User {
-    userId: number;
-    userNumDoc: string;
-    userName: string;
-    userLastName: string;
-    userAddress: string;
-    userPhone: string;
-    userEmail: string;
-    userPassword: string;
-    userState: boolean;
-    userDocType: TypeDocs;
-}
-export interface Campaign {
-    campaignId: number;
-    campaignName: string;
-    // campaignTeam: number;
-    // campaignProvider: number;
-    campaignStartDate: Date;
-    campaignEndDate: Date;
-    campaignObservations: string;
-    campaignState: string;
+export interface Page {
+    pageNumber: number;
+    pageSize:   number;
+    sort:       Sort;
+    offset:     number;
+    paged:      boolean;
+    unpaged:    boolean;
 }
 
-export class TypeDocs {
-    docTypeId!: number | null;
-    docTypeName: string = '';
-
+export interface Sort {
+    empty:    boolean;
+    sorted:   boolean;
+    unsorted: boolean;
 }
 
-export interface Team {
-    teamId: number;
-    teamName: string;
-    teamCapacity: number;
-    teamState: boolean;
-}
 
-// Modulo cliente
-export interface Customer {
-    customerId: number;
-    customerName: string;
-    customerPhone: number;
-    customerAddress: string;
-    customerState: boolean;
-}
+
+
+// // Modulo usuario
+// export interface User {
+//     userId: number;
+//     userNumDoc: string;
+//     userName: string;
+//     userLastName: string;
+//     userAddress: string;
+//     userPhone: string;
+//     userEmail: string;
+//     userPassword: string;
+//     userState: boolean;
+//     userDocType: TypeDocs;
+// }
+// export interface Campaign {
+//     campaignId: number;
+//     campaignName: string;
+//     // campaignTeam: number;
+//     // campaignProvider: number;
+//     campaignStartDate: Date;
+//     campaignEndDate: Date;
+//     campaignObservations: string;
+//     campaignState: string;
+// }
+
+
+
+// export interface Team {
+//     teamId: number;
+//     teamName: string;
+//     teamCapacity: number;
+//     teamState: boolean;
+// }
+

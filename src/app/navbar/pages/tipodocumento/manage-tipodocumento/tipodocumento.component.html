@@ -16,9 +16,9 @@
             </mat-card-title>
             <mat-divider class="mx-3"></mat-divider>
             <mat-card-content>
-                <mat-selection-list (selectionChange)="onSelectionChange($event)">
+                <mat-selection-list (selectionChange)="onSelectionChange($event)" >
                     <mat-list-option *ngFor="let tipoDocumento of typeDocs" [value]="tipoDocumento" class="color">
-                        {{tipoDocumento.docTypeName}}</mat-list-option>
+                        {{tipoDocumento.docTypeName}}</mat-list-option> 
                     <mat-card-actions>
                         <button mat-raised-button type="submit" class="btn-submit" [disabled]="!enableButton" (click)="deleteSelectedItems()">Eliminar</button>
                     </mat-card-actions>
@@ -42,10 +42,8 @@
                         </mat-error>
                         <mat-error *ngIf="typeDocForm.get('docTypeName')?.hasError('pattern')">Unicamente letras
                         </mat-error>
-
-
                     </mat-form-field>
-                    <button mat-raised-button type="submit" class="btn-submit" (click)="saveTypeDoc()" [disabled]="typeDocForm.invalid">Agregar</button>
+                    <button mat-raised-button type="submit" class="btn-submit" >Agregar</button>
                 </form>
             </mat-card-content>
         </mat-card>

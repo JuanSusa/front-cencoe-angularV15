@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Team, adminTypePopUp } from 'src/app/core/main.type';
+import { adminTypePopUp } from 'src/app/core/main.type';
 import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent {
-  public team: Team[] = [];//^1
+  public team = [];//^1Team[] 
   public displayedColumns = ['teamId', 'teamName', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
@@ -22,14 +22,14 @@ export class GroupsComponent {
   ) {
   }
   ngOnInit(): void {
-    this.getAllGroups()
+    // this.getAllGroups()
   }
-  getAllGroups() {
-    this._groupHttpService.getAllGroups().subscribe(data => {
-      this.team = data;
-      console.log(data)
-    })
-  }
+  // getAllGroups() {
+  //   this._groupHttpService.getAllGroups().subscribe(data => {
+  //     this.team = data;
+  //     console.log(data)
+  //   })
+  // }
 
   eliminarTeam() {
     Swal.fire({

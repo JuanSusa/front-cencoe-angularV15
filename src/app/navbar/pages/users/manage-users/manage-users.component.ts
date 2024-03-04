@@ -2,9 +2,11 @@ import { TipodocumentoHttpService } from './../../tipodocumento/services/tipo-do
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TypeDocs, User, adminPopUp } from 'src/app/core/main.type';
+import { adminPopUp } from 'src/app/core/main.type';
 import { TipodocumentoComponent } from '../../tipodocumento/manage-tipodocumento/tipodocumento.component';
 import { userHttpService } from '../service/http/user-service.service';
+import { TypeDocs } from '../../tipodocumento/core/models/main.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manage-users',
@@ -14,9 +16,7 @@ import { userHttpService } from '../service/http/user-service.service';
 export class ManageUsersComponent implements OnInit {
 
   public typeDocs: TypeDocs[] = [];
-  public user: User | undefined;
-  public showBtn: boolean = false;
-
+  // public user: User | undefined;
 
   constructor(
     private _TipodocumentoHttpService: TipodocumentoHttpService,
@@ -36,7 +36,7 @@ export class ManageUsersComponent implements OnInit {
     userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
     userEmail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     userState: [''],
-    userTipoDocumento: ['']
+    userTipoDocumento: ['', Validators.required]
   })
 
   titulo: string = '';
@@ -53,10 +53,21 @@ export class ManageUsersComponent implements OnInit {
 
   }
 
+  onSubmit(){
+    if(this.userForm.invalid){
+      Swal.fire(
+        'Por favor espere',
+        'Existen campos que no son validos',
+        'warning'
+      );
+      return;
+    }
+  }
+
   getAllTypeDocs() {
     if (this._TipodocumentoHttpService) {
       this._TipodocumentoHttpService.getAllTypeDocuments()
-        .subscribe((data: TypeDocs[]) => {
+        .subscribe((data) => {
           this.typeDocs = data;
           console.log(data)
         })
@@ -69,25 +80,22 @@ export class ManageUsersComponent implements OnInit {
     }
   }
 
-  getUserById(userId: number): void {
-    this._userServiceHttp.getUserById(userId).subscribe(
-      (userData) => {
-        this.user = userData;
-        // this.userForm.patchValue(userData);
-        console.log('datos en el componente', userData);
-      },
-      (error) => {
-        console.error('Error al obtener datos del usuario', error);
-      }
-    )
-  }
-
-  public showButton(){
-    this.showBtn=!this.showBtn
-  }
+  // getUserById(userId: number): void {
+  //   this._userServiceHttp.getUserById(userId).subscribe(
+  //     (userData) => {
+  //       this.user = userData;
+  //       // this.userForm.patchValue(userData);
+  //       console.log('datos en el componente', userData);
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener datos del usuario', error);
+  //     }
+  //   )
+  // }
 
 
-  public executionMesssage() {
+
+  public closeDialog() {
     this._matDialogRef.close();
   }
 

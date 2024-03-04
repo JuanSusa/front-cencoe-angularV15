@@ -1,11 +1,11 @@
 import { map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TypeDocs } from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../services/tipo-documento.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatSelectionListChange } from '@angular/material/list';
+import { TypeDocs } from '../core/models/main.model';
 
 
 @Component({
@@ -26,19 +26,28 @@ export class TipodocumentoComponent implements OnInit {
   ) { }
 
   typeDocForm = this.formBuilder.group({
-    docTypeName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]]
+    docTypeName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]]
   })
 
   ngOnInit(): void {
     this.getAllTypeDocs()
   }
 
-  onSubmit():void{
+  onSubmit(): void {
     console.log({
       formIsValid: this.typeDocForm.valid,
       value: this.typeDocForm.value
     })
-   
+
+    if (this.typeDocForm.invalid) {
+      Swal.fire(
+        'Por favor espere',
+        'Existen campos que no son validos',
+        'warning'
+      );
+      return;
+    }
+    this.saveTypeDoc();
   }
 
   getAllTypeDocs() {
@@ -56,22 +65,28 @@ export class TipodocumentoComponent implements OnInit {
         docTypeId: null
       };
 
-      this._tipodocumentoHttpService.saveTypeDocument(newTypeDoc).subscribe(
-        response => {
-          console.log(response)
+      this._tipodocumentoHttpService.saveTypeDocument(newTypeDoc).subscribe({
+        next: (response) => {
+          console.log(response);
+
+          if (!this.typeDocs) {
+            this.typeDocs = [];
+          }
 
           this.typeDocs.push(response);
           Swal.fire('Éxito',
             `Tipo de documento ${response.docTypeName} creado exitosamente `,
             'success');
           this.typeDocForm.reset();
-        }, error => {
+        },
+        error: (error) => {
           console.error('Error al crear tipo de documento', error);
           Swal.fire(
             'Error',
             'Ocurrió un error al crear el tipo de documento',
             'error');
-        });
+        }
+      });
     }
   }
 
@@ -91,7 +106,6 @@ export class TipodocumentoComponent implements OnInit {
       }
     });
   }
-
 
   confirmDelete() {
     for (const selectTypeDocs of this.selectedItemsList) {
@@ -123,3 +137,5 @@ export class TipodocumentoComponent implements OnInit {
   }
 
 }
+
+

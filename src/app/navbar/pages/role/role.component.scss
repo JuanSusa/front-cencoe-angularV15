@@ -1,26 +1,35 @@
-.container-box{
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    padding: 1rem;
+.mat-mdc-card-title {
+    height: 40px;
+    margin-left: 1rem;
 }
 
+.mat-mdc-card-subtitle {
+    margin-left: 1.5rem;
+}
+
+.container-box{
+   width: 600px; //definimos el ancho del contenedor padre
+    margin: 0 auto;
+}
 mat-card-header{
-    border: .01rem solid #738092;
+    border: 0.1rem solid #738092;
     border-radius: 7px;
 }
-mat-card-content {
-    max-width: 900px; // Puedes ajustar este valor según tus necesidades
-    margin: 1rem; // Centra el contenido en el centro
+mat-card-content{
+    max-width: 600px; // se puede ajustar este valor 
+    margin: 1rem; 
     .create-list {
         
             display: grid;
             grid-template-columns: column;
             grid-auto-rows: 50px;
             column-gap: 2px;
-            max-width: 100%; // Asegura que el ancho máximo sea el 100% del contenedor padre
-            margin: 0 auto; // Centra el contenido en el centro
+            max-width: 100%; 
+            margin: 0 auto; 
         }
+}
+.content-table {
+    margin-top: 1rem;
 }
 .btn-select button {
     margin-right: 0.5rem;

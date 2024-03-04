@@ -38,7 +38,7 @@ export class ListCampaignComponent {
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {
       data: { tipo, campo: id },
-
+  
     });
     modal
       .afterClosed()
@@ -69,6 +69,7 @@ export class ListCampaignComponent {
   };
 
 }
+
 /**
  * ^1 => Inyeccion de datos usuarios
  * ^2 => arreglo que define las columnas de la tabla en la vista

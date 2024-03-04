@@ -1,21 +1,22 @@
 import { Component, Inject } from '@angular/core';
-import { Team, adminPopUp } from 'src/app/core/main.type';
+import { Provider, Team, adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-
-
+import { ProviderService } from '../../providers/services/provider-service.service';
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
+
 export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
   public team:Team[]=[]
   campaignForm : FormGroup;
   maxDate: Date;
+
   constructor(
     public dialog: MatDialog,
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
@@ -30,6 +31,7 @@ export class ManageCampaignsComponent {
   ngOnInit(): void {
     //^5
     this.getAllGroups()
+
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nueva Campaña': 'Actualizar Campaña';
@@ -40,7 +42,7 @@ export class ManageCampaignsComponent {
         nombre: ['', [Validators.required]],
         fechaInicio: ['', Validators.required],
         fechaFinal: ['', [Validators.required, this.fechaFinalValidador.bind(this)]],
-        observaciones: ['', Validators.maxLength(150)],
+        observaciones: ['', Validators.maxLength(151)],
         estado: ['', [Validators.required]],
         grupos: ['', [Validators.required]]
       });
@@ -49,7 +51,6 @@ export class ManageCampaignsComponent {
   public executionMesssage() {
     this._matDialogRef.close();
   }
-
    //^6
    onNumericInput(event: any): void {//^6.1
     // Filtrar caracteres no numéricos

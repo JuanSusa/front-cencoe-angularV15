@@ -1,73 +1,68 @@
-  <mat-card class="container-card">
-        <div class="container-header">
-        <mat-card-title  mat-dialog-title>{{ titulo }}</mat-card-title>
+<mat-card>
+    <div class="container-header">
+        <mat-card-title mat-dialog-title>{{ titulo }}</mat-card-title>
         <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
-        </div>
-        <mat-dialog-content class="mat-typography">
-            <mat-card-content class="mat-elevation-z10">
-                <!-- Formulario registro campaña -->
-                <!--Campo nombre campaña-->
-                <form class="create-campaign" [formGroup]="campaignForm">
-                    <div class="campos">
-                        <mat-form-field class="full-width">
-                            <mat-label>Nombre</mat-label>
-                            <input matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" />
-                            <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">El nombre es
-                                obligatorio</mat-error>
-                        </mat-form-field>
-                        <!--Campo fecha inicio-->
-                        <mat-form-field>
-                            <mat-label>Fecha inicio</mat-label>
-                            <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker"
-                                autocomplete="off" formControlName="fechaInicio">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker></mat-datepicker>
-                            <mat-error *ngIf="campaignForm.get('fechaInicio')?.hasError('required')">La fecha de inicio
-                                es
-                                obligatoria</mat-error>
-                        </mat-form-field>
-                        <!--Campo fecha final-->
-                        <mat-form-field>
-                            <mat-label>Fecha final</mat-label>
-                            <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1"
-                                autocomplete="off" formControlName="fechaFinal">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker1></mat-datepicker>
-                            <mat-error *ngIf="campaignForm.get('fechaFinal')?.hasError('required')">La fecha final es
-                                obligatoria</mat-error>
-                            <mat-error *ngIf="campaignForm.get('fechaFinal')?.hasError('mismaFecha')">No pueden ser misma fecha</mat-error>
-                        </mat-form-field>
-                        <!--Campo Observaciones-->
-                        <mat-form-field class="full-width">
-                            <mat-label>Observaciones</mat-label>
-                            <textarea matInput formControlName="observaciones"></textarea>
-                            <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('maxlength')">La descripcion
-                                de la
-                                campaña no puede tener mas de 150 caracteres</mat-error>
-                        </mat-form-field>
-                        <!--Campo select grupos-->
-                        <mat-form-field class="full-width">
-                            <mat-label>Grupos</mat-label>
-                            <mat-select formControlName="grupos" placeholder="seleccione un grupo">
-                                <mat-option *ngFor="let t of team" [value]="t.teamId">
-                                    {{t.teamName}} - {{t.teamId}}
-                                </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un
-                                grupo</mat-error>
-                        </mat-form-field>
-                    </div>
+    </div>
+    <mat-dialog-content class="dialog-content">
+        <mat-card-content class="mat-elevation-z10">
+            <!-- Formulario registro campaña -->
+            <!--Campo nombre campaña-->
+            <form class="create-campaign" [formGroup]="campaignForm">
+                <div class="campos">
+                    <mat-form-field class="full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" />
+                        <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">El nombre es obligatorio
+                        </mat-error>
+                    </mat-form-field>
+                    <!--Campo fecha inicio-->
+                    <mat-form-field>
+                        <mat-label>Fecha inicio</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocomplete="off" formControlName="fechaInicio">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                        <mat-error *ngIf="campaignForm.get('fechaInicio')?.hasError('required')">La fecha de inicio es obligatoria
+                        </mat-error>
+                    </mat-form-field>
+                    <!--Campo fecha final-->
+                    <mat-form-field>
+                        <mat-label>Fecha final</mat-label>
+                        <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocomplete="off" formControlName="fechaFinal">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker1></mat-datepicker>
+                        <mat-error *ngIf="campaignForm.get('fechaFinal')?.hasError('required')">La fecha final es obligatoria
+                        </mat-error>
+                        <mat-error *ngIf="campaignForm.get('fechaFinal')?.hasError('mismaFecha')">No pueden ser misma fecha</mat-error>
+                    </mat-form-field>
+                    <!--Campo select grupos-->
+                    <mat-form-field class="full-width">
+                        <mat-label>Grupos</mat-label>
+                        <mat-select formControlName="grupos" placeholder="seleccione un grupo">
+                            <mat-option *ngFor="let t of team" [value]="t.teamId">
+                                {{t.teamName}} - {{t.teamId}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!--Campo Observaciones-->
+                <mat-form-field class="full-width textarea" rows="5" maxlength="150">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea matInput formControlName="observaciones"></textarea>
+                    <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('maxlength')">La descripcion de la campaña no puede tener mas de 150 caracteres</mat-error>
+                </mat-form-field>
 
-                    <mat-card-actions class="actions-btns">
-                        <!-- Botones de acciones -->
-                        <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid">
+                <mat-card-actions class="actions-btns">
+                    <!-- Botones de acciones -->
+                    <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid">
                             {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                         </button>
-                        <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                    <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
                             Cancelar
                         </button>
-                    </mat-card-actions>
-                </form>
-            </mat-card-content>
-        </mat-dialog-content>
-    </mat-card>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-dialog-content>
+    >>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

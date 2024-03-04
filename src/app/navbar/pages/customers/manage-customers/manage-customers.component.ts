@@ -1,18 +1,22 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Provider, User, adminPopUp } from 'src/app/core/main.type';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validator, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { adminPopUp } from 'src/app/core/main.type';
 
 @Component({
   selector: 'app-manage-customers',
   templateUrl: './manage-customers.component.html',
   styleUrls: ['./manage-customers.component.scss'],
 })
+
 export class ManageCustomersComponent {
+  public user:User[]=[]
+
   constructor(
     private readonly _matDialogRef: MatDialogRef<ManageCustomersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>, //^3
-    private formBuiler: FormBuilder
+    private formBuiler: FormBuilder,
+
   ) { }
     //^4
     customerForm = this.formBuiler.group({
@@ -35,7 +39,6 @@ export class ManageCustomersComponent {
       this.data.tipo === 'crear' ? ' Crear nuevo cliente' : 'Actualizar cliente';
     this.subtitulo = this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo cliente' : 'Ingrese los nuevos datos del cliente';
   }
-
   public executionMessage() {
     this._matDialogRef.close();
   }

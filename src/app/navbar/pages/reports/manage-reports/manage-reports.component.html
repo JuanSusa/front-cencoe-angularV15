@@ -1,0 +1,64 @@
+<div class="container-box h-auto">
+    <mat-card-title mat-dialog-title>Reportes  </mat-card-title>
+    <mat-card-subtitle>Ingrese los datos del Reporte</mat-card-subtitle>
+    <mat-dialog-content>
+        <mat-card-content class="mat-elevation-z6">
+            <!-- Formulario registro usuario -->
+            <form class="create-reports" [formGroup]="reportsForm">
+                <section class="create-reports__campos-width">
+                    <!-- Campo Nombres -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre del reporte</mat-label>
+                        <input matInput formControlName="reportsName" placeholder="Nombre Completo" type="text" />
+                        <mat-error *ngIf="reportsForm.get('reportsName')?.hasError('required')">Nombre necesario 
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Tipo de Reporte</mat-label>
+                        <mat-select formControlName="customerTipodeReporte">
+                            <mat-option value="one">Productividad</mat-option>
+                            <mat-option value="two">nn</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha inicio</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker" autocapitalize="off" formControlName="fechaInicio">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="column">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha final</mat-label>
+                                <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1" autocapitalize="off" formControlName="fechaFinal">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Observaciones</mat-label>
+                            <textarea class="box-obs h-1rem" matInput></textarea>
+                            <input matInput formControlName="observaciones" />
+                            <mat-error *ngIf="reportsForm.get('observaciones')?.hasError('required')">Observaciones necesarias</mat-error>
+                        </mat-form-field>
+                        <mat-label>Desacargar reporte</mat-label>
+                        <mat-select formControlName="customerTipodeReporte">
+                            <mat-option value="one">Word</mat-option>
+                            <mat-option value="two">Pdf</mat-option>
+                            <mat-option value="three">Excel</mat-option>
+                        </mat-select>
+                </section>
+            </form>
+            <mat-card-actions class="actions-btns">
+                <!-- Botones de acciones -->
+                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                  Guardar
+              </button>
+                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="reportsForm.invalid" >
+                  {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
+              </button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-dialog-content>
+</div>

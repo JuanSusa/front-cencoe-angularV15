@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Team, adminPopUp } from 'src/app/core/main.type';
+import { Team, User, adminPopUp } from 'src/app/core/main.type';
 import { MatDialog } from '@angular/material/dialog';
-
+import { userHttpService } from '../../users/service/http/user-service.service';
 @Component({
   selector: 'app-group-manager',
   templateUrl: './group-manager.component.html',
   styleUrls: ['./group-manager.component.scss']
 })
-
 export class GroupManagerComponent implements OnInit {
   public team:Team[]=[]
+  public user:User[]=[]
   public showBtn: boolean = false;
   maxDate: Date;
   constructor(
@@ -19,9 +19,8 @@ export class GroupManagerComponent implements OnInit {
     private readonly _matDialogRef: MatDialogRef<GroupManagerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
+    // private _UsersService : userHttpService,
   ) { this.maxDate = new Date();}
-
-
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
@@ -31,10 +30,9 @@ export class GroupManagerComponent implements OnInit {
       this.data.tipo === 'crear' ? 'Crear nuevo grupo' : 'Actualizar Grupo';
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo grupo': 'Ingrese los nuevos datos del grupo';
-    debugger
-
-
   }
+
+  //^4
   groupForm = this.formBuilder.group({
     groupName: ['', Validators.required],
     groupLastName: ['', Validators.required],
@@ -51,11 +49,19 @@ export class GroupManagerComponent implements OnInit {
   public executionMesssage() {
     this._matDialogRef.close();
   }
- 
+  //^6
+  onNumericInput(event: any): void {//^6.1
+    // Filtrar caracteres no numéricos
+    const input = event.target.value;//^6.2
+    event.target.value = input.replace(/[^0-9]/g, '');//^6.3
+  }
+  // getAllUsers(){
+  //   if(this._UsersService){
+  //     this._UsersService.getAllUsers()
+  //     .subscribe((data : User[]) =>{
+  //       this.user = data
+  //       console.log(data)
+  //     })
+  //   }
+  // }
 }
-
-
-
-
-
-

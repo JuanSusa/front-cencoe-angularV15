@@ -11,10 +11,7 @@
   <mat-card-content class="mat-elevation-z6">
 
     <mat-selection-list class="create-list">
-      <mat-list>Administrador</mat-list>
-      <mat-list>Supervisor</mat-list>
-      <mat-list>Agente</mat-list>
-
+      <mat-list *ngFor="let role of roles"> {{role.roleName}} </mat-list>
     </mat-selection-list>
 
     <mat-card-actions class="btn-select justify-content-center">

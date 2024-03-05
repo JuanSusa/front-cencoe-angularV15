@@ -19,7 +19,6 @@ import { userHttpService } from '../users/service/http/user-service.service';
     ReactiveFormsModule
   ],
   providers:[
-    userHttpService,
     TipodocumentoHttpService
   ]
 })

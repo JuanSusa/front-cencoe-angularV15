@@ -17,7 +17,7 @@
             <mat-divider class="mx-3"></mat-divider>
             <mat-card-content>
                 <mat-selection-list (selectionChange)="onSelectionChange($event)" >
-                    <mat-list-option *ngFor="let tipoDocumento of typeDocs" [value]="tipoDocumento" class="color">
+                    <mat-list-option *ngFor="let tipoDocumento of typeDocs" [value]="tipoDocumento.docTypeId" class="color">
                         {{tipoDocumento.docTypeName}}</mat-list-option> 
                     <mat-card-actions>
                         <button mat-raised-button type="submit" class="btn-submit" [disabled]="!enableButton" (click)="deleteSelectedItems()">Eliminar</button>

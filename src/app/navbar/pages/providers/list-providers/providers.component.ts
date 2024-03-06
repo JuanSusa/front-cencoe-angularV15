@@ -4,13 +4,17 @@ import { ManageProvidersComponent } from '../manage-providers/manage-providers.c
 import { Provider, adminTypePopUp} from 'src/app/core/main.type';
 import Swal from 'sweetalert2';
 import { PageEvent } from '@angular/material/paginator';
-import { ProviderService } from '../services/provider-service.service';
+import { ProviderServiceService } from '../services/provider-service.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.scss']
 })
 export class ProvidersComponent implements OnInit {
+  mostrarSpinner: boolean = true; // Mostrar Spinner
+  loading = true; //spinner de espera y direccionamiento
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
   listprovider:Provider[]= [];
@@ -18,15 +22,16 @@ export class ProvidersComponent implements OnInit {
   totalItems: number = 0;
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]
   constructor(
+    private router: Router,
     private readonly _dialog: MatDialog,
-    @Inject(ProviderService) private readonly providerService: ProviderService) {
+    @Inject(ProviderServiceService) private readonly providerServiceService: ProviderServiceService) {
   }
   ngOnInit() {
-    this.getAllProviders()
+    this.getAllProvider()
     //this.getProvider(2)
   }
-  getAllProviders(page:number =0, size: number=3) {
-    this.providerService.getAllProviders(page, size)
+  getAllProvider(page:number =0, size: number=3) {
+    this.providerServiceService.getAllProvider(page, size)
     .subscribe((data :any) =>{
       this.listprovider = data.content;
       this.totalItems = data.totalElements;
@@ -36,7 +41,7 @@ export class ProvidersComponent implements OnInit {
   onPageChange(event: PageEvent) {
     const page = event.pageIndex; // Índice de la página seleccionada
     const size = event.pageSize; // Tamaño de la página seleccionada
-    this.getAllProviders(page, size); // Obtener los proveedores para la página seleccionada
+    this.getAllProvider(page, size); // Obtener los proveedores para la página seleccionada
   }
   eliminarProvider(){
       Swal.fire({
@@ -58,20 +63,20 @@ export class ProvidersComponent implements OnInit {
           });
         }
       })
-
-  }
+    }
   /* Logica para abrir el mat dialog*/
   manageProvider(tipo: adminTypePopUp, providerId?: number) {
     const activeModal = this._dialog.open(ManageProvidersComponent, {
       data: { tipo, campo: providerId },
-   
-    
     })
     activeModal
       .afterClosed()
       .subscribe(result => {
         console.log('Close dialog')
       });
+  }
+  toggleSpinner() {//mostrar Spinner
+    this.mostrarSpinner = !this.mostrarSpinner;
   }
 }
 

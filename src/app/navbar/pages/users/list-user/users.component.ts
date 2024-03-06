@@ -5,6 +5,7 @@ import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { userHttpService } from '../service/http/user-service.service';
 import { Subject, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+  mostrarSpinner: boolean = true; // Mostrar Spinner
   private clearSubscritions$ = new Subject<void>();
   public user: User[] = [];//^1
   public displayedColumns = ['userId', 'name', 'direccion', 'email', 'edit'];//^2
@@ -21,15 +22,13 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private readonly _dialog: MatDialog,
-    private readonly _userHttpService: userHttpService
+    private readonly _userHttpService: userHttpService,
+    private router: Router
   ) {
-
   }
   ngOnInit(): void {
     this.getAllUsers()
   }
-
-
   getAllUsers() {
     this._userHttpService.getAllUsers()
       .pipe(
@@ -40,8 +39,6 @@ export class UsersComponent implements OnInit {
         console.log(data)
       })
   }
-
-
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {
       data: { tipo, campo: userId }
@@ -52,7 +49,6 @@ export class UsersComponent implements OnInit {
       .subscribe(result => {
         console.log('se cerro el dialogo ')
       });
-
   }
   eliminarUser(){
     Swal.fire({
@@ -74,6 +70,9 @@ export class UsersComponent implements OnInit {
         });
       }
     })
+}
+toggleSpinner() {//mostrar Spinner
+  this.mostrarSpinner = !this.mostrarSpinner;
 }
 }
 

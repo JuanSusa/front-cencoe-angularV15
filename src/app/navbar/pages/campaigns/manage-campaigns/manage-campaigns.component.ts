@@ -3,7 +3,9 @@ import { Provider, Team, adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-import { ProviderService } from '../../providers/services/provider-service.service';
+import { ProviderServiceService } from '../../providers/services/provider-service.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
@@ -14,6 +16,7 @@ export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
   public team:Team[]=[]
+  public provider:Provider[]=[]
   campaignForm : FormGroup;
   maxDate: Date;
 
@@ -22,7 +25,8 @@ export class ManageCampaignsComponent {
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
-    private _GroupService : GroupServiceService
+    private _GroupService : GroupServiceService,
+    private _ProviderService : ProviderServiceService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});
@@ -31,7 +35,7 @@ export class ManageCampaignsComponent {
   ngOnInit(): void {
     //^5
     this.getAllGroups()
-
+    // this.getAllProvider()
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nueva Campaña': 'Actualizar Campaña';
@@ -66,6 +70,15 @@ export class ManageCampaignsComponent {
       })
     }
   }
+//   getAllProvider(){
+//     if(this._ProviderService){
+//       this._ProviderService.getAllProvider()
+//       .subscribe((data : Provider[]) =>{
+//         this.provider = data
+//         console.log(data)
+//       })
+//     }
+//   }
   fechaFinalValidador(control: FormControl) {
     const fechaInicio = this.campaignForm.get('fechaInicio')?.value;
     const fechaFinal = control.value;
@@ -84,5 +97,8 @@ export class ManageCampaignsComponent {
 
     return null; // Retorna null si no hay errores
   }
-
+  
 }
+
+
+

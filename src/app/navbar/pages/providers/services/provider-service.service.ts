@@ -6,12 +6,12 @@ import { environment } from 'src/app/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderService {
+export class ProviderServiceService {
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   constructor(private _httpClient: HttpClient) { }
   //este metodo nos sirve para obtener los proveedores
-  getAllProviders(page: number, size: number): Observable<ReqResponse<Provider[]>> {
+  getAllProvider(page: number, size: number): Observable<ReqResponse<Provider[]>> {
     const params = new HttpParams()
       .append('page', page.toString())
       .append('size', size.toString())

@@ -1,17 +1,18 @@
 .mdc-button {
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     margin: 0 1rem 1rem 0;
-
 }
-.mdc-button:hover{
+
+.mdc-button:hover {
     background: rgba(255, 0, 0, 0.747);
     color: #ffffff;
 }
 
-mat-icon{
-    color:#ff0844;
+mat-icon {
+    color: #ff0844;
 }
-.add-user{
+
+.add-user {
     color: #fafafa !important;
 }
 
@@ -22,8 +23,6 @@ mat-icon{
 .table-header {
     text-align: center;
     width: 200px;
-
-
 }
 
 .user-id {
@@ -34,8 +33,17 @@ mat-icon{
     text-align: center;
 }
 
-
-mat-toolbar{
-    border: .01rem solid   #738092;
+mat-toolbar {
+    border: .01rem solid #738092;
     border-radius: 10px;
+}
+
+.spinner {
+    //posición del spinner
+    margin: 0 auto;
+}
+
+::ng-deep .mat-mdc-progress-spinner {
+    //color del spinner
+    --mdc-circular-progress-active-indicator-color: #ff0844;
 }

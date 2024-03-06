@@ -5,12 +5,14 @@ import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent {
+  mostrarSpinner: boolean = true; // Mostrar Spinner
   public team: Team[] = [];//^1
   public displayedColumns = ['teamId', 'teamName', 'actions'];//^2
   isLoading = true;
@@ -18,7 +20,8 @@ export class GroupsComponent {
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _groupHttpService: GroupServiceService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
   }
   ngOnInit(): void {
@@ -63,5 +66,8 @@ export class GroupsComponent {
       .subscribe(result => {
         console.log('se cerro el dialogo ')
       });
+  }
+  toggleSpinner() {//mostrar Spinner
+    this.mostrarSpinner = !this.mostrarSpinner;
   }
 }

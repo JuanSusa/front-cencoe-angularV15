@@ -45,6 +45,17 @@
                         <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo
                         </mat-error>
                     </mat-form-field>
+                    <!--Campo select -->
+                    <mat-form-field class="full-width">
+                        <mat-label>Proveedores</mat-label>
+                        <mat-select formControlName="proveedores" placeholder="seleccione un proveedor">
+                            <mat-option *ngFor="let p of provider" [value]="p.providerName">
+                                {{p.providerName}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo
+                        </mat-error>
+                    </mat-form-field>
                 </div>
                 <!--Campo Observaciones-->
                 <mat-form-field class="full-width textarea" rows="5" maxlength="150">
@@ -65,4 +76,3 @@
             </form>
         </mat-card-content>
     </mat-dialog-content>
-    >>>>>>> fb630f9d8d8d0d491c4b93720e5c3eec67600be2

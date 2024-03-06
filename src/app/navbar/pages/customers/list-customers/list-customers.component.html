@@ -48,4 +48,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </mat-card-content>
+    <!-- Spinner para cuando no hay datos en las tablas -->
+    <mat-spinner *ngIf="!customer.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
+<!-- Mensaje para cuando no hay datos en las tablas -->
+<h2 *ngIf="customer.length == 0">No hay Clientes para mostrar!</h2>

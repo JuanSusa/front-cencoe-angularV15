@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Provider, TypeDocs, adminPopUp} from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
-import { ProviderService } from '../services/provider-service.service';
-import { FloatLabelType } from '@angular/material/form-field';
+import { ProviderServiceService } from '../services/provider-service.service';
+
+
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
@@ -18,7 +19,7 @@ export class ManageProvidersComponent implements OnInit {
   constructor(private readonly _matDialogRef: MatDialogRef<ManageProvidersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,
     private formBuilder: FormBuilder,
-    @Inject(ProviderService) private readonly providerService: ProviderService,
+    @Inject(ProviderServiceService) private readonly providerServiceService: ProviderServiceService,
     private _ServiceTD : TipodocumentoHttpService
   ) {
 

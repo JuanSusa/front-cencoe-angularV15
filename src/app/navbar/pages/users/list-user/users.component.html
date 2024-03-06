@@ -57,8 +57,10 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-
         <!-- Mostrar mensaje de carga o error -->
-
     </mat-card-content>
+    <!-- Spinner para cuando no hay datos en las tablas -->
+    <mat-spinner *ngIf="!user.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
+<!-- Mensaje para cuando no hay datos en las tablas -->
+<h2 *ngIf="user.length == 0">No hay Usuarios para mostrar!</h2>

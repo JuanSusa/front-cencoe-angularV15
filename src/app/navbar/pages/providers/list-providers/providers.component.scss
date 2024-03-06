@@ -1,6 +1,6 @@
-.mat-toolbar{
-     border: .01rem solid   #738092;
-     border-radius: 10px;  
+.mat-toolbar {
+    border: .01rem solid #738092;
+    border-radius: 10px;
 }
 
 .mdc-button {
@@ -8,30 +8,46 @@
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     color: #fafafa;
 }
+
 .table-provider {
     flex-grow: 1;
-  }
-  
-  .mat-paginator {
+}
+
+.mat-paginator {
     align-self: center;
-  }
-.mdc-button:hover{
+}
+
+.mdc-button:hover {
     background: rgba(255, 0, 0, 0.747);
     color: #ffffff;
 }
-.table-header{
+
+.table-header {
     text-align: center;
 }
-.table-cell{
+
+.table-cell {
     text-align: center;
 }
+
 .example-spacer {
     flex: 1 1 auto;
-  }
-
-.btn-action{
-    color:#ff0844;
 }
-.btn-action1{
-    color:#29323c;
+
+.btn-action {
+    color: #ff0844;
+}
+
+.btn-action1 {
+    color: #29323c;
+}
+
+.spinner {
+    //posición del spinner
+    margin: 0 auto;
+}
+
+::ng-deep .mat-mdc-progress-spinner {
+    //color del spinner
+    --mdc-circular-progress-active-indicator-color: #ff0844;
 }

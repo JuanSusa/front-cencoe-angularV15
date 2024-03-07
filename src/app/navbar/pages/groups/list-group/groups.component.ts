@@ -33,7 +33,6 @@ export class GroupsComponent {
       console.log(data)
     })
   }
-
   eliminarTeam() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",
@@ -54,7 +53,6 @@ export class GroupsComponent {
         });
       }
     })
-
   }
   manageGroup(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(GroupManagerComponent, {

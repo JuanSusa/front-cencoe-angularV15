@@ -4,14 +4,12 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
 import { ProviderServiceService } from '../../providers/services/provider-service.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
-
 export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
@@ -94,11 +92,6 @@ export class ManageCampaignsComponent {
     if (fechaFinalDate.getTime() === fechaInicioDate.getTime()) {
       return { mismaFecha: true }; // Retorna error si las fechas son iguales
     }
-
     return null; // Retorna null si no hay errores
   }
-  
 }
-
-
-

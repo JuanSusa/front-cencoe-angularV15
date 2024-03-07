@@ -5,7 +5,6 @@ import { Provider, TypeDocs, adminPopUp} from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
 import { ProviderServiceService } from '../services/provider-service.service';
 
-
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
@@ -22,8 +21,6 @@ export class ManageProvidersComponent implements OnInit {
     @Inject(ProviderServiceService) private readonly providerServiceService: ProviderServiceService,
     private _ServiceTD : TipodocumentoHttpService
   ) {
-
-
 
   }
    providerForm = this.formBuilder.group({

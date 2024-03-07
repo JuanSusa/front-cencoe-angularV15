@@ -8,28 +8,23 @@ import { environment } from 'src/app/environments/environment';
     providedIn: 'root'
 })
 export class TipodocumentoHttpService {
-
     private httpHeaders = new HttpHeaders({'Content-type':'application/json'});
-
     constructor(private _http: HttpClient) { }
-
     getAllTypeDocuments(): Observable<TypeDocs[]> {
         return this._http.get<ReqResponse<TypeDocs>>(`${environment.api}/tipos-documento`)
             .pipe(
                 // tap(data => console.log('TIPO DOCUMENTOS', data)),
                 map(res => res.data),
                 share()
-            )
-    }
-
+                )
+              }
     getTypeDocsById(typeDocId: number): Observable<TypeDocs> {
         const params = new HttpParams().append('tipodoc', typeDocId)
         return this._http.get<TypeDocs>(`${environment.api}/tipo-documento/id`, { params })
             .pipe(
                 tap(console.log)
-            )
-    }
-
+              )
+            }
     saveTypeDocument(typeDocs: TypeDocs): Observable<TypeDocs> {
         return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs, {headers : this.httpHeaders})
             .pipe(
@@ -46,9 +41,8 @@ export class TipodocumentoHttpService {
                     console.log('Error en la solicitud', err)
                     return throwError(err);
                 })
-            );
-    }
-
+              );
+            }
     deleteTypeDoc(typeDocId: number): Observable<TypeDocs> {
         return this._http.delete<TypeDocs>(`${environment.api}/tipo-documento/${typeDocId}`)
             .pipe(
@@ -57,6 +51,5 @@ export class TipodocumentoHttpService {
                     return throwError('Ocurrió un error al eliminar el tipo de documento');
                 })
             );
-    }
-
-}
+          }
+        }

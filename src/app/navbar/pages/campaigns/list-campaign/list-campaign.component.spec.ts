@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListCampaignComponent } from './list-campaign.component';
 
 describe('ListCampaignComponent', () => {

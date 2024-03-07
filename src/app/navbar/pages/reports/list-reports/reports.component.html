@@ -1,47 +1,64 @@
-<!-- sda<mat-toolbar class="flex justify-content-between h-auto">
+<mat-toolbar class="flex justify-content-between h-auto">
     <mat-card-header class="p-0">
         <mat-card-title>Reportes </mat-card-title>
         <mat-card-subtitle>Reportes registrados en la aplicación</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-actions class="mt-3 p-0">
-        <button mat-raised-button color="primary" (click)="manageReports('ver')">Agregar Reportes
-            <mat-icon class="add-user" style="color: white; ">add_circle</mat-icon>
-        </button>
-    </mat-card-actions>
 </mat-toolbar>
 <mat-divider class="content-table "></mat-divider>
-<mat-card class="content-table ">
-    <mat-card-content class="table ">
-        <table mat-table class="mat-elevation-z6 " [dataSource]="report">
-             Columna Id-->
-<!-- <ng-container matColumnDef="reportsId">
-    <th mat-header-cell *matHeaderCellDef class="table-header reportsId  "> No. </th>
-    <td mat-cell *matCellDef="let reports "> {{reports.reportsId}} </td>
-</ng-container>
-<ng-container matColumnDef="reportsName">
-    <th mat-header-cell *matHeaderCellDef class="table-header reportsName "> Nombre </th>
-    <td mat-cell *matCellDef="let reports "> {{reports.reportsName}}</td>
-</ng-container> -->
-<!-- Columna Acciones -->
-<!-- <ng-container matColumnDef="edit">
-    <th mat-header-cell *matHeaderCellDef class="table-header actions"> </th>
-    <td mat-cell *matCellDef="let reports">
-        <button mat-icon-button>
-            <mat-icon class="actions-btns" aria-label="Editar registro">edit</mat-icon>
-        </button> -->
-        <!-- <button mat-icon-button (click)="manageReports('ver')">
-                        <mat-icon aria-label="Ver detalles">visibility</mat-icon>
-                    </button> -->
-    <!-- </td>
-</ng-container>
-<tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table> -->
-<!-- Mostrar mensaje de carga o error -->
-<!-- <div *ngIf="isLoading; else error">
+
+<mat-card class="dialog-content">
+<mat-card-content class="mat-elevation-z6">
+    <form class="reportForm" [formGroup]="reportForm">
+    <div class="campos">
+    <mat-form-field >
+        <mat-label>Nombre del reporte</mat-label>
+        <input matInput formControlName="reportsName" placeholder="Nombre Completo" type="text"/>
+        <mat-error>Nombre requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label>Tipo de Reporte</mat-label>
+        <mat-select formControlName="customerTipodeReporte">
+            <mat-option value="one">Productividad</mat-option>
+            <mat-option value="two">nn</mat-option>
+        </mat-select>
+        <mat-error>Reporte requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label>Fecha inicio</mat-label>
+        <input [min]="maxDate" formArrayName="fechaInicio" matInput [matDatepicker]="picker"
+            autocomplete="off" formControlName="fechaInicio">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error>Fecha solicitada</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label>Fecha final</mat-label>
+        <input [min]="maxDate" formArrayName="fechaFinal" matInput [matDatepicker]="picker1"
+            autocomplete="off" formControlName="fechaFinal">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+        <mat-error>Fecha solicitada</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="full-width textarea">
+        <mat-label>Observaciones</mat-label>
+        <textarea class="box-obs h-1rem" matInput></textarea>
+        <input matInput formControlName="observaciones" />
+    </mat-form-field>
+    <mat-label>Desacargar reporte
+    <mat-select formControlName="descargar">
+        <mat-option value="one">Word</mat-option>
+        <mat-option value="two">Pdf</mat-option>
+        <mat-option value="three">Excel</mat-option>
+    </mat-select>
+</mat-label>
+    <mat-card-actions class="actions-btns"> 
+    <button mat-button cdkFocusInitial  class="btn-cancel-dialog">
+        Guardar
+    </button>
+    </mat-card-actions>
 </div>
-<ng-template #error>
-    Hubo un error al cargar los campaign.
-</ng-template>
+</form>
 </mat-card-content>
-</mat-card> -->
+</mat-card>
+

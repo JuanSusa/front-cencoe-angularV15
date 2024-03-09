@@ -6,7 +6,7 @@
     <mat-dialog-content>
         <mat-card-content class="mat-elevation-z6">
             <!-- Formulario registro usuario -->
-            <form class="create-user" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <form class="create-user" [formGroup]="userForm" (ngSubmit)="createUser()">
                 <section class="create-user__campos">
                     <!-- Campo Nombres -->
                     <mat-form-field>

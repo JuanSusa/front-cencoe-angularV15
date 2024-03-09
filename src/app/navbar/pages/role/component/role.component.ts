@@ -16,14 +16,14 @@ export class RoleComponent implements OnInit{
   ){ }
 
   ngOnInit(): void {
-    this.getRoles();
+    // this.getRoles();
   }
 
-  getRoles(){
-    this._roleServiceHttp.getAllroles().subscribe(
-      data => {
-        this.roles = data
-      }
-    )
-  }
+  // getRoles(){
+  //   this._roleServiceHttp.getAllroles().subscribe(
+  //     data => {
+  //       this.roles = data;
+  //     }
+  //   )
+  // }
 }

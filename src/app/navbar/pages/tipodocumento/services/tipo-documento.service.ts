@@ -16,21 +16,21 @@ export class TipodocumentoHttpService {
     constructor(private _http: HttpClient) { }
 
     getAllTypeDocuments(): Observable<TypeDocs[]> {
-        return this._http.get<ReqResponse<TypeDocs>>(`${environment.api}/tipos-documento`)
+        return this._http.get<TypeDocs[]>(`${environment.api}/tipos-documento`)
             .pipe(
-                // tap(data => console.log('TIPO DOCUMENTOS', data)), 
-                map(res => res.data),
+                tap(data => console.log('TIPO DOCUMENTOS', data)),
+                // map(res => res),
                 share()
             )
     }
 
-    // getTypeDocsById(typeDocId: number): Observable<TypeDocs> {
-    //     const params = new HttpParams().append('tipodoc', typeDocId)
-    //     return this._http.get<TypeDocs>(`${environment.api}/tipo-documento/id`, { params })
-    //         .pipe(
-    //             tap(console.log)
-    //         )
-    // }
+    getTypeDocsById(docTypeId: number): Observable<TypeDocs> {
+        const params = new HttpParams().append('docTypeId', docTypeId);
+        return this._http.get<TypeDocs>(`${environment.api}/tipo-documento`, { params })
+            .pipe(
+                tap(console.log)
+            )
+    }
 
     saveTypeDocument(typeDocs: TypeDocs): Observable<TypeDocs> {
         return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs, { headers: this.httpHeaders })

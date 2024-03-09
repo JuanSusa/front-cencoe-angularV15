@@ -52,9 +52,9 @@ export class TipodocumentoComponent implements OnInit {
 
   getAllTypeDocs() {
     this._tipodocumentoHttpService.getAllTypeDocuments()
-      .subscribe(data => {
+      .subscribe((data: TypeDocs[]) => {
         this.typeDocs = data;
-        console.log(data)
+        console.log(data);
       })
   }
 

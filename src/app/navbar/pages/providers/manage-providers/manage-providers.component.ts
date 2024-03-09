@@ -37,7 +37,7 @@ export class ManageProvidersComponent implements OnInit {
     tipoDocumento: ['', Validators.required],
   })
   ngOnInit(): void {
-    this.getTypeDocs()
+    // this.getTypeDocs()
     const { tipo, campo } = this.data
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nuevo Proveedor' : 'Actualizar proveedor'
@@ -46,12 +46,12 @@ export class ManageProvidersComponent implements OnInit {
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo proveedor' : 'Ingrese los nuevos datos del proveedor'
   }
 
-  getTypeDocs() {
-    this._ServiceTD.getAllTypeDocuments().subscribe((data) => {
-      this.typeDocs = data
-      console.log(data)
-    })
-  }
+  // getTypeDocs() {
+  //   this._ServiceTD.getAllTypeDocuments().subscribe((data) => {
+  //     this.typeDocs = data.content;
+  //     console.log(data)
+  //   })
+  // }
 
 
 

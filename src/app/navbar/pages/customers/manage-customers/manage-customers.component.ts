@@ -39,7 +39,7 @@ export class ManageCustomersComponent {
   subtitulo: string = '';
   ngOnInit(): void {
 
-    this.getTypeDocs()
+    // this.getTypeDocs()
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? ' Crear nuevo cliente' : 'Actualizar cliente';
@@ -58,14 +58,14 @@ export class ManageCustomersComponent {
     }
   }
   
-  getTypeDocs(){
-    this.__typeDocHttpService.getAllTypeDocuments().subscribe(
-      response=>{
-        this.typeDocs = response
-        // console.log(response)
-      }
-    )
-  }
+  // getTypeDocs(){
+  //   this.__typeDocHttpService.getAllTypeDocuments().subscribe(
+  //     response=>{
+  //       this.typeDocs = response.content;
+  //       // console.log(response)
+  //     }
+  //   )
+  // }
 
   public closeDialog() {
     this._matDialogRef.close();

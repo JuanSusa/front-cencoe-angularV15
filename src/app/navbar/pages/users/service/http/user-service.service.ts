@@ -34,7 +34,7 @@ export class userHttpService {
         tap(data => console.log('Usuario creado con éxito!', data)),
         catchError(error => {
           console.error('Error al crear usuario', error);
-          return throwError(error);
+          throw error;
         })
       );
   };

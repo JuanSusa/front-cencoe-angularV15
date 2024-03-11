@@ -4,6 +4,8 @@ import { Customer, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCustomersComponent } from '../manage-customers/manage-customers.component';
 import { CustomerServiceService } from '../service/http/customer-service.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-customers',
@@ -11,26 +13,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-customers.component.scss']
 })
 export class ListCustomersComponent {
+  mostrarSpinner: boolean = true; // Mostrar Spinner
   public customer: Customer[] = []; //^1
-  public displayedColumns = ['customerId','customerName','customerAddress','customerPhone','edit']; //^2
+  public displayedColumns = ['customerId', 'customerName', 'customerAddress', 'customerPhone', 'edit']; //^2
   isLoading = true;
   constructor(
+    private location: Location,
     private readonly _dialog: MatDialog,
-    private _customerService: CustomerServiceService
-  ){ }
+    private _customerService: CustomerServiceService,
+    private router: Router
+  ) { }
+
   manageCustomer(tipo: adminTypePopUp, customerId?: number) {
     const modal = this._dialog.open(ManageCustomersComponent, {
-      data: {tipo,campo:customerId},
-      width:'600'
+      data: { tipo, campo: customerId },
+      width: '600'
     });
-    modal.afterClosed().subscribe(result =>{
+    modal.afterClosed().subscribe(result => {
       console.log('Se cerro el dialogo')
     });
   }
   ngOnInit() {
     this.getAllCustomers()
   }
-  getAllCustomers(){
+  getAllCustomers() {
     this._customerService.getAllCustomers().subscribe(data => {
       this.customer = data;
       console.log(data)
@@ -57,5 +63,7 @@ export class ListCustomersComponent {
       }
     });
   };
+  toggleSpinner() {//mostrar Spinner
+    this.mostrarSpinner = !this.mostrarSpinner;
+  }
 }
-

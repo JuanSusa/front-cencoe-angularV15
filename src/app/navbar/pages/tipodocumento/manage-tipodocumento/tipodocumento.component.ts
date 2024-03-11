@@ -7,14 +7,12 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatSelectionListChange } from '@angular/material/list';
 
-
 @Component({
   selector: 'app-tipodocumento',
   templateUrl: './tipodocumento.component.html',
   styleUrls: ['./tipodocumento.component.scss']
 })
 export class TipodocumentoComponent implements OnInit {
-
   public typeDocs: TypeDocs[] = [];
   public selectedItemsList: any[] = [];
   public enableButton: boolean = false;
@@ -24,15 +22,12 @@ export class TipodocumentoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _tipodocumentoHttpService: TipodocumentoHttpService
   ) { }
-
   typeDocForm = this.formBuilder.group({
     docTypeName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]]
   })
-
   ngOnInit(): void {
     this.getAllTypeDocs()
   }
-
   getAllTypeDocs() {
     this._tipodocumentoHttpService.getAllTypeDocuments()
       .subscribe(data => {
@@ -40,18 +35,15 @@ export class TipodocumentoComponent implements OnInit {
         console.log(data)
       })
   }
-
   saveTypeDoc(): void {
     if (this.typeDocForm.valid) {
       const newTypeDoc: TypeDocs = {
         docTypeName: this.typeDocForm.value.docTypeName || '',
         docTypeId: null
       };
-
       this._tipodocumentoHttpService.saveTypeDocument(newTypeDoc).subscribe(
         (response) => {
           console.log(response)
-
           this.typeDocs.push(response);
           Swal.fire('Éxito',
             `Tipo de documento creado exitosamente ${response.docTypeName}`,
@@ -66,7 +58,6 @@ export class TipodocumentoComponent implements OnInit {
         });
     }
   }
-
   deleteSelectedItems() {
     Swal.fire({
       title: '¿Está seguro?',
@@ -83,8 +74,6 @@ export class TipodocumentoComponent implements OnInit {
       }
     });
   }
-
-
   confirmDelete() {
     for (const selectTypeDocs of this.selectedItemsList) {
       if (selectTypeDocs && selectTypeDocs.docTypeId) {
@@ -99,7 +88,6 @@ export class TipodocumentoComponent implements OnInit {
       }
     }
   }
-
   // deleteSelectedItems() {
   //   this.selectedItemsList.forEach(item => {
   //     this._tipodocumentoHttpService.deleteTypeDoc(item.docTypeId).subscribe(() => {
@@ -107,11 +95,9 @@ export class TipodocumentoComponent implements OnInit {
   //     })
   //   });
   // }
-
   onSelectionChange(event: MatSelectionListChange) {
     this.selectedItemsList = event.source.selectedOptions.selected.map(option => option.value);
     console.log(this.selectedItemsList)
     this.enableButton = this.selectedItemsList.length > 0 ? true : false;
   }
-
 }

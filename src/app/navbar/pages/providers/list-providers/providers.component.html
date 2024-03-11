@@ -4,8 +4,8 @@
         <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
     </mat-card-header>
     <span class="example-spacer"></span>
-        <mat-card-actions>
-            <button mat-raised-button (click)="manageProvider('crear')">
+    <mat-card-actions>
+        <button mat-raised-button (click)="manageProvider('crear')">
                 <mat-icon>add_circle</mat-icon>
                 Agregar Proveedor</button>
     </mat-card-actions>
@@ -57,4 +57,8 @@
         <mat-paginator [length]="totalItems" [pageSizeOptions]="pageSizeOptions" [pageSize]="3" (page)="onPageChange($event)">
         </mat-paginator>
     </mat-card-content>
+    <!-- Spinner para cuando no hay datos en las tablas -->
+    <mat-spinner *ngIf="!listprovider.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
+<!-- Mensaje para cuando no hay datos en las tablas -->
+<h2 *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</h2>

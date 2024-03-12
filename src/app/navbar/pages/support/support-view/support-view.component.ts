@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-support',
@@ -12,9 +13,13 @@ export class SupportComponent {
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
 
-  // supportForm: FormGroup;
+  supportForm: FormGroup;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
+    this.supportForm = this.fb.group({
+      personName: ["", Validators.required],
+      messagePerson: ["", Validators.required]
+    })
     // ngOnInit(): void {
     //     supportForm = this.fb.group({
     //     namePerson: ['', Validators.required],

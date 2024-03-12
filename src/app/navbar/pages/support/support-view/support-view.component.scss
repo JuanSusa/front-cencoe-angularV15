@@ -65,4 +65,10 @@
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     color: aliceblue;
 }
-
+.mat-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, #ff0844, #ff3e75, #ff7fa3, #ffb7d6, #ffd9ef);
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4);
+}

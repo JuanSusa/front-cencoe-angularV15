@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit} from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
 import { ManageProvidersComponent } from '../manage-providers/manage-providers.component';
-import { Provider, adminTypePopUp} from 'src/app/core/main.type';
+import { adminTypePopUp} from 'src/app/core/main.type';
 import Swal from 'sweetalert2';
 import { PageEvent } from '@angular/material/paginator';
-import { ProviderServiceService } from '../services/provider-service.service';
+import { ProviderService } from '../services/provider-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,31 +17,31 @@ export class ProvidersComponent implements OnInit {
   loading = true; //spinner de espera y direccionamiento
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
-  listprovider:Provider[]= [];
+  // listprovider:Provider[]= [];
   pageSizeOptions: number[] = [3, 10, 25, 100];
   totalItems: number = 0;
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]
   constructor(
     private router: Router,
     private readonly _dialog: MatDialog,
-    @Inject(ProviderServiceService) private readonly providerServiceService: ProviderServiceService) {
+    @Inject(ProviderService) private readonly providerServiceService: ProviderService) {
   }
   ngOnInit() {
-    this.getAllProvider()
+    // this.getAllProviders()
     //this.getProvider(2)
   }
-  getAllProvider(page:number =0, size: number=3) {
-    this.providerServiceService.getAllProvider(page, size)
-    .subscribe((data :any) =>{
-      this.listprovider = data.content;
-      this.totalItems = data.totalElements;
-      console.log(data)
-    })
-  }
+  // getAllProviders(page:number =0, size: number=3) {
+  //   this.providerService.getAllProviders(page, size)
+  //   .subscribe((data :any) =>{
+  //     this.listprovider = data.content;
+  //     this.totalItems = data.totalElements;
+  //     console.log(data)
+  //   })
+  // }
   onPageChange(event: PageEvent) {
     const page = event.pageIndex; // Índice de la página seleccionada
     const size = event.pageSize; // Tamaño de la página seleccionada
-    this.getAllProvider(page, size); // Obtener los proveedores para la página seleccionada
+    // this.getAllProviders(page, size); // Obtener los proveedores para la página seleccionada
   }
   eliminarProvider(){
       Swal.fire({

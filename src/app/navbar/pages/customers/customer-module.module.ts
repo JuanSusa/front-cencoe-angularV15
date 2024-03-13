@@ -7,6 +7,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerServiceService } from './service/http/customer-service.service';
+import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 @NgModule({
   declarations: [
     ListCustomersComponent,
@@ -19,6 +20,6 @@ import { CustomerServiceService } from './service/http/customer-service.service'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [CustomerServiceService ]
+  providers: [CustomerServiceService, TipodocumentoHttpService ]
 })
 export class CustomerModuleModule { }

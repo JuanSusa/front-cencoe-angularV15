@@ -8,21 +8,39 @@ export type adminPopUp<T> = { tipo: adminTypePopUp, campo?: T }//^2
  */
 
 export interface ReqResponse<T> {
-    code: number;
+    code:    number;
     message: string;
-    data: T[];
+    data:    T[];
     success: boolean;
 }
 
-// Modulo proveedores
-export interface Provider {
-    providerId?: number | null;
-    providerName: String;
-    providerAddress: String;
-    providerEmail: String;
-    providerContact: String;
-    providerDetails: String;
-    providerDoctype: TypeDocs;
+export interface Pageable<T> {
+    content:          T[];
+    pageable:         Page;
+    last:             boolean;
+    totalElements:    number;
+    totalPages:       number;
+    size:             number;
+    number:           number;
+    sort:             Sort;
+    first:            boolean;
+    numberOfElements: number;
+    empty:            boolean;
+}
+
+export interface Page {
+    pageNumber: number;
+    pageSize:   number;
+    sort:       Sort;
+    offset:     number;
+    paged:      boolean;
+    unpaged:    boolean;
+}
+
+export interface Sort {
+    empty:    boolean;
+    sorted:   boolean;
+    unsorted: boolean;
 }
 
 // Modulo usuario

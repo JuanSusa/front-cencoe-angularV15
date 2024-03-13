@@ -3,7 +3,6 @@ import {adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-import { ProviderServiceService } from '../../providers/services/provider-service.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-manage-campaigns',
@@ -22,8 +21,8 @@ export class ManageCampaignsComponent {
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
-    private _GroupService : GroupServiceService,
-    private _ProviderService : ProviderServiceService
+    // private _GroupService : GroupServiceService,
+    // private _ProviderService : ProviderServiceService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});
@@ -58,15 +57,15 @@ export class ManageCampaignsComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
-  getAllGroups(){
-    if(this._GroupService){
-      this._GroupService.getAllGroups()
-      .subscribe((data : Team[]) =>{
-        this.team = data
-        console.log(data)
-      })
-    }
-  }
+  // getAllGroups(){
+  //   if(this._GroupService){
+  //     this._GroupService.getAllGroups()
+  //     .subscribe((data : Team[]) =>{
+  //       this.team = data
+  //       console.log(data)
+  //     })
+  //   }
+  // }
 //   getAllProvider(){
 //     if(this._ProviderService){
 //       this._ProviderService.getAllProvider()

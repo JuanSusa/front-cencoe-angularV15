@@ -16,8 +16,9 @@ import { User } from '../core/models/main.model';
 })
 
 export class ManageUsersComponent implements OnInit {
- 
+  public readonly userForm: UntypedFormGroup;
   public typeDocs: TypeDocs[] = [];
+  public typeDoc: TypeDocs | undefined;
   public user: User | undefined;
   public showBtn: boolean = false;
   hide: boolean = true;

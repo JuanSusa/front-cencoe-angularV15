@@ -11,7 +11,6 @@ import { Customer } from '../../core/models/main.model';
 })
 export class CustomerServiceService {
 
-  private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json'})
 
   constructor(private readonly _http: HttpClient) { }
 
@@ -19,7 +18,7 @@ export class CustomerServiceService {
     const params = new HttpParams()
       .append('page', page)
       .append('size', size);
-    return this._http.get<Pageable<Customer>>(`${environment.api}/clientes`, { params })
+    return this._http.get<Pageable<Customer>>(`${environment.api}/clientes`)
       .pipe(
         tap(data => console.log('Clientes cargados con éxito!', data)),
       );
@@ -38,7 +37,7 @@ export class CustomerServiceService {
 
   getCustomerById(customerId: number): Observable<Customer> {
     const params = new HttpParams().append('id', customerId)
-    return this._http.get<Customer>(`${environment.api}/clientes`, { params })
+    return this._http.get<Customer>(`${environment.api}/clientes`)
     .pipe(tap(response => console.log(`tap`, response)))
   };
 }

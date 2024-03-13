@@ -15,7 +15,7 @@
 <mat-card class="container-table">
     <mat-card-content class="table-provider">
         <!-- [dataSource]="listprovider"-->
-        <table mat-table class="mat-elevation-z8">
+        <table mat-table class="mat-elevation-z8" [dataSource]="provider">
             <!--Columana Id-->
             <ng-container matColumnDef="providerId">
                 <th mat-header-cell *matHeaderCellDef class="table-header">No.</th>
@@ -56,11 +56,12 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <mat-paginator [length]="totalItems" [pageSizeOptions]="pageSizeOptions" [pageSize]="3" (page)="onPageChange($event)">
+        <mat-paginator [length]="totalResultados" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select p of provider">
         </mat-paginator>
     </mat-card-content>
     <!-- Spinner para cuando no hay datos en las tablas -->
     <!-- <mat-spinner *ngIf="!listprovider.length" class="spinner" diameter="50"></mat-spinner> -->
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<div class="messageNull" *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</div>
+<!-- <div class="messageNull" *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</div> -->

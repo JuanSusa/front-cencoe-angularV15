@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthServiceService } from './services/auth-service.service';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,6 @@ import { AuthServiceService } from './services/auth-service.service';
     FormsModule
   
   ],
-  providers: [AuthServiceService]
+  providers: [AuthServiceService, JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }]
 })
 export class AuthModule { }

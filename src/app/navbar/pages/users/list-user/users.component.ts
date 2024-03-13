@@ -60,7 +60,6 @@ export class UsersComponent implements AfterViewInit{
   }
 
 
-
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {
       data: { tipo, campo: userId }

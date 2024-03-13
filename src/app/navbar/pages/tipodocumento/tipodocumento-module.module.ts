@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TipodocumentoHttpService } from './services/tipo-documento.service';
 import { userHttpService } from '../users/service/http/user-service.service';
 import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
+import { HeadersInterceptor } from 'src/app/core/interceptors/headers.interceptor';
 
 
 @NgModule({
@@ -24,6 +25,11 @@ import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/genera
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GeneralResponseHttpInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
       multi: true
     }
   ]

@@ -61,32 +61,39 @@ export class LoginComponent {
         this.showError = true;
       }
       )
-
+      this.info()
+        // const _cambio_L_R = document.querySelector('.contenedorLogin') as HTMLElement;
+        // const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
+        // const _caja_T_L = document.querySelector('.cajaTraseraLogin') as HTMLElement;
+        // const _caja_T_R = document.querySelector('.cajaTraseraRecuperar') as HTMLElement;
+        // const _messageError = document.querySelector('.mat-mdc-form-field-error') as HTMLElement;
+        // this.cambioL_R = !this.cambioL_R;
+        // _formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
+        // _cambio_L_R.classList.toggle('cambio', this.cambioL_R);
+        // _cambio_L_R.style.left = this.cambioL_R ? '360px' : '0';
+        // _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
+        // _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
+        // _messageError.style.display = this.cambioL_R ? 'none' : 'block';
       
-    // const _cambio_L_R = document.querySelector('.contenedorLogin') as HTMLElement;
-    // const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
-    // const _caja_T_L = document.querySelector('.cajaTraseraLogin') as HTMLElement;
-    // const _caja_T_R = document.querySelector('.cajaTraseraRecuperar') as HTMLElement;
-    // const _messageError = document.querySelector('.mat-mdc-form-field-error') as HTMLElement;
-    // this.cambioL_R = !this.cambioL_R;
-    // _formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
-    // _cambio_L_R.classList.toggle('cambio', this.cambioL_R);
-    // _cambio_L_R.style.left = this.cambioL_R ? '360px' : '0';
-    // _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
-    // _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
-    // _messageError.style.display = this.cambioL_R ? 'none' : 'block';
   }
   info() {
     const _cambio_L_R = document.querySelector('.contenedorLogin') as HTMLElement;
     const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
     const _caja_T_L = document.querySelector('.cajaTraseraLogin') as HTMLElement;
     const _caja_T_R = document.querySelector('.cajaTraseraRecuperar') as HTMLElement;
+    const _messageError = document.querySelector('.mat-mdc-form-field-error') as HTMLElement;
+  
+    // Alternamos el valor de cambioL_R
     this.cambioL_R = !this.cambioL_R;
-    _formulario_L.style.display = this.cambioL_R ? 'block' : 'none';
-    _cambio_L_R.classList.toggle('cambio', this.cambioL_R)
+  
+    // No ocultamos el formulario de inicio de sesión
+    //_formulario_L.style.display = this.cambioL_R ? 'none' : 'block';
+    _cambio_L_R.classList.toggle('cambio', this.cambioL_R);
     _cambio_L_R.style.left = this.cambioL_R ? '360px' : '0';
     _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
     _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
+    _messageError.style.display = this.cambioL_R ? 'none' : 'block';
+
   }
   ngOnInit(): void {
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background', 'linear-gradient(to bottom right, #363636d2, #d6d6d6)')

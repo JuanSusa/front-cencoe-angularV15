@@ -25,14 +25,14 @@ export class TipodocumentoHttpService {
 
     getTypeDocsById(docTypeId: number): Observable<TypeDocs> {
         const params = new HttpParams().append('docTypeId', docTypeId);
-        return this._http.get<TypeDocs>(`${environment.api}/tipo-documento`, { params })
+        return this._http.get<TypeDocs>(`${environment.api}/tipo-documento`)
             .pipe(
                 tap(console.log)
             )
     }
     
     saveTypeDocument(typeDocs: TypeDocs): Observable<TypeDocs> {
-        return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs, { headers: this.httpHeaders })
+        return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs)
             .pipe(
                 tap(response => console.log('Respuesta del servidor en el metodo Save', response)),
                 map(response => response.data as TypeDocs),

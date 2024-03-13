@@ -12,7 +12,7 @@ import { Pageable } from 'src/app/core/main.type';
 
 export class userHttpService {
 
-  private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
+
 
   constructor(private readonly _http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class userHttpService {
       .append('page', page)
       .append('size', size);
 
-    return this._http.get<Pageable<User>>(`${environment.api}/usuarios`, { params })
+    return this._http.get<Pageable<User>>(`${environment.api}/usuarios`)
     .pipe(
       tap(data => console.log('Usuarios cargados con éxito!', data)),
     
@@ -30,7 +30,7 @@ export class userHttpService {
 
   createUser(user: User): Observable<User> {
     console.log(user)
-    return this._http.post<User>(`${environment.api}/usuario`, user, { headers: this.httpHeaders })
+    return this._http.post<User>(`${environment.api}/usuario`, user)
       .pipe(
         tap(data => console.log('Usuario creado con éxito!', data)),
         catchError(error => {
@@ -41,7 +41,7 @@ export class userHttpService {
   };
 
   updateUser(user: User): Observable<User> {
-    return this._http.put<User>(`${environment.api}/usuario`, user, { headers: this.httpHeaders })
+    return this._http.put<User>(`${environment.api}/usuario`, user)
       .pipe(
         tap(data => console.log('Usuario actualizado con éxito!', data)),
         catchError(error => {
@@ -67,4 +67,5 @@ export class userHttpService {
     return this._http.get<User>(`${environment.api}/usuario`, { params })
       .pipe(tap(response => console.log('tap', response)))
   }
+
 }

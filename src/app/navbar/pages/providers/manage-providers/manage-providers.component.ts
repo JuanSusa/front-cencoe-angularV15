@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Provider } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
@@ -32,7 +32,7 @@ export class ManageProvidersComponent implements OnInit {
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     details: ['', [Validators.required, Validators.maxLength(151)]],
     numDocumento: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],
-    tipoDocumento: ['', Validators.required],
+    tipoDocumento: [''],
   })
   ngOnInit(): void {
     // this.getTypeDocs()
@@ -52,7 +52,7 @@ export class ManageProvidersComponent implements OnInit {
   // }
 
 
-
+  
 
   onSubmit(): void {
     if (this.providerForm.invalid){

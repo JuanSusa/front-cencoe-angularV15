@@ -28,8 +28,9 @@ export class TipodocumentoHttpService {
         return this._http.get<TypeDocs>(`${environment.api}/tipo-documento`, { params })
             .pipe(
                 tap(console.log)
-              )
-            }
+            )
+    }
+    
     saveTypeDocument(typeDocs: TypeDocs): Observable<TypeDocs> {
         return this._http.post<any>(`${environment.api}/tipo-documento`, typeDocs, { headers: this.httpHeaders })
             .pipe(
@@ -42,8 +43,8 @@ export class TipodocumentoHttpService {
                         return err;
                     })
                 })
-              );
-            }
+            );
+    }
     deleteTypeDoc(typeDocId: number): Observable<TypeDocs> {
         return this._http.delete<TypeDocs>(`${environment.api}/tipo-documento/${typeDocId}`)
             .pipe(
@@ -52,5 +53,5 @@ export class TipodocumentoHttpService {
                     return throwError('Ocurrió un error al eliminar el tipo de documento');
                 })
             );
-          }
-        }
+    }
+}

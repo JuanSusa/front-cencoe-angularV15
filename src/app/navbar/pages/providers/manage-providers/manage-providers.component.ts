@@ -24,8 +24,6 @@ export class ManageProvidersComponent implements OnInit {
     private _ServiceTD: TipodocumentoHttpService
   ) {
 
-
-
   }
   providerForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.maxLength(35)]],

@@ -71,7 +71,6 @@ export class UsersComponent implements AfterViewInit{
       .subscribe(result => {
         console.log('se cerro el dialogo ')
       });
-
   }
   eliminarUser() {
     Swal.fire({

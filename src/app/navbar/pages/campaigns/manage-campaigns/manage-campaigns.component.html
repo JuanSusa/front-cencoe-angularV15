@@ -52,7 +52,6 @@
                     <textarea matInput formControlName="observaciones"></textarea>
                     <mat-error *ngIf="campaignForm.get('observaciones')?.hasError('maxlength')">La descripcion de la campaña no puede tener mas de 150 caracteres</mat-error>
                 </mat-form-field>
-
                 <mat-card-actions class="actions-btns">
                     <!-- Botones de acciones -->
                     <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid">

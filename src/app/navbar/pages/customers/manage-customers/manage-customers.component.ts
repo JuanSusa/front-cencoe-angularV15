@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
-import { adminPopUp } from 'src/app/core/main.type';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validator, Validators } from '@angular/forms';
+import { Component, Inject} from '@angular/core';
+import { User, adminPopUp } from 'src/app/core/main.type';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
 import { TypeDocs } from '../../tipodocumento/core/models/main.model';
@@ -76,5 +76,4 @@ export class ManageCustomersComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
-
 }

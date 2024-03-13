@@ -1,10 +1,11 @@
 import { Component, Injectable } from '@angular/core';
-import { adminTypePopUp } from 'src/app/core/main.type';
+import { Campaign, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCampaignsComponent } from '../manage-campaigns/manage-campaigns.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignsServiceService } from '../services/http/campaigns-service.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,14 +17,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-campaign.component.scss']
 })
 export class ListCampaignComponent {
-  public campaign = [];//^1 : Campaign[]
+  mostrarSpinner: boolean = true; // Mostrar Spinner
+  public campaign: Campaign[] = [];//^1
   public displayedColumns = ['campaign_id', 'campaign_name', 'campaign_team', 'campaign_provider', 'campaign_start_date', 'campaign_end_date', 'campaign_observations', 'campaign_state', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _campaignHttpService: CampaignsServiceService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
   }
   ngOnInit(): void {
@@ -38,7 +41,6 @@ export class ListCampaignComponent {
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {
       data: { tipo, campo: id },
-  
     });
     modal
       .afterClosed()
@@ -67,9 +69,10 @@ export class ListCampaignComponent {
       }
     });
   };
-
+  toggleSpinner() {//mostrar Spinner
+    this.mostrarSpinner = !this.mostrarSpinner;
+  }
 }
-
 /**
  * ^1 => Inyeccion de datos usuarios
  * ^2 => arreglo que define las columnas de la tabla en la vista

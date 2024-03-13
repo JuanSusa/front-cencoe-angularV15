@@ -1,27 +1,20 @@
-import { Component, ElementRef, Inject, OnInit, Renderer2 } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { adminPopUp } from 'src/app/core/main.type';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent {
-
   loginForm: FormGroup;
-
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   };
-
   cambioL_R: boolean = false;
-
   logIn() {
     const _cambio_L_R = document.querySelector('.contenedorLogin') as HTMLElement;
     const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
@@ -36,7 +29,6 @@ export class LoginComponent {
     _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
     _messageError.style.display = this.cambioL_R ? 'none' : 'block';
   }
-
   info() {
     const _cambio_L_R = document.querySelector('.contenedorLogin') as HTMLElement;
     const _formulario_L = document.querySelector('.formularioLogin') as HTMLElement;
@@ -49,7 +41,6 @@ export class LoginComponent {
     _caja_T_L.style.opacity = this.cambioL_R ? '1' : '0';
     _caja_T_R.style.opacity = this.cambioL_R ? '0' : '1';
   }
-
   ngOnInit(): void {
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'background', 'linear-gradient(to bottom right, #363636d2, #d6d6d6)')
   }

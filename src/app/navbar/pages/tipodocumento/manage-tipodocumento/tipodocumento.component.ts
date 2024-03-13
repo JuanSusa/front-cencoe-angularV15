@@ -14,7 +14,6 @@ import { TypeDocs } from '../core/models/main.model';
   styleUrls: ['./tipodocumento.component.scss']
 })
 export class TipodocumentoComponent implements OnInit {
-
   public typeDocs: TypeDocs[] = [];
   public selectedItemsList: any[] = [];
   public enableButton: boolean = false;
@@ -24,11 +23,9 @@ export class TipodocumentoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _tipodocumentoHttpService: TipodocumentoHttpService
   ) { }
-
   typeDocForm = this.formBuilder.group({
     docTypeName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]]
   })
-
   ngOnInit(): void {
     this.getAllTypeDocs()
   }
@@ -57,7 +54,6 @@ export class TipodocumentoComponent implements OnInit {
         console.log(data);
       })
   }
-
   saveTypeDoc(): void {
     if (this.typeDocForm.valid) {
       const newTypeDoc: TypeDocs = {
@@ -89,7 +85,6 @@ export class TipodocumentoComponent implements OnInit {
       });
     }
   }
-
   deleteSelectedItems() {
     Swal.fire({
       title: '¿Está seguro?',
@@ -121,7 +116,6 @@ export class TipodocumentoComponent implements OnInit {
       }
     }
   }
-
   // deleteSelectedItems() {
   //   this.selectedItemsList.forEach(item => {
   //     this._tipodocumentoHttpService.deleteTypeDoc(item.docTypeId).subscribe(() => {
@@ -129,13 +123,11 @@ export class TipodocumentoComponent implements OnInit {
   //     })
   //   });
   // }
-
   onSelectionChange(event: MatSelectionListChange) {
     this.selectedItemsList = event.source.selectedOptions.selected.map(option => option.value);
     console.log(this.selectedItemsList)
     this.enableButton = this.selectedItemsList.length > 0 ? true : false;
   }
-
 }
 
 

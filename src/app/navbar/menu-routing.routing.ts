@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from '../auth/login/login.component';
+import { ManageProvidersComponent } from './pages/providers/manage-providers/manage-providers.component';
 
 const routes: Routes = [
+  
   {
     path: 'login',
     component: LoginComponent,

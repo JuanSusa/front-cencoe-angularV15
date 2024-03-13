@@ -6,7 +6,7 @@ import { environment } from 'src/app/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderService {
+export class ProviderServiceService {
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   constructor(private _httpClient: HttpClient) { }

@@ -43,6 +43,52 @@ export interface Sort {
     unsorted: boolean;
 }
 
+// Modulo usuario
+export interface User {
+    userId: number;
+    userNumDoc: string;
+    userName: string;
+    userLastName: string;
+    userAddress: string;
+    userPhone: string;
+    userEmail: string;
+    userPassword: string;
+    userState: boolean;
+    userDocType: TypeDocs;
+}
+export interface Campaign {
+    campaignId: number;
+    campaignName: string;
+    // campaignTeam: number;
+    // campaignProvider: number;
+    campaignStartDate: Date;
+    campaignEndDate: Date;
+    campaignObservations: string;
+    campaignState: string;
+}
+
+export class TypeDocs {
+    docTypeId!: number | null;
+    docTypeName: string = '';
+
+}
+
+export interface Team {
+    teamId: number;
+    teamName: string;
+    teamCapacity: number;
+    teamState: boolean;
+}
+
+// Modulo cliente
+export interface Customer {
+    customerId: number;
+    customerName: string;
+    customerPhone: number;
+    customerAddress: string;
+    customerState: boolean;
+}
+
 
 
 

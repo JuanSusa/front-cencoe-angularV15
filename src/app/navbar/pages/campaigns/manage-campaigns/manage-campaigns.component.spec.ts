@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ManageCampaignsComponent } from './manage-campaigns.component';
 
 describe('ManageCampaignsComponent', () => {

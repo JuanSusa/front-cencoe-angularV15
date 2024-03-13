@@ -3,13 +3,13 @@ import {adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-import { ProviderService } from '../../providers/services/provider-service.service';
+import { ProviderServiceService } from '../../providers/services/provider-service.service';
+
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
-
 export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
@@ -22,7 +22,8 @@ export class ManageCampaignsComponent {
     private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
-    private _GroupService : GroupServiceService
+    private _GroupService : GroupServiceService,
+    private _ProviderService : ProviderServiceService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});
@@ -81,8 +82,6 @@ export class ManageCampaignsComponent {
     if (fechaFinalDate.getTime() === fechaInicioDate.getTime()) {
       return { mismaFecha: true }; // Retorna error si las fechas son iguales
     }
-
     return null; // Retorna null si no hay errores
   }
-
 }

@@ -2,16 +2,20 @@
         background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
         margin: 0 1rem 1rem 0;
     }
-    .mdc-button:hover{
+    
+    .mdc-button:hover {
         background: rgba(255, 0, 0, 0.747);
         color: #ffffff;
     }
+    
     .actions-btns {
         color: #080808;
     }
-    mat-toolbar{
+    
+    mat-toolbar {
         background: transparent;
     }
+    
     mat-icon {
         color: #ff0844;
     }
@@ -19,14 +23,15 @@
     .add-campaign {
         color: #fafafa !important;
     }
- 
+    
     .mat-divider {
-        border: none; 
-        height: 1px; 
+        border: none;
+        height: 1px;
         background: linear-gradient(to right, #ff0844, #ff3e75, #ff7fa3, #ffb7d6, #ffd9ef);
-        margin: 20px 0; 
-        box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4); 
-      }
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4);
+    }
+    
     .content-table {
         margin-top: 1rem;
     }
@@ -43,6 +48,30 @@
     .mat-mdc-cell {
         text-align: center;
     }
- 
-   
     
+    .spinner {
+        //posición del spinner
+        margin: 0 auto;
+    }
+    
+     ::ng-deep .mat-mdc-progress-spinner {
+        //color del spinner
+        --mdc-circular-progress-active-indicator-color: #ff0844;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #ff0844;
+        animation: fadeInDown 5s ease-in-out;
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(150px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(-50px);
+        }
+    }

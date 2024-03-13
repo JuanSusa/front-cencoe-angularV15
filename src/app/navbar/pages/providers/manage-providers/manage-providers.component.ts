@@ -73,5 +73,10 @@ export class ManageProvidersComponent implements OnInit {
   public cerrarDialog() {
     this._matDialogRef.close()
   }
+  // solo deja incluir letras
+  onNameInput(event: any): void {
+    const input = event.target.value;
+    event.target.value = input.replace(/[^A-Za-z ]/g, '');
+  }
 
 }

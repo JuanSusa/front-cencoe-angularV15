@@ -21,5 +21,7 @@ const routes: Routes = [
   declarations: [],
   imports: [RouterModule.forChild(routes),  CommonModule],
   exports: [RouterModule]
-})
+}
+)
+
 export class ReportsRoutingModule { }

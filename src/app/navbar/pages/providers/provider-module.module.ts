@@ -19,5 +19,7 @@ import { ProviderService } from './services/provider-service.service';
     HttpClientModule
   ],
   providers: [TipodocumentoHttpService, ProviderService]
-})
+}
+)
+
 export class ProviderModuleModule { }

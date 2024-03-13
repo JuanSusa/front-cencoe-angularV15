@@ -60,10 +60,10 @@ export class ManageUsersComponent implements OnInit {
   subtitulo: string = '';
   /**
    * Método que se ejecuta al inicializar el componente.
-   * 
+   *
    * @remarks
    * Este método se utiliza para realizar tareas de inicialización al cargar el componente.
-   * 
+   *
    * @returns No devuelve ningún valor.
    */
   ngOnInit(): void {
@@ -121,10 +121,10 @@ export class ManageUsersComponent implements OnInit {
 
   /**
     * Crea un nuevo usuario.
-    * 
+    *
     * Este método valida el formulario de usuario y crea un nuevo usuario basado en los datos del formulario.
     * Si el formulario no es válido, muestra un mensaje de advertencia.
-    * 
+    *
     * @returns void
     */
   public createUser(): void {
@@ -165,7 +165,7 @@ export class ManageUsersComponent implements OnInit {
 
   /**
    * Muestra un mensaje de ejecución para indicar el resultado de una transacción.
-   * 
+   *
    * @param tipo - El tipo de transacción ('crear' o 'actualizar').
    * @param message - El mensaje a mostrar en el diálogo.
    */
@@ -181,7 +181,7 @@ export class ManageUsersComponent implements OnInit {
 
   /**
    * Obtiene los datos del usuario a partir del formulario.
-   * 
+   *
    * @param esTipoCrear Indica si se trata de un tipo de creación de usuario.
    * @returns Los datos del usuario obtenidos del formulario.
    */
@@ -204,7 +204,7 @@ export class ManageUsersComponent implements OnInit {
   /**
     * Maneja el evento de entrada numérica.
     * Filtra los caracteres no numéricos del valor de entrada.
-    * 
+    *
     * @param event - El objeto de evento de entrada.
     */
   onNumericInput(event: any): void {
@@ -216,7 +216,7 @@ export class ManageUsersComponent implements OnInit {
   /**
     * Devuelve una función validadora que verifica si la contraseña cumple con los criterios especificados.
     * La contraseña debe contener al menos una letra minúscula, una letra mayúscula y un dígito.
-    * 
+    *
     * @returns Una función validadora que devuelve un objeto `ValidationErrors` si la contraseña no cumple con los criterios, de lo contrario `null`.
     */
   passwordValidator(): ValidatorFn {
@@ -230,6 +230,12 @@ export class ManageUsersComponent implements OnInit {
       }
       return null;
     };
+
+  }
+  // solo deja incluir letras
+  onNameInput(event: any): void {
+    const input = event.target.value;
+    event.target.value = input.replace(/[^A-Za-z ]/g, '');
   }
 
 }

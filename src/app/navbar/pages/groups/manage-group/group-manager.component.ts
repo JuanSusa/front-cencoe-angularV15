@@ -55,6 +55,11 @@ export class GroupManagerComponent implements OnInit {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
+  // solo deja incluir letras
+  onNameInput(event: any): void {
+    const input = event.target.value;
+    event.target.value = input.replace(/[^A-Za-z ]/g, '');
+  }
   // getAllUsers(){
   //   if(this._UsersService){
   //     this._UsersService.getAllUsers()

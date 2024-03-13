@@ -10,7 +10,7 @@
                     <!--Campo nombre del proveedor-->
                     <mat-form-field>
                         <mat-label class="form-label">Nombre proveedor</mat-label>
-                        <input matInput formControlName="name" placeholder="Nombre">
+                        <input (input)="onNameInput($event)" matInput formControlName="name" placeholder="Nombre">
                         <mat-error *ngIf="providerForm.get('name')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('name')?.hasError('maxLength')">Maximo 35 caracteres
@@ -28,8 +28,7 @@
                     <!--Campo telefono-->
                     <mat-form-field>
                         <mat-label class="form-label">Teléfono</mat-label>
-                        <input matInput formControlName="contact" placeholder="Telefono"
-                            (input)="onNumericInput($event)">
+                        <input matInput formControlName="contact" placeholder="Telefono" (input)="onNumericInput($event)">
                         <mat-error *ngIf="providerForm.get('contact')?.hasError('required')">El telefono es obligatorio
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('contact')?.hasError('maxlength')">Maximo 10 digitos
@@ -47,10 +46,8 @@
                     <!--Campo No. Documento-->
                     <mat-form-field>
                         <mat-label class="form-label">No. Documento</mat-label>
-                        <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento"
-                            (input)="onNumericInput($event)">
-                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento
-                            obligatorio
+                        <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento" (input)="onNumericInput($event)">
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento obligatorio
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('minlength')">Minimo 8 digitos
                         </mat-error>
@@ -65,8 +62,7 @@
                                 {{p.docTypeName}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="providerForm.get('tipoDocumento')?.hasError('required')">El tipo de
-                            documento es obligatorio</mat-error>
+                        <mat-error *ngIf="providerForm.get('tipoDocumento')?.hasError('required')">El tipo de documento es obligatorio</mat-error>
                     </mat-form-field>
                     <!--Detalles-->
                     <mat-form-field class="full-width textarea">
@@ -88,8 +84,7 @@
                     <button mat-button type="submit" class="btn-saved-dialog">
                         {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
                     </button>
-                    <button mat-button type="button" (click)="cerrarDialog()"
-                        class="btn-cancel-dialog">Cancelar</button>
+                    <button mat-button type="button" (click)="cerrarDialog()" class="btn-cancel-dialog">Cancelar</button>
                 </mat-card-actions>
             </form>
 

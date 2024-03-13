@@ -11,7 +11,7 @@
                     <!-- Campo Nombres -->
                     <mat-form-field class="full-width">
                         <mat-label>Nombre de grupo</mat-label>
-                        <input matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
+                        <input (input)="onNameInput($event)" matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
                         <mat-error *ngIf="groupForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.
@@ -37,7 +37,8 @@
                     <mat-form-field class="full-width">
                         <mat-label>Integrantes</mat-label>
                         <mat-select multiple formControlName="integrantes" placeholder="Seleccionar los Integrantes">
-                            <mat-option>  <!--*ngFor="let t of team" [value]="t.teamId"-->
+                            <mat-option>
+                                <!--*ngFor="let t of team" [value]="t.teamId"-->
                                 <!-- {{t.teamName}} -->
                             </mat-option>
                         </mat-select>

@@ -11,7 +11,7 @@
                 <div class="campos">
                     <mat-form-field class="full-width">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" pattern="[^\d]+" title="No se permiten números" />
+                        <input (input)="onNameInput($event)" matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" />
                         <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
                         <mat-error *ngIf="campaignForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.
@@ -40,7 +40,8 @@
                     <mat-form-field class="full-width">
                         <mat-label>Grupos</mat-label>
                         <mat-select formControlName="grupos" placeholder="seleccione un grupo">
-                            <mat-option><!--  *ngFor="let t of team" [value]="t.teamId"> -->
+                            <mat-option>
+                                <!--  *ngFor="let t of team" [value]="t.teamId"> -->
                                 <!-- {{t.teamName}} - {{t.teamId}} -->
                             </mat-option>
                         </mat-select>

@@ -128,6 +128,11 @@ export class TipodocumentoComponent implements OnInit {
     console.log(this.selectedItemsList)
     this.enableButton = this.selectedItemsList.length > 0 ? true : false;
   }
+  // solo deja incluir letras
+  onNameInput(event: any): void {
+    const input = event.target.value;
+    event.target.value = input.replace(/[^A-Za-z ]/g, '');
+  }
 }
 
 

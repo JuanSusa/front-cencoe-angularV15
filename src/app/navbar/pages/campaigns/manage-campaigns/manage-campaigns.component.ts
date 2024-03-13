@@ -42,7 +42,7 @@ export class ManageCampaignsComponent {
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nueva Campaña': 'Ingrese los nuevos datos de la Campaña';
 
       this.campaignForm = this.formBuilder.group({
-        nombre: ['', [Validators.required, Validators.pattern(/^\D+$/)]],
+        nombre: ['', [Validators.required, Validators.pattern ('[A-Za-z ]*')]],
         fechaInicio: ['', Validators.required],
         fechaFinal: ['', [Validators.required, this.fechaFinalValidador.bind(this)]],
         observaciones: ['', Validators.maxLength(151)],
@@ -53,6 +53,11 @@ export class ManageCampaignsComponent {
 
   public executionMesssage() {
     this._matDialogRef.close();
+  }
+  // solo deja incluir letras
+  onNameInput(event: any): void {
+    const input = event.target.value;
+    event.target.value = input.replace(/[^A-Za-z ]/g, '');
   }
    //^6
    onNumericInput(event: any): void {//^6.1
@@ -86,5 +91,6 @@ export class ManageCampaignsComponent {
     }
     return null; // Retorna null si no hay errores
   }
+
 }
 

@@ -9,7 +9,7 @@
                     <!-- Campo Nombres -->
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombre del reporte</mat-label>
-                        <input matInput formControlName="reportsName" placeholder="Nombre Completo" type="text" />
+                        <input (input)="onNameInput($event)" matInput formControlName="reportsName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="reportsForm.get('reportsName')?.hasError('required')">Nombre necesario
                         </mat-error>
                         <mat-error *ngIf="reportsForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.

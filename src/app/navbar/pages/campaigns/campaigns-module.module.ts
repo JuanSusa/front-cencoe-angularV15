@@ -10,6 +10,7 @@ import { CampaignsServiceService } from './services/http/campaigns-service.servi
 import { GroupServiceService } from '../groups/services/http/group-service.service';
 import { ProviderService } from '../providers/services/provider-service.service';
 import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
+import { HeadersInterceptor } from 'src/app/core/interceptors/headers.interceptor';
 
 @NgModule({
   declarations: [ManageCampaignsComponent, ListCampaignComponent],
@@ -30,7 +31,12 @@ providers: [
     provide: HTTP_INTERCEPTORS,
     useClass: GeneralResponseHttpInterceptor,
     multi: true
-  }]
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeadersInterceptor,
+    multi: true
+  },]
 })
 export class CampaignsModuleModule { }
 

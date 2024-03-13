@@ -42,29 +42,29 @@ export class GroupsComponent {
     // this.getAllGroups()
   }
 
-  // ngAfterViewInit(): void {
-  //   merge(this.paginator.page)
-  //     .pipe(
-  //       startWith({}),
-  //       switchMap(() => {
-  //         return this._groupHttpService.getAllTeams(
-  //           this.paginator.pageIndex,
-  //           this.paginator.pageSize
-  //         );
-  //       }),
-  //       map((response: Pageable<Team>) => {
-  //         this.totalResultados = response.totalElements;
-  //         // this.totalPages = response.data.totalPages;
-  //         return response.content;
-  //       }),
-  //       takeUntil(this._clearSubscritions$)
+  ngAfterViewInit(): void {
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this._groupHttpService.getAllTeams(
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+          ) as Observable<Pageable<Team>>; // Add type assertion here
+        }),
+        map((response: Pageable<Team>) => {
+          this.totalResultados = response.totalElements;
+          // this.totalPages = response.data.totalPages;
+          return response.content;
+        }),
+        takeUntil(this._clearSubscritions$)
 
-  //     )
-  //     .subscribe((data) => {
-  //       this.team = data;
-  //       console.log(data);
-  //     });
-  // }
+      )
+      .subscribe((data) => {
+        this.team = data;
+        console.log(data);
+      });
+  }
 
   manageGroup(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(GroupManagerComponent, {

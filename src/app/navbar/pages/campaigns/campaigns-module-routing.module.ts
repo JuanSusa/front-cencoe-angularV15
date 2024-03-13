@@ -9,6 +9,8 @@ const routes: Routes = [
       {
         path: 'list-campaign',
         component: ListCampaignComponent,
+        canActivate: [AuthGuard],
+
       },
       { path: '**', redirectTo: 'list-campaign' }
     ]

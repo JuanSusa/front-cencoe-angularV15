@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomerServiceService } from './service/http/customer-service.service';
 import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 import { HeadersInterceptor } from 'src/app/core/interceptors/headers.interceptor';
+import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
 @NgModule({
   declarations: [
     ListCustomersComponent,
@@ -21,10 +22,16 @@ import { HeadersInterceptor } from 'src/app/core/interceptors/headers.intercepto
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [CustomerServiceService, TipodocumentoHttpService,  {
+  providers: [CustomerServiceService, TipodocumentoHttpService, ManageCustomersComponent, {
     provide: HTTP_INTERCEPTORS,
     useClass: HeadersInterceptor,
     multi: true
-  }]
+  }, 
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: GeneralResponseHttpInterceptor,
+    multi: true
+  },
+]
 })
 export class CustomerModuleModule { }

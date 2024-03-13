@@ -12,6 +12,7 @@ import { AuthServiceService } from 'src/app/auth/services/auth-service.service';
 import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
 import { HeadersInterceptor } from 'src/app/core/interceptors/headers.interceptor';
 
+
 @NgModule({
   declarations: [ManageProvidersComponent, ProvidersComponent],
   imports: [
@@ -21,7 +22,7 @@ import { HeadersInterceptor } from 'src/app/core/interceptors/headers.intercepto
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [TipodocumentoHttpService, ProviderService, AuthServiceService,
+  providers: [TipodocumentoHttpService, ProviderService, ManageProvidersComponent, AuthServiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GeneralResponseHttpInterceptor,
@@ -31,6 +32,7 @@ import { HeadersInterceptor } from 'src/app/core/interceptors/headers.intercepto
       provide: HTTP_INTERCEPTORS,
       useClass: HeadersInterceptor,
       multi: true
-    }]
+    },
+  ]
 })
 export class ProviderModuleModule { }

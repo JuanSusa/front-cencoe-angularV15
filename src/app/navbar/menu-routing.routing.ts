@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: 'role',
     component: NavbarComponent,
-    loadChildren: () => import('./pages/role/role.module').then((m) => m.RoleModule)
+    loadChildren: () => import('./pages/role/role-module.module').then((m) => m.RoleModule)
   },
   {
   path: 'reports',

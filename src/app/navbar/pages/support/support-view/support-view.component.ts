@@ -15,17 +15,14 @@ export class SupportComponent {
   public readonly supportForm: UntypedFormGroup;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
+
     this.supportForm = this.fb.group({
       namePerson: ['', Validators.required],
       messagePerson: ['', Validators.required]
-    })
-}
+    });
+  }
 
 
-  // ngOnInit(): void {
-
-  //   }
-  // }
   saveEmail() {
     // Guardado de nombre y mensaje en el arreglo de sendMessage
     this.sendMessage[0].push(this.personName);

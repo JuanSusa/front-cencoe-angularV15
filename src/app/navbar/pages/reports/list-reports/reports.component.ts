@@ -1,33 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { adminTypePopUp } from 'src/app/core/main.type';
-import { ManageReportsComponent } from '../manage-reports/manage-reports.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent {
-  public displayedColumns = ['reportsId', 'reportsName', 'edit'];
-  isLoading = true;
-  success: boolean = false;
+export class ReportsComponent{
+  maxDate: Date;
+  
 
   constructor(
-    private readonly _dialog: MatDialog,
-    // private http: HttpClient
-  ){
+    public formBuilder: FormBuilder,
+  ) { this.maxDate = new Date(); 
   }
-  ngOnInit(): void {
-  }
-  manageReports(tipo: adminTypePopUp, id?: number) {
-    const modal = this._dialog.open(ManageReportsComponent, {
-      data: { tipo, campo: id }
-    });
-    modal
-      .afterClosed()
-      .subscribe(result => {
-        console.log('se cerro el dialogo ')
-      });
-  }
+   reportForm = this.formBuilder.group({
+    reportsName: ['', [Validators.required]],
+    customerTipodeReporte: ['', Validators.required],
+    fechaInicio: ['', Validators.required],
+    fechaFinal: ['', Validators.required],
+    observaciones: ['', [Validators.required]],
+    descargar: ['']
+  });
+
 }

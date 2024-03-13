@@ -30,14 +30,14 @@ export class ListCampaignComponent {
   ) {
   }
   ngOnInit(): void {
-    this.getAllCampaigns()
+    // this.getAllCampaigns()
   }
-  getAllCampaigns() {
-    this._campaignHttpService.getAllCampaigns().subscribe(data => {
-      this.campaign = data;
-      console.log(data)
-    })
-  }
+  // getAllCampaigns() {
+  //   this._campaignHttpService.getAllCampaigns().subscribe(data => {
+  //     this.campaign = data;
+  //     console.log(data)
+  //   })
+  // }
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {
       data: { tipo, campo: id },

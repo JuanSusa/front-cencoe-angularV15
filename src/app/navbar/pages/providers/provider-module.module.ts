@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
 import { ProvidersComponent } from './list-providers/providers.component';
-import { ProviderServiceService } from './services/provider-service.service';
+import { ProviderService } from './services/provider-service.service';
 
 @NgModule({
   declarations: [ManageProvidersComponent, ProvidersComponent],
@@ -18,6 +18,6 @@ import { ProviderServiceService } from './services/provider-service.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [TipodocumentoHttpService, ProviderServiceService]
+  providers: [TipodocumentoHttpService, ProviderService]
 })
 export class ProviderModuleModule { }

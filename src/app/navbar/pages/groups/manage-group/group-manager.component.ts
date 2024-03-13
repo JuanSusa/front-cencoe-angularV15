@@ -36,7 +36,7 @@ export class GroupManagerComponent implements OnInit {
 
   //^4
   groupForm = this.formBuilder.group({
-    groupName: ['', Validators.required],
+    groupName: ['', [Validators.required, Validators.pattern(/^\D+$/)]],
     groupLastName: ['', Validators.required],
     // fechaInicio : ['', Validators.required],
     // fechaFinal : ['', Validators.required],

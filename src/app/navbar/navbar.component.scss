@@ -1,7 +1,6 @@
 // :host * {
 //     transition: all 1000ms ease-in-out;
 // }
-
 .menuOpen {
     width: 230px;
     // transition: all 1S ease-in-out;
@@ -9,7 +8,7 @@
 
 .menuClosed {
     width: 64px;
-    transition:     0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 .example-spacer {

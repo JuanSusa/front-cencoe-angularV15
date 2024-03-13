@@ -56,10 +56,14 @@
     --mdc-circular-progress-active-indicator-color: #ff0844;
 }
 
-h2 {
+.messageNull {
+    background-color: lightgray;
+    color: #29323c;
+    border-radius: 5px;
     text-align: center;
-    color: #ff0844;
-    animation: fadeInDown 5s ease-in-out;
+    width: 50%;
+    margin: 20px auto;
+    height: 6%;
+    padding-top: 1%;
+    border: 1px double;
 }
-
-

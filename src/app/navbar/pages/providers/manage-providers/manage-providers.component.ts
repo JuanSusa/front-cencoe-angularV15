@@ -52,7 +52,7 @@ export class ManageProvidersComponent implements OnInit {
   // }
 
 
-  
+
 
   onSubmit(): void {
     if (this.providerForm.invalid){

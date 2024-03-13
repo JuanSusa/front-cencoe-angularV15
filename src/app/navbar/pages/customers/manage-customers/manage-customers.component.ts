@@ -57,7 +57,7 @@ export class ManageCustomersComponent {
       return;
     }
   }
-  
+
   // getTypeDocs(){
   //   this.__typeDocHttpService.getAllTypeDocuments().subscribe(
   //     response=>{

@@ -23,7 +23,7 @@ export class ManageCampaignsComponent {
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     private _GroupService : GroupServiceService,
-    private _ProviderService : ProviderService
+    private _ProviderService : ProviderServiceService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});

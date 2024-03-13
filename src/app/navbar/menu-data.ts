@@ -38,13 +38,13 @@ export const menuItems : MenuItem[] = [
     {
         nombre: 'Grupos',
         icon:'group_add',
-        label: 'grupos',
+        label: 'Grupos',
         route: '../grupos'
     },
     {
         nombre: 'Reportes',
         icon:'assignment',
-        label: 'reportes',
+        label: 'Reportes',
         route: '../reports'
     },
     {

@@ -66,8 +66,4 @@ export class userHttpService {
     return this._http.get<User>(`${environment.api}/usuario`, { params })
       .pipe(tap(response => console.log('tap', response)))
   }
-
-
-
-
 }

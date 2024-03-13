@@ -16,16 +16,12 @@
                         <input matInput formControlName="userName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="userForm.get('userName')?.hasError('required')">Los nombres son
                             obligatorios</mat-error>
-                        <mat-error *ngIf="userForm.get('userName')?.hasError('required')">Los nombres son
-                            obligatorios</mat-error>
                     </mat-form-field>
 
                     <!-- Campo Apellidos -->
                     <mat-form-field>
                         <mat-label>Apellidos</mat-label>
                         <input matInput formControlName="userLastName" placeholder="Apellidos" type="text" />
-                        <mat-error *ngIf="userForm.get('userLastName')?.hasError('required')">Los apellidos son
-                            obligatorios
                         <mat-error *ngIf="userForm.get('userLastName')?.hasError('required')">Los apellidos son
                             obligatorios
                         </mat-error>
@@ -38,19 +34,11 @@
                             (input)="onNumericInput($event)" />
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('required')">El número de teléfono es
                             obligatorio
-                        <input matInput formControlName="userPhone" placeholder="Teléfono"
-                            (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('required')">El número de teléfono es
-                            obligatorio
                         </mat-error>
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('minlength')">El número de teléfono debe
-                            tener al menos 10 dígitos</mat-error>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('minlength')">El número de teléfono debe
                             tener al menos 10 dígitos</mat-error>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('maxlength')">Máximo 10 dígitos
                         </mat-error>
-                        <mat-error *ngIf="userForm.get('userPhone')?.hasError('pattern')">El número de teléfono debe
-                            contener solo dígitos</mat-error>
                         <mat-error *ngIf="userForm.get('userPhone')?.hasError('pattern')">El número de teléfono debe
                             contener solo dígitos</mat-error>
                     </mat-form-field>
@@ -80,12 +68,7 @@
                         <mat-label>No. Documento</mat-label>
                         <input matInput formControlName="userDocument" placeholder="No. Documento"
                             (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Numero de documento
-                            obligatorio
-                        <input matInput formControlName="userDocument" placeholder="No. Documento"
-                            (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Numero de documento
-                            obligatorio
+                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Numero de documento obligatorio
                         </mat-error>
                         <mat-error *ngIf="userForm.get('userDocument')?.hasError('minlength')"></mat-error>
                         <mat-error *ngIf="userForm.get('userDocument')?.hasError('pattern')">Unicamente números

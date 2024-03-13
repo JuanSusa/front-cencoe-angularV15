@@ -11,8 +11,9 @@ export class SupportComponent {
   personName: string = '';
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
+  supportForm!: FormGroup;
 
-  // supportForm: FormGroup;
+
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
     // ngOnInit(): void {

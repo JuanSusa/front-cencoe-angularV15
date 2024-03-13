@@ -72,6 +72,18 @@ export interface Customer {
 }
 
 export interface Login {
-    username: string;
-    password: string
+    userNumDoc: string;
+    userPassword: string
+}
+
+export interface DecodedToken{
+    userName: string;
+    userLastName: string;
+}
+
+export interface LoginResponse {
+    code: number;
+    message: string;
+    data: string;
+    success: boolean;
 }

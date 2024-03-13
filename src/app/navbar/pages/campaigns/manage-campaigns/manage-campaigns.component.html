@@ -59,7 +59,7 @@
                     <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid">
                             {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                         </button>
-                    <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                    <button mat-button cdkFocusInitial (click)="closeDialog()" class="btn-cancel-dialog">
                             Cancelar
                         </button>
                 </mat-card-actions>

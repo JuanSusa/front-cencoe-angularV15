@@ -28,7 +28,6 @@ export class ListCustomersComponent {
   mostrarSpinner: boolean = false;
 
   constructor(
-    private location: Location,
     private readonly _dialog: MatDialog,
     private _customerService: CustomerServiceService,
     private paginator2: MatPaginatorIntl,
@@ -48,32 +47,32 @@ export class ListCustomersComponent {
     });
   }
   ngOnInit() {
-    // this.getAllCustomers()
+  
   }
 
-  // ngAfterViewInit(): void {
-  //   merge(this.paginator.page)
-  //     .pipe(
-  //       startWith({}),
-  //       switchMap(() => {
-  //         return this._customerService.getAllCustomers(
-  //           this.paginator.pageIndex,
-  //           this.paginator.pageSize
-  //         );
-  //       }),
-  //       map((response:Pageable<Customer>) => {
-  //         this.totalResultados = response.totalElements;
-  //         // this.totalPages = response.data.totalPages;
-  //         return response.content;
-  //       }),
-  //       takeUntil(this._clearSubscritions$)
+  ngAfterViewInit(): void {
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this._customerService.getAllCustomers(
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+          );
+        }),
+        map((response:Pageable<Customer>) => {
+          this.totalResultados = response.totalElements;
+          // this.totalPages = response.data.totalPages;
+          return response.content;
+        }),
+        takeUntil(this._clearSubscritions$)
 
-  //     )
-  //     .subscribe((data) => {
-  //       this.customer = data;
-  //       console.log(data);
-  //     });
-  // }
+      )
+      .subscribe((data) => {
+        this.customer = data;
+        console.log(data);
+      });
+  }
 
   eliminarCustomer() {
     Swal.fire({

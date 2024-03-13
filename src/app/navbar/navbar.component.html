@@ -29,14 +29,13 @@
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container select-none">
     <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6" mode="side" opened
-        [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}">
+    [ngClass]="{'menuOpen':collapsed, 'menuClosed':!collapsed}">
         <div class="header-nav">
-            <img src="../../assets/img/logo_prueba.png" [style.width]="!collapsed ? '60px' : '65px'"
+            <img src="../../assets/img/logo_prueba1.png" [style.width]="!collapsed ? '60px' : '65px'"
                 [style.height]="!collapsed ? '60x|px' : '65px'">
         </div>
         <mat-nav-list>
             <mat-divider></mat-divider>
-
             <ng-container *ngFor="let menuItem of menuItems; let last = last">
                 <!-- Elementos del menú -->
                 <mat-list-item *ngIf="!last" [routerLink]="menuItem.route" routerLinkActive="active-link"
@@ -46,14 +45,13 @@
                     <span class="item-label" matListItemTitle>{{ menuItem.label }}</span>
                 </mat-list-item>
             </ng-container>
-
+            <!-- Icono de soporte -->
             <mat-list-item class="config-icon" [routerLink]="menuItems[menuItems.length -1].route" routerLinkActive="active-link"
             #rla="routerLinkActive" [activated]="rla.isActive"
                 matTooltip="{{ menuItems[menuItems.length - 1].nombre }}" matTooltipPosition="right">
                 <mat-icon class="icon" matListItemIcon>{{ menuItems[menuItems.length - 1].icon }}</mat-icon>
                 <span class="item-label" matListItemTitle>{{ menuItems[menuItems.length - 1].label }}</span>
             </mat-list-item>
-
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="content" [style.margin-left]="!collapsed ? '250px' : '70px'">

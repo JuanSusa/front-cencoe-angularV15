@@ -47,10 +47,13 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator [length]="totalResultados" [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select p of provider">
+    </mat-paginator>
     </mat-card-content>
     <!-- Spinner para cuando no hay datos en las tablas -->
-    <mat-spinner *ngIf="!customer.length" class="spinner" diameter="50"></mat-spinner>
+    <!-- <mat-spinner *ngIf="!customer.length" class="spinner" diameter="50"></mat-spinner> -->
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<div class="messageNull" *ngIf="customer.length == 0">No hay Clientes para mostrar!
-</div>
+<!-- <div class="messageNull" *ngIf="customer.length == 0">No hay Clientes para mostrar! -->
+<!-- </div> -->

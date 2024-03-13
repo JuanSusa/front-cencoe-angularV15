@@ -35,17 +35,16 @@ export const menuItems : MenuItem[] = [
         label: 'Usuarios',
         route: '../usuarios'
     },
- 
     {
         nombre: 'Grupos',
         icon:'group_add',
-        label: 'grupos',
+        label: 'Grupos',
         route: '../grupos'
     },
     {
-        nombre: 'reportes',
+        nombre: 'Reportes',
         icon:'assignment',
-        label: 'reportes',
+        label: 'Reportes',
         route: '../reports'
     },
     {

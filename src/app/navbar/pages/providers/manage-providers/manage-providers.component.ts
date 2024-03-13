@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit, Provider } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
@@ -7,15 +7,19 @@ import { ProviderService } from '../../providers/services/provider-service.servi
 import { FloatLabelType } from '@angular/material/form-field';
 import { TypeDocs } from '../../tipodocumento/core/models/main.model';
 import Swal from 'sweetalert2';
+import { Provider } from '../core/models/main.model';
+
 @Component({
   selector: 'app-manage-providers',
   templateUrl: './manage-providers.component.html',
   styleUrls: ['./manage-providers.component.scss']
 })
+
 export class ManageProvidersComponent implements OnInit {
   public typeDocs: TypeDocs[] = [];
   public typeDoc: TypeDocs | undefined;
   // provider: Provider = {} as Provider
+  public provider: Provider[] = [];
   titulo: String = ''
   subtitulo: String = ''
   constructor(private readonly _matDialogRef: MatDialogRef<ManageProvidersComponent>,
@@ -26,7 +30,7 @@ export class ManageProvidersComponent implements OnInit {
   ) {
 
   }
-  providerForm = this.formBuilder.group({
+   providerForm = this.formBuilder.group({
     providerName: ['', [Validators.required, Validators.maxLength(35)]],
     providerAddress: ['', Validators.required],
     providerContact: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("[0-9]{10}")]],
@@ -39,8 +43,7 @@ export class ManageProvidersComponent implements OnInit {
     // this.getTypeDocs()
     const { tipo, campo } = this.data
     this.titulo =
-      this.data.tipo === 'crear' ? 'Crear nuevo Proveedor' : 'Actualizar proveedor'
-
+      this.data.tipo === 'crear' ? 'Crear nuevo Proveedor' : 'Actualizar proveedor';
     this.subtitulo =
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo proveedor' : 'Ingrese los nuevos datos del proveedor'
   }
@@ -64,7 +67,7 @@ export class ManageProvidersComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.providerForm.invalid){
+    if (this.providerForm.invalid) {
       Swal.fire(
         'Por favor espere',
         'Existen campos que no son validos',
@@ -79,8 +82,7 @@ export class ManageProvidersComponent implements OnInit {
     const input = event.target.value;
     event.target.value = input.replace(/[^0-9]/g, '');
   }
-  public cerrarDialog() {
+  public cerrarDialog(){
     this._matDialogRef.close()
   }
-
 }

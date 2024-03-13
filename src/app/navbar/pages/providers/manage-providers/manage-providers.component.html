@@ -5,7 +5,7 @@
     </div>
     <mat-dialog-content>
         <mat-card-content class="mat-elevation-z8">
-            <form class="create_provider" [formGroup]="providerForm">
+            <form class="create_provider" [formGroup]="providerForm" (ngSubmit)="onSubmit()">
                 <div class="campos">
                     <!--Campo nombre del proveedor-->
                     <mat-form-field>
@@ -26,7 +26,8 @@
                     <!--Campo telefono-->
                     <mat-form-field>
                         <mat-label class="form-label">Teléfono</mat-label>
-                        <input matInput formControlName="contact" placeholder="Telefono" (input)="onNumericInput($event)">
+                        <input matInput formControlName="contact" placeholder="Telefono"
+                            (input)="onNumericInput($event)">
                         <mat-error *ngIf="providerForm.get('contact')?.hasError('required')">El telefono es obligatorio
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('contact')?.hasError('maxlength')">Maximo 10 digitos
@@ -44,8 +45,10 @@
                     <!--Campo No. Documento-->
                     <mat-form-field>
                         <mat-label class="form-label">No. Documento</mat-label>
-                        <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento" (input)="onNumericInput($event)">
-                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento obligatorio
+                        <input matInput formControlName="numDocumento" placeholder="ingrese su numero de documento"
+                            (input)="onNumericInput($event)">
+                        <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('required')">Numero de documento
+                            obligatorio
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('numDocumento')?.hasError('minlength')">Minimo 8 digitos
                         </mat-error>
@@ -55,13 +58,15 @@
                     <!--Campo tipo Documento-->
                     <mat-form-field>
                         <mat-label class="form-label">Tipo de Documento</mat-label>
-                        <mat-select formControlName="TipoDocumento">
+                        <mat-select formControlName="tipoDocumento">
                             <mat-option *ngFor="let p of typeDocs" [value]="p.docTypeId">
                                 {{p.docTypeName}}
                             </mat-option>
                         </mat-select>
-                        <!--Detalles-->
+                        <mat-error *ngIf="providerForm.get('tipoDocumento')?.hasError('required')">El tipo de
+                            documento es obligatorio</mat-error>
                     </mat-form-field>
+                    <!--Detalles-->
                     <mat-form-field class="full-width textarea">
                         <mat-label class="form-label">Productos / Servicios</mat-label>
                         <textarea matInput formControlName="details" placeholder="Productos/servicios"></textarea>
@@ -78,10 +83,11 @@
             -->
                 </div>
                 <mat-card-actions class="actions-btns">
-                    <button mat-button type="submit" class="btn-saved-dialog" [disabled]="providerForm.invalid">
+                    <button mat-button type="submit" class="btn-saved-dialog">
                         {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
                     </button>
-                    <button mat-button cdkFocuusInitial (click)="cerrarDialog()" class="btn-cancel-dialog">Cancelar</button>
+                    <button mat-button type="button" (click)="cerrarDialog()"
+                        class="btn-cancel-dialog">Cancelar</button>
                 </mat-card-actions>
             </form>
 

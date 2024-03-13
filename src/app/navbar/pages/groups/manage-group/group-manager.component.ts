@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Team, User, adminPopUp } from 'src/app/core/main.type';
+import { adminPopUp } from 'src/app/core/main.type';
 import { MatDialog } from '@angular/material/dialog';
 import { userHttpService } from '../../users/service/http/user-service.service';
 @Component({
@@ -10,8 +10,8 @@ import { userHttpService } from '../../users/service/http/user-service.service';
   styleUrls: ['./group-manager.component.scss']
 })
 export class GroupManagerComponent implements OnInit {
-  public team:Team[]=[]
-  public user:User[]=[]
+  // public team:Team[]=[]
+  // public user:User[]=[]
   public showBtn: boolean = false;
   maxDate: Date;
   constructor(

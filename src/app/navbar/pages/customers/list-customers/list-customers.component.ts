@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Customer, adminTypePopUp } from 'src/app/core/main.type';
+import { adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCustomersComponent } from '../manage-customers/manage-customers.component';
 import { CustomerServiceService } from '../service/http/customer-service.service';
 import Swal from 'sweetalert2';
@@ -13,10 +13,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./list-customers.component.scss']
 })
 export class ListCustomersComponent {
-  mostrarSpinner: boolean = true; // Mostrar Spinner
-  public customer: Customer[] = []; //^1
+  public customer  = []; //^1 Customer[]
   public displayedColumns = ['customerId', 'customerName', 'customerAddress', 'customerPhone', 'edit']; //^2
   isLoading = true;
+  mostrarSpinner: boolean = false;
   constructor(
     private location: Location,
     private readonly _dialog: MatDialog,
@@ -27,21 +27,20 @@ export class ListCustomersComponent {
   manageCustomer(tipo: adminTypePopUp, customerId?: number) {
     const modal = this._dialog.open(ManageCustomersComponent, {
       data: { tipo, campo: customerId },
-      width: '600'
     });
     modal.afterClosed().subscribe(result => {
       console.log('Se cerro el dialogo')
     });
   }
   ngOnInit() {
-    this.getAllCustomers()
+    // this.getAllCustomers()
   }
-  getAllCustomers() {
-    this._customerService.getAllCustomers().subscribe(data => {
-      this.customer = data;
-      console.log(data)
-    })
-  }
+  // getAllCustomers() {
+  //   this._customerService.getAllCustomers().subscribe(data => {
+  //     this.customer = data;
+  //     console.log(data)
+  //   })
+  // }
   eliminarCustomer() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",

@@ -35,7 +35,6 @@ export const menuItems : MenuItem[] = [
         label: 'Usuarios',
         route: '../usuarios'
     },
- 
     {
         nombre: 'Grupos',
         icon:'group_add',
@@ -43,7 +42,7 @@ export const menuItems : MenuItem[] = [
         route: '../grupos'
     },
     {
-        nombre: 'reportes',
+        nombre: 'Reportes',
         icon:'assignment',
         label: 'reportes',
         route: '../reports'

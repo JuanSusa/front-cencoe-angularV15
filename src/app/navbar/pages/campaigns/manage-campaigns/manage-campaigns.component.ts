@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { Provider, Team, adminPopUp } from 'src/app/core/main.type';
+import {adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-import { ProviderServiceService } from '../../providers/services/provider-service.service';
+import { ProviderService } from '../../providers/services/provider-service.service';
 
 @Component({
   selector: 'app-manage-campaigns',
@@ -13,8 +13,7 @@ import { ProviderServiceService } from '../../providers/services/provider-servic
 export class ManageCampaignsComponent {
   titulo: string = '';
   subtitulo: string = '';
-  public team:Team[]=[]
-  public provider:Provider[]=[]
+  public team = [] //:Team[]
   campaignForm : FormGroup;
   maxDate: Date;
 
@@ -24,7 +23,7 @@ export class ManageCampaignsComponent {
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     private _GroupService : GroupServiceService,
-    private _ProviderService : ProviderServiceService
+    private _ProviderService : ProviderService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});
@@ -32,8 +31,8 @@ export class ManageCampaignsComponent {
 
   ngOnInit(): void {
     //^5
-    this.getAllGroups()
-    // this.getAllProvider()
+    // this.getAllGroups()
+
     const { tipo, campo } = this.data;
     this.titulo =
       this.data.tipo === 'crear' ? 'Crear nueva Campaña': 'Actualizar Campaña';
@@ -59,24 +58,15 @@ export class ManageCampaignsComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
-  getAllGroups(){
-    if(this._GroupService){
-      this._GroupService.getAllGroups()
-      .subscribe((data : Team[]) =>{
-        this.team = data
-        console.log(data)
-      })
-    }
-  }
-//   getAllProvider(){
-//     if(this._ProviderService){
-//       this._ProviderService.getAllProvider()
-//       .subscribe((data : Provider[]) =>{
-//         this.provider = data
-//         console.log(data)
-//       })
-//     }
-//   }
+  // getAllGroups(){
+  //   if(this._GroupService){
+  //     this._GroupService.getAllGroups()
+  //     .subscribe((data : Team[]) =>{
+  //       this.team = data
+  //       console.log(data)
+  //     })
+  //   }
+  // }
   fechaFinalValidador(control: FormControl) {
     const fechaInicio = this.campaignForm.get('fechaInicio')?.value;
     const fechaFinal = control.value;

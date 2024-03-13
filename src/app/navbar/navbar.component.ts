@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { MenuItem, menuItems } from './menu-data';
-import { RoleComponent } from './pages/role/role.component';
+import { RoleComponent } from './pages/role/component/role.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

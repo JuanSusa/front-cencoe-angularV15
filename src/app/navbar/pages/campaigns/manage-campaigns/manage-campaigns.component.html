@@ -38,19 +38,8 @@
                     <mat-form-field class="full-width">
                         <mat-label>Grupos</mat-label>
                         <mat-select formControlName="grupos" placeholder="seleccione un grupo">
-                            <mat-option *ngFor="let t of team" [value]="t.teamId">
-                                {{t.teamName}} - {{t.teamId}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo
-                        </mat-error>
-                    </mat-form-field>
-                    <!--Campo select -->
-                    <mat-form-field class="full-width">
-                        <mat-label>Proveedores</mat-label>
-                        <mat-select formControlName="proveedores" placeholder="seleccione un proveedor">
-                            <mat-option *ngFor="let p of provider" [value]="p.providerName">
-                                {{p.providerName}}
+                            <mat-option><!--  *ngFor="let t of team" [value]="t.teamId"> -->
+                                <!-- {{t.teamName}} - {{t.teamId}} -->
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="campaignForm.get('grupos')?.hasError('required')">Debe Seleccionar un grupo

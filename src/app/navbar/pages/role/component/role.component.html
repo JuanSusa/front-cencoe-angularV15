@@ -1,0 +1,22 @@
+<div class="container-box mat-elevation-z6">
+  <mat-card><!-- Contenido del contenedor -->
+
+  <mat-card-header class="p-0 justify-content-center mb-2">
+    <mat-card-title>Seleccione Roll</mat-card-title>
+    <mat-card-subtitle>Roles disponibles</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-divider class="content-table "></mat-divider>
+
+  <mat-card-content class="mat-elevation-z6">
+
+    <mat-selection-list class="create-list">
+      <mat-list *ngFor="let role of roles"> {{role.roleName}} </mat-list>
+    </mat-selection-list>
+
+    <mat-card-actions class="btn-select justify-content-center">
+      <button mat-button color="primary">Aceptar</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+</div>

@@ -16,6 +16,7 @@ export class ListCustomersComponent {
   public customer  = []; //^1 Customer[]
   public displayedColumns = ['customerId', 'customerName', 'customerAddress', 'customerPhone', 'edit']; //^2
   isLoading = true;
+  mostrarSpinner: boolean = false;
   constructor(
     private location: Location,
     private readonly _dialog: MatDialog,

@@ -3,7 +3,7 @@ import {adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
-import { ProviderServiceService } from '../../providers/services/provider-service.service';
+import { ProviderService } from '../../providers/services/provider-service.service';
 
 @Component({
   selector: 'app-manage-campaigns',
@@ -23,7 +23,7 @@ export class ManageCampaignsComponent {
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     private _GroupService : GroupServiceService,
-    private _ProviderService : ProviderServiceService
+    private _ProviderService : ProviderService
     ) {
       this.maxDate = new Date();
       this.campaignForm = new FormGroup({});

@@ -8,7 +8,7 @@ import { ListCampaignComponent } from './list-campaign/list-campaign.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CampaignsServiceService } from './services/http/campaigns-service.service';
 import { GroupServiceService } from '../groups/services/http/group-service.service';
-import { ProviderServiceService } from '../providers/services/provider-service.service';
+import { ProviderService } from '../providers/services/provider-service.service';
 
 @NgModule({
   declarations: [ManageCampaignsComponent, ListCampaignComponent],
@@ -21,7 +21,7 @@ import { ProviderServiceService } from '../providers/services/provider-service.s
 
   ],
 //Ver la lista de la campaña
-providers: [CampaignsServiceService, GroupServiceService, ProviderServiceService]
+providers: [CampaignsServiceService, GroupServiceService, ProviderService]
 })
 export class CampaignsModuleModule { }
 

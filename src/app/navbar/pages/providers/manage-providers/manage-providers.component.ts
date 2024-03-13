@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { adminPopUp } from 'src/app/core/main.type';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
-import { ProviderService } from '../services/provider-service.service';
+import { ProviderService } from '../../providers/services/provider-service.service';
 import { FloatLabelType } from '@angular/material/form-field';
 import { TypeDocs } from '../../tipodocumento/core/models/main.model';
 import Swal from 'sweetalert2';
@@ -63,7 +63,6 @@ export class ManageProvidersComponent implements OnInit {
       );
       return;
     }
-
   }
 
   onNumericInput(event: any): void {

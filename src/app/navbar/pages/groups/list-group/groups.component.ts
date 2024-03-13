@@ -16,6 +16,7 @@ export class GroupsComponent {
   public displayedColumns = ['teamId', 'teamName', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
+  mostrarSpinner: boolean = false;
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _groupHttpService: GroupServiceService,

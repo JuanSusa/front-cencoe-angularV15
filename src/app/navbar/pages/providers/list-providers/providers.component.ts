@@ -4,7 +4,7 @@ import { ManageProvidersComponent } from '../manage-providers/manage-providers.c
 import { adminTypePopUp} from 'src/app/core/main.type';
 import Swal from 'sweetalert2';
 import { PageEvent } from '@angular/material/paginator';
-import { ProviderServiceService } from '../services/provider-service.service';
+import { ProviderService } from '../services/provider-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,7 @@ export class ProvidersComponent implements OnInit {
   constructor(
     private router: Router,
     private readonly _dialog: MatDialog,
-    @Inject(ProviderServiceService) private readonly providerServiceService: ProviderServiceService) {
+    @Inject(ProviderService) private readonly providerServiceService: ProviderService) {
   }
   ngOnInit() {
     // this.getAllProviders()

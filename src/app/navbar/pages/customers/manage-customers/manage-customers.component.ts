@@ -1,5 +1,5 @@
 import { Component, Inject} from '@angular/core';
-import { User, adminPopUp } from 'src/app/core/main.type';
+import { adminPopUp } from 'src/app/core/main.type';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';

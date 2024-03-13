@@ -45,6 +45,14 @@ export class ManageProvidersComponent implements OnInit {
       this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo proveedor':'Ingrese los nuevos datos del proveedor'
     debugger
   }
+  cerrarDialog(){
+    this._matDialogRef.close();
+  }
+  onNumericInput(event: any): void {//^6.1
+    // Filtrar caracteres no numéricos
+    const input = event.target.value;//^6.2
+    event.target.value = input.replace(/[^0-9]/g, '');//^6.3
+  }
   // onSubmit():void{
   //     if(this.providerForm.valid){
   //       const provider : Provider = {
@@ -56,13 +64,6 @@ export class ManageProvidersComponent implements OnInit {
   //       providerDetails: this.providerForm.value.providerDetails,
   //       providerDoctype: this.providerForm.value.providerDoctype
 
-  onNumericInput(event: any): void {
-    // Filtrar caracteres no numéricos
-    const input = event.target.value;
-    event.target.value = input.replace(/[^0-9]/g, '');
-  }
-  public cerrarDialog(){
-    this._matDialogRef.close()
-  }
+
 
 }

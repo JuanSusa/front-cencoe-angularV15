@@ -21,6 +21,8 @@ export class GroupManagerComponent implements OnInit {
     private formBuilder: FormBuilder,
     // private _UsersService : userHttpService,
   ) { this.maxDate = new Date();}
+
+
   titulo: string = '';
   subtitulo: string = '';
   ngOnInit(): void {
@@ -64,4 +66,5 @@ export class GroupManagerComponent implements OnInit {
   //     })
   //   }
   // }
+ 
 }

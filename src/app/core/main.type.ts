@@ -70,3 +70,8 @@ export interface Customer {
     customerAddress: string;
     customerState: boolean;
 }
+
+export interface Login {
+    username: string;
+    password: string
+}

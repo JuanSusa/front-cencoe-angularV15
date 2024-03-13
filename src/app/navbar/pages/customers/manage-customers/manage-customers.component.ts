@@ -39,6 +39,7 @@ export class ManageCustomersComponent {
       this.data.tipo === 'crear' ? ' Crear nuevo cliente' : 'Actualizar cliente';
     this.subtitulo = this.data.tipo === 'crear' ? 'Ingrese los datos para crear un nuevo cliente' : 'Ingrese los nuevos datos del cliente';
   }
+ 
   public executionMessage() {
     this._matDialogRef.close();
   }
@@ -48,4 +49,5 @@ export class ManageCustomersComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
+
 }

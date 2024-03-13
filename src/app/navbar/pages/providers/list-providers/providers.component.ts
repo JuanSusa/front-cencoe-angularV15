@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { PageEvent } from '@angular/material/paginator';
 import { ProviderService } from '../services/provider-service.service';
 import { Router } from '@angular/router';
+import { Provider } from '../core/models/main.model';
 
 @Component({
   selector: 'app-providers',
@@ -17,7 +18,7 @@ export class ProvidersComponent implements OnInit {
   loading = true; //spinner de espera y direccionamiento
   titulo= "Proveedores"
   subtitulo = "Proveedores registrados en la aplicación"
-  // listprovider:Provider[]= [];
+  listprovider:Provider[]= [];
   pageSizeOptions: number[] = [3, 10, 25, 100];
   totalItems: number = 0;
   displayedColumns = ["providerId", "providerName", "providerAddress", "providerEmail", "providerContact", "actions"]

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Team, adminTypePopUp } from 'src/app/core/main.type';
+import { adminTypePopUp } from 'src/app/core/main.type';
 import { GroupServiceService } from '../services/http/group-service.service';
 import { GroupManagerComponent } from '../manage-group/group-manager.component';
 import { HttpClient } from '@angular/common/http';
@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent {
-  mostrarSpinner: boolean = true; // Mostrar Spinner
-  public team: Team[] = [];//^1
+  public team = [];//^1Team[] 
   public displayedColumns = ['teamId', 'teamName', 'actions'];//^2
   isLoading = true;
   success: boolean = false;
+  mostrarSpinner: boolean = false;
   constructor(
     private readonly _dialog: MatDialog,
     private readonly _groupHttpService: GroupServiceService,
@@ -25,14 +25,15 @@ export class GroupsComponent {
   ) {
   }
   ngOnInit(): void {
-    this.getAllGroups()
+    // this.getAllGroups()
   }
-  getAllGroups() {
-    this._groupHttpService.getAllGroups().subscribe(data => {
-      this.team = data;
-      console.log(data)
-    })
-  }
+  // getAllGroups() {
+  //   this._groupHttpService.getAllGroups().subscribe(data => {
+  //     this.team = data;
+  //     console.log(data)
+  //   })
+  // }
+
   eliminarTeam() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",

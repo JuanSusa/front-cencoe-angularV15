@@ -14,7 +14,8 @@
 <mat-divider class="mt-3"></mat-divider>
 <mat-card class="container-table">
     <mat-card-content class="table-provider">
-        <table mat-table class="mat-elevation-z8" [dataSource]="listprovider">
+        <!-- [dataSource]="listprovider"-->
+        <table mat-table class="mat-elevation-z8" > 
             <!--Columana Id-->
             <ng-container matColumnDef="providerId">
                 <th mat-header-cell *matHeaderCellDef class="table-header">No.</th>
@@ -59,7 +60,7 @@
         </mat-paginator>
     </mat-card-content>
     <!-- Spinner para cuando no hay datos en las tablas -->
-    <mat-spinner *ngIf="!listprovider.length" class="spinner" diameter="50"></mat-spinner>
+    <!-- <mat-spinner *ngIf="!listprovider.length" class="spinner" diameter="50"></mat-spinner> -->
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<h2 *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</h2>
+<!-- <h2 *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</h2> -->

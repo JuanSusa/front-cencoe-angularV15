@@ -6,9 +6,10 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { userHttpService } from './service/http/user-service.service';
 import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documento.service';
+import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
 
 
 @NgModule({
@@ -22,7 +23,12 @@ import { TipodocumentoHttpService } from '../tipodocumento/services/tipo-documen
   ],
   providers:[
     userHttpService,
-    TipodocumentoHttpService
+    TipodocumentoHttpService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GeneralResponseHttpInterceptor,
+      multi: true
+    }
   ]
 })
 export class UserModuleModule { }

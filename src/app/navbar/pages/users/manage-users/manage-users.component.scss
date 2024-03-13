@@ -28,9 +28,13 @@
 mat-card{
     height: auto;
 }
-mat-dialog-content{
+
+
+.mat-mdc-dialog-content{
+    max-height: calc(100% - 70vh);
     max-width: 100%;
 }
+
 mat-card{
     width: 600px;
 }

@@ -11,7 +11,7 @@ export class SupportComponent {
   personName: string = '';
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
-  supportForm!: FormGroup;
+
 
 
   public readonly supportForm: UntypedFormGroup;

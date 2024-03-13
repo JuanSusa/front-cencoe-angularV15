@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
 import { ProviderServiceService } from '../../providers/services/provider-service.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
@@ -50,7 +50,7 @@ export class ManageCampaignsComponent {
       });
   }
 
-  public executionMesssage() {
+  public closeDialog() {
     this._matDialogRef.close();
   }
    //^6
@@ -77,6 +77,15 @@ export class ManageCampaignsComponent {
 //       })
 //     }
 //   }
+onSubmit(): void{
+  if (this.campaignForm.invalid){
+    Swal.fire(
+      'Por favor espere',
+      'Existen campos que no son validos',
+      'warning'
+    );
+}
+}
   fechaFinalValidador(control: FormControl) {
     const fechaInicio = this.campaignForm.get('fechaInicio')?.value;
     const fechaFinal = control.value;
@@ -92,6 +101,8 @@ export class ManageCampaignsComponent {
     if (fechaFinalDate.getTime() === fechaInicioDate.getTime()) {
       return { mismaFecha: true }; // Retorna error si las fechas son iguales
     }
+
     return null; // Retorna null si no hay errores
   }
 }
+

@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Team, User, adminPopUp } from 'src/app/core/main.type';
 import { MatDialog } from '@angular/material/dialog';
 import { userHttpService } from '../../users/service/http/user-service.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-group-manager',
   templateUrl: './group-manager.component.html',
@@ -46,8 +47,17 @@ export class GroupManagerComponent implements OnInit {
     this.showBtn=!this.showBtn
   }
   //^4
-  public executionMesssage() {
+  public closeDialog() {
     this._matDialogRef.close();
+  }
+  onSubmit(): void{
+    if (this.groupForm.invalid){
+      Swal.fire(
+        'Por favor espere',
+        'Existen campos que no son validos',
+        'warning'
+      );
+    }
   }
   //^6
   onNumericInput(event: any): void {//^6.1

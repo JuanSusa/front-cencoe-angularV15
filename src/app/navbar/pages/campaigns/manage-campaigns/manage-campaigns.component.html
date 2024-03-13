@@ -3,11 +3,11 @@
         <mat-card-title mat-dialog-title>{{ titulo }}</mat-card-title>
         <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
     </div>
-    <mat-dialog-content class="dialog-content">
+    <mat-dialog-content >
         <mat-card-content class="mat-elevation-z10">
             <!-- Formulario registro campaña -->
             <!--Campo nombre campaña-->
-            <form class="create-campaign" [formGroup]="campaignForm">
+            <form class="create-campaign" [formGroup]="campaignForm" (ngSubmit)="onSubmit()">
                 <div class="campos">
                     <mat-form-field class="full-width">
                         <mat-label>Nombre</mat-label>
@@ -65,10 +65,10 @@
                 </mat-form-field>
                 <mat-card-actions class="actions-btns">
                     <!-- Botones de acciones -->
-                    <button mat-button type="submit" class="btn-saved-dialog" [disabled]="campaignForm.invalid">
+                    <button mat-button type="submit" class="btn-saved-dialog">
                             {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                         </button>
-                    <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                    <button mat-button type="button" (click)="closeDialog()" class="btn-cancel-dialog">
                             Cancelar
                         </button>
                 </mat-card-actions>

@@ -6,7 +6,7 @@
     <mat-dialog-content>
         <mat-card-content class="mat-elevation-z8">
             <!-- Formulario registro usuario -->
-            <form class="create-group" [formGroup]="groupForm">
+            <form class="create-group" [formGroup]="groupForm" (ngSubmit)="onSubmit()">
                 <section class="create-group__campos">
                     <!-- Campo Nombres -->
                     <mat-form-field class="full-width">
@@ -43,16 +43,17 @@
                     </mat-form-field>
 
                 </section>
-            </form>
+            
             <mat-card-actions class="actions-btns">
                 <!-- Botones de acciones -->
-                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid">
+                <button mat-button type="submit" class="btn-saved-dialog">
                     {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                 </button>
-                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                <button mat-button  type="button" (click)="closeDialog()" class="btn-cancel-dialog">
                     Cancelar
                 </button>
             </mat-card-actions>
+        </form>
         </mat-card-content>
     </mat-dialog-content>
 </mat-card>

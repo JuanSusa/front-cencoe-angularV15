@@ -50,8 +50,7 @@
     margin: 0 auto;
 }
 mat-toolbar {
-    border: .01rem solid #738092;
-    border-radius: 10px;
+    background: transparent;
 }
 
  ::ng-deep .mat-mdc-progress-spinner {

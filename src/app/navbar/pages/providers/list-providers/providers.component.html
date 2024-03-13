@@ -1,15 +1,16 @@
 <mat-toolbar class="flex justify-content-between h-auto ">
-    <mat-card-header class="p-1">
+    <mat-card-header class="p-0">
         <mat-card-title>{{titulo}}</mat-card-title>
         <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
     </mat-card-header>
-    <span class="example-spacer"></span>
-    <mat-card-actions>
-        <button mat-raised-button (click)="manageProvider('crear')">
-                <mat-icon>add_circle</mat-icon>
+
+    <mat-card-actions class="mt-3 p-0">
+        <button mat-raised-button color="primary" (click)="manageProvider('crear')">
+                <mat-icon class="add-campaign">add_circle</mat-icon>
                 Agregar Proveedor</button>
     </mat-card-actions>
 </mat-toolbar>
+ 
 <mat-divider class="mt-3"></mat-divider>
 <mat-card class="container-table">
     <mat-card-content class="table-provider">

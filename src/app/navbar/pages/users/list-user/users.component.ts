@@ -27,18 +27,18 @@ export class UsersComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.getAllUsers()
+    // this.getAllUsers()
   }
-  getAllUsers() {
-    this._userHttpService.getAllUsers()
-      .pipe(
-        takeUntil(this.clearSubscritions$)
-      )
-      .subscribe(data => {
-        this.user = data;
-        console.log(data)
-      })
-  }
+  // getAllUsers() {
+  //   this._userHttpService.getAllUsers()
+  //     .pipe(
+  //       takeUntil(this.clearSubscritions$)
+  //     )
+  //     .subscribe(data => {
+  //       this.user = data;
+  //       console.log(data)
+  //     })
+  // }
   manageUser(tipo: adminTypePopUp, userId?: number) {
     const modal = this._dialog.open(ManageUsersComponent, {
       data: { tipo, campo: userId }

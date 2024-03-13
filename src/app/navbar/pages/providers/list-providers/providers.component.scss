@@ -1,7 +1,6 @@
 .mdc-button {
-    cursor: pointer;
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
-    color: #fafafa;
+    margin: 0 1rem 1rem 0;
 }
 
 .table-provider {
@@ -9,7 +8,7 @@
 }
 
 .mat-paginator {
-    align-self: center;
+  align-self: center;
 }
 
 .mdc-button:hover {
@@ -19,6 +18,7 @@
 
 .table-header {
     text-align: center;
+    width: 200px;
 }
 
 .table-cell {
@@ -49,8 +49,7 @@
     box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4);
 }
 mat-toolbar {
-    border: .01rem solid #738092;
-    border-radius: 10px;
+    background: transparent;
 }
 
 ::ng-deep .mat-mdc-progress-spinner {

@@ -11,12 +11,13 @@ import { userHttpService } from '../service/http/user-service.service';
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.scss']
 })
-export class ManageUsersComponent implements OnInit {
 
+export class ManageUsersComponent implements OnInit {
+ 
   public typeDocs: TypeDocs[] = [];
   public user: User | undefined;
   public showBtn: boolean = false;
-
+  hide: boolean = true;
 
   constructor(
     private _TipodocumentoHttpService: TipodocumentoHttpService,

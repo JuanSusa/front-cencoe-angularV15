@@ -12,15 +12,13 @@ export class SupportComponent {
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
 
-  // supportForm: FormGroup;
+  supportForm: FormGroup;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
-    // ngOnInit(): void {
-    //     supportForm = this.fb.group({
-    //     namePerson: ['', Validators.required],
-    //     messagePerson: ['', Validators.required]
-    //   })
-    // }
+    this.supportForm = this.fb.group({
+      personName: ['', Validators.required],
+      messagePerson: ['', Validators.required]
+    });
   };
 
   saveEmail() {

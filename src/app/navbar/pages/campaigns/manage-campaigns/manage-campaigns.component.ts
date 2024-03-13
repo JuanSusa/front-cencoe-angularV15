@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./manage-campaigns.component.scss']
 })
 export class ManageCampaignsComponent {
+  // Definir el formulario y la expresión regular para el campo del documento
+
   titulo: string = '';
   subtitulo: string = '';
   // public team = [] //:Team[]
@@ -135,3 +137,4 @@ export class ManageCampaignsComponent {
     return null; // Retorna null si no hay errores
   }
 }
+

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListCampaignComponent } from './list-campaign/list-campaign.component';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
     children: [
       {
         path: 'list-campaign',
-        component: ListCampaignComponent
+        component: ListCampaignComponent,
       },
       { path: '**', redirectTo: 'list-campaign' }
     ]

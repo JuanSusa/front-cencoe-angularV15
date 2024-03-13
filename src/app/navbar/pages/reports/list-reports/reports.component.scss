@@ -2,26 +2,27 @@ mat-toolbar {
     border: .01rem solid #738092;
     border-radius: 10px;
 }
+
 .mdc-button {
     background: linear-gradient(to bottom, #ff0844 0%, #ffb199 100%);
     margin: 0 1rem 1rem 0;
 }
-mat-card{
-    width: auto; 
-    height: auto; 
-   
+
+mat-card {
+    width: auto;
+    height: auto;
 }
-mat-divider{
+
+mat-divider {
     margin: 1rem;
-    border: none; 
-    height: 1px; 
+    border: none;
+    height: 1px;
     background: linear-gradient(to right, #ff0844, #ff3e75, #ff7fa3, #ffb7d6, #ffd9ef);
-    margin: 20px 0; 
-    box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4); 
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4);
 }
 
 mat-card-content {
- 
     .reportForm {
         width: 100%;
         .campos {
@@ -32,28 +33,27 @@ mat-card-content {
             row-gap: 10px;
             margin: 0 auto;
         }
-       
-        .textarea{
+        .textarea {
             min-height: 100px;
             max-height: 200px;
             width: 100%;
             resize: none;
             overflow-y: auto;
-            
         }
     }
-
 }
+
 .textarea::-webkit-scrollbar {
     width: 5px;
 }
-.mat-mdc-dialog-content{
+
+.mat-mdc-dialog-content {
     max-height: calc(100% - 70vh);
 }
 
 mat-card-actions {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     margin-top: 10px;
     .btn-cancel-dialog {
         background: linear-gradient(-22deg, #29323c 0%, #485563 100%);

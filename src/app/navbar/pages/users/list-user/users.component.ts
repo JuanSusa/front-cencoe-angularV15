@@ -18,7 +18,7 @@ export class UsersComponent implements AfterViewInit{
   private _clearSubscritions$ = new Subject<void>();
   @ViewChild(MatPaginator) private paginator!: MatPaginator;
 
-  public user: User[] = [];//^1  
+  public user: User[] = [];//^1
   public displayedColumns = ['userId', 'name', 'direccion', 'email', 'edit'];//^2
   totalResultados: number = 0;
 
@@ -32,7 +32,7 @@ export class UsersComponent implements AfterViewInit{
     this.paginator2.previousPageLabel = 'Anterior';
   }
   ngOnInit(): void {
-    // this.getUsers() 
+    // this.getUsers()
   }
 
   ngAfterViewInit(): void {
@@ -58,7 +58,7 @@ export class UsersComponent implements AfterViewInit{
         console.log(data);
       });
   }
- 
+
 
 
   manageUser(tipo: adminTypePopUp, userId?: number) {

@@ -1,7 +1,6 @@
 // :host * {
 //     transition: all 1000ms ease-in-out;
 // }
-
 .menuOpen {
     width: 64px;
     // width: 230px;
@@ -9,9 +8,8 @@
 }
 
 .menuClosed {
-    width: 230px;
-    // width: 64px;
-    // transition: 0.5s ease-in-out;
+    width: 64px;
+    transition: 0.5s ease-in-out;
 }
 
 .example-spacer {
@@ -128,4 +126,22 @@ mat-divider {
 .config-icon {
     position: absolute;
     bottom: 0;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+.icon-logout{
+    font-size: 22px !important;
+    color: rgb(139, 8, 8);
+}
+.face{
+    color: #13022c;
+}
+.my-icons{
+    font-size: 25px !important
+}
+::ng-deep .mat-mdc-menu-panel{
+    width: 200px;
 }

@@ -12,29 +12,25 @@
         </mat-card-header>
         <mat-card-content>
             <p>
-                Este formulario está diseñado para comunicar de cualquier problema que puedan experimentar mientras
-                navegan en nuestro sitio web. Si encuentras algún error, fallo o simplemente deseas informarnos de algún
-                problema relacionado con la funcionalidad, utiliza este formulario para reportarlo. Describe
-                detalladamente el error o fallo que has encontrado en la página. Una vez completes el formulario,
-                presiona el botón Enviar para que nuestro equipo de soporte técnico pueda revisar tu reporte y tomar las
-                medidas necesarias para solucionar el problema.
+                Este formulario está diseñado para comunicar de cualquier problema que puedan experimentar mientras navegan en nuestro sitio web. Si encuentras algún error, fallo o simplemente deseas informarnos de algún problema relacionado con la funcionalidad, utiliza
+                este formulario para reportarlo. Describe detalladamente el error o fallo que has encontrado en la página. Una vez completes el formulario, presiona el botón Enviar para que nuestro equipo de soporte técnico pueda revisar tu reporte y
+                tomar las medidas necesarias para solucionar el problema.
             </p>
         </mat-card-content>
     </mat-card>
     <mat-card class="box_form col m-2 h-28rem">
-        <form [formGroup]="supportForm" (ngSubmit)="saveEmail()">
+        <form [formGroup]="supportForm" *ngIf="supportForm" (ngSubmit)="saveEmail()">
             <mat-form-field class="input_name mt-3">
                 <mat-label>Nombre</mat-label>
                 <input matInput formControlName="namePerson" required>
-                <mat-error *ngIf="supportForm.get('name')?.hasError && supportForm.get('name')?.touched">El nombre es
-                    obligatorio.</mat-error>
+                <mat-error *ngIf="supportForm.get('name')?.hasError && supportForm.get('name')?.touched">El nombre es obligatorio.
+                </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field class="decription-form">
                 <mat-label>Decripción del problema</mat-label>
                 <textarea matInput rows="5" maxlength="10000" formControlName="messagePerson" required></textarea>
-                <mat-error *ngIf="supportForm.get('mensaje')?.hasError && supportForm.get('mensaje')?.touched">El
-                    mensaje es obligatorio.</mat-error>
+                <mat-error *ngIf="supportForm.get('mensaje')?.hasError && supportForm.get('mensaje')?.touched">El mensaje es obligatorio.</mat-error>
             </mat-form-field>
         </form>
         <mat-card-actions class="justify-content-center h-auto">

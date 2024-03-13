@@ -12,53 +12,44 @@
                     <mat-form-field>
                         <mat-label>Nombres</mat-label>
                         <input matInput formControlName="customerName" placeholder="Nombre Completo" type="text">
-                        <mat-error *ngIf="customerForm.get('customerName')?.hasError('required')">El nombre es
-                            obligatorio
+                        <mat-error *ngIf="customerForm.get('customerName')?.hasError('required')">El nombre es obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="customerForm.get('customerName')?.hasError('pattern')">Permite únicamente letras.
                         </mat-error>
                     </mat-form-field>
                     <!-- Campo Apellidos -->
                     <mat-form-field>
                         <mat-label>Apellidos</mat-label>
                         <input matInput formControlName="customerLastName" placeholder="Apellidos" type="text">
-                        <mat-error *ngIf="customerForm.get('customerLastName')?.hasError('required')">El apellido es
-                            obligatorio
+                        <mat-error *ngIf="customerForm.get('customerLastName')?.hasError('required')">El apellido es obligatorio
                         </mat-error>
                     </mat-form-field>
                     <!-- Campo tipo documento -->
                     <mat-form-field>
                         <mat-label>Tipo de documento</mat-label>
                         <mat-select formControlName="customerTipoDocumento">
-                            <mat-option *ngFor="let tipoDoc of typeDocs"
-                                [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
+                            <mat-option *ngFor="let tipoDoc of typeDocs" [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="customerForm.get('customerTipoDocumento')?.hasError('required')">El tipo de
-                            documento es obligatorio</mat-error>
+                        <mat-error *ngIf="customerForm.get('customerTipoDocumento')?.hasError('required')">El tipo de documento es obligatorio</mat-error>
                     </mat-form-field>
                     <!-- Campo número de documento -->
                     <mat-form-field>
                         <mat-label>No. Documento</mat-label>
-                        <input matInput formControlName="customerDocument" placeholder="No. Documento"
-                            (input)="onNumericInput($event)">
-                        <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('required')">Número de
-                            documento necesario</mat-error>
+                        <input matInput formControlName="customerDocument" placeholder="No. Documento" (input)="onNumericInput($event)">
+                        <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('required')">Número de documento necesario</mat-error>
                         <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('minlength')"></mat-error>
-                        <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('pattern')">EL campo permite
-                            unicamente números</mat-error>
+                        <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('pattern')">EL campo permite unicamente números</mat-error>
                         <mat-error *ngIf="customerForm.get('customerDocument')?.hasError('maxlength')"></mat-error>
                     </mat-form-field>
                     <!-- Campo Telefono -->
                     <mat-form-field>
                         <mat-label>Número celular</mat-label>
-                        <input matInput formControlName="customerPhone" placeholder="Número celular"
-                            (input)="onNumericInput($event)">
-                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('required')">El número celular es
-                            obligatorio</mat-error>
-                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('minlength')">El número de celular
-                            debe de tener minimo 10 dígitos</mat-error>
-                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('maxlength')">El número de celular
-                            debe de tener máximo 10 digitos</mat-error>
-                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('pattern')">El número de celular
-                            debe de contener solo digitos</mat-error>
+                        <input matInput formControlName="customerPhone" placeholder="Número celular" (input)="onNumericInput($event)">
+                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('required')">El número celular es obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('minlength')">El número de celular debe de tener minimo 10 dígitos</mat-error>
+                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('maxlength')">El número de celular debe de tener máximo 10 digitos</mat-error>
+                        <mat-error *ngIf="customerForm.get('customerPhone')?.hasError('pattern')">El número de celular debe de contener solo digitos</mat-error>
                     </mat-form-field>
                     <!-- Campo dirección -->
                     <mat-form-field>
@@ -73,11 +64,10 @@
                     <button mat-button type="submit" class="btn-saved-dialog">
                         {{this.data.tipo === "crear" ? "Guardar" : "Actualizar"}}
                     </button>
-                    <button mat-button class="btn-cancel-dialog" (click)="closeDialog()"
-                        type="button">Cancelar</button>
+                    <button mat-button class="btn-cancel-dialog" (click)="closeDialog()" type="button">Cancelar</button>
                 </mat-card-actions>
             </form>
-           
+
         </mat-card-content>
     </mat-dialog-content>
 </mat-card>

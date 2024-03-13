@@ -23,21 +23,22 @@
             <mat-card-title class="mr-3 text-center text-2xl">Iniciar Sesión</mat-card-title>
             <mat-form-field class="w-11 m-3">
                 <mat-label>Usuario</mat-label>
-                <input matInput formControlName="username"
+                <input matInput formControlName="userNumDoc"
                     class="mt-2 p-1 border-none text-base outline-none">
-                <mat-error *ngIf="loginForm.get('username')?.hasError && loginForm.get('username')?.touched">El
+                <mat-error *ngIf="loginForm.get('userNumDoc')?.hasError && loginForm.get('required')?.touched">El
                     usuario es requerido.</mat-error>
             </mat-form-field>
             <mat-form-field class="w-11 m-3">
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password" formControlName="password"
+                <input matInput type="password" formControlName="userPassword"
                     class="mt-2 p-1 border-none text-base outline-none">
                 <mat-error
-                    *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">La
+                    *ngIf="loginForm.get('userPassword')?.invalid && loginForm.get('required')?.touched">La
                     contraseña es requerida.</mat-error>
             </mat-form-field>
+            <div *ngIf="showError" [@errorState]="showError ? 'show' : 'hide'">{{ messageError }}</div>
             <button mat-raised-button type="" [disabled]="loginForm.invalid"
-                class="btn_Ingresar w-6 mt-2 border-none text-base outline-none">Ingresar</button>
+                class="btn_Ingresar w-6 mt-1 border-none text-base outline-none">Ingresar</button>
         </form>
     </div>
 </div>

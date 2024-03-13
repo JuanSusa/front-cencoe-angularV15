@@ -6,6 +6,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthServiceService } from './services/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
-    // Otros modulos necesarios para la autenticación
+  
   ],
+  providers: [AuthServiceService]
 })
 export class AuthModule { }

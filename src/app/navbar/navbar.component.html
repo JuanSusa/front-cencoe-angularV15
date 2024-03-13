@@ -4,16 +4,28 @@
     </button>
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="btn-toolbar">
-        <mat-icon>perm_identity</mat-icon>
-    </button>
     <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>settings</mat-icon>
+        <mat-icon class="my-icons">settings</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="../tipo-documento">Tipo Documentos</button>
         <button mat-menu-item routerLink="../role">Roles</button>
     </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu1"  #menuTrigger="matMenuTrigger"> 
+        <mat-icon class="my-icons">account_circle</mat-icon>
+        <mat-icon [ngClass]="{'rotate': menuTrigger.menuOpen}">expand_more</mat-icon>
+    </button>
+    <mat-menu #menu1="matMenu">
+        <p mat-menu-item *ngIf="user">
+            <mat-icon class="face">face</mat-icon>
+            {{user.userName}} {{user.userLastName}}</p>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon class="icon-logout">logout</mat-icon>
+            Logout</button>
+    </mat-menu>
+
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container select-none">
     <mat-sidenav #sidenav class="sidenav" class="mat-elevation-z6" mode="side" opened

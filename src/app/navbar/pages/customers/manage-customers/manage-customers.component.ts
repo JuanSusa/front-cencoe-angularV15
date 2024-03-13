@@ -172,4 +172,5 @@ export class ManageCustomersComponent {
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
   }
+
 }

@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { Observable, catchError, map, share, tap, throwError } from 'rxjs';
 import { Pageable } from 'src/app/core/main.type';
 import { Provider } from '../core/models/main.model';

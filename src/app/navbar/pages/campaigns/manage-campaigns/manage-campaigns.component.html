@@ -11,8 +11,10 @@
                 <div class="campos">
                     <mat-form-field class="full-width">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" />
+                        <input matInput formControlName="nombre" placeholder="Nombre de la campaña" type="text" pattern="[^\d]+" title="No se permiten números" />
                         <mat-error *ngIf="campaignForm.get('nombre')?.hasError('required')">El nombre es obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="campaignForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.
                         </mat-error>
                     </mat-form-field>
                     <!--Campo fecha inicio-->

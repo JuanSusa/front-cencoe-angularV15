@@ -55,3 +55,12 @@
         //color del spinner
         --mdc-circular-progress-active-indicator-color: #ff0844;
     }
+
+    .messageNull {
+        background-color: lightgray;
+        color: #29323c;
+        border-radius: 5px;
+        text-align: center;
+        width: 50%;
+        margin: 20px auto;
+    }

@@ -69,7 +69,7 @@
     <mat-spinner *ngIf="!campaign.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<h2 *ngIf="campaign.length == 0">No hay Campañas para mostrar!</h2>
+<div class="messageNull" *ngIf="campaign.length == 0">No hay Campañas para mostrar!</div>
 <!-- Mostrar mensaje de carga o error -->
 <div *ngIf=" isLoading; else error ">
 </div>

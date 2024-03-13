@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-support',
@@ -12,17 +12,20 @@ export class SupportComponent {
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
 
-  // supportForm: FormGroup;
+  public readonly supportForm: UntypedFormGroup;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
-    // ngOnInit(): void {
-    //     supportForm = this.fb.group({
-    //     namePerson: ['', Validators.required],
-    //     messagePerson: ['', Validators.required]
-    //   })
-    // }
-  };
+    this.supportForm = this.fb.group({
+      namePerson: ['', Validators.required],
+      messagePerson: ['', Validators.required]
+    })
+}
 
+
+  // ngOnInit(): void {
+
+  //   }
+  // }
   saveEmail() {
     // Guardado de nombre y mensaje en el arreglo de sendMessage
     this.sendMessage[0].push(this.personName);

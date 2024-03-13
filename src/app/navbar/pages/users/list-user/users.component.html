@@ -63,4 +63,4 @@
     <mat-spinner *ngIf="!user.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<h2 *ngIf="user.length == 0">No hay Usuarios para mostrar!</h2>
+<div class="messageNull" *ngIf="user.length == 0">No hay Usuarios para mostrar!</div>

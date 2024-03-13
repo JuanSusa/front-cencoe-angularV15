@@ -61,4 +61,4 @@
     <mat-spinner *ngIf="!listprovider.length" class="spinner" diameter="50"></mat-spinner>
 </mat-card>
 <!-- Mensaje para cuando no hay datos en las tablas -->
-<h2 *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</h2>
+<div class="messageNull" *ngIf="listprovider.length == 0">No hay Grupos para mostrar!</div>

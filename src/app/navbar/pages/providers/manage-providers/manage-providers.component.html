@@ -15,6 +15,8 @@
                         </mat-error>
                         <mat-error *ngIf="providerForm.get('name')?.hasError('maxLength')">Maximo 35 caracteres
                         </mat-error>
+                        <mat-error *ngIf="providerForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.
+                        </mat-error>
                         <!--Campo direccion-->
                     </mat-form-field>
                     <mat-form-field>

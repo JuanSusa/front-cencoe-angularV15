@@ -24,7 +24,7 @@ export class ManageProvidersComponent implements OnInit {
 
   }
    providerForm = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.maxLength(35)]],
+    name: ['', [Validators.required, Validators.maxLength(35), Validators.pattern(/^\D+$/)]],
     adress: ['', Validators.required],
     contact: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("[0-9]{10}")]],
     email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],

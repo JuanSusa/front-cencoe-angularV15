@@ -14,6 +14,8 @@
                         <input matInput formControlName="groupName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="groupForm.get('groupName')?.hasError('required')">El nombre es obligatorio
                         </mat-error>
+                        <mat-error *ngIf="groupForm.get('nombre')?.hasError('pattern')">Permite únicamente letras.
+                        </mat-error>
                     </mat-form-field>
                     <!--Campo fecha inicio-->
                     <!-- <mat-form-field>

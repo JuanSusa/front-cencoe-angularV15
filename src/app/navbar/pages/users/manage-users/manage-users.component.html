@@ -1,7 +1,7 @@
 <mat-card>
     <div class="container-header">
-    <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
-    <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+        <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+        <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
     </div>
     <mat-dialog-content>
         <mat-card-content class="mat-elevation-z6">
@@ -13,6 +13,8 @@
                         <mat-label>Nombres</mat-label>
                         <input matInput formControlName="userName" placeholder="Nombre Completo" type="text" />
                         <mat-error *ngIf="userForm.get('userName')?.hasError('required')">Los nombres son obligatorios</mat-error>
+                        <mat-error *ngIf="userForm.get('nombre')?.hasError('pattern')">solo permite únicamente letras.
+                        </mat-error>
                     </mat-form-field>
 
                     <!-- Campo Apellidos -->
@@ -75,7 +77,7 @@
                     <!--Campo Email-->
                     <mat-form-field>
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="userEmail" placeholder="correo electronico" type="text"/>
+                        <input matInput formControlName="userEmail" placeholder="correo electronico" type="text" />
                         <mat-error *ngIf="userForm.get('userEmail')?.hasError('required')">El email es obligatorio</mat-error>
                         <mat-error *ngIf="userForm.get('userEmail')?.hasError('pattern')">Email invalido</mat-error>
                     </mat-form-field>

@@ -20,8 +20,8 @@ export class ManageCustomersComponent {
   ) { }
     //^4
     customerForm = this.formBuiler.group({
-      customerDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
-      customerName: ['', Validators.required],
+      customerDocument: ['', [Validators.required, Validators.pattern(/^\D+$/),Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
+      customerName:['', Validators.required ,Validators.pattern(/^\D+$/)],
       customerLastName: ['', Validators.required],
       customerAdress: ['', Validators.required, Validators.minLength(3)],
       customerPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]],

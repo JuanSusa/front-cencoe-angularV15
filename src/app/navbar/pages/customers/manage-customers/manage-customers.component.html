@@ -11,8 +11,10 @@
                     <!-- Campo nombre -->
                     <mat-form-field>
                         <mat-label>Nombres</mat-label>
-                        <input matInput formControlName="customerName" placeholder="Nombre Completo" type="text">
+                        <input matInput formControlName="customerName" placeholder="Nombre Completo" type="text" pattern="[^\d]+" title="No se permiten números" />
                         <mat-error *ngIf="customerForm.get('customerName')?.hasError('required')">El nombre es obligatorio
+                        </mat-error>
+                        <mat-error *ngIf="customerForm.get('customerName')?.hasError('pattern')">Permite únicamente letras.
                         </mat-error>
                     </mat-form-field>
                     <!-- Campo Apellidos -->

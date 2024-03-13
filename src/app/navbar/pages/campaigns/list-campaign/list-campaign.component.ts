@@ -72,6 +72,7 @@ export class ListCampaignComponent {
   toggleSpinner() {//mostrar Spinner
     this.mostrarSpinner = !this.mostrarSpinner;
   }
+
 }
 /**
  * ^1 => Inyeccion de datos usuarios

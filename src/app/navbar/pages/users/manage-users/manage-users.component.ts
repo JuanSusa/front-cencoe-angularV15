@@ -32,7 +32,7 @@ export class ManageUsersComponent implements OnInit {
   ) {
     this.userForm = formBuilder.group({
       userId: [{ value: '', disabled: true }],
-      userDocument: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
+      userNumDoc: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern(/^\d+$/)]],
       userName: ['', Validators.required],
       userLastName: ['', Validators.required],
       userAddress: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,7 +40,7 @@ export class ManageUsersComponent implements OnInit {
       userPassword: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
       userEmail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       userState: [''],
-      userTipoDocumento: ['', Validators.required]
+      userDocType: ['', Validators.required]
     })
   }
 
@@ -65,7 +65,7 @@ export class ManageUsersComponent implements OnInit {
     if (tipo == 'editar') {
       this._userServiceHttp.getUserById(campo!).subscribe((user) => {
         this.userForm.get('userId')?.patchValue(user.userId);
-        this.userForm.get('userDocument')?.patchValue(user.userNumDoc);
+        this.userForm.get('userNumDoc')?.patchValue(user.userNumDoc);
         this.userForm.get('userName')?.patchValue(user.userName);
         this.userForm.get('userLastName')?.patchValue(user.userLastName);
         this.userForm.get('userAddress')?.patchValue(user.userAddress);
@@ -73,7 +73,7 @@ export class ManageUsersComponent implements OnInit {
         this.userForm.get('userEmail')?.patchValue(user.userEmail);
         this.userForm.get('userPassword')?.patchValue(user.userPassword);
         this.userForm.get('userState')?.patchValue(user.userState);
-        this.userForm.get('userTipoDocumento')?.patchValue(user.userDocType?.docTypeId);
+        this.userForm.get('userDocType')?.patchValue(user.userDocType?.docTypeId);
       });
     }
 
@@ -97,7 +97,7 @@ export class ManageUsersComponent implements OnInit {
     * Encuentra el tipo de documento basado en el valor seleccionado en userForm.
     */
   findTypeDoc() {
-    const typeDoc = this.userForm.get('userTipoDocumento')?.value;
+    const typeDoc = this.userForm.get('userDocType')?.value;
     if (typeDoc) {
 
       this._TipodocumentoHttpService.getTypeDocsById(typeDoc).subscribe((data) => {
@@ -115,7 +115,8 @@ export class ManageUsersComponent implements OnInit {
     * 
     * @returns void
     */
-  createUser(): void {
+  public createUser(): void {
+    // this.findTypeDoc();
     const { invalid, value } = this.userForm;
     if (invalid) {
       Swal.fire(
@@ -123,31 +124,20 @@ export class ManageUsersComponent implements OnInit {
         'Existen campos que no son validos',
         'warning'
       );
-      return console.log('Formulario invalido', value);
+      return;
     }
-    const userTipoDocumento = this.userForm.get('userTipoDocumento')?.value;
-    this.findTypeDoc();
     const { tipo, campo } = this.data;
     const esTipoCrear = tipo === 'crear';
     const metodoEjecutar: keyof userHttpService = esTipoCrear
       ? 'createUser'
       : 'updateUser';
     const user = this.getUserById(esTipoCrear);
-    this._TipodocumentoHttpService.getTypeDocsById(value.userTipoDocumento).subscribe({
-      next: (typeDoc) => {
-        user.user_doctype = typeDoc.docTypeId;
-  
-        this._userServiceHttp[metodoEjecutar](user).subscribe({
-          next: (mensaje) => this.mostrarMensajeEjecucion(tipo, mensaje),
-          error: (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: error.message,
-            });
-          }
-        });
-      },
+    this.userForm.value.userDocType = this.typeDoc;
+
+
+
+    this._userServiceHttp[metodoEjecutar](user).subscribe({
+      next: (mensaje) => this.mostrarMensajeEjecucion(tipo, mensaje),
       error: (error) => {
         Swal.fire({
           icon: 'error',
@@ -156,41 +146,10 @@ export class ManageUsersComponent implements OnInit {
         });
       }
     });
-      return console.log('Formulario invalido', value);
 
-    }
+    return console.log('Formulario valido', value);
 
-  // public createUser(): void {
-  //   // this.findTypeDoc();
-  //   const { invalid, value } = this.userForm;
-  //   if (invalid) {
-  //     Swal.fire(
-  //       'Porfavor espere',
-  //       'Existen campos que no son validos',
-  //       'warning'
-  //     );
-  //     return console.log('Formulario invalido', value);
-  //   }
-  //   const userTipoDocumento = this.userForm.get('userTipoDocumento')?.value;
-  //   this.findTypeDoc();
-  //   const { tipo, campo } = this.data;
-  //   const esTipoCrear = tipo === 'crear';
-  //   const metodoEjecutar: keyof userHttpService = esTipoCrear
-  //     ? 'createUser'
-  //     : 'updateUser';
-  //   const user = this.getUserById(esTipoCrear);
-  //   user.user_doctype = this.typeDoc;
-  //   this._userServiceHttp[metodoEjecutar](user).subscribe(
-  //     (mensaje) => this.mostrarMensajeEjecucion(tipo, mensaje),
-  //     (error) => {
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Oops...',
-  //         text: error.message,
-  //       });
-  //     }
-  //   );
-  // }
+  }
 
   /**
    * Muestra un mensaje de ejecución para indicar el resultado de una transacción.
@@ -199,14 +158,14 @@ export class ManageUsersComponent implements OnInit {
    * @param message - El mensaje a mostrar en el diálogo.
    */
   private mostrarMensajeEjecucion(tipo: any, message: any) {
-      const tipoMensaje = tipo == 'crear' ? 'creada' : 'actualizada';
-      Swal.fire(
-        'Transaccion exitosa',
-        `La empresa ha sido ${tipoMensaje} con exito`,
-        'success'
-      );
-      this._matDialogRef.close(true);
-    }
+    const tipoMensaje = tipo == 'crear' ? 'creada' : 'actualizada';
+    Swal.fire(
+      'Transaccion exitosa',
+      `La empresa ha sido ${tipoMensaje} con exito`,
+      'success'
+    );
+    this._matDialogRef.close(true);
+  }
 
   /**
    * Obtiene los datos del usuario a partir del formulario.
@@ -215,18 +174,19 @@ export class ManageUsersComponent implements OnInit {
    * @returns Los datos del usuario obtenidos del formulario.
    */
   private getUserById(esTipoCrear: boolean) {
-      let user = this.userForm.value;
+    let user = this.userForm.value;
 
-      if(!esTipoCrear) {
-        const userId = this.userForm.get('userId')!.value;
-        user = { ...user, userId };
-      }
-    return user;
+    if (!esTipoCrear) {
+      const userId = this.userForm.get('userId')!.value;
+      user = { ...user, userId };
     }
+    console.log(user)
+    return user;
+  }
 
   public closeDialog() {
-      this._matDialogRef.close();
-    }
+    this._matDialogRef.close();
+  }
 
 
   /**
@@ -236,9 +196,9 @@ export class ManageUsersComponent implements OnInit {
     * @param event - El objeto de evento de entrada.
     */
   onNumericInput(event: any): void {
-      const input = event.target.value;
-      event.target.value = input.replace(/[^0-9]/g, '');
-    }
+    const input = event.target.value;
+    event.target.value = input.replace(/[^0-9]/g, '');
+  }
 
 
   /**
@@ -248,11 +208,11 @@ export class ManageUsersComponent implements OnInit {
     * @returns Una función validadora que devuelve un objeto `ValidationErrors` si la contraseña no cumple con los criterios, de lo contrario `null`.
     */
   passwordValidator(): ValidatorFn {
-      return(control: AbstractControl): ValidationErrors | null => {
+    return (control: AbstractControl): ValidationErrors | null => {
       const value: string = control.value;
       const passwordCriteria = /[a-zA-Z]+.*[0-9]+.*[A-Z]+/.test(value);
 
-      if(!passwordCriteria) {
+      if (!passwordCriteria) {
 
         return { passwordCriteria: true };
       }

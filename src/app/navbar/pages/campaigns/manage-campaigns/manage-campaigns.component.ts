@@ -1,24 +1,28 @@
 import { Component, Inject } from '@angular/core';
-import {adminPopUp } from 'src/app/core/main.type';
+import { adminPopUp } from 'src/app/core/main.type';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupServiceService } from '../../groups/services/http/group-service.service';
 import Swal from 'sweetalert2';
+import { CampaignsServiceService } from '../services/http/campaigns-service.service';
 @Component({
   selector: 'app-manage-campaigns',
   templateUrl: './manage-campaigns.component.html',
   styleUrls: ['./manage-campaigns.component.scss']
 })
 export class ManageCampaignsComponent {
+  // Definir el formulario y la expresión regular para el campo del documento
+
   titulo: string = '';
   subtitulo: string = '';
-  public team = [] //:Team[]
-  campaignForm : FormGroup;
+  // public team = [] //:Team[]
+  campaignForm: FormGroup;
   maxDate: Date;
 
   constructor(
     public dialog: MatDialog,
-    private readonly _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
+    private _campaignServiceHttp: CampaignsServiceService,
+    private _matDialogRef: MatDialogRef<ManageCampaignsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: adminPopUp<number>,//^3
     private formBuilder: FormBuilder,
     // private _GroupService : GroupServiceService,
@@ -51,8 +55,9 @@ export class ManageCampaignsComponent {
   public closeDialog() {
     this._matDialogRef.close();
   }
-   //^6
-   onNumericInput(event: any): void {//^6.1
+
+  //^6
+  onNumericInput(event: any): void {//^6.1
     // Filtrar caracteres no numéricos
     const input = event.target.value;//^6.2
     event.target.value = input.replace(/[^0-9]/g, '');//^6.3
@@ -103,4 +108,5 @@ onSubmit(): void{
     return null; // Retorna null si no hay errores
   }
 }
+
 

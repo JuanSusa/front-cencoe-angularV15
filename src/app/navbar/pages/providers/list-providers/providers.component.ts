@@ -49,7 +49,7 @@ export class ProvidersComponent implements OnInit {
         text: "Esta operacion es irreversible!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#ff0844",
+        confirmButtonColor: "#e0062c",
         cancelButtonColor: "rgb(2,0,36)",
         confirmButtonText: "Si, confirmar!",
         cancelButtonText: "No, cancelar!"

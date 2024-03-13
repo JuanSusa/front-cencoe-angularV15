@@ -29,6 +29,7 @@ export class userHttpService {
   };
 
   createUser(user: User): Observable<User> {
+    console.log(user)
     return this._http.post<User>(`${environment.api}/usuario`, user, { headers: this.httpHeaders })
       .pipe(
         tap(data => console.log('Usuario creado con éxito!', data)),
@@ -66,8 +67,4 @@ export class userHttpService {
     return this._http.get<User>(`${environment.api}/usuario`, { params })
       .pipe(tap(response => console.log('tap', response)))
   }
-
-
-
-
 }

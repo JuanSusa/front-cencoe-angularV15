@@ -12,16 +12,14 @@ export class SupportComponent {
   messagePerson: string = '';
   sendMessage: any[][] = [[], []];
 
-  public readonly supportForm: UntypedFormGroup;
+  supportForm: FormGroup;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
-
     this.supportForm = this.fb.group({
-      namePerson: ['', Validators.required],
+      personName: ['', Validators.required],
       messagePerson: ['', Validators.required]
     });
-  }
-
+  };
 
   saveEmail() {
     // Guardado de nombre y mensaje en el arreglo de sendMessage

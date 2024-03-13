@@ -73,6 +73,7 @@ export class UsersComponent implements OnInit {
 }
 toggleSpinner() {//mostrar Spinner
   this.mostrarSpinner = !this.mostrarSpinner;
+
 }
 }
 

@@ -7,9 +7,10 @@ import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/pag
 import { ProviderService } from '../services/provider-service.service';
 import { Router } from '@angular/router';
 import { Subject, map, merge, startWith, switchMap, takeUntil } from 'rxjs';
-import { Provider } from '../core/models/main.model';
+
 import { TipodocumentoComponent } from '../../tipodocumento/manage-tipodocumento/tipodocumento.component';
 import { TipodocumentoHttpService } from '../../tipodocumento/services/tipo-documento.service';
+import { Provider } from '../core/models/main.model';
 
 @Component({
   selector: 'app-providers',
@@ -71,9 +72,9 @@ export class ProvidersComponent implements AfterViewInit {
     //this.getProvider(2)
   }
   // getAllProviders(page:number =0, size: number=3) {
-  //   this.providerService.getAllProviders(page, size)
+  //   this.providerServiceService.getAllProviders(page, size)
   //   .subscribe((data :any) =>{
-  //     this.listprovider = data.content;
+  //     this.providerServiceService = data.content;
   //     this.totalItems = data.totalElements;
   //     console.log(data)
   //   })

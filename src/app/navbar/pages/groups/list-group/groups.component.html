@@ -37,6 +37,9 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row-table"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator [length]="totalResultados" [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users">
+    </mat-paginator>
     </mat-card-content>
     <!-- Spinner para cuando no hay datos en las tablas -->
     <mat-spinner *ngIf="!team.length" class="spinner" diameter="50"></mat-spinner>

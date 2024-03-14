@@ -40,13 +40,14 @@ export class AuthServiceService {
       if (token) {
         return true;
       } else {
+        this.router.navigate(['/login']);
           Swal.fire({
               icon: 'error',
               title: 'Oops...',
               text: 'Necesitas autenticarte para acceder a esta página!',
               confirmButtonColor: '#ff5e6c'
           });
-        this.router.navigate(['/login']);
+        
         return false;
       }
     }

@@ -18,7 +18,7 @@ export class ProviderService {
       .append('page', page)
       .append('size', size);
 
-    return this._http.get<Pageable<Provider>>(`${environment.api}/proveedor`, { params })
+    return this._http.get<Pageable<Provider>>(`${environment.api}/proveedores`)
       .pipe(
         tap(data => console.log('Proveedores cargados con éxito!', data))
       );
@@ -48,7 +48,7 @@ export class ProviderService {
 
   getProviderById(providerId: number): Observable<Provider> {
     const params = new HttpParams().append('id', providerId)
-    return this._http.get<Provider>(`${environment.api}/proveedor`, { params })
+    return this._http.get<Provider>(`${environment.api}/proveedor`)
     .pipe(tap(response => console.log('tap', response)))
   }
 

@@ -46,29 +46,29 @@ export class ListCampaignComponent {
    // this.getAllCampaigns()
   }
 
-  // ngAfterViewInit(): void {
-  //   merge(this.paginator.page)
-  //     .pipe(
-  //       startWith({}),
-  //       switchMap(() => {
-  //         return this._campaignHttpService.getAllCampaings(
-  //           this.paginator.pageIndex,
-  //           this.paginator.pageSize
-  //         );
-  //       }),
-  //       map((response:Pageable<Campaign>) => {
-  //         this.totalResultados = response.totalElements;
-  //         // this.totalPages = response.data.totalPages;
-  //         return response.content;
-  //       }),
-  //       takeUntil(this._clearSubscritions$)
+  ngAfterViewInit(): void {
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this._campaignHttpService.getAllCampaings(
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+          );
+        }),
+        map((response:Pageable<Campaign>) => {
+          this.totalResultados = response.totalElements;
+          // this.totalPages = response.data.totalPages;
+          return response.content;
+        }),
+        takeUntil(this._clearSubscritions$)
 
-  //     )
-  //     .subscribe((data) => {
-  //       this.campaign = data;
-  //       console.log(data);
-  //     });
-  // }
+      )
+      .subscribe((data) => {
+        this.campaign = data;
+        console.log(data);
+      });
+  }
 
   manageCampaign(tipo: adminTypePopUp, id?: number) {
     const modal = this._dialog.open(ManageCampaignsComponent, {

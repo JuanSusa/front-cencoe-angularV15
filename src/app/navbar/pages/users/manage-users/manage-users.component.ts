@@ -15,26 +15,14 @@ import { User } from '../core/models/main.model';
   styleUrls: ['./manage-users.component.scss']
 })
 
-/**
- * Representa el componente responsable de gestionar usuarios.
- */
 export class ManageUsersComponent implements OnInit {
-
   public readonly userForm: UntypedFormGroup;
   public typeDocs: TypeDocs[] = [];
   public typeDoc: TypeDocs | undefined;
-  public user: User[] = [];
+  public user: User | undefined;
+  public showBtn: boolean = false;
+  hide: boolean = true;
 
-  /**
-    * Representa la clase ManageUsersComponent.
-    * Este componente es responsable de gestionar los datos de usuario.
-    * @constructor
-    * @param {_TipodocumentoHttpService} _TipodocumentoHttpService - El servicio HTTP para los tipos de documento.
-    * @param {_userServiceHttp} _userServiceHttp - El servicio HTTP para los usuarios.
-    * @param {_matDialogRef} _matDialogRef - La referencia al diálogo de administración de usuarios.
-    * @param {adminPopUp<number>} data - Los datos del diálogo de administración de usuarios.
-    * @param {FormBuilder} formBuilder - El constructor de formularios.
-    */
   constructor(
     private _TipodocumentoHttpService: TipodocumentoHttpService,
     private _userServiceHttp: userHttpService,

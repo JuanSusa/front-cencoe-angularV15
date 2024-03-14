@@ -6,6 +6,8 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthServiceService } from './services/auth-service.service';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
-    // Otros modulos necesarios para la autenticación
+  
   ],
+  providers: [AuthServiceService, JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }]
 })
 export class AuthModule { }

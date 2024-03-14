@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ManageCampaignsComponent } from './manage-campaigns/manage-campaigns.component';
 import { CampaignsModuleRoutingModule } from './campaigns-module-routing.module';
 import { ListCampaignComponent } from './list-campaign/list-campaign.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CampaignsServiceService } from './services/http/campaigns-service.service';
 import { GroupServiceService } from '../groups/services/http/group-service.service';
 import { ProviderService } from '../providers/services/provider-service.service';
+import { GeneralResponseHttpInterceptor } from 'src/app/core/interceptors/general-response.interceptor';
 
 @NgModule({
   declarations: [ManageCampaignsComponent, ListCampaignComponent],
@@ -21,7 +22,15 @@ import { ProviderService } from '../providers/services/provider-service.service'
 
   ],
 //Ver la lista de la campaña
-providers: [CampaignsServiceService, GroupServiceService, ProviderService]
+providers: [
+  CampaignsServiceService, 
+  GroupServiceService, 
+  ProviderService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: GeneralResponseHttpInterceptor,
+    multi: true
+  }]
 })
 export class CampaignsModuleModule { }
 

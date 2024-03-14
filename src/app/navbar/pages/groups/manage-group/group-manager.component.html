@@ -46,16 +46,17 @@
                     </mat-form-field>
 
                 </section>
-            </form>
-            <mat-card-actions class="actions-btns">
-                <!-- Botones de acciones -->
-                <button mat-button type="submit" class="btn-saved-dialog" [disabled]="groupForm.invalid">
+
+                <mat-card-actions class="actions-btns">
+                    <!-- Botones de acciones -->
+                    <button mat-button type="submit" class="btn-saved-dialog">
                     {{ this.data.tipo == "crear" ? "Guardar" : "Actualizar" }}
                 </button>
-                <button mat-button cdkFocusInitial (click)="executionMesssage()" class="btn-cancel-dialog">
+                    <button mat-button type="button" (click)="executionMesssage()" class="btn-cancel-dialog">
                     Cancelar
                 </button>
-            </mat-card-actions>
+                </mat-card-actions>
+            </form>
         </mat-card-content>
     </mat-dialog-content>
 </mat-card>

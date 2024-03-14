@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { adminTypePopUp } from 'src/app/core/main.type';
+import { Pageable, adminTypePopUp } from 'src/app/core/main.type';
 import { ManageCustomersComponent } from '../manage-customers/manage-customers.component';
 import { CustomerServiceService } from '../service/http/customer-service.service';
+import { Observable, Subject, map, merge, startWith, switchMap, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Customer } from '../core/models/main.model';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-customers',
@@ -13,16 +16,27 @@ import { Location } from '@angular/common';
   styleUrls: ['./list-customers.component.scss']
 })
 export class ListCustomersComponent {
-  public customer  = []; //^1 Customer[]
-  public displayedColumns = ['customerId', 'customerName', 'customerAddress', 'customerPhone', 'edit']; //^2
+
+  private _clearSubscritions$ = new Subject<void>();
+  @ViewChild(MatPaginator) private paginator!: MatPaginator;
+
+  public customer: Customer[] = [];
+  public displayedColumns = ['customerId', 'customerName', 'customerAddress', 'customerPhone', 'edit'];
+  totalResultados: number = 0;
+
   isLoading = true;
   mostrarSpinner: boolean = false;
+
   constructor(
-    private location: Location,
     private readonly _dialog: MatDialog,
     private _customerService: CustomerServiceService,
+    private paginator2: MatPaginatorIntl,
     private router: Router
-  ) { }
+  ) {
+    this.paginator2.itemsPerPageLabel = 'Registros por página';
+    this.paginator2.nextPageLabel = 'Siguiente';
+    this.paginator2.previousPageLabel = 'Anterior';
+  }
 
   manageCustomer(tipo: adminTypePopUp, customerId?: number) {
     const modal = this._dialog.open(ManageCustomersComponent, {
@@ -33,14 +47,33 @@ export class ListCustomersComponent {
     });
   }
   ngOnInit() {
-    // this.getAllCustomers()
+  
   }
-  // getAllCustomers() {
-  //   this._customerService.getAllCustomers().subscribe(data => {
-  //     this.customer = data;
-  //     console.log(data)
-  //   })
-  // }
+
+  ngAfterViewInit(): void {
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this._customerService.getAllCustomers(
+            this.paginator.pageIndex,
+            this.paginator.pageSize
+          );
+        }),
+        map((response:Pageable<Customer>) => {
+          this.totalResultados = response.totalElements;
+          // this.totalPages = response.data.totalPages;
+          return response.content;
+        }),
+        takeUntil(this._clearSubscritions$)
+
+      )
+      .subscribe((data) => {
+        this.customer = data;
+        console.log(data);
+      });
+  }
+
   eliminarCustomer() {
     Swal.fire({
       title: "¿Esta seguro de eliminar este registro?",

@@ -7,7 +7,9 @@
     background: rgba(255, 0, 0, 0.747);
     color: #ffffff;
 }
-
+.btn-action1{
+    color:#29323c;
+}
 mat-icon {
     color: #ff0844;
 }
@@ -32,10 +34,15 @@ mat-icon {
 .mat-mdc-cell {
     text-align: center;
 }
-
+.mat-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, #ff0844, #ff3e75, #ff7fa3, #ffb7d6, #ffd9ef);
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(255, 8, 68, 0.4);
+}
 mat-toolbar {
-    border: .01rem solid #738092;
-    border-radius: 10px;
+    background: transparent;
 }
 
 .spinner {

@@ -1,5 +1,5 @@
 <mat-toolbar class="box_top flex justify-content-between h-auto select-none">
-    <mat-card-header class="p-0 mr-1">
+    <mat-card-header class="p-0 ">
         <mat-card-title>Soporte</mat-card-title>
         <mat-card-subtitle>Soporte relacionado con fallos en la página</mat-card-subtitle>
     </mat-card-header>
@@ -12,14 +12,14 @@
         </mat-card-header>
         <mat-card-content>
             <p>
-                Este formulario está diseñado para comunicar de cualquier problema que puedan experimentar mientras navegan en nuestro sitio web. Si encuentras algún error, fallo o simplemente deseas informarnos de algún problema relacionado con la funcionalidad, utiliza
+                Este formulario está diseñado para comunicar de cualquier problema que puedan experimentar mientras navegan en nuestro sitio web. Si encuentras algún error, utiliza
                 este formulario para reportarlo. Describe detalladamente el error o fallo que has encontrado en la página. Una vez completes el formulario, presiona el botón Enviar para que nuestro equipo de soporte técnico pueda revisar tu reporte y
                 tomar las medidas necesarias para solucionar el problema.
             </p>
         </mat-card-content>
     </mat-card>
     <mat-card class="box_form col m-2 h-28rem">
-        <form [formGroup]="supportForm" (ngSubmit)="saveEmail()">
+        <form [formGroup]="supportForm" *ngIf="supportForm" (ngSubmit)="saveEmail()">
             <mat-form-field class="input_name mt-3">
                 <mat-label>Nombre</mat-label>
                 <input matInput formControlName="namePerson" required>

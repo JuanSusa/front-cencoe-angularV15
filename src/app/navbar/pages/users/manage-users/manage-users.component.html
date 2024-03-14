@@ -2,6 +2,8 @@
     <div class="container-header">
         <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
         <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
+        <mat-card-title mat-dialog-title>{{ titulo }} </mat-card-title>
+        <mat-card-subtitle>{{ subtitulo }}</mat-card-subtitle>
     </div>
     <mat-dialog-content>
         <mat-card-content class="mat-elevation-z6">
@@ -37,22 +39,31 @@
                     </mat-form-field>
 
                     <!-- Campo Contraseña -->
+                    
                     <mat-form-field>
                         <mat-label>Contraseña</mat-label>
-                        <input matInput formControlName="userPassword" placeholder="Contraseña" type="password" />
-                        <mat-icon matSuffix *ngIf="userForm.get('userPassword')?.touched && userForm.get('userPassword')?.invalid" matTooltip="La contraseña debe contener máximo 10 caracteres entre letras, números y al menos una mayúscula.">info</mat-icon>
-                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('passwordCriteria')">Contraseña invalida
-                        </mat-error>
-                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('required')">La contraseña es obligatoria
+                        <input matInput formControlName="userPassword" placeholder="Contraseña" [type]="hide ? 'password' : 'text'"/>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" >
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <!--<span class="eyeicon" (click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>-->
+                        <mat-icon matSuffix
+                            *ngIf="userForm.get('userPassword')?.touched && userForm.get('userPassword')?.invalid"
+                            matTooltip="La contraseña debe contener máximo 10 caracteres entre letras, números y al menos una mayúscula.">info</mat-icon>
+                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('passwordCriteria')">Contraseña
+                            invalida</mat-error>
+                        <mat-error *ngIf="userForm.get('userPassword')?.hasError('required')">La contraseña es
+                            obligatoria
                         </mat-error>
                         <mat-error *ngIf="userForm.get('userPassword')?.hasError('minlength')"></mat-error>
                     </mat-form-field>
-
+               
                     <!-- Campo número de documento -->
                     <mat-form-field>
                         <mat-label>No. Documento</mat-label>
-                        <input matInput formControlName="userNumDoc" placeholder="No. Documento" (input)="onNumericInput($event)" />
-                        <mat-error *ngIf="userForm.get('userNumDoc')?.hasError('required')">Numero de documento obligatorio
+                        <input matInput formControlName="userDocument" placeholder="No. Documento"
+                            (input)="onNumericInput($event)" />
+                        <mat-error *ngIf="userForm.get('userDocument')?.hasError('required')">Numero de documento obligatorio
                         </mat-error>
                         <mat-error *ngIf="userForm.get('userNumDoc')?.hasError('minlength')"></mat-error>
                         <mat-error *ngIf="userForm.get('userNumDoc')?.hasError('pattern')">Unicamente números
@@ -63,8 +74,11 @@
                     <!-- Campo tipo de documento -->
                     <mat-form-field>
                         <mat-label>Tipo de Documento</mat-label>
-                        <mat-select formControlName="userDocType">
-                            <mat-option *ngFor="let tipoDoc of typeDocs" [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
+                        <mat-select formControlName="userTipoDocumento">
+                            <mat-option *ngFor="let tipoDoc of typeDocs"
+                                [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
+                            <mat-option *ngFor="let tipoDoc of typeDocs"
+                                [value]="tipoDoc.docTypeId">{{tipoDoc.docTypeName}}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="userForm.get('userDocType')?.hasError('required')">El tipo de documento es obligatorio</mat-error>
                     </mat-form-field>
@@ -79,8 +93,11 @@
                     <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="userEmail" placeholder="correo electronico" type="text" />
-                        <mat-error *ngIf="userForm.get('userEmail')?.hasError('required')">El email es obligatorio
-                        </mat-error>
+                        <mat-error *ngIf="userForm.get('userEmail')?.hasError('required')">El email es
+                            obligatorio</mat-error>
+                        <input matInput formControlName="userEmail" placeholder="correo electronico" type="text" />
+                        <mat-error *ngIf="userForm.get('userEmail')?.hasError('required')">El email es
+                            obligatorio</mat-error>
                         <mat-error *ngIf="userForm.get('userEmail')?.hasError('pattern')">Email invalido</mat-error>
                     </mat-form-field>
                     <!-- Campo Estado -->

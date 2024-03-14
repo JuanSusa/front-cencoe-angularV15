@@ -8,5 +8,6 @@ export class Provider {
     providerEmail: String = '';
     providerContact: String = '';
     providerDetails: String = '';
+    providerNumDoc: String = '';
     providerDoctype!: TypeDocs | null;
 }

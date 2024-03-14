@@ -89,39 +89,19 @@ export interface Customer {
     customerState: boolean;
 }
 
+export interface Login {
+    userNumDoc: string;
+    userPassword: string
+}
 
+export interface DecodedToken{
+    userName: string;
+    userLastName: string;
+}
 
-
-// // Modulo usuario
-// export interface User {
-//     userId: number;
-//     userNumDoc: string;
-//     userName: string;
-//     userLastName: string;
-//     userAddress: string;
-//     userPhone: string;
-//     userEmail: string;
-//     userPassword: string;
-//     userState: boolean;
-//     userDocType: TypeDocs;
-// }
-// export interface Campaign {
-//     campaignId: number;
-//     campaignName: string;
-//     // campaignTeam: number;
-//     // campaignProvider: number;
-//     campaignStartDate: Date;
-//     campaignEndDate: Date;
-//     campaignObservations: string;
-//     campaignState: string;
-// }
-
-
-
-// export interface Team {
-//     teamId: number;
-//     teamName: string;
-//     teamCapacity: number;
-//     teamState: boolean;
-// }
-
+export interface LoginResponse {
+    code: number;
+    message: string;
+    data: string;
+    success: boolean;
+}

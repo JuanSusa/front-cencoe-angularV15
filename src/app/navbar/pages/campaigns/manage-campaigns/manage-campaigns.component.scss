@@ -43,10 +43,6 @@ mat-card-content {
 .textarea::-webkit-scrollbar {
     width: 5px;
 }
-
-.mat-mdc-dialog-content{
-    max-height: calc(100% - 70vh);
-}
 :host::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label{
     color: #000000;
 }
